@@ -1,38 +1,121 @@
-// script.js
+// =============================================
+// Navbar - Hide on scroll down, show on scroll up
+// =============================================
+const navbar = document.querySelector('.navbar');
+let lastScrollTop = 0;
+const scrollThreshold = 5;
 
-// Smooth scrolling when clicking on navigation links
-function smoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1); // Remove the '#' from the href
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                // Scroll to the top of the target section smoothly
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-// Call the function when the page is loaded
-window.onload = function() {
-    smoothScrolling();
-}
+    if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) return;
 
-var lastScrollTop = 0;
-var navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', function() {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
         navbar.classList.add('hidden');
     } else {
-        // Scrolling up
         navbar.classList.remove('hidden');
     }
     lastScrollTop = scrollTop;
+});
+
+// =============================================
+// Mobile Menu Toggle
+// =============================================
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navMenu = document.querySelector('.navbar nav');
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
+
+// Close mobile menu when a link is clicked
+document.querySelectorAll('.navbar nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// =============================================
+// Active Nav Link Highlighting on Scroll
+// =============================================
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.navbar nav ul li a');
+
+function highlightNavOnScroll() {
+    const scrollY = window.scrollY + 120;
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+window.addEventListener('scroll', highlightNavOnScroll);
+
+// =============================================
+// Resume Tabs
+// =============================================
+function openTab(evt, tabName) {
+    const tabContents = document.getElementsByClassName('tab-content');
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = 'none';
+        tabContents[i].classList.remove('active-tab');
+    }
+
+    const tabBtns = document.getElementsByClassName('tab-btn');
+    for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove('active');
+    }
+
+    document.getElementById(tabName).style.display = 'block';
+    document.getElementById(tabName).classList.add('active-tab');
+    evt.currentTarget.classList.add('active');
+}
+
+// =============================================
+// Scroll Fade-In Animations
+// =============================================
+function setupScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.12
+    });
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+    });
+}
+
+// =============================================
+// Initialize
+// =============================================
+window.addEventListener('DOMContentLoaded', () => {
+    setupScrollAnimations();
+    highlightNavOnScroll();
+
+    // Initialize first resume tab
+    const firstTab = document.querySelector('.tab-btn');
+    if (firstTab) firstTab.click();
 });

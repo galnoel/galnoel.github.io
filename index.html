@@ -1,86 +1,307 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Galnoel Rindengan's Site</title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
-    <body>
-        <header class="navbar">
-            <h3>Galnoel</h3>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-        </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galnoel Rindengan | AI & ML Engineer</title>
+    <meta name="description" content="Portfolio of Galnoel Rindengan - AI/ML Engineer specializing in Deep Learning, RAG systems, and Computer Vision.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="#home" class="nav-logo">G.</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-        <main>
-            <section id="home">
-                <div class="greetings">
-                    <h1>Greetings!</h1>
-                    <h2>I'm Galnoel Rindengan,</h2>
-                    <p>a data science and backend enthusiast with a zest for continuous learning and professional growth. I excel in team environments, leveraging collective insights to enhance my expertise. Quick to learn and eager to adapt, I’m constantly seeking out new challenges in the data and coding landscape, aiming to innovate and drive success.</p>
-                    <img class="img1" src="images/foto-diri.png" alt="foto-diri">
+    <main>
+        <section id="home" class="hero fade-in-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-name">Galnoel<br>Rindengan</h1>
+                    <p class="hero-role">AI &amp; Machine Learning Engineer</p>
+                    <p class="hero-desc">Informatics Engineering student with a distinguished record in national-level competitions. PIMNAS 38 Bronze Medalist and multi-year GEMASTIK Finalist, specializing in Deep Learning, Multimodal Transformers, and production-grade AI solutions.</p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                        <a href="#projects" class="btn btn-outline">View Projects</a>
+                    </div>
                 </div>
-            </section>
-
-            <section id="gallery">
-                <div class="gallery">
-                    <h1>Gallery</h1>
-                    <figure>
-                        <img class="img2" src="images/techofest1.JPG" alt="Techofest 2023">
-                        <figcaption>Project Team Techofest 2023.</figcaption>
-                    </figure>
-                    <figure>
-                        <img class="img2" src="images/baksos_fkprt2023.JPG" alt="Baksos FKPRT 2023">
-                        <figcaption>Bakti Sosial FKPRT 2023.</figcaption>
-                    </figure>
-                    <figure>
-                        <img class="img2" src="images/meetml2.jpg" alt="Pertemuan 2 Divisi ML">
-                        <figcaption>Pertemuan Unity Divisi Machine Learning.</figcaption>
-                    </figure>
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <img src="images/foto-diri.png" alt="Galnoel Rindengan">
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="blog">
-                <h1>Blogs</h1>
-
-                <div class="article-box">
-                    <h1>How AI Is Impacting Society And Shaping The Future(AI)</h1>
-                    <p>In an age of swift technological evolution, artificial intelligence (AI) emerges as a transformative influence with the capacity to reshape both our society and industries. Anchored in ethics, transparency, and accountability, the development of AI becomes pivotal, acting as the cornerstone for constructing a future that seamlessly integrates technological advancement with social responsibility.</p>
-                    <a href="https://www.forbes.com/sites/kalinabryant/2023/12/13/how-ai-is-impacting-society-and-shaping-the-future/?sh=236dc8282f92" target="_blank">Read more</a>
+        <section id="resume" class="fade-in-section">
+            <div class="section-header">
+                <p class="section-label">Background</p>
+                <h2 class="section-title">Resume</h2>
+            </div>
+            <div class="resume-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'Experience')">Experience</button>
+                    <button class="tab-btn" onclick="openTab(event, 'Education')">Education</button>
+                    <button class="tab-btn" onclick="openTab(event, 'Skills')">Skills</button>
                 </div>
 
-                <div class="article-box">
-                    <h1>Blockchain Facts: What Is It, How It Works, and How It Can Be Used</h1>
-                    <p>A blockchain is a distributed database or ledger shared among a computer network's nodes. They are best known for their crucial role in cryptocurrency systems for maintaining a secure and decentralized record of transactions, but they are not limited to cryptocurrency uses. Blockchains can be used to make data in any industry immutable—the term used to describe the inability to be altered.</p>
-                    <a href="https://www.investopedia.com/terms/b/blockchain.asp" target="_blank">Read more</a>
+                <div id="Experience" class="tab-content active-tab">
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3>Internship &mdash; PT. Bank SulutGo</h3>
+                            <span class="date">Jun 2025 &ndash; Aug 2025</span>
+                        </div>
+                        <p class="resume-location">Manado, Indonesia</p>
+                        <ul>
+                            <li>Architected and deployed an on-premise RAG chatbot using Ollama, n8n, and Supabase (pgvector) to eliminate internal information silos.</li>
+                            <li>Ensured 100% data sovereignty by configuring the entire AI stack to run locally on bank servers.</li>
+                            <li>Authored comprehensive technical documentation including Use Case, Sequence, and ER Diagrams for the Next.js frontend and AI backend.</li>
+                            <li>Achieved 95/100 in Discipline &amp; Attitude and 90/100 in Presentation Skills from the field supervisor.</li>
+                        </ul>
+                    </div>
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3>Development Lead, Chatbot Project</h3>
+                            <span class="date">Jul 2024 &ndash; Nov 2024</span>
+                        </div>
+                        <p class="resume-location">UNSRAT IT Community &middot; TECHOFEST 2024</p>
+                        <ul>
+                            <li>Collaborated with 6+ ML Engineers to develop a chatbot leveraging Gemini AI with a RAG pipeline.</li>
+                            <li>Deployed model to server with Flask using gRPC for fast data serialization between services.</li>
+                            <li>Coordinated software team in end-to-end development of mobile and web applications.</li>
+                            <li>Supervised data engineering team overseeing data collection and analysis pipelines.</li>
+                        </ul>
+                    </div>
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3>ML Division Committee</h3>
+                            <span class="date">Jan 2024 &ndash; Jul 2024</span>
+                        </div>
+                        <p class="resume-location">UNSRAT IT Community</p>
+                        <ul>
+                            <li>Designed a comprehensive 6-month curriculum covering fundamental to advanced ML concepts.</li>
+                            <li>Instructed and facilitated workshops for a cohort of 20+ members.</li>
+                            <li>Mentored a 5-person junior team through a full chatbot development lifecycle.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="article-box">
-                    <h1>Apple's Mixed-Reality Headset, Vision Pro, Is Here</h1>
-                    <p>The headset, named Apple Vision Pro, has been in the works for years, with Apple taking its familiar wait-and-see approach while other giant tech companies have dived headfirst into the still-kludgy AR/VR market. The new platform and headset have massive implications for the rest of the market; once Apple wades into a product category, it often both validates the category and obviates competitors. </p>
-                    <a href="https://www.wired.com/story/apple-vision-pro-specs-price-release-date/" target="_blank">Read more</a>
+                <div id="Education" class="tab-content">
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3>Universitas Sam Ratulangi</h3>
+                            <span class="date">2022 &ndash; Present</span>
+                        </div>
+                        <p class="resume-location">Manado, Indonesia</p>
+                        <p><strong>S1 in Informatics Engineering</strong> &bull; CGPA: 3.73 / 4.00</p>
+                        <p class="resume-courses"><strong>Relevant Courses:</strong> Artificial Intelligence, Algorithm &amp; Computer Programming, Database, Probability &amp; Statistics, Software Engineering</p>
+                    </div>
                 </div>
-            </section>
 
-            <section id="contact">
-                <h1>Contact Me</h1>
-                <p>I'd love to hear from you! Whether you have a question, a project proposal, or just want to say hello, feel free to reach out. Here's how you can connect with me:</p>
-                <p>rindengangalnoel@gmail.com</p>
-                <a href="https://www.linkedin.com/in/galnoel-rindengan" target="_blank">Linkedin</a>
-                <br>
-                <a href="https://github.com/galnoel/galnoel.github.io.git" target="_blank">Repository Link</a>
-            </section>
-        </main>
+                <div id="Skills" class="tab-content">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Languages &amp; Frameworks</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">R</span>
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">PyTorch</span>
+                                <span class="skill-tag">TensorFlow</span>
+                                <span class="skill-tag">Flutter</span>
+                                <span class="skill-tag">Laravel</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Tools &amp; Databases</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">MariaDB</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Supabase</span>
+                                <span class="skill-tag">n8n</span>
+                                <span class="skill-tag">Ollama</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Soft Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag soft">Analytical Thinking</span>
+                                <span class="skill-tag soft">Teamwork</span>
+                                <span class="skill-tag soft">Time Management</span>
+                                <span class="skill-tag soft">Problem Solving</span>
+                                <span class="skill-tag soft">Detail Oriented</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Languages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag lang">Bahasa Indonesia (Native)</span>
+                                <span class="skill-tag lang">English (Intermediate)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <footer>
-            <p>© 2024 Galnoel's Personal Website</p>
-        </footer>
+        <section id="projects" class="fade-in-section">
+            <div class="section-header">
+                <p class="section-label">Portfolio</p>
+                <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-badge">GEMASTIK XVIII Finalist</div>
+                    <h3>Javanese Aksara Image Classification</h3>
+                    <p class="project-desc">Implemented CoaT (Co-Scale Conv-Attentional Image Transformers) to optimize feature extraction across 20 character classes.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">96%</span>
+                            <span class="stat-label">F1-Score</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">20</span>
+                            <span class="stat-label">Classes</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span>CoAtNet</span>
+                        <span>PyTorch</span>
+                        <span>Computer Vision</span>
+                    </div>
+                </div>
 
-        <script src="script.js"></script>
-    </body>
-    </html>
+                <div class="project-card">
+                    <div class="project-badge">GEMASTIK XVIII</div>
+                    <h3>Multimodal Fish Freshness Classification</h3>
+                    <p class="project-desc">Developed a classification system using Contrastive Learning and a Multimodal Parallel Fusion Transformer architecture.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">85.4%</span>
+                            <span class="stat-label">Accuracy</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">92.7%</span>
+                            <span class="stat-label">Peak F1</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span>Transformers</span>
+                        <span>Contrastive Learning</span>
+                        <span>Multimodal</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-badge">GEMASTIK XVII</div>
+                    <h3>Public Facility Recommendation System</h3>
+                    <p class="project-desc">Applied Association Rule Mining to elderly anthropometric datasets in Indonesia to generate data-driven public facility size recommendations.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">ARM</span>
+                            <span class="stat-label">Method</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">Data</span>
+                            <span class="stat-label">Mining</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span>Data Mining</span>
+                        <span>Python</span>
+                        <span>Statistics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards" class="fade-in-section">
+            <div class="section-header">
+                <p class="section-label">Recognition</p>
+                <h2 class="section-title">Awards</h2>
+            </div>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">&#127942;</div>
+                    <h3>3rd Place &mdash; PKM KC Presentation</h3>
+                    <p>PIMNAS Ke-38 (National Scientific Week)</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">&#11088;</div>
+                    <h3>Most Inspiring Team</h3>
+                    <p>GEMASTIK XVIII</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">&#127941;</div>
+                    <h3>Finalist &mdash; Data Mining Division</h3>
+                    <p>GEMASTIK XVII</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">&#129351;</div>
+                    <h3>1st Place &mdash; SATRIA DATA 2024</h3>
+                    <p>UNSRAT Selection &bull; Big Data Challenge</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="fade-in-section">
+            <div class="section-header">
+                <p class="section-label">Let's Connect</p>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            <p class="contact-desc">Have a question, a project proposal, or just want to say hello? I'd love to hear from you.</p>
+            <div class="contact-links">
+                <a href="mailto:rindengangalnoel@gmail.com" class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">rindengangalnoel@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/galnoel-rindengan" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </div>
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-value">galnoel-rindengan</span>
+                </a>
+                <a href="https://github.com/galnoel" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </div>
+                    <span class="contact-label">GitHub</span>
+                    <span class="contact-value">galnoel</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Galnoel Rindengan. Built with care.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
