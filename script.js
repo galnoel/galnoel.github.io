@@ -1,4 +1,25 @@
 // =============================================
+// Dark Mode Toggle
+// =============================================
+const themeToggle = document.querySelector('.theme-toggle');
+const storedTheme = localStorage.getItem('theme');
+
+if (storedTheme) {
+    document.documentElement.setAttribute('data-theme', storedTheme);
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+}
+
+// =============================================
 // Navbar - Hide on scroll down, show on scroll up
 // =============================================
 const navbar = document.querySelector('.navbar');
