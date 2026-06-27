@@ -139,11 +139,12 @@
         </section>
 
         <section id="projects" class="section-block project-section section-reveal">
-            <div class="section-heading">
-                <p class="eyebrow">DEEP TECHNICAL PROJECTS</p>
-                <h2>Systems, models, and measured outcomes.</h2>
+            <div class="section-heading border-b">
+                <p class="eyebrow">// CHRONOLOGICAL RESEARCH & PRODUCTION LOG</p>
+                <h2>Engineering Systems & Data Science Artifacts</h2>
             </div>
 
+            <!-- [01] CORA -->
             <article class="project-row">
                 <div class="project-media stacked-media">
                     <picture>
@@ -156,24 +157,55 @@
                     </picture>
                 </div>
                 <div class="project-copy">
-                    <p class="eyebrow violet">CORE WEB3 PROJECT</p>
-                    <h3>Solana-Based Web3 Game (CORA)</h3>
-                    <p>Engineered a high-throughput backend with Bun and Hono, orchestrating WebSocket state management, automated cryptographic settlement oracle execution, Solana Actions API wSOL wrapping, and execution state mirroring through MagicBlock Ephemeral.</p>
+                    <p class="eyebrow violet">APR 2026 - MAY 2026 // SYSTEMS & ON-CHAIN STATE</p>
+                    <h3>Solana Cryptographic Settlement Oracle (CORA)</h3>
+                    <p>Engineered high-throughput matchmaking state machines via Bun/Hono WebSockets paired with server-side oracles executing automated verification payload signatures.</p>
+                    <ul>
+                        <li><strong>High-Throughput State Machine:</strong> Engineered a server-side matchmaking and game loop engine utilizing Bun and Hono WebSockets to handle concurrent multi-user wagering state persistence.</li>
+                        <li><strong>Cryptographic Settlement Oracle:</strong> Implemented a backend verification oracle via <code>@solana/web3.js</code> that evaluates game payloads and executes deterministic cryptographic payouts.</li>
+                        <li><strong>Race-Condition Mitigation:</strong> Configured step-locked transaction parameters for native SOL wagers using the Solana Actions and Blinks API.</li>
+                    </ul>
                     <div class="tag-row">
                         <span>Bun</span><span>Hono</span><span>Supabase</span><span>@solana/web3.js</span><span>WebSockets</span>
                     </div>
                 </div>
             </article>
 
+            <!-- [02] SOCRATIX -->
             <article class="project-row reverse">
                 <div class="project-copy">
-                    <p class="eyebrow cyan">GEMASTIK XVIII // HACKATHON</p>
-                    <h3>Javanese Aksara Classification</h3>
-                    <p>Completed a high-stress 5-hour closed-sandbox national hackathon, iterating rapidly across image enhancement and state-of-the-art model evaluation for Javanese script recognition under live constraints.</p>
+                    <p class="eyebrow cyan">APR 2026 - MAY 2026 // INTELLIGENT PIPELINES</p>
+                    <h3>Socratix Multi-Agent AST Core</h3>
+                    <p>Designed a two-tier modular NestJS micro-agent backend interface. Replaced vulnerable string hacks with a deterministic Math.js AST parser bounded behind versioned Redis state caching infrastructure.</p>
+                    <ul>
+                        <li><strong>Multi-Agent Pipeline Architect:</strong> Designed a two-tier micro-agent network inside NestJS separating student request routing from pedagogical planning logic.</li>
+                        <li><strong>Deterministic AST Validation:</strong> Eliminated string-matching failure rates by writing an algebraic validation module using Math.js to parse and check expressions via Abstract Syntax Trees (AST).</li>
+                        <li><strong>Accelerated Cache-Aside Stratum:</strong> Configured custom Redis client caching layers to reduce database processing overhead for identical equations and session state objects.</li>
+                    </ul>
                     <div class="tag-row">
-                        <span>PyTorch</span><span>CoaT</span><span>Swin Transformer</span><span>EfficientNet</span>
+                        <span>NestJS</span><span>Next.js 15</span><span>Vercel AI SDK</span><span>Redis</span><span>Math.js AST</span>
                     </div>
                 </div>
+                <div class="project-media terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-red"></span>
+                            <span class="btn-yellow"></span>
+                            <span class="btn-green"></span>
+                        </div>
+                        <span class="terminal-title">socratix_telemetry_stream.log</span>
+                    </div>
+                    <div class="terminal-body font-mono text-xs text-cyan">
+                        <div class="terminal-line line-1">[ROUTER] Intent Parsed: <span class="text-white">"MATH_ATTEMPT"</span> (~5ms)</div>
+                        <div class="terminal-line line-2">[VALIDATOR] Math.js AST Node Mapping initialized for string [3x+5=14]</div>
+                        <div class="terminal-line line-3">[CACHE] Redis Query Miss -&gt; Writing pipeline payload through to PostgreSQL backend</div>
+                        <div class="terminal-line line-4">[STREAM] Emitting chunk updates via Server-Sent Events (SSE) Protocol...<span class="terminal-cursor"></span></div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- [03] AKSARA TRANSFORMERS -->
+            <article class="project-row">
                 <div class="project-media model-tabs">
                     <div class="panel-toolbar">
                         <span>Javanese Aksara Classification</span>
@@ -194,57 +226,151 @@
                         <span>CoaT image transformer</span>
                     </div>
                 </div>
+                <div class="project-copy">
+                    <p class="eyebrow cyan">OCT 2025 // DEEP LEARNING COMPUTER VISION</p>
+                    <h3>Javanese Aksara CoaT Classifier</h3>
+                    <p>Deployed Co-Scale Conv-Attentional Image Transformers (CoaT) to evaluate script handwritten profiles. Countered severe data imbalance matrices to stabilize an audited 96% F1-score across 20 distinct classes.</p>
+                    <ul>
+                        <li><strong>Advanced Vision Transformer Deployment:</strong> Evaluated and fine-tuned Co-Scale Conv-Attentional Image Transformers (CoaT) and Swin Transformers for handwriting token processing across 20 historical classes.</li>
+                        <li><strong>Robust Performance Metrics:</strong> Attained a quantified <strong>96% F1-score</strong> by implementing custom pre-processing equalization and class-weighting algorithms to correct for extreme dataset imbalances.</li>
+                        <li><strong>Explainable AI Foundations:</strong> Integrated image preprocessing interpretation arrays (including defogging routines) to reveal structural feature extraction behaviors within attention blocks.</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span>PyTorch</span><span>CoaT Transformer</span><span>Swin Transformer</span><span>Computer Vision</span>
+                    </div>
+                </div>
             </article>
 
-            <article class="project-row">
+            <!-- [04] FISH FRESHNESS -->
+            <article class="project-row reverse">
+                <div class="project-copy">
+                    <p class="eyebrow cyan">JUL 2025 - AUG 2025 // MULTIMODAL TRANSFORMERS</p>
+                    <h3>Parallel Cross-Attention Fusion System</h3>
+                    <p>Fused spatial vision pixels with numerical tokens via custom Multimodal Parallel Fusion Transformer models. Structured via Contrastive Learning metrics to maximize class alignment accuracy rules.</p>
+                    <ul>
+                        <li><strong>Contrastive Learning Architecture:</strong> Coordinated a deep learning pipeline utilizing Contrastive Learning models to group semantic feature matrices effectively.</li>
+                        <li><strong>Multimodal Parallel Fusion:</strong> Engineered a custom cross-attention Parallel Fusion Transformer layer to unify disparate sensor and vision data tokens.</li>
+                        <li><strong>Class Optimization Success:</strong> Documented an overall <strong>85.4% accuracy</strong> rate, with model performance peaking at a <strong>92.7% F1-score</strong> specifically inside the critical "Marginal" freshness classification boundary.</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span>PyTorch</span><span>Fusion Transformers</span><span>Contrastive Learning</span><span>92.7% Peak F1</span>
+                    </div>
+                </div>
                 <div class="project-media image-frame">
                     <picture>
                         <source data-srcset="public/assets/portfolio/fish-attention.webp" type="image/webp">
                         <img data-src="public/assets/portfolio/fish-attention.png" alt="Attention weight mappings for fish freshness classification" width="572" height="366">
                     </picture>
                 </div>
-                <div class="project-copy">
-                    <p class="eyebrow cyan">GEMASTIK XVIII // ELIMINATION</p>
-                    <h3>Fish Freshness Multimodal Fusion</h3>
-                    <p>Architected an automated computer-vision ecosystem for fish freshness classification, partitioning visual inputs into Fresh, Marginal, and Rotten degradation thresholds through Contrastive Learning and a Multimodal Parallel Fusion Transformer framework.</p>
-                    <div class="metric-strip" style="margin-bottom: 8px;">
-                        <span><strong>85.4%</strong> Accuracy</span>
-                        <span><strong>84.3%</strong> F1-score</span>
-                    </div>
-                    <div class="tag-row">
-                        <span>PyTorch</span><span>Contrastive Learning</span><span>Parallel Fusion Transformer</span>
-                    </div>
-                </div>
             </article>
 
+            <!-- [05] NEUROKIT -->
             <article class="project-row">
-                <div class="project-media image-frame">
-                    <picture>
-                        <source data-srcset="public/assets/portfolio/anthropometric.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/anthropometric.png" alt="Anthropometric structural dimension transformation layout" width="708" height="404">
-                    </picture>
+                <div class="project-media neurokit-dashboard">
+                    <div class="neurokit-top-row">
+                        <div class="neurokit-hardware-panel">
+                            <picture>
+                                <img data-src="public/assets/portfolio/neurokit-hardware.jpg" alt="NEUROKIT Frame Spec">
+                            </picture>
+                            <div class="neurokit-dim-tag font-mono">DIMENSIONS: 15x14.5x20 cm // WEIGHT: 1.6kg</div>
+                        </div>
+                        <div class="neurokit-mobile-panel">
+                            <picture class="mobile-screenshot">
+                                <img data-src="public/assets/portfolio/neurokit-mob1.jpg" alt="App Tab A">
+                            </picture>
+                            <picture class="mobile-screenshot">
+                                <img data-src="public/assets/portfolio/neurokit-mob3.jpg" alt="App Tab B">
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="neurokit-bottom-banner">
+                        <picture>
+                            <img data-src="public/assets/portfolio/neurokit-test.jpg" alt="Human Validation Matrix" class="validation-bg">
+                        </picture>
+                        <div class="neurokit-validation-overlay font-mono">
+                            // WECHSLER MEMORY SCALE VALIDATION ACCURACY: <span class="text-cyan font-bold">+11.35% COGNITIVE PERFORMANCE ELEVATION</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="project-copy">
-                    <p class="eyebrow">GEMASTIK XVII // ELIMINATION</p>
-                    <h3>Public Facility Recommendation System</h3>
-                    <p>Applied Association Rule Mining over extensive Indonesian elderly anthropometric datasets to produce deterministic spatial configuration criteria for public facility planning.</p>
+                    <p class="eyebrow cyan">JUL 2025 - NOV 2025 // NATIONAL PIMNAS BRONZE MEDAL</p>
+                    <h3>NEUROKIT: Dynamic Neurotherapeutic Framework</h3>
+                    <p>Integrated an ESP32 hardware hub with PWM MOSFET electrical matrices to emit dynamic, adaptive 500-600 lux lighting paths combined with contextual positive behavioral speech generation components.</p>
+                    <ul>
+                        <li><strong>Dynamic Pulse Width Modulation:</strong> Wired an ESP32 micro-grid controller to execute dynamic PWM algorithms via MOSFET components, modifying LED arrays safely within a stable 500–600 lux envelope based on sonar distance data.</li>
+                        <li><strong>Generative Knowledge Integrations:</strong> Wired backend Generative AI workflows via OpenRouter API endpoints to synthesize personal behavioral reminders matching user data inputs.</li>
+                        <li><strong>Empirical Cognitive Validation:</strong> Proved device performance through rigorous client testing via the Wechsler Memory Scale, registering an audited <strong>11.35% increase in student attention intervals</strong>.</li>
+                    </ul>
                     <div class="tag-row">
-                        <span>Data Mining</span><span>Association Rule Mining</span><span>Python</span>
+                        <span>ESP32 IoT</span><span>Flutter App</span><span>MOSFET Hardware</span><span>Generative AI LLMs</span>
                     </div>
                 </div>
             </article>
 
-            <article class="archive-project">
-                <picture>
-                    <source data-srcset="public/assets/portfolio/warong-web.webp" type="image/webp">
-                    <img data-src="public/assets/portfolio/warong-web.png" alt="Warong Warem full-stack web project interface" width="1773" height="827">
-                </picture>
-                <div>
-                    <p class="eyebrow">SUPPLEMENTAL ARCHIVE</p>
-                    <h3>Warong Warem Full-Stack Web Platform</h3>
-                    <p>Additional production-style web interface work spanning frontend layout, transactional flows, and data-backed operational screens.</p>
+            <!-- TIER 2 HIGH-DENSITY GRID -->
+            <div class="tier2-grid">
+                <!-- [06] JTEHub -->
+                <div class="tier2-card purple">
+                    <div class="tier2-media">
+                        <picture>
+                            <img data-src="public/assets/portfolio/jtehub-hero.png" alt="JTEHub Platform">
+                        </picture>
+                    </div>
+                    <div class="tier2-content">
+                        <p class="eyebrow violet">LATE 2024 - EARLY 2025 // BACKEND PLATFORM</p>
+                        <h4>JTEHub Allocation Platform</h4>
+                        <p>Wrote timezone-safe scheduling verification loops in NestJS to invalidate double-booking requests programmatically across relational databases.</p>
+                        <ul>
+                            <li><strong>Conflict Prevention:</strong> Formulated programmatic overlap formulas to evaluate date ranges and eliminate multi-user booking collisions.</li>
+                            <li><strong>Role Enforcement:</strong> Configured custom NestJS Passport validation guards to intercept incoming JWTs, isolating admin routes.</li>
+                        </ul>
+                    </div>
+                    <div class="tier2-tech-footer">
+                        NestJS, Supabase Postgres, RBAC Guards
+                    </div>
                 </div>
-            </article>
+
+                <!-- [07] PUBLIC FACILITY -->
+                <div class="tier2-card">
+                    <div class="tier2-media">
+                        <picture>
+                            <source data-srcset="public/assets/portfolio/anthropometric.webp" type="image/webp">
+                            <img data-src="public/assets/portfolio/anthropometric.png" alt="Data Graphics Profile">
+                        </picture>
+                    </div>
+                    <div class="tier2-content">
+                        <p class="eyebrow cyan">APR 2024 - JUN 2024 // DATA SCIENCE</p>
+                        <h4>Anthropometric Analytics Model</h4>
+                        <p>Applied Association Rule Mining over Indonesian senior-citizen anthropometric datasets to produce spatial configuration criteria for public facility planning.</p>
+                        <ul>
+                            <li><strong>Association Rule Mining:</strong> Deployed Apriori and Eclat data mining algorithms over demographic tables.</li>
+                            <li><strong>Ergonomic Blueprints:</strong> Successfully derived 7 foundational ergonomic design constraints rules to generate size standards.</li>
+                        </ul>
+                    </div>
+                    <div class="tier2-tech-footer">
+                        Python, Data Mining, Apriori, Eclat
+                    </div>
+                </div>
+
+                <!-- [08] WARONG WAREM -->
+                <div class="tier2-card legacy">
+                    <div class="tier2-legacy-media">
+                        [ LEGACY_SYSTEM_ARCHIVE.WEB ]
+                    </div>
+                    <div class="tier2-content">
+                        <p class="eyebrow">HISTORICAL CODE BASE // ACADEMIC</p>
+                        <h4>Warong Warem Fullstack</h4>
+                        <p>Legacy setup displaying web interface foundations, relational database configurations, and fundamental input validations.</p>
+                        <ul>
+                            <li>Built initial relational table schemas and database connection components.</li>
+                            <li>Implemented structural form validation criteria scripts.</li>
+                        </ul>
+                    </div>
+                    <div class="tier2-tech-footer">
+                        HTML/CSS, Relational DB Schema, PHP
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="experience" class="section-block section-reveal">

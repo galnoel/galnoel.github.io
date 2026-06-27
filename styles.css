@@ -510,7 +510,7 @@ h3 {
 
 .project-section {
     display: grid;
-    gap: 80px;
+    gap: 128px;
 }
 
 .project-row {
@@ -568,19 +568,14 @@ h3 {
 
 .hover-panel {
     position: absolute;
-    right: 28px;
-    bottom: 28px;
-    width: 52%;
-    transform: translateY(16px);
+    inset: 16px;
     opacity: 0;
-    transition: opacity 220ms ease, transform 220ms ease;
-    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.44);
+    transition: opacity 220ms ease;
 }
 
 .stacked-media:hover .hover-panel,
 .stacked-media:focus-within .hover-panel {
     opacity: 1;
-    transform: translateY(0);
 }
 
 .model-tabs {
@@ -1113,11 +1108,335 @@ img:not([src]) {
     min-height: 160px;
 }
 
+/* Section Heading Border Bottom */
+.section-heading.border-b {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+}
+
+/* Projects Copy List Styling */
+.project-copy ul {
+    margin: 16px 0 0;
+    padding-left: 20px;
+    list-style-type: square;
+    color: var(--text-muted);
+}
+
+.project-copy li {
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.project-copy li strong {
+    color: var(--text-primary);
+}
+
+/* Live Terminal Component */
+.terminal-container {
+    background: #020617;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    font-family: var(--font-mono);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+    grid-column: span 7;
+    overflow: hidden;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-buttons span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.btn-red { background: rgba(239, 68, 68, 0.6); }
+.btn-yellow { background: rgba(245, 158, 11, 0.6); }
+.btn-green { background: rgba(34, 197, 94, 0.6); }
+
+.terminal-title {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-left: 12px;
+}
+
+.terminal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.terminal-line {
+    opacity: 0;
+}
+
+.section-reveal.is-visible .terminal-line {
+    animation: fadeInLine 0.5s ease forwards;
+}
+
+.section-reveal.is-visible .line-1 { animation-delay: 0.5s; }
+.section-reveal.is-visible .line-2 { animation-delay: 2.2s; }
+.section-reveal.is-visible .line-3 { animation-delay: 3.9s; }
+.section-reveal.is-visible .line-4 { animation-delay: 5.6s; }
+
+@keyframes fadeInLine {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 6px;
+    height: 14px;
+    background: var(--accent-ai);
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* NEUROKIT Asymmetric Dashboard */
+.neurokit-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    grid-column: span 7;
+}
+
+.neurokit-top-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 16px;
+}
+
+.neurokit-hardware-panel {
+    position: relative;
+    height: 260px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.neurokit-hardware-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.neurokit-dim-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 9px;
+    background: rgba(11, 15, 25, 0.9);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    color: var(--accent-ai);
+    border-radius: 4px;
+}
+
+.neurokit-mobile-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.mobile-screenshot {
+    height: 260px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #090d16;
+}
+
+.mobile-screenshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.neurokit-bottom-banner {
+    position: relative;
+    height: 96px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.validation-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+}
+
+.neurokit-validation-overlay {
+    position: relative;
+    z-index: 2;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Tier 2 Grid System */
+.tier2-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(51, 65, 85, 0.4);
+    padding-top: 48px;
+}
+
+.tier2-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(51, 65, 85, 0.88);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.82), rgba(15, 23, 42, 0.74));
+    overflow: hidden;
+    transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.tier2-card:hover {
+    border-color: var(--accent-ai);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.tier2-card.purple:hover {
+    border-color: var(--accent-web3);
+}
+
+.tier2-card.legacy {
+    opacity: 0.7;
+}
+
+.tier2-card.legacy:hover {
+    border-color: var(--border);
+    transform: none;
+    box-shadow: none;
+}
+
+.tier2-media {
+    position: relative;
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+.tier2-media picture,
+.tier2-media img {
+    width: 100%;
+    height: 100%;
+}
+
+.tier2-media img {
+    object-fit: cover;
+}
+
+.tier2-legacy-media {
+    position: relative;
+    height: 180px;
+    width: 100%;
+    background: #020617;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.tier2-content {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tier2-content h4 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.tier2-content p:not(.eyebrow) {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.tier2-content ul {
+    margin: 8px 0 0;
+    padding-left: 16px;
+    list-style-type: square;
+    color: var(--text-muted);
+}
+
+.tier2-content li {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.tier2-content li strong {
+    color: var(--text-primary);
+}
+
+.tier2-tech-footer {
+    padding: 0 24px 24px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+}
+
+
 @media (max-width: 980px) {
     .hero-grid,
     .bento-grid,
     .archive-project,
-    .cohort-card {
+    .cohort-card,
+    .tier2-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1312,6 +1631,21 @@ img:not([src]) {
 
     .award-modal-body {
         padding: 20px;
+    }
+
+    /* NEUROKIT Mobile Dashboard responsive layout */
+    .neurokit-top-row {
+        grid-template-columns: 1fr;
+    }
+    .neurokit-hardware-panel {
+        height: 200px;
+    }
+    .neurokit-mobile-panel {
+        height: auto;
+    }
+    .neurokit-bottom-banner {
+        height: auto;
+        padding: 16px;
     }
 }
 
