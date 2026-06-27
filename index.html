@@ -40,13 +40,25 @@
                         <a class="button button-ghost" href="mailto:rindengangalnoel@gmail.com">Contact</a>
                     </div>
                 </div>
-                <div class="hero-visual" aria-label="Interactive AI and Web3 network graph">
-                    <canvas id="networkCanvas"></canvas>
+                <div class="hero-visual" aria-label="Galnoel Peter Rindengan Profile Photo">
+                    <div class="profile-container">
+                        <div class="frame-corner top-left"></div>
+                        <div class="frame-corner top-right"></div>
+                        <div class="frame-corner bottom-left"></div>
+                        <div class="frame-corner bottom-right"></div>
+                        <div class="profile-glow"></div>
+                        <img
+                            src="public/assets/portfolio/foto.jpg"
+                            alt="Galnoel Peter Rindengan"
+                            class="profile-img"
+                            loading="eager"
+                        />
+                    </div>
                     <div class="graph-readout">
-                        <span>AI Nodes</span>
-                        <strong>24</strong>
-                        <span>Web3 Links</span>
-                        <strong>18</strong>
+                        <span>STATUS</span>
+                        <strong class="text-cyan">READY</strong>
+                        <span>LOC</span>
+                        <strong>ID // MN</strong>
                     </div>
                 </div>
             </div>
@@ -172,14 +184,16 @@
                             <span>Javanese Aksara Classification</span>
                             <button class="mini-button" type="button" data-toggle-aksara>Interpretation</button>
                         </div>
-                        <picture data-aksara-picture="matrix">
-                            <source data-srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/aksara-matrix.png" alt="Javanese Aksara classification confusion matrix" width="1000" height="1000">
-                        </picture>
-                        <picture data-aksara-picture="interpret" hidden>
-                            <source data-srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600">
-                        </picture>
+                        <div class="aksara-image-container">
+                            <picture data-aksara-picture="matrix">
+                                <source data-srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp">
+                                <img data-src="public/assets/portfolio/aksara-matrix.png" alt="Javanese Aksara classification confusion matrix" width="1000" height="1000">
+                            </picture>
+                            <picture data-aksara-picture="interpret" hidden>
+                                <source data-srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp">
+                                <img data-src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600">
+                            </picture>
+                        </div>
                         <div class="metric-strip">
                             <span><strong>96%</strong> F1-score</span>
                             <span>CoaT image transformer</span>
@@ -285,41 +299,30 @@
         <section id="awards" class="section-block awards-section section-reveal">
             <div class="section-heading">
                 <p class="eyebrow">HONORS & AWARDS</p>
-                <h2>National-stage recognition.</h2>
+                <h2>National recognition, with the engineering work behind it.</h2>
             </div>
-            <div class="award-wall">
-                <article class="award-photo large">
-                    <picture>
-                        <source data-srcset="public/assets/portfolio/pimnas-award.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/pimnas-award.jpg" alt="PIMNAS 38 awarding night" width="1200" height="900">
-                    </picture>
-                    <picture class="swap-photo">
-                        <source data-srcset="public/assets/portfolio/pimnas-team.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/pimnas-team.jpg" alt="PIMNAS 38 bronze medalist team" width="1200" height="800">
-                    </picture>
-                    <div class="award-overlay">
-                        <strong>3rd Place Presentation Category in PKM KC at PIMNAS 38</strong>
-                        <span>November 2025</span>
-                    </div>
-                </article>
-                <article class="award-photo tall">
-                    <picture>
-                        <source data-srcset="public/assets/portfolio/gemastik-2025.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/gemastik-2025.jpg" alt="GEMASTIK XVIII awarding night" width="900" height="1200">
-                    </picture>
-                    <div class="award-overlay">
-                        <strong>Most Inspiring Team in GEMASTIK XVIII</strong>
-                        <span>October 2025</span>
-                    </div>
-                </article>
-                <article class="award-photo">
-                    <picture>
-                        <source data-srcset="public/assets/portfolio/gemastik-2024.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/gemastik-2024.jpg" alt="GEMASTIK XVII finalist archive" width="1200" height="900">
-                    </picture>
-                    <div class="award-overlay">
-                        <strong>Finalist of Data Mining Division in GEMASTIK XVII</strong>
-                        <span>October 2024</span>
+            <div class="award-bento-grid" data-awards-grid aria-live="polite"></div>
+            <div class="award-modal" data-award-modal hidden>
+                <div class="award-modal-backdrop" data-award-close></div>
+                <article class="award-modal-panel" role="dialog" aria-modal="true" aria-labelledby="awardModalTitle">
+                    <button class="award-modal-close" type="button" data-award-close aria-label="Close award technical details">Close Log</button>
+                    <div class="award-modal-hero" data-award-modal-hero></div>
+                    <div class="award-modal-body">
+                        <p class="eyebrow" data-award-modal-kicker></p>
+                        <h3 id="awardModalTitle" data-award-modal-title></h3>
+                        <p class="award-modal-issuer" data-award-modal-issuer></p>
+                        <div class="award-detail-grid">
+                            <section>
+                                <h4>// R&D / Elimination Phase Architecture</h4>
+                                <p data-award-modal-elimination></p>
+                            </section>
+                            <section>
+                                <h4>// Live Defense / Final Phase Execution</h4>
+                                <p data-award-modal-final></p>
+                            </section>
+                        </div>
+                        <div class="award-extra-details" data-award-modal-extra></div>
+                        <div class="tag-row" data-award-modal-tags></div>
                     </div>
                 </article>
             </div>
