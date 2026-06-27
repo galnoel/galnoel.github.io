@@ -152,24 +152,6 @@ function loadPicture(container) {
 }
 
 function setupModelTabs() {
-    const tabButtons = Array.from(document.querySelectorAll("[data-model-tab]"));
-    const panels = Array.from(document.querySelectorAll("[data-model-panel]"));
-
-    tabButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const target = button.dataset.modelTab;
-            tabButtons.forEach((item) => {
-                const active = item === button;
-                item.classList.toggle("active", active);
-                item.setAttribute("aria-selected", String(active));
-            });
-            panels.forEach((panel) => {
-                panel.classList.toggle("active", panel.dataset.modelPanel === target);
-                if (panel.dataset.modelPanel === target) loadPicture(panel);
-            });
-        });
-    });
-
     const aksaraToggle = document.querySelector("[data-toggle-aksara]");
     if (!aksaraToggle) return;
 
