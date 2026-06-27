@@ -3,5 +3,5 @@
    To switch between design systems, uncomment the desired import below:
    ========================================================================= */
 
-@import url('styles-dark.css');
-/* @import url('styles-light.css'); */
+/* @import url('styles-dark.css'); */
+@import url('styles-light.css');
