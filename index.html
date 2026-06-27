@@ -3,309 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galnoel Rindengan | AI & ML Engineer</title>
-    <meta name="description" content="Portfolio of Galnoel Rindengan - AI/ML Engineer specializing in Deep Learning, RAG systems, and Computer Vision.">
+    <title>Galnoel Peter Rindengan | Deep Learning & Web3 Systems</title>
+    <meta name="description" content="Portfolio of Galnoel Peter Rindengan, an Informatics Engineering graduate focused on deep learning research, RAG infrastructure, and Web3 systems architecture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
-        <a href="#home" class="nav-logo">G.</a>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#awards">Awards</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="nav-actions">
-            <button class="theme-toggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            </button>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
+    <nav class="top-nav" aria-label="Primary navigation">
+        <a class="brand-mark" href="#home">GP_RINDENGAN.IO</a>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
+        <div class="nav-links">
+            <a href="#expertise">/Expertise</a>
+            <a href="#projects">/Projects</a>
+            <a href="#experience">/Experience</a>
+            <a href="#awards">/Awards</a>
         </div>
-    </header>
+        <span class="scroll-progress" aria-hidden="true"></span>
+    </nav>
 
-    <main>
-        <section id="home" class="hero fade-in-section">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <p class="hero-greeting">Hello, I'm</p>
-                    <h1 class="hero-name">Galnoel<br>Rindengan</h1>
-                    <p class="hero-role">AI &amp; Machine Learning Engineer</p>
-                    <p class="hero-desc">Informatics Engineering student with a distinguished record in national-level competitions. PIMNAS 38 Bronze Medalist and multi-year GEMASTIK Finalist, specializing in Deep Learning, Multimodal Transformers, and production-grade AI solutions.</p>
-                    <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                        <a href="#projects" class="btn btn-outline">View Projects</a>
+    <main id="home">
+        <section class="hero section-reveal">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">SYSTEM INITIALIZED // GRADUATE PORTFOLIO</p>
+                    <h1>Galnoel Peter Rindengan</h1>
+                    <p class="hero-subtitle">Informatics Engineering Graduate | Deep Learning Research & Web3 Systems Architect</p>
+                    <p class="hero-bio">Bridging the gap between complex deep learning models and highly resilient, production-ready distributed backends.</p>
+                    <div class="hero-actions" aria-label="Portfolio actions">
+                        <a class="button button-primary" href="#projects">View Projects</a>
+                        <a class="button button-ghost" href="mailto:rindengangalnoel@gmail.com">Contact</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="hero-image-wrapper">
-                        <img src="images/foto-diri.png" alt="Galnoel Rindengan">
+                <div class="hero-visual" aria-label="Interactive AI and Web3 network graph">
+                    <canvas id="networkCanvas"></canvas>
+                    <div class="graph-readout">
+                        <span>AI Nodes</span>
+                        <strong>24</strong>
+                        <span>Web3 Links</span>
+                        <strong>18</strong>
                     </div>
                 </div>
+            </div>
+            <div class="credential-ribbon" aria-label="Key credentials">
+                <div>[CGPA] <strong>3.93 / 4.00</strong></div>
+                <div>[PIMNAS 38] <strong>Bronze Medalist</strong></div>
+                <div>[GEMASTIK] <strong>Multi-Year Finalist</strong></div>
+                <div>[CORE STACK] <strong>Python, TypeScript</strong></div>
             </div>
         </section>
 
-        <section id="resume" class="fade-in-section">
-            <div class="section-header">
-                <p class="section-label">Background</p>
-                <h2 class="section-title">Resume</h2>
+        <section id="expertise" class="section-block section-reveal">
+            <div class="section-heading">
+                <p class="eyebrow">CORE ENGINEERING EXPERTISE</p>
+                <h2>Research depth with production instincts.</h2>
             </div>
-            <div class="resume-container">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" onclick="openTab(event, 'Experience')">Experience</button>
-                    <button class="tab-btn" onclick="openTab(event, 'Education')">Education</button>
-                    <button class="tab-btn" onclick="openTab(event, 'Skills')">Skills</button>
-                </div>
+            <div class="bento-grid">
+                <article class="bento-card ai-card">
+                    <div class="card-header">
+                        <p class="eyebrow">DEEP LEARNING RESEARCH</p>
+                        <h3>Multimodal vision systems</h3>
+                    </div>
+                    <svg class="attention-graphic" viewBox="0 0 520 220" role="img" aria-label="Miniature multi-head self-attention diagram">
+                        <defs>
+                            <linearGradient id="attentionGradient" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#06B6D4"/>
+                                <stop offset="1" stop-color="#A855F7"/>
+                            </linearGradient>
+                        </defs>
+                        <g fill="none" stroke="url(#attentionGradient)" stroke-width="2" opacity=".62">
+                            <path d="M58 62 C180 12 326 36 462 78"/>
+                            <path d="M58 110 C176 78 320 130 462 106"/>
+                            <path d="M58 158 C182 208 326 176 462 142"/>
+                            <path d="M130 54 C208 130 306 132 390 62"/>
+                            <path d="M130 166 C212 90 306 88 390 158"/>
+                        </g>
+                        <g>
+                            <circle cx="58" cy="62" r="14"/>
+                            <circle cx="58" cy="110" r="14"/>
+                            <circle cx="58" cy="158" r="14"/>
+                            <circle cx="260" cy="72" r="18"/>
+                            <circle cx="260" cy="148" r="18"/>
+                            <circle cx="462" cy="78" r="14"/>
+                            <circle cx="462" cy="142" r="14"/>
+                        </g>
+                    </svg>
+                    <p>Multimodal Parallel Fusion Transformers, CoAtNet, CoaT, contrastive learning, attention interpretation, and model evaluation workflows.</p>
+                </article>
 
-                <div id="Experience" class="tab-content active-tab">
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <h3>Internship &mdash; PT. Bank SulutGo</h3>
-                            <span class="date">Jun 2025 &ndash; Aug 2025</span>
-                        </div>
-                        <p class="resume-location">Manado, Indonesia</p>
-                        <ul>
-                            <li>Architected and deployed an on-premise RAG chatbot using Ollama, n8n, and Supabase (pgvector) to eliminate internal information silos.</li>
-                            <li>Ensured 100% data sovereignty by configuring the entire AI stack to run locally on bank servers.</li>
-                            <li>Authored comprehensive technical documentation including Use Case, Sequence, and ER Diagrams for the Next.js frontend and AI backend.</li>
-                            <li>Achieved 95/100 in Discipline &amp; Attitude and 90/100 in Presentation Skills from the field supervisor.</li>
-                        </ul>
+                <article class="bento-card web3-card">
+                    <div class="card-header">
+                        <p class="eyebrow">WEB3 & SYSTEM ARCHITECTURE</p>
+                        <h3>High-throughput settlement engines</h3>
                     </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <h3>Development Lead, Chatbot Project</h3>
-                            <span class="date">Jul 2024 &ndash; Nov 2024</span>
-                        </div>
-                        <p class="resume-location">UNSRAT IT Community &middot; TECHOFEST 2024</p>
-                        <ul>
-                            <li>Collaborated with 6+ ML Engineers to develop a chatbot leveraging Gemini AI with a RAG pipeline.</li>
-                            <li>Deployed model to server with Flask using gRPC for fast data serialization between services.</li>
-                            <li>Coordinated software team in end-to-end development of mobile and web applications.</li>
-                            <li>Supervised data engineering team overseeing data collection and analysis pipelines.</li>
-                        </ul>
+                    <p>Backend systems built around Bun, Hono, Supabase, WebSockets, and automated server-side cryptographic settlement oracles through <code>@solana/web3.js</code>.</p>
+                    <div class="system-lines" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
                     </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <h3>ML Division Committee</h3>
-                            <span class="date">Jan 2024 &ndash; Jul 2024</span>
-                        </div>
-                        <p class="resume-location">UNSRAT IT Community</p>
-                        <ul>
-                            <li>Designed a comprehensive 6-month curriculum covering fundamental to advanced ML concepts.</li>
-                            <li>Instructed and facilitated workshops for a cohort of 20+ members.</li>
-                            <li>Mentored a 5-person junior team through a full chatbot development lifecycle.</li>
-                        </ul>
-                    </div>
-                </div>
+                </article>
 
-                <div id="Education" class="tab-content">
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <h3>Universitas Sam Ratulangi</h3>
-                            <span class="date">2022 &ndash; Present</span>
-                        </div>
-                        <p class="resume-location">Manado, Indonesia</p>
-                        <p><strong>S1 in Informatics Engineering</strong> &bull; CGPA: 3.73 / 4.00</p>
-                        <p class="resume-courses"><strong>Relevant Courses:</strong> Artificial Intelligence, Algorithm &amp; Computer Programming, Database, Probability &amp; Statistics, Software Engineering</p>
+                <article class="bento-card stack-card">
+                    <div class="card-header">
+                        <p class="eyebrow">PRODUCTION FRAMEWORKS</p>
+                        <h3>Infrastructure that ships</h3>
                     </div>
-                </div>
-
-                <div id="Skills" class="tab-content">
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h3>Languages &amp; Frameworks</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">TypeScript</span>
-                                <span class="skill-tag">R</span>
-                                <span class="skill-tag">PHP</span>
-                                <span class="skill-tag">PyTorch</span>
-                                <span class="skill-tag">TensorFlow</span>
-                                <span class="skill-tag">Flutter</span>
-                                <span class="skill-tag">Laravel</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Tools &amp; Databases</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">MySQL</span>
-                                <span class="skill-tag">MariaDB</span>
-                                <span class="skill-tag">MongoDB</span>
-                                <span class="skill-tag">Supabase</span>
-                                <span class="skill-tag">n8n</span>
-                                <span class="skill-tag">Ollama</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Soft Skills</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag soft">Analytical Thinking</span>
-                                <span class="skill-tag soft">Teamwork</span>
-                                <span class="skill-tag soft">Time Management</span>
-                                <span class="skill-tag soft">Problem Solving</span>
-                                <span class="skill-tag soft">Detail Oriented</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Languages</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag lang">Bahasa Indonesia (Native)</span>
-                                <span class="skill-tag lang">English (Intermediate)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="fade-in-section">
-            <div class="section-header">
-                <p class="section-label">Portfolio</p>
-                <h2 class="section-title">Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-badge">GEMASTIK XVIII Finalist</div>
-                    <h3>Javanese Aksara Image Classification</h3>
-                    <p class="project-desc">Implemented CoaT (Co-Scale Conv-Attentional Image Transformers) to optimize feature extraction across 20 character classes.</p>
-                    <div class="project-stats">
-                        <div class="stat">
-                            <span class="stat-value">96%</span>
-                            <span class="stat-label">F1-Score</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">20</span>
-                            <span class="stat-label">Classes</span>
-                        </div>
-                    </div>
-                    <div class="project-tech">
-                        <span>CoaT</span>
+                    <div class="tech-cloud">
                         <span>PyTorch</span>
-                        <span>Computer Vision</span>
+                        <span>Next.js</span>
+                        <span>n8n</span>
+                        <span>Supabase pgvector</span>
+                        <span>Ollama</span>
+                        <span>gRPC</span>
+                        <span>Flask</span>
+                        <span>Bun</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="section-block project-section section-reveal">
+            <div class="section-heading">
+                <p class="eyebrow">DEEP TECHNICAL PROJECTS</p>
+                <h2>Systems, models, and measured outcomes.</h2>
+            </div>
+
+            <article class="project-row">
+                <div class="project-media stacked-media">
+                    <picture>
+                        <source data-srcset="public/assets/portfolio/cora-hero.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/cora-hero.png" alt="CORA Solana game landing interface" width="1894" height="934">
+                    </picture>
+                    <picture class="hover-panel">
+                        <source data-srcset="public/assets/portfolio/cora-gameplay.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/cora-gameplay.png" alt="CORA gameplay match interface" width="1901" height="930">
+                    </picture>
+                </div>
+                <div class="project-copy">
+                    <p class="eyebrow violet">CORE WEB3 PROJECT</p>
+                    <h3>Solana-Based Web3 Game (CORA)</h3>
+                    <p>Engineered a high-throughput backend with Bun and Hono, orchestrating WebSocket state management, automated cryptographic settlement oracle execution, Solana Actions API wSOL wrapping, and execution state mirroring through MagicBlock Ephemeral.</p>
+                    <div class="tag-row">
+                        <span>Bun</span><span>Hono</span><span>Supabase</span><span>@solana/web3.js</span><span>WebSockets</span>
                     </div>
                 </div>
+            </article>
 
-                <div class="project-card">
-                    <div class="project-badge">GEMASTIK XVIII</div>
-                    <h3>Multimodal Fish Freshness Classification</h3>
-                    <p class="project-desc">Developed a classification system using Contrastive Learning and a Multimodal Parallel Fusion Transformer architecture.</p>
-                    <div class="project-stats">
-                        <div class="stat">
-                            <span class="stat-value">85.4%</span>
-                            <span class="stat-label">Accuracy</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">92.7%</span>
-                            <span class="stat-label">Peak F1</span>
-                        </div>
-                    </div>
-                    <div class="project-tech">
-                        <span>Transformers</span>
-                        <span>Contrastive Learning</span>
-                        <span>Multimodal</span>
+            <article class="project-row reverse">
+                <div class="project-copy">
+                    <p class="eyebrow cyan">GEMASTIK PORTFOLIO</p>
+                    <h3>Deep Learning Image Classification Showcase</h3>
+                    <p>Classification and multimodal fusion experiments translating visual evidence into measurable model behavior across script recognition and fish freshness analysis.</p>
+                    <div class="tag-row">
+                        <span>PyTorch</span><span>Vision Transformers</span><span>CoAtNet</span><span>Contrastive Learning</span>
                     </div>
                 </div>
+                <div class="project-media model-tabs">
+                    <div class="tab-controls" role="tablist" aria-label="Deep learning project views">
+                        <button class="tab-button active" type="button" data-model-tab="aksara" role="tab" aria-selected="true">Aksara</button>
+                        <button class="tab-button" type="button" data-model-tab="fish" role="tab" aria-selected="false">Fish Fusion</button>
+                    </div>
+                    <div class="model-panel active" data-model-panel="aksara">
+                        <div class="panel-toolbar">
+                            <span>Javanese Aksara Classification</span>
+                            <button class="mini-button" type="button" data-toggle-aksara>Interpretation</button>
+                        </div>
+                        <picture data-aksara-picture="matrix">
+                            <source data-srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp">
+                            <img data-src="public/assets/portfolio/aksara-matrix.png" alt="Javanese Aksara classification confusion matrix" width="1000" height="1000">
+                        </picture>
+                        <picture data-aksara-picture="interpret" hidden>
+                            <source data-srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp">
+                            <img data-src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600">
+                        </picture>
+                        <div class="metric-strip">
+                            <span><strong>96%</strong> F1-score</span>
+                            <span>CoaT image transformer</span>
+                        </div>
+                    </div>
+                    <div class="model-panel" data-model-panel="fish">
+                        <div class="panel-toolbar">
+                            <span>Fish Freshness Multimodal Fusion</span>
+                        </div>
+                        <picture>
+                            <source data-srcset="public/assets/portfolio/fish-attention.webp" type="image/webp">
+                            <img data-src="public/assets/portfolio/fish-attention.png" alt="Attention weight mappings for fish freshness classification" width="572" height="366">
+                        </picture>
+                        <div class="metric-strip">
+                            <span><strong>85.4%</strong> Accuracy</span>
+                            <span><strong>84.3%</strong> F1-score</span>
+                            <span>Contrastive learning</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-                <div class="project-card">
-                    <div class="project-badge">GEMASTIK XVII</div>
+            <article class="project-row">
+                <div class="project-media image-frame">
+                    <picture>
+                        <source data-srcset="public/assets/portfolio/anthropometric.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/anthropometric.png" alt="Anthropometric structural dimension transformation layout" width="708" height="404">
+                    </picture>
+                </div>
+                <div class="project-copy">
+                    <p class="eyebrow">DATA MINING SYSTEM</p>
                     <h3>Public Facility Recommendation System</h3>
-                    <p class="project-desc">Applied Association Rule Mining to elderly anthropometric datasets in Indonesia to generate data-driven public facility size recommendations.</p>
-                    <div class="project-stats">
-                        <div class="stat">
-                            <span class="stat-value">ARM</span>
-                            <span class="stat-label">Method</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">Data</span>
-                            <span class="stat-label">Mining</span>
-                        </div>
-                    </div>
-                    <div class="project-tech">
-                        <span>Data Mining</span>
-                        <span>Python</span>
-                        <span>Statistics</span>
+                    <p>Applied Association Rule Mining over extensive Indonesian elderly anthropometric datasets to produce deterministic spatial configuration criteria for public facility planning.</p>
+                    <div class="tag-row">
+                        <span>Data Mining</span><span>Association Rule Mining</span><span>Python</span>
                     </div>
                 </div>
+            </article>
+
+            <article class="archive-project">
+                <picture>
+                    <source data-srcset="public/assets/portfolio/warong-web.webp" type="image/webp">
+                    <img data-src="public/assets/portfolio/warong-web.png" alt="Warong Warem full-stack web project interface" width="1773" height="827">
+                </picture>
+                <div>
+                    <p class="eyebrow">SUPPLEMENTAL ARCHIVE</p>
+                    <h3>Warong Warem Full-Stack Web Platform</h3>
+                    <p>Additional production-style web interface work spanning frontend layout, transactional flows, and data-backed operational screens.</p>
+                </div>
+            </article>
+        </section>
+
+        <section id="experience" class="section-block section-reveal">
+            <div class="section-heading">
+                <p class="eyebrow">PROFESSIONAL EXPERIENCE</p>
+                <h2>Operational AI inside real constraints.</h2>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item open">
+                    <button class="timeline-trigger" type="button" aria-expanded="true">
+                        <span>2025</span>
+                        <strong>PT. Bank SulutGo - AI Engineer & RAG System Intern</strong>
+                    </button>
+                    <div class="timeline-content">
+                        <p>Deployed local, zero-leakage RAG infrastructure utilizing Ollama, n8n, and Supabase pgvector inside the bank's local servers.</p>
+                        <div class="validation-card">
+                            <span>Supervisor Validation</span>
+                            <strong>95/100 Discipline & Attitude</strong>
+                            <strong>90/100 Presentation Skills</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <button class="timeline-trigger" type="button" aria-expanded="false">
+                        <span>2024</span>
+                        <strong>UNSRAT IT Community - Chatbot Project Lead & ML Committee</strong>
+                    </button>
+                    <div class="timeline-content">
+                        <p>Managed a 12-person multidisciplinary engineering cohort building a cross-platform client architecture with Gemini AI and serialized gRPC transmission channels through Flask.</p>
+                        <div class="experience-gallery">
+                            <picture>
+                                <source data-srcset="public/assets/portfolio/techofest-lead.webp" type="image/webp">
+                                <img data-src="public/assets/portfolio/techofest-lead.jpg" alt="Galnoel leading Techofest 2024" width="900" height="1200">
+                            </picture>
+                            <picture>
+                                <source data-srcset="public/assets/portfolio/techofest-team.webp" type="image/webp">
+                                <img data-src="public/assets/portfolio/techofest-team.jpg" alt="Techofest 2024 engineering team" width="1200" height="800">
+                            </picture>
+                        </div>
+                        <div class="cohort-card">
+                            <picture>
+                                <source data-srcset="public/assets/portfolio/ml-cohort.webp" type="image/webp">
+                                <img data-src="public/assets/portfolio/ml-cohort.jpg" alt="Machine learning cohort meeting" width="1200" height="675">
+                            </picture>
+                            <p>Guided 20+ members through a machine learning foundation syllabus and project-based mentoring track.</p>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section id="awards" class="fade-in-section">
-            <div class="section-header">
-                <p class="section-label">Recognition</p>
-                <h2 class="section-title">Awards</h2>
+        <section id="awards" class="section-block awards-section section-reveal">
+            <div class="section-heading">
+                <p class="eyebrow">HONORS & AWARDS</p>
+                <h2>National-stage recognition.</h2>
             </div>
-            <div class="awards-grid">
-                <div class="award-card">
-                    <div class="award-icon">&#127942;</div>
-                    <h3>3rd Place &mdash; PKM KC Presentation</h3>
-                    <p>PIMNAS Ke-38 (National Scientific Week)</p>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">&#11088;</div>
-                    <h3>Most Inspiring Team</h3>
-                    <p>GEMASTIK XVIII</p>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">&#127941;</div>
-                    <h3>Finalist &mdash; Data Mining Division</h3>
-                    <p>GEMASTIK XVII</p>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">&#129351;</div>
-                    <h3>1st Place &mdash; SATRIA DATA 2024</h3>
-                    <p>UNSRAT Selection &bull; Big Data Challenge</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="fade-in-section">
-            <div class="section-header">
-                <p class="section-label">Let's Connect</p>
-                <h2 class="section-title">Contact</h2>
-            </div>
-            <p class="contact-desc">Have a question, a project proposal, or just want to say hello? I'd love to hear from you.</p>
-            <div class="contact-links">
-                <a href="mailto:rindengangalnoel@gmail.com" class="contact-card">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <div class="award-wall">
+                <article class="award-photo large">
+                    <picture>
+                        <source data-srcset="public/assets/portfolio/pimnas-award.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/pimnas-award.jpg" alt="PIMNAS 38 awarding night" width="1200" height="900">
+                    </picture>
+                    <picture class="swap-photo">
+                        <source data-srcset="public/assets/portfolio/pimnas-team.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/pimnas-team.jpg" alt="PIMNAS 38 bronze medalist team" width="1200" height="800">
+                    </picture>
+                    <div class="award-overlay">
+                        <strong>3rd Place Presentation Category in PKM KC at PIMNAS 38</strong>
+                        <span>November 2025</span>
                     </div>
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value">rindengangalnoel@gmail.com</span>
-                </a>
-                <a href="https://www.linkedin.com/in/galnoel-rindengan" target="_blank" rel="noopener noreferrer" class="contact-card">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </article>
+                <article class="award-photo tall">
+                    <picture>
+                        <source data-srcset="public/assets/portfolio/gemastik-2025.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/gemastik-2025.jpg" alt="GEMASTIK XVIII awarding night" width="900" height="1200">
+                    </picture>
+                    <div class="award-overlay">
+                        <strong>Most Inspiring Team in GEMASTIK XVIII</strong>
+                        <span>October 2025</span>
                     </div>
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-value">galnoel-rindengan</span>
-                </a>
-                <a href="https://github.com/galnoel" target="_blank" rel="noopener noreferrer" class="contact-card">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                </article>
+                <article class="award-photo">
+                    <picture>
+                        <source data-srcset="public/assets/portfolio/gemastik-2024.webp" type="image/webp">
+                        <img data-src="public/assets/portfolio/gemastik-2024.jpg" alt="GEMASTIK XVII finalist archive" width="1200" height="900">
+                    </picture>
+                    <div class="award-overlay">
+                        <strong>Finalist of Data Mining Division in GEMASTIK XVII</strong>
+                        <span>October 2024</span>
                     </div>
-                    <span class="contact-label">GitHub</span>
-                    <span class="contact-value">galnoel</span>
-                </a>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Galnoel Rindengan. Built with care.</p>
-        </div>
+    <footer class="site-footer">
+        <span>Built for technical depth, measurable systems, and recruiter-speed scanning.</span>
+        <a href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com</a>
     </footer>
 
     <script src="script.js"></script>
