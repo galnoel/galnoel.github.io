@@ -152,18 +152,27 @@ function loadPicture(container) {
 }
 
 function setupModelTabs() {
-    const aksaraToggle = document.querySelector("[data-toggle-aksara]");
-    if (!aksaraToggle) return;
+    const tabs = document.querySelectorAll("[data-aksara-tab]");
+    if (tabs.length === 0) return;
 
-    aksaraToggle.addEventListener("click", () => {
-        const matrix = document.querySelector('[data-aksara-picture="matrix"]');
-        const interpret = document.querySelector('[data-aksara-picture="interpret"]');
-        const showingInterpretation = !interpret.hidden;
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = tab.dataset.aksaraTab;
+            const matrix = document.querySelector('[data-aksara-picture="matrix"]');
+            const interpret = document.querySelector('[data-aksara-picture="interpret"]');
 
-        interpret.hidden = showingInterpretation;
-        matrix.hidden = !showingInterpretation;
-        aksaraToggle.textContent = showingInterpretation ? "Interpretation" : "Matrix";
-        loadPicture(showingInterpretation ? matrix : interpret);
+            if (target === "matrix") {
+                matrix.hidden = false;
+                interpret.hidden = true;
+                loadPicture(matrix);
+            } else {
+                matrix.hidden = true;
+                interpret.hidden = false;
+                loadPicture(interpret);
+            }
+
+            tabs.forEach((t) => t.classList.toggle("active", t === tab));
+        });
     });
 }
 
