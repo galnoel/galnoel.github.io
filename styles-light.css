@@ -1685,6 +1685,10 @@ img:not([src]) {
         padding: 22px;
     }
 
+    .project-section {
+        gap: 64px;
+    }
+
     .stacked-media {
         min-height: auto;
         padding: 10px;

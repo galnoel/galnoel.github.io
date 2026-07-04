@@ -119,7 +119,7 @@ function setupRevealAndLazyImages() {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05 });
 
     document.querySelectorAll(".section-reveal").forEach((section) => revealObserver.observe(section));
 
