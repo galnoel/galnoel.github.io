@@ -1,532 +1,486 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galnoel Peter Rindengan</title>
-    <meta name="description" content="Portfolio of Galnoel Peter Rindengan, an Informatics Engineering graduate focused on deep learning research, RAG infrastructure, and Web3 systems architecture.">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Galnoel Peter Rindengan — AI &amp; Backend Engineer</title>
+    <meta name="description" content="Galnoel Peter Rindengan builds explainable AI systems, private RAG infrastructure, and resilient real-time backends.">
+    <meta name="author" content="Galnoel Peter Rindengan">
+    <meta name="theme-color" content="#FDFBF7" data-theme-color>
+    <link rel="canonical" href="https://galnoel.github.io/">
+    <link rel="icon" type="image/png" href="public/assets/portfolio/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://galnoel.github.io/">
+    <meta property="og:title" content="Galnoel Peter Rindengan — AI &amp; Backend Engineer">
+    <meta property="og:description" content="Explainable AI research and resilient backend systems, presented through engineering evidence.">
+    <meta property="og:image" content="https://galnoel.github.io/public/assets/portfolio/og-dossier.png">
+    <meta property="og:image:alt" content="Galnoel Peter Rindengan — Explainable AI, Resilient Systems">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Galnoel Peter Rindengan — AI &amp; Backend Engineer">
+    <meta name="twitter:description" content="Explainable AI research and resilient backend systems, presented through engineering evidence.">
+    <meta name="twitter:image" content="https://galnoel.github.io/public/assets/portfolio/og-dossier.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            document.documentElement.classList.add("js");
+            var stored = null;
+            try { stored = localStorage.getItem("portfolio-theme"); } catch (error) { stored = null; }
+            var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            var theme = stored || preferred;
+            document.documentElement.dataset.theme = theme;
+            document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
+        }());
+    </script>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Galnoel Peter Rindengan",
+        "url": "https://galnoel.github.io/",
+        "image": "https://galnoel.github.io/public/assets/portfolio/foto1.jpg",
+        "jobTitle": "AI and Backend Engineer",
+        "email": "mailto:rindengangalnoel@gmail.com",
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Universitas Sam Ratulangi"
+        },
+        "sameAs": [
+            "https://github.com/galnoel",
+            "https://linkedin.com/in/galnoel-rindengan/"
+        ],
+        "knowsAbout": [
+            "Deep Learning",
+            "Retrieval-Augmented Generation",
+            "Backend Systems",
+            "Computer Vision",
+            "Distributed Systems"
+        ]
+    }
+    </script>
 </head>
 <body>
-    <nav class="top-nav" aria-label="Primary navigation">
-        <a class="brand-mark" href="#home">GPR</a>
-        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>   
+    <a class="skip-link" href="#main-content">Skip to portfolio content</a>
+
+    <header class="site-header" data-site-header>
+        <a class="brand" href="#profile" aria-label="Galnoel Peter Rindengan, back to profile">
+            <span class="brand-index">GPR</span>
+            <span class="brand-role">AI + BACKEND</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+            <span class="sr-only">Open navigation</span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </button>
-        <div class="nav-links">
-            <a href="#expertise">/Expertise</a>
-            <a href="#projects">/Projects</a>
-            <a href="#experience">/Experience</a>
-            <a href="#awards">/Awards</a>
-        </div>
-        <span class="scroll-progress" aria-hidden="true"></span>
-    </nav>
 
-    <main id="home">
-        <section class="hero section-reveal">
-            <div class="hero-grid">
-                <div class="hero-copy">
-                    <p class="eyebrow">SYSTEM INITIALIZED // GRADUATE PORTFOLIO</p>
-                    <span class="hero-about-script">About me</span>
-                    <h1>Galnoel Peter Rindengan</h1>
-                    <p class="hero-subtitle">Informatics Engineering Graduate | Deep Learning Research & Web3 Systems Architect</p>
-                    <p class="hero-bio">Bridging the gap between complex deep learning models and highly resilient, production-ready distributed backends.</p>
-                    <div class="hero-actions" aria-label="Portfolio actions">
-                        <a class="button button-primary" href="#projects">View Projects</a>
-                        <a class="button button-ghost" href="mailto:rindengangalnoel@gmail.com">Contact</a>
-                    </div>
-                </div>
-                <div class="hero-visual" aria-label="Galnoel Peter Rindengan Profile Photo">
-                    <div class="profile-container">
-                        <div class="frame-corner top-left"></div>
-                        <div class="frame-corner top-right"></div>
-                        <div class="frame-corner bottom-left"></div>
-                        <div class="frame-corner bottom-right"></div>
-                        <div class="profile-glow"></div>
-                        <img
-                            src="public/assets/portfolio/foto1.jpg"
-                            alt="Galnoel Peter Rindengan"
-                            class="profile-img"
-                            loading="eager"
-                        />
-                    </div>
-                    <div class="graph-readout">
-                        <span>STATUS</span>
-                        <strong class="text-cyan">READY</strong>
-                        <span>LOC</span>
-                        <strong>ID // MN</strong>
-                    </div>
+        <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation" data-primary-nav>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#work">Selected work</a>
+            <a href="#experience">Experience</a>
+            <a href="#recognition">Recognition</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+            <span data-theme-label>Dark</span>
+        </button>
+        <span class="page-progress" aria-hidden="true"></span>
+    </header>
+
+    <aside class="evidence-rail" aria-label="Portfolio section index">
+        <span class="rail-label">EVIDENCE INDEX</span>
+        <nav>
+            <a href="#profile" data-rail-link><span>00</span>Profile</a>
+            <a href="#capabilities" data-rail-link><span>01</span>Capabilities</a>
+            <a href="#work" data-rail-link><span>02</span>Selected work</a>
+            <a href="#experience" data-rail-link><span>03</span>Experience</a>
+            <a href="#recognition" data-rail-link><span>04</span>Recognition</a>
+            <a href="#contact" data-rail-link><span>05</span>Contact</a>
+        </nav>
+        <div class="rail-track" aria-hidden="true"><span data-rail-progress></span></div>
+    </aside>
+
+    <main id="main-content">
+        <section class="hero observed-section" id="profile" data-section="00">
+            <div class="hero-copy reveal">
+                <p class="document-label">GALNOEL PETER RINDENGAN / AI + BACKEND ENGINEER</p>
+                <h1>I build explainable AI and resilient backend systems.</h1>
+                <p class="hero-lede">Informatics Engineering graduate working across multimodal deep learning, private RAG infrastructure, and real-time distributed backends—from audited experiments to production constraints.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
+                    <a class="button button-secondary" href="mailto:rindengangalnoel@gmail.com">Email me <span aria-hidden="true">↗</span></a>
+                    <a class="button button-secondary" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF">Download résumé <span aria-hidden="true">↓</span></a>
                 </div>
             </div>
-            <div class="credential-ribbon" aria-label="Key credentials">
-                <div>[CGPA] <strong>3.93 / 4.00</strong></div>
-                <div>[PIMNAS 38] <strong>Bronze Medalist</strong></div>
-                <div>[GEMASTIK] <strong>Multi-Year Finalist</strong></div>
-                <div>[CORE STACK] <strong>Python, TypeScript</strong></div>
+
+            <figure class="identity-plate reveal">
+                <div class="portrait-wrap">
+                    <img src="public/assets/portfolio/foto1.jpg" alt="Portrait of Galnoel Peter Rindengan" width="288" height="288" fetchpriority="high">
+                    <span class="portrait-mark portrait-mark-a" aria-hidden="true">A</span>
+                    <span class="portrait-mark portrait-mark-b" aria-hidden="true">B</span>
+                </div>
+                <figcaption>
+                    <span>SUBJECT / GPR-220211060076</span>
+                    <span>MANADO, INDONESIA</span>
+                </figcaption>
+                <div class="identity-note"><span>FOCUS</span> From experimental evidence to dependable systems.</div>
+            </figure>
+
+            <dl class="evidence-strip reveal" aria-label="Verified portfolio evidence">
+                <div>
+                    <dt>Academic record</dt>
+                    <dd><span data-count-to="3.93" data-decimals="2">3.93</span><small>/ 4.00 CGPA</small></dd>
+                </div>
+                <div>
+                    <dt>National recognition</dt>
+                    <dd>PIMNAS<small>Bronze medal</small></dd>
+                </div>
+                <div>
+                    <dt>Vision benchmark</dt>
+                    <dd><span data-count-to="96">96</span>%<small>F1-score</small></dd>
+                </div>
+                <div>
+                    <dt>Human validation</dt>
+                    <dd>+<span data-count-to="11.35" data-decimals="2">11.35</span>%<small>Measured improvement</small></dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="section observed-section" id="capabilities" data-section="01">
+            <header class="section-heading reveal">
+                <p class="section-index">01 / CAPABILITY MATRIX</p>
+                <h2>From research question to production evidence.</h2>
+                <p>I work across the full path: formulate the model, engineer the system around it, then prove what changed.</p>
+            </header>
+
+            <div class="capability-matrix reveal">
+                <a class="capability-row" href="#project-gemastik">
+                    <span class="capability-number">01A</span>
+                    <div>
+                        <h3>Model research &amp; evaluation</h3>
+                        <p>Multimodal fusion, vision transformers, contrastive learning, class-imbalance correction, and interpretation workflows.</p>
+                    </div>
+                    <strong>See GEMASTIK Vision Lab <span aria-hidden="true">↘</span></strong>
+                </a>
+                <a class="capability-row" href="#project-cora">
+                    <span class="capability-number">01B</span>
+                    <div>
+                        <h3>Backend &amp; distributed architecture</h3>
+                        <p>State machines, WebSockets, deterministic validation, caching, PostgreSQL, and cryptographic settlement.</p>
+                    </div>
+                    <strong>See CORA <span aria-hidden="true">↘</span></strong>
+                </a>
+                <a class="capability-row" href="#project-neurokit">
+                    <span class="capability-number">01C</span>
+                    <div>
+                        <h3>Deployment, validation &amp; leadership</h3>
+                        <p>Private RAG deployment, physical prototyping, user validation, technical defense, and multidisciplinary delivery.</p>
+                    </div>
+                    <strong>See NEUROKIT <span aria-hidden="true">↘</span></strong>
+                </a>
             </div>
         </section>
 
-        <section id="expertise" class="section-block section-reveal">
-            <div class="section-heading">
-                <p class="eyebrow">CORE ENGINEERING EXPERTISE</p>
-                <h2>Research depth with production instincts.</h2>
-            </div>
-            <div class="bento-grid">
-                <article class="bento-card ai-card">
-                    <div class="card-header">
-                        <p class="eyebrow">DEEP LEARNING RESEARCH</p>
-                        <h3>Multimodal vision systems</h3>
-                    </div>
-                    <svg class="attention-graphic" viewBox="0 0 520 220" role="img" aria-label="Miniature multi-head self-attention diagram">
-                        <defs>
-                            <linearGradient id="attentionGradient" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0" stop-color="#06B6D4"/>
-                                <stop offset="1" stop-color="#A855F7"/>
-                            </linearGradient>
-                        </defs>
-                        <g fill="none" stroke="url(#attentionGradient)" stroke-width="2" opacity=".62">
-                            <path d="M58 62 C180 12 326 36 462 78"/>
-                            <path d="M58 110 C176 78 320 130 462 106"/>
-                            <path d="M58 158 C182 208 326 176 462 142"/>
-                            <path d="M130 54 C208 130 306 132 390 62"/>
-                            <path d="M130 166 C212 90 306 88 390 158"/>
-                        </g>
-                        <g>
-                            <circle cx="58" cy="62" r="14"/>
-                            <circle cx="58" cy="110" r="14"/>
-                            <circle cx="58" cy="158" r="14"/>
-                            <circle cx="260" cy="72" r="18"/>
-                            <circle cx="260" cy="148" r="18"/>
-                            <circle cx="462" cy="78" r="14"/>
-                            <circle cx="462" cy="142" r="14"/>
-                        </g>
-                    </svg>
-                    <p>Multimodal Parallel Fusion Transformers, CoAtNet, CoaT, contrastive learning, attention interpretation, and model evaluation workflows.</p>
-                </article>
+        <section class="section work-section observed-section" id="work" data-section="02">
+            <header class="section-heading reveal">
+                <p class="section-index">02 / SELECTED ENGINEERING DOSSIERS</p>
+                <h2>Four systems. Each one leaves evidence.</h2>
+                <p>Open a dossier to inspect the problem, my role, architecture, engineering decisions, and verified outcome.</p>
+            </header>
 
-                <article class="bento-card web3-card">
-                    <div class="card-header">
-                        <p class="eyebrow">WEB3 & SYSTEM ARCHITECTURE</p>
-                        <h3>High-throughput settlement engines</h3>
-                    </div>
-                    <p>Backend systems built around Bun, Hono, Supabase, WebSockets, and automated server-side cryptographic settlement oracles through <code>@solana/web3.js</code>.</p>
-                    <div class="system-lines" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </article>
+            <div class="dossier-list">
+                <details class="project-dossier reveal" id="project-cora" data-project-id="cora" open>
+                    <summary>
+                        <span class="dossier-id">P-01</span>
+                        <span class="dossier-title"><small>REAL-TIME SYSTEMS / APR–MAY 2026</small>CORA settlement oracle</span>
+                        <span class="dossier-proof"><strong>WebSocket</strong><small>state machine</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label terracotta">SYSTEMS &amp; ON-CHAIN STATE</p>
+                            <h3>Deterministic game settlement across real-time and on-chain boundaries.</h3>
+                            <p>Built the server-side match loop and verification path for a multi-user Solana game where concurrent state, wagers, and settlement had to agree.</p>
+                        </div>
 
-                <article class="bento-card stack-card">
-                    <div class="card-header">
-                        <p class="eyebrow">PRODUCTION FRAMEWORKS</p>
-                        <h3>Infrastructure that ships</h3>
-                    </div>
-                    <div class="tech-cloud">
-                        <span>PyTorch</span>
-                        <span>Next.js</span>
-                        <span>n8n</span>
-                        <span>Supabase pgvector</span>
-                        <span>Ollama</span>
-                        <span>gRPC</span>
-                        <span>Flask</span>
-                        <span>Bun</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="projects" class="section-block project-section section-reveal">
-            <div class="section-heading border-b">
-                <p class="eyebrow">// CHRONOLOGICAL RESEARCH & PRODUCTION LOG</p>
-                <h2>Engineering Systems & Data Science Artifacts</h2>
-            </div>
-
-            <!-- [01] CORA -->
-            <article class="project-row">
-                <div class="project-media stacked-media">
-                    <picture>
-                        <source data-srcset="public/assets/portfolio/cora-hero.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/cora-hero.png" alt="CORA Solana game landing interface" width="1894" height="934">
-                    </picture>
-                    <picture class="hover-panel">
-                        <source data-srcset="public/assets/portfolio/cora-gameplay.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/cora-gameplay.png" alt="CORA gameplay match interface" width="1901" height="930">
-                    </picture>
-                </div>
-                <div class="project-copy">
-                    <p class="eyebrow violet">APR 2026 - MAY 2026 // SYSTEMS & ON-CHAIN STATE</p>
-                    <h3>Solana Cryptographic Settlement Oracle (CORA)</h3>
-                    <div class="mobile-inline-media">
-                        <picture>
-                            <source data-srcset="public/assets/portfolio/cora-hero.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/cora-hero.png" alt="CORA Solana game landing interface" width="1894" height="934">
-                        </picture>
-                    </div>
-                    <p>Engineered high-throughput matchmaking state machines via Bun/Hono WebSockets paired with server-side oracles executing automated verification payload signatures.</p>
-                    <ul>
-                        <li><strong>High-Throughput State Machine:</strong> Engineered a server-side matchmaking and game loop engine utilizing Bun and Hono WebSockets to handle concurrent multi-user wagering state persistence.</li>
-                        <li><strong>Cryptographic Settlement Oracle:</strong> Implemented a backend verification oracle via <code>@solana/web3.js</code> that evaluates game payloads and executes deterministic cryptographic payouts.</li>
-                        <li><strong>Race-Condition Mitigation:</strong> Configured step-locked transaction parameters for native SOL wagers using the Solana Actions and Blinks API.</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span>Bun</span><span>Hono</span><span>Supabase</span><span>@solana/web3.js</span><span>WebSockets</span>
-                    </div>
-                    <div class="project-action-links">
-                        <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-action-link project-action-link--live">[ LIVE PRODUCTION ↗ ]</a>
-                        <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer" class="project-action-link project-action-link--source">[ SOURCE CODE ]</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- [02] SOCRATIX -->
-            <article class="project-row reverse">
-                <div class="project-copy">
-                    <p class="eyebrow cyan">APR 2026 - MAY 2026 // INTELLIGENT PIPELINES</p>
-                    <h3>Socratix Multi-Agent AST Core</h3>
-                    <div class="mobile-inline-media mobile-terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-buttons">
-                                <span class="btn-red"></span>
-                                <span class="btn-yellow"></span>
-                                <span class="btn-green"></span>
+                        <div class="evidence-viewer" data-evidence-viewer>
+                            <div class="evidence-tabs" role="tablist" aria-label="CORA evidence views">
+                                <button role="tab" aria-selected="true" aria-controls="cora-landing" id="cora-landing-tab" data-project-view="landing">Product surface</button>
+                                <button role="tab" aria-selected="false" aria-controls="cora-gameplay" id="cora-gameplay-tab" data-project-view="gameplay" tabindex="-1">Live match</button>
+                                <button role="tab" aria-selected="false" aria-controls="cora-flow" id="cora-flow-tab" data-project-view="flow" tabindex="-1">Settlement path</button>
                             </div>
-                            <span class="terminal-title">socratix_telemetry_stream.log</span>
+                            <div class="evidence-panel" id="cora-landing" role="tabpanel" aria-labelledby="cora-landing-tab" data-project-panel="landing">
+                                <picture>
+                                    <source srcset="public/assets/portfolio/cora-hero.webp" type="image/webp">
+                                    <img src="public/assets/portfolio/cora-hero.png" alt="CORA Solana game landing interface" width="1894" height="934" loading="lazy">
+                                </picture>
+                            </div>
+                            <div class="evidence-panel" id="cora-gameplay" role="tabpanel" aria-labelledby="cora-gameplay-tab" data-project-panel="gameplay" hidden>
+                                <picture>
+                                    <source srcset="public/assets/portfolio/cora-gameplay.webp" type="image/webp">
+                                    <img src="public/assets/portfolio/cora-gameplay.png" alt="CORA real-time match interface" width="1901" height="930" loading="lazy">
+                                </picture>
+                            </div>
+                            <div class="evidence-panel system-flow" id="cora-flow" role="tabpanel" aria-labelledby="cora-flow-tab" data-project-panel="flow" hidden>
+                                <ol aria-label="CORA settlement flow">
+                                    <li><span>01</span><strong>Match</strong><small>Bun + Hono WebSocket state</small></li>
+                                    <li><span>02</span><strong>Verify</strong><small>Server evaluates game payload</small></li>
+                                    <li><span>03</span><strong>Sign</strong><small>Deterministic oracle signature</small></li>
+                                    <li><span>04</span><strong>Settle</strong><small>Native SOL payout execution</small></li>
+                                </ol>
+                            </div>
                         </div>
-                        <div class="terminal-body">
-                            <div class="terminal-line">[ROUTER] Intent Parsed: <span class="text-white">"MATH_ATTEMPT"</span> (~5ms)</div>
-                            <div class="terminal-line">[VALIDATOR] Math.js AST Node Mapping initialized for string [3x+5=14]</div>
-                            <div class="terminal-line">[CACHE] Redis Query Miss -&gt; Writing pipeline payload through to PostgreSQL backend</div>
-                            <div class="terminal-line">[STREAM] Emitting chunk updates via SSE Protocol...<span class="terminal-cursor"></span></div>
-                        </div>
-                    </div>
-                    <p>Designed a two-tier modular NestJS micro-agent backend interface. Replaced vulnerable string hacks with a deterministic Math.js AST parser bounded behind versioned Redis state caching infrastructure.</p>
-                    <ul>
-                        <li><strong>Multi-Agent Pipeline Architect:</strong> Designed a two-tier micro-agent network inside NestJS separating student request routing from pedagogical planning logic.</li>
-                        <li><strong>Deterministic AST Validation:</strong> Eliminated string-matching failure rates by writing an algebraic validation module using Math.js to parse and check expressions via Abstract Syntax Trees (AST).</li>
-                        <li><strong>Accelerated Cache-Aside Stratum:</strong> Configured custom Redis client caching layers to reduce database processing overhead for identical equations and session state objects.</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span>NestJS</span><span>Next.js 15</span><span>Vercel AI SDK</span><span>Redis</span><span>Math.js AST</span>
-                    </div>
-                    <div class="project-action-links">
-                        <a href="https://github.com/reregin/socratix" target="_blank" rel="noopener noreferrer" class="project-action-link project-action-link--source">[ SOURCE CODE ]</a>
-                    </div>
-                </div>
-                <div class="project-media terminal-container">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn-red"></span>
-                            <span class="btn-yellow"></span>
-                            <span class="btn-green"></span>
-                        </div>
-                        <span class="terminal-title">socratix_telemetry_stream.log</span>
-                    </div>
-                    <div class="terminal-body font-mono text-xs text-cyan">
-                        <div class="terminal-line line-1">[ROUTER] Intent Parsed: <span class="text-white">"MATH_ATTEMPT"</span> (~5ms)</div>
-                        <div class="terminal-line line-2">[VALIDATOR] Math.js AST Node Mapping initialized for string [3x+5=14]</div>
-                        <div class="terminal-line line-3">[CACHE] Redis Query Miss -&gt; Writing pipeline payload through to PostgreSQL backend</div>
-                        <div class="terminal-line line-4">[STREAM] Emitting chunk updates via Server-Sent Events (SSE) Protocol...<span class="terminal-cursor"></span></div>
-                    </div>
-                </div>
-            </article>
 
-            <!-- [03] AKSARA TRANSFORMERS -->
-            <article class="project-row">
-                <div class="project-media model-tabs">
-                    <div class="panel-toolbar">
-                        <span>Javanese Aksara Classification</span>
-                        <div class="tab-controls">
-                            <button class="tab-btn active" type="button" data-aksara-tab="matrix">Matrix</button>
-                            <button class="tab-btn" type="button" data-aksara-tab="interpret">Interpretation</button>
+                        <dl class="dossier-facts">
+                            <div><dt>Context</dt><dd>Production GameFi system handling concurrent matches and native SOL wagers.</dd></div>
+                            <div><dt>My role</dt><dd>Backend state-machine and settlement-oracle engineering.</dd></div>
+                            <div><dt>Critical decision</dt><dd>Step-lock transaction parameters so racing match events could not produce divergent payouts.</dd></div>
+                            <div><dt>Result</dt><dd>A deterministic verification and payout path connected to a real-time multiplayer loop.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="CORA technology stack"><li>Bun</li><li>Hono</li><li>Supabase</li><li>Solana web3.js</li><li>WebSockets</li></ul>
+                            <div class="project-links">
+                                <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer">Live production <span aria-hidden="true">↗</span></a>
+                                <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="aksara-image-container">
-                        <picture data-aksara-picture="matrix">
-                            <source data-srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/aksara-matrix.png" alt="Javanese Aksara classification confusion matrix" width="1000" height="1000">
-                        </picture>
-                        <picture data-aksara-picture="interpret" hidden>
-                            <source data-srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600">
-                        </picture>
-                    </div>
-                    <div class="metric-strip">
-                        <span><strong>96%</strong> F1-score</span>
-                        <span>CoaT image transformer</span>
-                    </div>
-                </div>
-                <div class="project-copy">
-                    <p class="eyebrow cyan">OCT 2025 // DEEP LEARNING COMPUTER VISION</p>
-                    <h3>Javanese Aksara CoaT Classifier</h3>
-                    <div class="mobile-inline-media">
-                        <picture>
-                            <source data-srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/aksara-matrix.png" alt="Javanese Aksara classification confusion matrix" width="1000" height="1000">
-                        </picture>
-                    </div>
-                    <p>Deployed Co-Scale Conv-Attentional Image Transformers (CoaT) to evaluate script handwritten profiles. Countered severe data imbalance matrices to stabilize an audited 96% F1-score across 20 distinct classes.</p>
-                    <ul>
-                        <li><strong>Advanced Vision Transformer Deployment:</strong> Evaluated and fine-tuned Co-Scale Conv-Attentional Image Transformers (CoaT) and Swin Transformers for handwriting token processing across 20 historical classes.</li>
-                        <li><strong>Robust Performance Metrics:</strong> Attained a quantified <strong>96% F1-score</strong> by implementing custom pre-processing equalization and class-weighting algorithms to correct for extreme dataset imbalances.</li>
-                        <li><strong>Explainable AI Foundations:</strong> Integrated image preprocessing interpretation arrays (including defogging routines) to reveal structural feature extraction behaviors within attention blocks.</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span>PyTorch</span><span>CoaT Transformer</span><span>Swin Transformer</span><span>Computer Vision</span>
-                    </div>
-                </div>
-            </article>
+                </details>
 
-            <!-- [04] FISH FRESHNESS -->
-            <article class="project-row reverse">
-                <div class="project-copy">
-                    <p class="eyebrow cyan">JUL 2025 - AUG 2025 // MULTIMODAL TRANSFORMERS</p>
-                    <h3>Parallel Cross-Attention Fusion System</h3>
-                    <div class="mobile-inline-media">
-                        <picture>
-                            <source data-srcset="public/assets/portfolio/fish-attention.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/fish-attention.png" alt="Attention weight mappings for fish freshness classification" width="572" height="366">
-                        </picture>
-                    </div>
-                    <p>Fused spatial vision pixels with numerical tokens via custom Multimodal Parallel Fusion Transformer models. Structured via Contrastive Learning metrics to maximize class alignment accuracy rules.</p>
-                    <ul>
-                        <li><strong>Contrastive Learning Architecture:</strong> Coordinated a deep learning pipeline utilizing Contrastive Learning models to group semantic feature matrices effectively.</li>
-                        <li><strong>Multimodal Parallel Fusion:</strong> Engineered a custom cross-attention Parallel Fusion Transformer layer to unify disparate sensor and vision data tokens.</li>
-                        <li><strong>Class Optimization Success:</strong> Documented an overall <strong>85.4% accuracy</strong> rate, with model performance peaking at a <strong>92.7% F1-score</strong> specifically inside the critical "Marginal" freshness classification boundary.</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span>PyTorch</span><span>Fusion Transformers</span><span>Contrastive Learning</span><span>92.7% Peak F1</span>
-                    </div>
-                </div>
-                <div class="project-media image-frame">
-                    <picture>
-                        <source data-srcset="public/assets/portfolio/fish-attention.webp" type="image/webp">
-                        <img data-src="public/assets/portfolio/fish-attention.png" alt="Attention weight mappings for fish freshness classification" width="572" height="366">
-                    </picture>
-                </div>
-            </article>
-
-            <!-- [05] NEUROKIT -->
-            <article class="project-row">
-                <div class="project-media neurokit-dashboard">
-                    <div class="neurokit-top-row">
-                        <div class="neurokit-hardware-panel">
-                            <picture>
-                                <img data-src="public/assets/portfolio/neurokit-hardware.jpg" alt="NEUROKIT Frame Spec">
-                            </picture>
-                            <div class="neurokit-dim-tag font-mono">DIMENSIONS: 15x14.5x20 cm // WEIGHT: 1.6kg</div>
+                <details class="project-dossier reveal" id="project-socratix" data-project-id="socratix">
+                    <summary>
+                        <span class="dossier-id">P-02</span>
+                        <span class="dossier-title"><small>INTELLIGENT PIPELINES / APR–MAY 2026</small>Socratix multi-agent AST core</span>
+                        <span class="dossier-proof"><strong>~5 ms</strong><small>intent route</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">DETERMINISTIC AI BACKEND</p>
+                            <h3>Agentic teaching logic bounded by a parser that can prove the math.</h3>
+                            <p>Designed a modular NestJS agent pipeline and replaced fragile string comparisons with Abstract Syntax Tree validation for algebraic expressions.</p>
                         </div>
-                        <div class="neurokit-mobile-panel">
-                            <picture class="mobile-screenshot">
-                                <img data-src="public/assets/portfolio/neurokit-mob1.jpg" alt="App Tab A">
-                            </picture>
-                            <picture class="mobile-screenshot">
-                                <img data-src="public/assets/portfolio/neurokit-mob3.jpg" alt="App Tab B">
-                            </picture>
+
+                        <div class="agent-trace" aria-label="Socratix request path">
+                            <div class="trace-header"><span>REQUEST TRACE / 3x + 5 = 14</span><span>STREAM ACTIVE</span></div>
+                            <ol>
+                                <li><span>01</span><strong>Router</strong><small>Intent → MATH_ATTEMPT</small></li>
+                                <li><span>02</span><strong>Validator</strong><small>Math.js AST mapping</small></li>
+                                <li><span>03</span><strong>Cache</strong><small>Redis cache-aside state</small></li>
+                                <li><span>04</span><strong>Stream</strong><small>SSE response chunks</small></li>
+                            </ol>
+                        </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Context</dt><dd>An intelligent tutoring backend coordinating request routing and pedagogical planning.</dd></div>
+                            <div><dt>My role</dt><dd>Two-tier agent architecture, algebra validation module, and cache infrastructure.</dd></div>
+                            <div><dt>Critical decision</dt><dd>Parse expressions into AST nodes instead of accepting ambiguous string matches.</dd></div>
+                            <div><dt>Result</dt><dd>Deterministic expression checking with versioned, cacheable session state.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="Socratix technology stack"><li>NestJS</li><li>Next.js 15</li><li>Vercel AI SDK</li><li>Redis</li><li>Math.js AST</li></ul>
+                            <div class="project-links"><a href="https://github.com/reregin/socratix" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
                         </div>
                     </div>
-                    <div class="neurokit-bottom-banner">
-                        <picture>
-                            <img data-src="public/assets/portfolio/neurokit-test.jpg" alt="Human Validation Matrix" class="validation-bg">
-                        </picture>
-                        <div class="neurokit-validation-overlay font-mono">
-                            // WECHSLER MEMORY SCALE VALIDATION ACCURACY: <span class="text-cyan font-bold">+11.35% COGNITIVE PERFORMANCE ELEVATION</span>
+                </details>
+
+                <details class="project-dossier reveal" id="project-gemastik" data-project-id="gemastik">
+                    <summary>
+                        <span class="dossier-id">P-03</span>
+                        <span class="dossier-title"><small>COMPUTER VISION RESEARCH / 2025</small>GEMASTIK Vision Lab</span>
+                        <span class="dossier-proof"><strong><span data-count-to="96">96</span>%</strong><small>F1-score</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">MULTIMODAL &amp; TRANSFORMER EVIDENCE</p>
+                            <h3>Two imbalanced vision problems, treated as an auditable research program.</h3>
+                            <p>Connected spatial imagery with numerical features for fish-freshness classification, then evaluated transformer families for 20-class Javanese handwriting under a national competition deadline.</p>
+                        </div>
+
+                        <div class="evidence-viewer" data-evidence-viewer>
+                            <div class="evidence-tabs" role="tablist" aria-label="GEMASTIK research evidence">
+                                <button role="tab" aria-selected="true" aria-controls="gemastik-attention" id="gemastik-attention-tab" data-project-view="attention">Fusion attention</button>
+                                <button role="tab" aria-selected="false" aria-controls="gemastik-matrix" id="gemastik-matrix-tab" data-project-view="matrix" tabindex="-1">Class matrix</button>
+                                <button role="tab" aria-selected="false" aria-controls="gemastik-interpret" id="gemastik-interpret-tab" data-project-view="interpret" tabindex="-1">Interpretation</button>
+                            </div>
+                            <div class="evidence-panel research-figure" id="gemastik-attention" role="tabpanel" aria-labelledby="gemastik-attention-tab" data-project-panel="attention">
+                                <picture><source srcset="public/assets/portfolio/fish-attention.webp" type="image/webp"><img src="public/assets/portfolio/fish-attention.png" alt="Grad-CAM attention mapping for fish freshness classification" width="572" height="366" loading="lazy"></picture>
+                                <div class="figure-caption"><span>FUSION-01</span><p>Grad-CAM evidence over vision tokens used to inspect the model’s spatial focus.</p></div>
+                            </div>
+                            <div class="evidence-panel research-figure" id="gemastik-matrix" role="tabpanel" aria-labelledby="gemastik-matrix-tab" data-project-panel="matrix" hidden>
+                                <picture><source srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp"><img src="public/assets/portfolio/aksara-matrix.png" alt="Confusion matrix for 20-class Javanese Aksara classification" width="1000" height="1000" loading="lazy"></picture>
+                                <div class="figure-caption"><span>COAT-20</span><p>Class-level evidence for the audited 96% F1-score across 20 script categories.</p></div>
+                            </div>
+                            <div class="evidence-panel research-figure" id="gemastik-interpret" role="tabpanel" aria-labelledby="gemastik-interpret-tab" data-project-panel="interpret" hidden>
+                                <picture><source srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp"><img src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600" loading="lazy"></picture>
+                                <div class="figure-caption"><span>XAI-02</span><p>Interpretation output used to inspect structural feature extraction after preprocessing.</p></div>
+                            </div>
+                        </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Context</dt><dd>National GEMASTIK research and a five-hour closed-sandbox final challenge.</dd></div>
+                            <div><dt>My role</dt><dd>Fusion architecture, contrastive-learning pipeline, preprocessing, transformer evaluation, and interpretation.</dd></div>
+                            <div><dt>Critical decision</dt><dd>Correct class imbalance and compare CoaT, Swin, and EfficientNet rather than trusting raw accuracy.</dd></div>
+                            <div><dt>Result</dt><dd><strong>92.7% peak F1</strong> for the critical marginal-freshness class and <strong>96% F1</strong> for 20-class Aksara recognition.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="GEMASTIK research stack"><li>PyTorch</li><li>CoaT</li><li>Swin Transformer</li><li>Contrastive Learning</li><li>Grad-CAM</li></ul>
+                            <p class="verified-stamp">MOST INSPIRING TEAM / GEMASTIK XVIII</p>
                         </div>
                     </div>
-                </div>
-                <div class="project-copy">
-                    <p class="eyebrow cyan">JUL 2025 - NOV 2025 // NATIONAL PIMNAS BRONZE MEDAL</p>
-                    <h3>NEUROKIT: Dynamic Neurotherapeutic Framework</h3>
-                    <div class="mobile-inline-media">
-                        <picture>
-                            <img data-src="public/assets/portfolio/neurokit-hardware.jpg" alt="NEUROKIT hardware device" width="800" height="600">
-                        </picture>
-                    </div>
-                    <p>Integrated an ESP32 hardware hub with PWM MOSFET electrical matrices to emit dynamic, adaptive 500-600 lux lighting paths combined with contextual positive behavioral speech generation components.</p>
-                    <ul>
-                        <li><strong>Dynamic Pulse Width Modulation:</strong> Wired an ESP32 micro-grid controller to execute dynamic PWM algorithms via MOSFET components, modifying LED arrays safely within a stable 500–600 lux envelope based on sonar distance data.</li>
-                        <li><strong>Generative Knowledge Integrations:</strong> Wired backend Generative AI workflows via OpenRouter API endpoints to synthesize personal behavioral reminders matching user data inputs.</li>
-                        <li><strong>Empirical Cognitive Validation:</strong> Proved device performance through rigorous client testing via the Wechsler Memory Scale, registering an audited <strong>11.35% increase in student attention intervals</strong>.</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span>ESP32 IoT</span><span>Flutter App</span><span>MOSFET Hardware</span><span>Generative AI LLMs</span>
-                    </div>
-                    <div class="project-action-links">
-                        <a href="https://github.com/Idoo0/neurokit" target="_blank" rel="noopener noreferrer" class="project-action-link project-action-link--source">[ SOURCE CODE ]</a>
-                    </div>
-                </div>
-            </article>
+                </details>
 
-            <!-- TIER 2 HIGH-DENSITY GRID -->
-            <div class="tier2-grid">
-                <!-- [06] JTEHub -->
-                <div class="tier2-card purple">
-                    <div class="tier2-media">
-                        <picture>
-                            <img data-src="public/assets/portfolio/jtehub-hero.png" alt="JTEHub Platform">
-                        </picture>
-                    </div>
-                    <div class="tier2-content">
-                        <p class="eyebrow violet">LATE 2024 - EARLY 2025 // BACKEND PLATFORM</p>
-                        <h4>JTEHub Allocation Platform</h4>
-                        <p>Wrote timezone-safe scheduling verification loops in NestJS to invalidate double-booking requests programmatically across relational databases.</p>
-                        <ul>
-                            <li><strong>Conflict Prevention:</strong> Formulated programmatic overlap formulas to evaluate date ranges and eliminate multi-user booking collisions.</li>
-                            <li><strong>Role Enforcement:</strong> Configured custom NestJS Passport validation guards to intercept incoming JWTs, isolating admin routes.</li>
-                        </ul>
-                        <div class="project-action-links">
-                            <a href="https://github.com/Yindraa/backend-jtehub" target="_blank" rel="noopener noreferrer" class="project-action-link project-action-link--source">[ SOURCE CODE ]</a>
+                <details class="project-dossier reveal" id="project-neurokit" data-project-id="neurokit">
+                    <summary>
+                        <span class="dossier-id">P-04</span>
+                        <span class="dossier-title"><small>HARDWARE + AI / JUL–NOV 2025</small>NEUROKIT therapeutic framework</span>
+                        <span class="dossier-proof"><strong>+<span data-count-to="11.35" data-decimals="2">11.35</span>%</strong><small>validated</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label terracotta">NATIONAL PIMNAS BRONZE MEDAL</p>
+                            <h3>A physical neurotherapeutic prototype, carried through human validation.</h3>
+                            <p>Integrated an ESP32 lighting and audio device, Flutter control surface, and generative affirmation workflow into a testable intervention.</p>
+                        </div>
+
+                        <div class="evidence-viewer" data-evidence-viewer>
+                            <div class="evidence-tabs" role="tablist" aria-label="NEUROKIT evidence views">
+                                <button role="tab" aria-selected="true" aria-controls="neurokit-hardware" id="neurokit-hardware-tab" data-project-view="hardware">Hardware</button>
+                                <button role="tab" aria-selected="false" aria-controls="neurokit-mobile" id="neurokit-mobile-tab" data-project-view="mobile" tabindex="-1">Mobile control</button>
+                                <button role="tab" aria-selected="false" aria-controls="neurokit-validation" id="neurokit-validation-tab" data-project-view="validation" tabindex="-1">Validation</button>
+                            </div>
+                            <div class="evidence-panel research-figure" id="neurokit-hardware" role="tabpanel" aria-labelledby="neurokit-hardware-tab" data-project-panel="hardware">
+                                <picture><img src="public/assets/portfolio/neurokit-hardware.jpg" alt="NEUROKIT hardware prototype with light and audio modules" width="1280" height="960" loading="lazy"></picture>
+                                <div class="figure-caption"><span>HW-01</span><p>15 × 14.5 × 20 cm enclosure integrating PWM-controlled light, audio, sensing, and display.</p></div>
+                            </div>
+                            <div class="evidence-panel mobile-evidence" id="neurokit-mobile" role="tabpanel" aria-labelledby="neurokit-mobile-tab" data-project-panel="mobile" hidden>
+                                <img src="public/assets/portfolio/neurokit-mob1.jpg" alt="NEUROKIT Flutter application therapy control screen" width="720" height="1600" loading="lazy">
+                                <img src="public/assets/portfolio/neurokit-mob3.jpg" alt="NEUROKIT Flutter application session screen" width="720" height="1600" loading="lazy">
+                            </div>
+                            <div class="evidence-panel research-figure" id="neurokit-validation" role="tabpanel" aria-labelledby="neurokit-validation-tab" data-project-panel="validation" hidden>
+                                <picture><img src="public/assets/portfolio/neurokit-test.jpg" alt="NEUROKIT human validation session" width="840" height="601" loading="lazy"></picture>
+                                <div class="figure-caption"><span>WMS-11.35</span><p>Wechsler Memory Scale validation recorded an 11.35% increase in student attention intervals.</p></div>
+                            </div>
+                        </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Context</dt><dd>Funded research prototype advanced to national PIMNAS 38 presentation and defense.</dd></div>
+                            <div><dt>My role</dt><dd>Product lifecycle lead across enclosure, electronics, Flutter, AI integration, testing, and defense.</dd></div>
+                            <div><dt>Critical decision</dt><dd>Keep illumination within a stable 500–600 lux envelope using ESP32 PWM and MOSFET control.</dd></div>
+                            <div><dt>Result</dt><dd>Audited 11.35% improvement in attention intervals and a national bronze medal.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="NEUROKIT technology stack"><li>ESP32</li><li>Flutter</li><li>PWM + MOSFET</li><li>OpenRouter</li><li>Gemini AI</li></ul>
+                            <div class="project-links"><a href="https://github.com/Idoo0/neurokit" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
                         </div>
                     </div>
-                    <div class="tier2-tech-footer">
-                        NestJS, Supabase Postgres, RBAC Guards
-                    </div>
-                </div>
-
-                <!-- [07] PUBLIC FACILITY -->
-                <div class="tier2-card">
-                    <div class="tier2-media">
-                        <picture>
-                            <source data-srcset="public/assets/portfolio/anthropometric.webp" type="image/webp">
-                            <img data-src="public/assets/portfolio/anthropometric.png" alt="Data Graphics Profile">
-                        </picture>
-                    </div>
-                    <div class="tier2-content">
-                        <p class="eyebrow cyan">APR 2024 - JUN 2024 // DATA SCIENCE</p>
-                        <h4>Anthropometric Analytics Model</h4>
-                        <p>Applied Association Rule Mining over Indonesian senior-citizen anthropometric datasets to produce spatial configuration criteria for public facility planning.</p>
-                        <ul>
-                            <li><strong>Association Rule Mining:</strong> Deployed Apriori and Eclat data mining algorithms over demographic tables.</li>
-                            <li><strong>Ergonomic Blueprints:</strong> Successfully derived 7 foundational ergonomic design constraints rules to generate size standards.</li>
-                        </ul>
-                    </div>
-                    <div class="tier2-tech-footer">
-                        Python, Data Mining, Apriori, Eclat
-                    </div>
-                </div>
-
-                <!-- [08] WARONG WAREM -->
-                <div class="tier2-card legacy">
-                    <div class="tier2-legacy-media">
-                        [ LEGACY_SYSTEM_ARCHIVE.WEB ]
-                    </div>
-                    <div class="tier2-content">
-                        <p class="eyebrow">HISTORICAL CODE BASE // ACADEMIC</p>
-                        <h4>Warong Warem Fullstack</h4>
-                        <p>Legacy setup displaying web interface foundations, relational database configurations, and fundamental input validations.</p>
-                        <ul>
-                            <li>Built initial relational table schemas and database connection components.</li>
-                            <li>Implemented structural form validation criteria scripts.</li>
-                        </ul>
-                    </div>
-                    <div class="tier2-tech-footer">
-                        HTML/CSS, Relational DB Schema, PHP
-                    </div>
-                </div>
+                </details>
             </div>
+
+            <section class="archive reveal" aria-labelledby="archive-title">
+                <div class="archive-heading">
+                    <p class="section-index">02B / SUPPORTING ARCHIVE</p>
+                    <h3 id="archive-title">Earlier systems and foundations.</h3>
+                </div>
+                <div class="archive-table" role="list">
+                    <article role="listitem">
+                        <span>2024–2025</span><h4>JTEHub allocation platform</h4><p>NestJS scheduling conflict prevention, RBAC guards, and Supabase PostgreSQL.</p><a href="https://github.com/Yindraa/backend-jtehub" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                    </article>
+                    <article role="listitem">
+                        <span>2024</span><h4>Anthropometric analytics</h4><p>Apriori and Eclat analysis producing seven ergonomic rules for public-facility planning.</p><span class="archive-status">DATA MINING</span>
+                    </article>
+                    <article role="listitem">
+                        <span>Academic archive</span><h4>Warong Warem full stack</h4><p>Early relational schema, PHP interface, and structural form-validation foundations.</p><span class="archive-status">LEGACY</span>
+                    </article>
+                </div>
+            </section>
         </section>
 
-        <section id="experience" class="section-block section-reveal">
-            <div class="section-heading">
-                <p class="eyebrow">PROFESSIONAL EXPERIENCE</p>
-                <h2>Operational AI inside real constraints.</h2>
-            </div>
-            <div class="timeline">
-                <article class="timeline-item open">
-                    <button class="timeline-trigger" type="button" aria-expanded="true">
-                        <span>2025</span>
-                        <strong>PT. Bank SulutGo - AI Engineer & RAG System Intern</strong>
-                    </button>
-                    <div class="timeline-content">
-                        <p>Deployed local, zero-leakage RAG infrastructure utilizing Ollama, n8n, and Supabase pgvector inside the bank's local servers.</p>
-                        <div class="validation-card">
-                            <span>Supervisor Validation</span>
-                            <strong>95/100 Discipline & Attitude</strong>
-                            <strong>90/100 Presentation Skills</strong>
-                        </div>
+        <section class="section observed-section" id="experience" data-section="03">
+            <header class="section-heading reveal">
+                <p class="section-index">03 / FIELD NOTES</p>
+                <h2>Engineering inside real constraints.</h2>
+                <p>Professional and community work where privacy, deployment, and team coordination mattered as much as the model.</p>
+            </header>
+
+            <div class="field-notes reveal">
+                <article>
+                    <header><span>NOTE 03A / 2025</span><strong>PT. Bank SulutGo</strong></header>
+                    <div>
+                        <p class="field-role">AI Engineer &amp; RAG System Intern</p>
+                        <h3>Private retrieval without data leaving the bank.</h3>
+                        <p>Deployed local RAG infrastructure using Ollama, n8n, and Supabase pgvector on internal servers, treating zero leakage as an architectural requirement.</p>
+                        <dl><div><dt>Constraint</dt><dd>Local-only inference and storage</dd></div><div><dt>Validation</dt><dd>95/100 discipline · 90/100 presentation</dd></div></dl>
                     </div>
                 </article>
-
-                <article class="timeline-item open">
-                    <button class="timeline-trigger" type="button" aria-expanded="true">
-                        <span>2024</span>
-                        <strong>UNSRAT IT Community - Chatbot Project Lead & ML Committee</strong>
-                    </button>
-                    <div class="timeline-content">
-                        <p>Managed a 12-person multidisciplinary engineering cohort building a cross-platform client architecture with Gemini AI and serialized gRPC transmission channels through Flask.</p>
-                        <div class="experience-gallery">
-                            <picture>
-                                <source data-srcset="public/assets/portfolio/techofest-lead.webp" type="image/webp">
-                                <img data-src="public/assets/portfolio/techofest-lead.jpg" alt="Galnoel leading Techofest 2024" width="900" height="1200">
-                            </picture>
-                            <picture>
-                                <source data-srcset="public/assets/portfolio/techofest-team.webp" type="image/webp">
-                                <img data-src="public/assets/portfolio/techofest-team.jpg" alt="Techofest 2024 engineering team" width="1200" height="800">
-                            </picture>
-                        </div>
-                        <div class="cohort-card">
-                            <picture>
-                                <source data-srcset="public/assets/portfolio/ml-cohort.webp" type="image/webp">
-                                <img data-src="public/assets/portfolio/ml-cohort.jpg" alt="Machine learning cohort meeting" width="1200" height="675">
-                            </picture>
-                            <p>Guided 20+ members through a machine learning foundation syllabus and project-based mentoring track.</p>
-                        </div>
+                <article>
+                    <header><span>NOTE 03B / 2024</span><strong>UNSRAT IT Community</strong></header>
+                    <div>
+                        <p class="field-role">Chatbot Project Lead &amp; ML Committee</p>
+                        <h3>Technical direction across a multidisciplinary cohort.</h3>
+                        <p>Managed a 12-person engineering team building a Gemini-powered cross-platform client with gRPC and Flask, while guiding more than 20 members through an applied machine-learning syllabus.</p>
+                        <dl><div><dt>Delivery team</dt><dd>12 multidisciplinary contributors</dd></div><div><dt>Mentoring reach</dt><dd>20+ community members</dd></div></dl>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section id="awards" class="section-block awards-section section-reveal">
-            <div class="section-heading">
-                <p class="eyebrow">HONORS & AWARDS</p>
-                <h2>National recognition, with the engineering work behind it.</h2>
+        <section class="section observed-section" id="recognition" data-section="04">
+            <header class="section-heading reveal">
+                <p class="section-index">04 / RECOGNITION LEDGER</p>
+                <h2>Recognition attached to the work behind it.</h2>
+            </header>
+
+            <div class="recognition-ledger reveal">
+                <a href="#project-neurokit">
+                    <span class="recognition-year">2025</span>
+                    <div><p>PIMNAS 38 · PKM-KC1</p><h3>Bronze Medalist, Presentation Category</h3><small>Kementerian Pendidikan Tinggi, Sains dan Teknologi</small></div>
+                    <strong>NEUROKIT evidence <span aria-hidden="true">↘</span></strong>
+                </a>
+                <a href="#project-gemastik">
+                    <span class="recognition-year">2025</span>
+                    <div><p>GEMASTIK XVIII · 1 of 220 finalist teams</p><h3>Most Inspiring Team</h3><small>Direktorat Pembelajaran dan Kemahasiswaan</small></div>
+                    <strong>Vision Lab evidence <span aria-hidden="true">↘</span></strong>
+                </a>
+                <a href="#work">
+                    <span class="recognition-year">2024</span>
+                    <div><p>GEMASTIK XVII · Data Mining</p><h3>National Finalist</h3><small>Kemendikbudristek RI</small></div>
+                    <strong>Archive evidence <span aria-hidden="true">↘</span></strong>
+                </a>
             </div>
-            <div class="award-bento-grid" data-awards-grid aria-live="polite"></div>
+        </section>
+
+        <section class="contact-section observed-section" id="contact" data-section="05">
+            <div class="contact-copy reveal">
+                <p class="section-index">05 / OPEN CHANNEL</p>
+                <h2>Looking for an AI/backend engineer who can carry work from experiment to production?</h2>
+                <p>Let’s talk about the system you are trying to make reliable.</p>
+                <a class="contact-email" href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="contact-links reveal">
+                <a href="https://linkedin.com/in/galnoel-rindengan/" target="_blank" rel="noopener noreferrer"><span>Professional profile</span>LinkedIn ↗</a>
+                <a href="https://github.com/galnoel" target="_blank" rel="noopener noreferrer"><span>Code and experiments</span>GitHub ↗</a>
+                <a class="resume-download" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF"><span>Résumé PDF</span>Download ↓</a>
+            </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-identity">
-                <p class="footer-name">Galnoel Peter Rindengan</p>
-                <p class="footer-tagline">© 2026 // AI Researcher & Backend Systems Architect</p>
-            </div>
-            <nav class="footer-links" aria-label="Footer Social Navigation">
-                <a href="mailto:rindengangalnoel@gmail.com" class="footer-link-item" target="_blank" rel="noopener noreferrer">[ EMAIL ]</a>
-                <a href="https://linkedin.com/in/galnoel-rindengan/" class="footer-link-item" target="_blank" rel="noopener noreferrer">[ LINKEDIN ]</a>
-                <a href="https://github.com/galnoel" class="footer-link-item" target="_blank" rel="noopener noreferrer">[ GITHUB ]</a>
-            </nav>
-        </div>
+        <p>© 2026 Galnoel Peter Rindengan</p>
+        <p>AI research / backend systems / Manado, Indonesia</p>
+        <a href="#profile">Return to index ↑</a>
     </footer>
 
-    <div class="award-modal" data-award-modal hidden>
-        <div class="award-modal-backdrop" data-award-close></div>
-        <article class="award-modal-panel" role="dialog" aria-modal="true" aria-labelledby="awardModalTitle">
-            <button class="award-modal-close" type="button" data-award-close aria-label="Close award technical details">Close Log</button>
-            <div class="award-modal-hero" data-award-modal-hero></div>
-            <div class="award-modal-body">
-                <p class="eyebrow" data-award-modal-kicker></p>
-                <h3 id="awardModalTitle" data-award-modal-title></h3>
-                <p class="award-modal-issuer" data-award-modal-issuer></p>
-                <div class="award-detail-grid">
-                    <section>
-                        <h4>// R&D / Elimination Phase Architecture</h4>
-                        <p data-award-modal-elimination></p>
-                    </section>
-                    <section>
-                        <h4>// Live Defense / Final Phase Execution</h4>
-                        <p data-award-modal-final></p>
-                    </section>
-                </div>
-                <div class="award-extra-details" data-award-modal-extra></div>
-                <div class="tag-row" data-award-modal-tags></div>
-            </div>
-        </article>
-    </div>
-
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
