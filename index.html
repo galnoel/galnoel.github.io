@@ -217,7 +217,7 @@
                     <span class="competition-ordinal">Most Inspiring</span>
                     <h3>GEMASTIK XVIII</h3>
                     <p class="competition-description">Selected across 13 divisions and 220 finalist teams</p>
-                    <a href="#project-gemastik">Deep Learning Research evidence <span aria-hidden="true">↘</span></a>
+                    <a href="#project-gemastik">Fish-freshness research evidence <span aria-hidden="true">↘</span></a>
                 </article>
                 <article>
                     <figure class="competition-photo competition-photo-gemastik-2024">
@@ -266,7 +266,10 @@
                             <td data-label="Core work"><span>Multimodal learning, transformer evaluation, imbalance correction, and explainability.</span></td>
                             <td data-label="Tools / methods"><span>PyTorch, CoaT, Swin Transformer, contrastive learning, Grad-CAM.</span></td>
                             <td data-label="Evidence">
-                                <div class="capability-links"><a href="#project-gemastik">GEMASTIK research <span aria-hidden="true">&#8600;</span></a></div>
+                                <div class="capability-links">
+                                    <a href="#project-gemastik">Fish freshness <span aria-hidden="true">&#8600;</span></a>
+                                    <a href="#project-aksara">Javanese Aksara <span aria-hidden="true">&#8600;</span></a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -307,7 +310,7 @@
         <section class="section work-section observed-section" id="work" data-section="03">
             <header class="section-heading reveal">
                 <p class="section-index">03 / SELECTED ENGINEERING DOSSIERS</p>
-                <h2>Four systems. Each one leaves evidence.</h2>
+                <h2>Five projects. Each one leaves evidence.</h2>
                 <p>Open a dossier to inspect the problem, my role, architecture, engineering decisions, and verified outcome.</p>
             </header>
 
@@ -407,48 +410,76 @@
                     </div>
                 </details>
 
-                <details class="project-dossier reveal" id="project-gemastik" data-project-id="gemastik">
+                <details class="project-dossier reveal" id="project-gemastik" data-project-id="fish-freshness">
                     <summary>
                         <span class="dossier-id">P-03</span>
-                        <span class="dossier-title"><small>DEEP LEARNING RESEARCH / 2025</small>Deep Learning Research</span>
+                        <span class="dossier-title"><small>MULTIMODAL TRANSFORMERS / JUL&ndash;AUG 2025</small>Multimodal Fish-Freshness Classifier</span>
+                        <span class="dossier-proof"><strong><span data-count-to="92.7" data-decimals="1">92.7</span>%</strong><small>peak F1</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">VISION + NUMERICAL FUSION</p>
+                            <h3>A dedicated multimodal model for fish-freshness classification.</h3>
+                            <p>Built the main GEMASTIK XVIII research entry by fusing spatial image features with numerical tokens through parallel cross-attention, optimized with contrastive learning.</p>
+                        </div>
+
+                        <div class="evidence-viewer">
+                            <div class="evidence-panel research-figure">
+                                <picture><source srcset="public/assets/portfolio/fish-attention.webp" type="image/webp"><img src="public/assets/portfolio/fish-attention.png" alt="Grad-CAM attention mapping for fish freshness classification" width="572" height="366" loading="lazy"></picture>
+                                <div class="figure-caption"><span>FUSION-01</span><p>Grad-CAM evidence over vision tokens used to inspect the model’s spatial focus.</p></div>
+                            </div>
+                        </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Context</dt><dd>The main GEMASTIK XVIII research entry: a fish-freshness classifier built from image and numerical inputs.</dd></div>
+                            <div><dt>My role</dt><dd>Parallel fusion architecture, contrastive-learning pipeline, class-imbalance handling, and attention analysis.</dd></div>
+                            <div><dt>Critical decision</dt><dd>Preserve both modalities through parallel cross-attention instead of flattening image and numerical features into one representation.</dd></div>
+                            <div><dt>Result</dt><dd><strong>85.4% overall accuracy</strong> and <strong>92.7% peak F1</strong> for the critical &ldquo;Marginal&rdquo; freshness class.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="Fish-freshness research stack"><li>PyTorch</li><li>Fusion Transformers</li><li>Contrastive Learning</li><li>Grad-CAM</li><li>Multimodal Learning</li></ul>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="project-dossier reveal" id="project-aksara" data-project-id="aksara">
+                    <summary>
+                        <span class="dossier-id">P-04</span>
+                        <span class="dossier-title"><small>COMPUTER VISION / OCT 2025</small>Javanese Aksara CoaT Classifier</span>
                         <span class="dossier-proof"><strong><span data-count-to="96">96</span>%</strong><small>F1-score</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
-                            <p class="document-label">MULTIMODAL &amp; TRANSFORMER EVIDENCE</p>
-                            <h3>Two imbalanced vision problems, treated as an auditable research program.</h3>
-                            <p>Connected spatial imagery with numerical features for fish-freshness classification, then evaluated transformer families for 20-class Javanese handwriting under a national competition deadline.</p>
+                            <p class="document-label">20-CLASS HANDWRITING RECOGNITION</p>
+                            <h3>A separate transformer challenge for handwritten Javanese Aksara.</h3>
+                            <p>Built an independent image-classification pipeline during the five-hour GEMASTIK XVIII final challenge, comparing transformer families under severe class imbalance.</p>
                         </div>
 
                         <div class="evidence-viewer" data-evidence-viewer>
-                            <div class="evidence-tabs" role="tablist" aria-label="GEMASTIK research evidence">
-                                <button role="tab" aria-selected="true" aria-controls="gemastik-attention" id="gemastik-attention-tab" data-project-view="attention">Fusion attention</button>
-                                <button role="tab" aria-selected="false" aria-controls="gemastik-matrix" id="gemastik-matrix-tab" data-project-view="matrix" tabindex="-1">Class matrix</button>
-                                <button role="tab" aria-selected="false" aria-controls="gemastik-interpret" id="gemastik-interpret-tab" data-project-view="interpret" tabindex="-1">Interpretation</button>
+                            <div class="evidence-tabs" role="tablist" aria-label="Javanese Aksara classification evidence">
+                                <button role="tab" aria-selected="true" aria-controls="aksara-matrix" id="aksara-matrix-tab" data-project-view="matrix">Class matrix</button>
+                                <button role="tab" aria-selected="false" aria-controls="aksara-interpret" id="aksara-interpret-tab" data-project-view="interpret" tabindex="-1">Interpretation</button>
                             </div>
-                            <div class="evidence-panel research-figure" id="gemastik-attention" role="tabpanel" aria-labelledby="gemastik-attention-tab" data-project-panel="attention">
-                                <picture><source srcset="public/assets/portfolio/fish-attention.webp" type="image/webp"><img src="public/assets/portfolio/fish-attention.png" alt="Grad-CAM attention mapping for fish freshness classification" width="572" height="366" loading="lazy"></picture>
-                                <div class="figure-caption"><span>FUSION-01</span><p>Grad-CAM evidence over vision tokens used to inspect the model’s spatial focus.</p></div>
-                            </div>
-                            <div class="evidence-panel research-figure" id="gemastik-matrix" role="tabpanel" aria-labelledby="gemastik-matrix-tab" data-project-panel="matrix" hidden>
+                            <div class="evidence-panel research-figure" id="aksara-matrix" role="tabpanel" aria-labelledby="aksara-matrix-tab" data-project-panel="matrix">
                                 <picture><source srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp"><img src="public/assets/portfolio/aksara-matrix.png" alt="Confusion matrix for 20-class Javanese Aksara classification" width="1000" height="1000" loading="lazy"></picture>
                                 <div class="figure-caption"><span>COAT-20</span><p>Class-level evidence for the audited 96% F1-score across 20 script categories.</p></div>
                             </div>
-                            <div class="evidence-panel research-figure" id="gemastik-interpret" role="tabpanel" aria-labelledby="gemastik-interpret-tab" data-project-panel="interpret" hidden>
+                            <div class="evidence-panel research-figure" id="aksara-interpret" role="tabpanel" aria-labelledby="aksara-interpret-tab" data-project-panel="interpret" hidden>
                                 <picture><source srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp"><img src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600" loading="lazy"></picture>
                                 <div class="figure-caption"><span>XAI-02</span><p>Interpretation output used to inspect structural feature extraction after preprocessing.</p></div>
                             </div>
                         </div>
 
                         <dl class="dossier-facts">
-                            <div><dt>Context</dt><dd>National GEMASTIK research and a five-hour closed-sandbox final challenge.</dd></div>
-                            <div><dt>My role</dt><dd>Fusion architecture, contrastive-learning pipeline, preprocessing, transformer evaluation, and interpretation.</dd></div>
+                            <div><dt>Context</dt><dd>A separate five-hour, closed-sandbox final challenge at the national GEMASTIK XVIII competition.</dd></div>
+                            <div><dt>My role</dt><dd>Image preprocessing, class weighting, transformer evaluation, and model interpretation.</dd></div>
                             <div><dt>Critical decision</dt><dd>Correct class imbalance and compare CoaT, Swin, and EfficientNet rather than trusting raw accuracy.</dd></div>
-                            <div><dt>Result</dt><dd><strong>92.7% peak F1</strong> for the critical marginal-freshness class and <strong>96% F1</strong> for 20-class Aksara recognition.</dd></div>
+                            <div><dt>Result</dt><dd><strong>96% F1-score</strong> across 20 handwritten Javanese Aksara classes.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="GEMASTIK research stack"><li>PyTorch</li><li>CoaT</li><li>Swin Transformer</li><li>Contrastive Learning</li><li>Grad-CAM</li></ul>
+                            <ul class="stack-list" aria-label="Javanese Aksara classification stack"><li>PyTorch</li><li>CoaT</li><li>Swin Transformer</li><li>EfficientNet</li><li>Computer Vision</li></ul>
                             <p class="verified-stamp">MOST INSPIRING TEAM / GEMASTIK XVIII</p>
                         </div>
                     </div>
@@ -456,7 +487,7 @@
 
                 <details class="project-dossier reveal" id="project-neurokit" data-project-id="neurokit">
                     <summary>
-                        <span class="dossier-id">P-04</span>
+                        <span class="dossier-id">P-05</span>
                         <span class="dossier-title"><small>HARDWARE + AI / JUL–NOV 2025</small>NEUROKIT therapeutic framework</span>
                         <span class="dossier-proof"><strong>+<span data-count-to="11.35" data-decimals="2">11.35</span>%</strong><small>validated</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
