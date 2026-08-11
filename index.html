@@ -35,7 +35,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -140,22 +140,22 @@
                 <div class="identity-note"><span>FOCUS</span> From experimental evidence to dependable systems.</div>
             </figure>
 
-            <dl class="evidence-strip reveal" aria-label="Verified portfolio evidence">
+            <dl class="profile-pillars reveal" aria-label="Professional profile summary">
                 <div>
-                    <dt>Latest placement</dt>
-                    <dd>9th / 482<small>100xDevs Frontier Track</small></dd>
+                    <dt>AI/ML research</dt>
+                    <dd>Multimodal and explainable models</dd>
                 </div>
                 <div>
-                    <dt>PIMNAS 38</dt>
-                    <dd>Bronze<small>Presentation category</small></dd>
+                    <dt>Backend engineering</dt>
+                    <dd>Real-time and deterministic systems</dd>
                 </div>
                 <div>
-                    <dt>GEMASTIK XVIII</dt>
-                    <dd>Most Inspiring<small>Across 220 finalist teams</small></dd>
+                    <dt>End-to-end delivery</dt>
+                    <dd>Prototype, deploy, and validate</dd>
                 </div>
                 <div>
-                    <dt>GEMASTIK record</dt>
-                    <dd>Multi-year<small>National finalist</small></dd>
+                    <dt>Technical leadership</dt>
+                    <dd>Led 12 contributors and mentored 20+ members</dd>
                 </div>
             </dl>
         </section>
@@ -218,35 +218,68 @@
         <section class="section observed-section" id="capabilities" data-section="02">
             <header class="section-heading reveal">
                 <p class="section-index">02 / CAPABILITY MATRIX</p>
-                <h2>From research question to production evidence.</h2>
-                <p>I work across the full path: formulate the model, engineer the system around it, then prove what changed.</p>
+                <h2>Capabilities, tools, and proof.</h2>
+                <p>A compact map of the work I do and where to inspect the evidence.</p>
             </header>
 
             <div class="capability-matrix reveal">
-                <a class="capability-row" href="#project-gemastik">
-                    <span class="capability-number">02A</span>
-                    <div>
-                        <h3>Deep Learning Model research &amp; evaluation</h3>
-                        <p>Multimodal fusion, vision transformers, contrastive learning, class-imbalance correction, and interpretation workflows.</p>
-                    </div>
-                    <strong>See Research in Deep Learning <span aria-hidden="true">↘</span></strong>
-                </a>
-                <a class="capability-row" href="#project-cora">
-                    <span class="capability-number">02B</span>
-                    <div>
-                        <h3>Backend &amp; distributed architecture</h3>
-                        <p>State machines, WebSockets, deterministic validation, caching, PostgreSQL, and cryptographic settlement.</p>
-                    </div>
-                    <strong>See CORA <span aria-hidden="true">↘</span></strong>
-                </a>
-                <a class="capability-row" href="#project-neurokit">
-                    <span class="capability-number">02C</span>
-                    <div>
-                        <h3>Deployment, validation &amp; leadership</h3>
-                        <p>Private RAG deployment, physical prototyping, user validation, technical defense, and multidisciplinary delivery.</p>
-                    </div>
-                    <strong>See NEUROKIT <span aria-hidden="true">↘</span></strong>
-                </a>
+                <table class="capability-table">
+                    <caption class="sr-only">Capability domains, core work, tools and methods, and supporting project evidence.</caption>
+                    <colgroup>
+                        <col class="capability-col-area">
+                        <col class="capability-col-work">
+                        <col class="capability-col-tools">
+                        <col class="capability-col-evidence">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Area</th>
+                            <th scope="col">Core work</th>
+                            <th scope="col">Tools / methods</th>
+                            <th scope="col">Evidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="capability-code">02A</span><strong>AI/ML research</strong></th>
+                            <td data-label="Core work"><span>Multimodal learning, transformer evaluation, imbalance correction, and explainability.</span></td>
+                            <td data-label="Tools / methods"><span>PyTorch, CoaT, Swin Transformer, contrastive learning, Grad-CAM.</span></td>
+                            <td data-label="Evidence">
+                                <div class="capability-links"><a href="#project-gemastik">GEMASTIK research <span aria-hidden="true">&#8600;</span></a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="capability-code">02B</span><strong>AI systems and RAG</strong></th>
+                            <td data-label="Core work"><span>Private retrieval, agent routing, AST validation, and caching.</span></td>
+                            <td data-label="Tools / methods"><span>NestJS, Ollama, n8n, pgvector, Redis, Math.js.</span></td>
+                            <td data-label="Evidence">
+                                <div class="capability-links">
+                                    <a href="#project-socratix">Socratix <span aria-hidden="true">&#8600;</span></a>
+                                    <a href="#experience">Bank SulutGo <span aria-hidden="true">&#8600;</span></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="capability-code">02C</span><strong>Backend and distributed systems</strong></th>
+                            <td data-label="Core work"><span>State machines, WebSockets, PostgreSQL, and deterministic settlement.</span></td>
+                            <td data-label="Tools / methods"><span>Bun, Hono, Supabase, Redis, Solana web3.js.</span></td>
+                            <td data-label="Evidence">
+                                <div class="capability-links"><a href="#project-cora">CORA <span aria-hidden="true">&#8600;</span></a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="capability-code">02D</span><strong>Product delivery and leadership</strong></th>
+                            <td data-label="Core work"><span>Hardware/software integration, user validation, technical defense, and team delivery.</span></td>
+                            <td data-label="Tools / methods"><span>ESP32, Flutter, Supabase, Gemini, OpenRouter.</span></td>
+                            <td data-label="Evidence">
+                                <div class="capability-links">
+                                    <a href="#project-neurokit">NEUROKIT <span aria-hidden="true">&#8600;</span></a>
+                                    <a href="#experience">Field notes <span aria-hidden="true">&#8600;</span></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
