@@ -376,35 +376,37 @@
                 <details class="project-dossier reveal" id="project-socratix" data-project-id="socratix">
                     <summary>
                         <span class="dossier-id">P-02</span>
-                        <span class="dossier-title"><small>INTELLIGENT PIPELINES / APR–MAY 2026</small>Socratix multi-agent AST core</span>
-                        <span class="dossier-proof"><strong>~5 ms</strong><small>intent route</small></span>
+                        <span class="dossier-title"><small>INTELLIGENT PIPELINES / APR–MAY 2026</small>Socratix: Multi-Agent Socratic AI Math Tutor</span>
+                        <span class="dossier-proof"><strong>3 agents</strong><small>validated pipeline</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
-                            <p class="document-label">DETERMINISTIC AI BACKEND</p>
-                            <h3>Agentic teaching logic bounded by a parser that can prove the math.</h3>
-                            <p>Designed a modular NestJS agent pipeline and replaced fragile string comparisons with Abstract Syntax Tree validation for algebraic expressions.</p>
+                            <p class="document-label">MULTI-AGENT SOCRATIC MATH TUTOR</p>
+                            <h3>Three teaching agents, bounded by deterministic math validation.</h3>
+                            <p>Built a Next.js 15 and React 19 tutoring interface backed by a modular NestJS pipeline that plans each problem, validates the math, asks guiding questions, and renders concept-specific visuals without leaking the final answer.</p>
                         </div>
 
                         <div class="agent-trace" aria-label="Socratix request path">
-                            <div class="trace-header"><span>REQUEST TRACE / 3x + 5 = 14</span><span>STREAM ACTIVE</span></div>
+                            <div class="trace-header"><span>REQUEST TRACE / 3x + 5 = 14</span><span>GROQ SSE STREAM ACTIVE</span></div>
                             <ol>
-                                <li><span>01</span><strong>Router</strong><small>Intent → MATH_ATTEMPT</small></li>
-                                <li><span>02</span><strong>Validator</strong><small>Math.js AST mapping</small></li>
-                                <li><span>03</span><strong>Cache</strong><small>Redis cache-aside state</small></li>
-                                <li><span>04</span><strong>Stream</strong><small>SSE response chunks</small></li>
+                                <li><span>01 / AGENT 1</span><strong>Route &amp; Plan</strong><small>~5 ms regex fast-path + LLM fallback; extract type, variables, and known values</small></li>
+                                <li><span>02 / VALIDATOR</span><strong>Prove the Math</strong><small>Math.js AST substitution checks equations before response generation</small></li>
+                                <li><span>03 / AGENT 2</span><strong>Guide</strong><small>Build a step-by-step Socratic prompt and request the next useful visual</small></li>
+                                <li><span>04 / AGENT 3</span><strong>Visualize</strong><small>Plan balance scales, fraction bars, number lines, or coordinate scenes</small></li>
                             </ol>
                         </div>
 
                         <dl class="dossier-facts">
-                            <div><dt>Context</dt><dd>An intelligent tutoring backend coordinating request routing and pedagogical planning.</dd></div>
-                            <div><dt>My role</dt><dd>Two-tier agent architecture, algebra validation module, and cache infrastructure.</dd></div>
-                            <div><dt>Critical decision</dt><dd>Parse expressions into AST nodes instead of accepting ambiguous string matches.</dd></div>
-                            <div><dt>Result</dt><dd>Deterministic expression checking with versioned, cacheable session state.</dd></div>
+                            <div><dt>Frontend</dt><dd>Next.js 15 and React 19 real-time chat consumes Server-Sent Event token chunks and renders dynamic SVG/Canvas teaching visuals.</dd></div>
+                            <div><dt>Backend</dt><dd>NestJS orchestrates the agents, authentication guards, and persistent database state as a modular API pipeline.</dd></div>
+                            <div><dt>Inference</dt><dd><code>gpt-oss-120b</code> on the Groq API provides low-latency streamed reasoning, with Redis serving as a cache-aside layer.</dd></div>
+                            <div><dt>Persistence</dt><dd>Supabase PostgreSQL through Prisma ORM stores durable sessions while Redis holds ephemeral state.</dd></div>
+                            <div><dt>Critical decision</dt><dd>Evaluate equations through Math.js Abstract Syntax Tree substitution before response generation, preventing LLM math hallucinations.</dd></div>
+                            <div><dt>Teaching result</dt><dd>A structured pipeline that separates routing, validation, Socratic questioning, and visual scene planning so students receive guidance rather than exposed final answers.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="Socratix technology stack"><li>NestJS</li><li>Next.js 15</li><li>Vercel AI SDK</li><li>Redis</li><li>Math.js AST</li></ul>
+                            <ul class="stack-list" aria-label="Socratix technology stack"><li>Next.js 15</li><li>React 19</li><li>NestJS</li><li>Groq API</li><li>gpt-oss-120b</li><li>Math.js AST</li><li>Redis</li><li>Supabase PostgreSQL</li><li>Prisma ORM</li><li>SSE</li><li>SVG / Canvas</li></ul>
                             <div class="project-links"><a href="https://github.com/reregin/socratix" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
                         </div>
                     </div>
