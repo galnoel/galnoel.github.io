@@ -1094,6 +1094,10 @@ html[data-theme="dark"] .button-primary {
     filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.12));
 }
 
+.skills-summary {
+    margin-top: 56px;
+}
+
 .dossier-facts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

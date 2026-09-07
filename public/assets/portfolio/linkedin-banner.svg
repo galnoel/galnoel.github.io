@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396" role="img" aria-labelledby="title description">
+  <title id="title">Galnoel Peter Rindengan — AI/ML and Backend Engineer</title>
+  <desc id="description">A deep navy LinkedIn banner with a technical grid, evidence-rail details, and the words Explainable AI · Resilient Systems.</desc>
+
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#172246"/>
+      <stop offset="0.64" stop-color="#19264b"/>
+      <stop offset="1" stop-color="#172246"/>
+    </linearGradient>
+    <radialGradient id="focusGlow" cx="59%" cy="45%" r="54%">
+      <stop offset="0" stop-color="#95addd" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#95addd" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="technicalGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <pattern id="microDots" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.7" fill="#cbd2e2" fill-opacity="0.16"/>
+    </pattern>
+    <clipPath id="rightPanelClip">
+      <rect x="1220" y="24" width="330" height="300" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <!-- Foundation: the portfolio contact-section blue and its 32 px engineering grid. -->
+  <rect width="1584" height="396" fill="url(#background)"/>
+  <rect width="1584" height="396" fill="url(#focusGlow)"/>
+  <rect width="1584" height="396" fill="url(#technicalGrid)"/>
+
+  <!-- Outer dossier frame and registration marks. -->
+  <g fill="none" stroke="#cbd2e2" stroke-opacity="0.34" stroke-width="1">
+    <path d="M24 16H1560V380H24Z"/>
+    <path d="M14 24H34M24 14V34 M1550 24H1570M1560 14V34 M1550 372H1570M1560 362V382"/>
+    <circle cx="24" cy="24" r="7"/>
+    <circle cx="1560" cy="24" r="7"/>
+    <circle cx="1560" cy="372" r="7"/>
+  </g>
+
+  <!-- Avatar-safe area: deliberately quiet, with only low-contrast structural marks. -->
+  <g fill="none" stroke="#95addd" stroke-opacity="0.13">
+    <circle cx="148" cy="405" r="124"/>
+    <circle cx="148" cy="405" r="101"/>
+    <circle cx="148" cy="405" r="78"/>
+    <path d="M148 260V396M0 324H292" stroke-dasharray="4 8"/>
+  </g>
+  <g font-family="Consolas, monospace" fill="#cbd2e2">
+    <text x="52" y="56" font-size="11" font-weight="700" letter-spacing="2.2">GPR / 00</text>
+    <text x="52" y="76" font-size="8" letter-spacing="1.5" fill-opacity="0.54">IDENTITY RECORD</text>
+  </g>
+  <path d="M52 92H284" stroke="#cbd2e2" stroke-opacity="0.25"/>
+  <circle cx="284" cy="92" r="3" fill="#9a684a"/>
+
+  <!-- Evidence rail bridges the avatar-safe space and the primary copy. -->
+  <g>
+    <rect x="446" y="24" width="3" height="328" fill="#95addd" fill-opacity="0.68"/>
+    <path d="M449 70H486M449 198H486M449 326H486" stroke="#cbd2e2" stroke-opacity="0.48" stroke-dasharray="4 5"/>
+    <g fill="#f8f4eb" stroke="#95addd" stroke-width="1.5">
+      <circle cx="448" cy="70" r="6"/>
+      <circle cx="448" cy="198" r="6"/>
+      <circle cx="448" cy="326" r="6"/>
+    </g>
+    <text x="426" y="245" transform="rotate(-90 426 245)" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="2.5" fill="#cbd2e2">EVIDENCE RAIL</text>
+  </g>
+
+  <!-- Main recruiter-facing message. -->
+  <g>
+    <text x="510" y="62" font-family="Consolas, monospace" font-size="10" font-weight="700" letter-spacing="2.3" fill="#cbd2e2">GALNOEL PETER RINDENGAN / PORTFOLIO DOSSIER</text>
+    <text x="510" y="119" font-family="Consolas, monospace" font-size="18" font-weight="700" letter-spacing="2.6" fill="#f8f4eb">AI/ML + BACKEND ENGINEER</text>
+    <rect x="510" y="137" width="72" height="3" fill="#9a684a"/>
+    <rect x="590" y="137" width="546" height="1" fill="#cbd2e2" fill-opacity="0.32"/>
+
+    <text x="510" y="218" font-family="Georgia, serif" font-size="49" font-weight="700" letter-spacing="-1.2" fill="#f8f4eb">Explainable AI</text>
+    <circle cx="862" cy="202" r="4.5" fill="#9a684a"/>
+    <text x="883" y="218" font-family="Georgia, serif" font-size="49" font-weight="700" letter-spacing="-1.2" fill="#f8f4eb">Resilient Systems</text>
+
+    <text x="510" y="270" font-family="Consolas, monospace" font-size="11" letter-spacing="1.6" fill="#cbd2e2">FROM AUDITED EXPERIMENTS TO DEPENDABLE PRODUCTION SYSTEMS.</text>
+    <path d="M510 296H1164" stroke="#cbd2e2" stroke-opacity="0.28"/>
+    <circle cx="510" cy="296" r="3" fill="#9a684a"/>
+    <circle cx="1164" cy="296" r="3" fill="#95addd"/>
+  </g>
+
+  <!-- Technical motif: neural trace above, resilient service path below. -->
+  <g clip-path="url(#rightPanelClip)">
+    <rect x="1220" y="24" width="330" height="300" fill="url(#microDots)"/>
+    <path d="M1220 106H1550M1220 232H1550" stroke="#cbd2e2" stroke-opacity="0.14"/>
+
+    <g fill="none" stroke="#95addd" stroke-opacity="0.58" stroke-width="1.2">
+      <path d="M1254 82L1322 58M1254 82L1322 92M1254 116L1322 58M1254 116L1322 92M1254 150L1322 92M1254 150L1322 126"/>
+      <path d="M1322 58L1392 76M1322 58L1392 112M1322 92L1392 76M1322 92L1392 112M1322 126L1392 112M1322 126L1392 148"/>
+      <path d="M1392 76L1464 92M1392 112L1464 92M1392 112L1464 132M1392 148L1464 132"/>
+    </g>
+    <g fill="#172246" stroke="#cbd2e2" stroke-width="1.4">
+      <circle cx="1254" cy="82" r="5"/><circle cx="1254" cy="116" r="5"/><circle cx="1254" cy="150" r="5"/>
+      <circle cx="1322" cy="58" r="5"/><circle cx="1322" cy="92" r="5"/><circle cx="1322" cy="126" r="5"/>
+      <circle cx="1392" cy="76" r="5"/><circle cx="1392" cy="112" r="5"/><circle cx="1392" cy="148" r="5"/>
+      <circle cx="1464" cy="92" r="5"/><circle cx="1464" cy="132" r="5"/>
+    </g>
+    <g fill="#9a684a">
+      <circle cx="1254" cy="116" r="3"/><circle cx="1392" cy="112" r="3"/><circle cx="1464" cy="132" r="3"/>
+    </g>
+
+    <g transform="translate(1244 252)" fill="none" stroke="#cbd2e2" stroke-width="1.3">
+      <path d="M0 0C0-8 14-8 14 0V24C14 32 0 32 0 24Z"/>
+      <ellipse cx="7" cy="0" rx="7" ry="3.5"/>
+      <ellipse cx="7" cy="12" rx="7" ry="3.5" stroke-opacity="0.45"/>
+      <path d="M20 13H56M50 7L56 13L50 19"/>
+      <rect x="66" y="2" width="26" height="22" rx="2"/>
+      <path d="M98 13H134M128 7L134 13L128 19"/>
+      <path d="M144 2L157 13L144 24L131 13Z"/>
+      <path d="M163 13H199M193 7L199 13L193 19"/>
+      <rect x="209" y="2" width="26" height="22" rx="11"/>
+    </g>
+    <text x="1244" y="304" font-family="Consolas, monospace" font-size="8" font-weight="700" letter-spacing="1.6" fill="#cbd2e2" fill-opacity="0.7">MODEL TRACE / SERVICE PATH</text>
+  </g>
+
+  <!-- Terracotta calibration dots from the existing dossier artwork. -->
+  <g fill="#9a684a">
+    <circle cx="1488" cy="48" r="2"/><circle cx="1502" cy="48" r="2"/><circle cx="1516" cy="48" r="2"/>
+    <circle cx="1488" cy="62" r="2"/><circle cx="1502" cy="62" r="2"/><circle cx="1516" cy="62" r="2"/>
+    <circle cx="1488" cy="76" r="2"/><circle cx="1502" cy="76" r="2"/><circle cx="1516" cy="76" r="2"/>
+  </g>
+
+  <!-- Footer treatment mirrors the portfolio footer copy and alignment. -->
+  <path d="M446 352H1560" stroke="#ffffff" stroke-opacity="0.2"/>
+  <g font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.45" fill="#cbd2e2">
+    <text x="510" y="372">AI RESEARCH / BACKEND SYSTEMS / MANADO, INDONESIA</text>
+    <text x="1532" y="372" text-anchor="end" fill="#f8f4eb">GALNOEL.GITHUB.IO</text>
+  </g>
+</svg>

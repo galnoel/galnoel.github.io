@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Galnoel Peter Rindengan — AI &amp; Backend Engineer</title>
-    <meta name="description" content="Galnoel Peter Rindengan builds explainable AI systems, private RAG infrastructure, and resilient real-time backends.">
+    <meta name="description" content="Galnoel Peter Rindengan builds explainable AI, private RAG, real-time backends, and MLOps pipelines. Informatics Engineering graduate, GPA 3.93/4.00.">
     <meta name="author" content="Galnoel Peter Rindengan">
     <meta name="theme-color" content="#FDFBF7" data-theme-color>
     <link rel="canonical" href="https://galnoel.github.io/">
@@ -35,7 +35,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -47,6 +47,7 @@
         "image": "https://galnoel.github.io/public/assets/portfolio/foto1.jpg",
         "jobTitle": "AI and Backend Engineer",
         "email": "mailto:rindengangalnoel@gmail.com",
+        "telephone": "+6285696402370",
         "alumniOf": {
             "@type": "CollegeOrUniversity",
             "name": "Universitas Sam Ratulangi"
@@ -60,13 +61,17 @@
             "Retrieval-Augmented Generation",
             "Backend Systems",
             "Computer Vision",
-            "Distributed Systems"
+            "Distributed Systems",
+            "MLOps",
+            "LLM Fine-Tuning"
         ],
+        "knowsLanguage": ["Indonesian", "English"],
         "award": [
             "9th Place — 100xDevs Frontier Hackathon Track, Team CORA (2026)",
             "Bronze Medalist, Presentation Category — PIMNAS 38 (2025)",
             "Most Inspiring Team — GEMASTIK XVIII (2025)",
-            "National Finalist, Data Mining — GEMASTIK XVII (2024)"
+            "National Finalist, Data Mining — GEMASTIK XVII (2024)",
+            "1st Place, UNSRAT Selection for Big Data Challenge — SATRIA DATA (2024)"
         ]
     }
     </script>
@@ -119,7 +124,7 @@
             <div class="hero-copy reveal">
                 <p class="document-label">GALNOEL PETER RINDENGAN / AI/ML + BACKEND ENGINEER</p>
                 <h1>I build explainable AI and resilient backend systems.</h1>
-                <p class="hero-lede">Informatics Engineering graduate working across multimodal deep learning, private RAG infrastructure, and real-time distributed backends—from audited experiments to production constraints.</p>
+                <p class="hero-lede">Informatics Engineering graduate building software and AI systems across the full engineering lifecycle: backend architecture, database design, LLM fine-tuning, private RAG, and MLOps. Grounded in Python, TypeScript, and end-to-end system design.</p>
                 <div class="hero-actions">
                     <a class="button button-primary" href="#recognition">View competition record <span aria-hidden="true">↓</span></a>
                     <a class="button button-secondary" href="mailto:rindengangalnoel@gmail.com">Email me <span aria-hidden="true">↗</span></a>
@@ -199,7 +204,7 @@
                         </picture>
                         <figcaption><span>FIELD EVIDENCE</span><span>PIMNAS 38 / 2025</span></figcaption>
                     </figure>
-                    <p class="competition-meta">2025 / NATIONAL</p>
+                    <p class="competition-meta">NOV 2025 / NATIONAL</p>
                     <span class="competition-ordinal">Bronze</span>
                     <h3>PIMNAS 38</h3>
                     <p class="competition-description">Presentation Category · PKM-KC1</p>
@@ -213,7 +218,7 @@
                         </picture>
                         <figcaption><span>FIELD EVIDENCE</span><span>GEMASTIK XVIII / 2025</span></figcaption>
                     </figure>
-                    <p class="competition-meta">2025 / NATIONAL</p>
+                    <p class="competition-meta">OCT 2025 / NATIONAL</p>
                     <span class="competition-ordinal">Most Inspiring</span>
                     <h3>GEMASTIK XVIII</h3>
                     <p class="competition-description">Selected across 13 divisions and 220 finalist teams</p>
@@ -227,11 +232,21 @@
                         </picture>
                         <figcaption><span>FIELD EVIDENCE</span><span>GEMASTIK XVII / 2024</span></figcaption>
                     </figure>
-                    <p class="competition-meta">2024 &amp; 2025 / NATIONAL</p>
-                    <span class="competition-ordinal">Multi-year Finalist</span>
+                    <p class="competition-meta">OCT 2024 / NATIONAL</p>
+                    <span class="competition-ordinal">National Finalist</span>
                     <h3>GEMASTIK XVII</h3>
                     <p class="competition-description">Data Mining division</p>
                     <a href="#work">Archive evidence <span aria-hidden="true">↘</span></a>
+                </article>
+            </div>
+            <div class="field-notes reveal">
+                <article>
+                    <header><span>MAY 2024 / UNIVERSITY SELECTION</span><strong>SATRIA DATA 2024</strong></header>
+                    <div>
+                        <p class="field-role">Big Data Challenge</p>
+                        <h3>1st place in the UNSRAT selection.</h3>
+                        <p>Placed first in Universitas Sam Ratulangi’s selection for the SATRIA DATA 2024 Big Data Challenge.</p>
+                    </div>
                 </article>
             </div>
         </section>
@@ -264,7 +279,7 @@
                         <tr>
                             <th scope="row"><span class="capability-code">02A</span><strong>AI/ML research</strong></th>
                             <td data-label="Core work"><span>Multimodal learning, transformer evaluation, imbalance correction, and explainability.</span></td>
-                            <td data-label="Tools / methods"><span>PyTorch, CoaT, Swin Transformer, contrastive learning, Grad-CAM.</span></td>
+                            <td data-label="Tools / methods"><span>PyTorch, CoaT, DINOv2, contrastive learning, Captum, Grad-CAM.</span></td>
                             <td data-label="Evidence">
                                 <div class="capability-links">
                                     <a href="#project-gemastik">Fish freshness <span aria-hidden="true">&#8600;</span></a>
@@ -274,11 +289,12 @@
                         </tr>
                         <tr>
                             <th scope="row"><span class="capability-code">02B</span><strong>AI systems and RAG</strong></th>
-                            <td data-label="Core work"><span>Private retrieval, agent routing, AST validation, and caching.</span></td>
-                            <td data-label="Tools / methods"><span>NestJS, Ollama, n8n, pgvector, Redis, Math.js.</span></td>
+                            <td data-label="Core work"><span>LLM fine-tuning, hybrid retrieval, agent routing, AST validation, and caching.</span></td>
+                            <td data-label="Tools / methods"><span>QLoRA, GRPO, NestJS, Ollama, n8n, pgvector, Math.js.</span></td>
                             <td data-label="Evidence">
                                 <div class="capability-links">
                                     <a href="#project-socratix">Socratix <span aria-hidden="true">&#8600;</span></a>
+                                    <a href="#project-legal-ai">Legal AI <span aria-hidden="true">&#8600;</span></a>
                                     <a href="#experience">Bank SulutGo <span aria-hidden="true">&#8600;</span></a>
                                 </div>
                             </td>
@@ -286,9 +302,9 @@
                         <tr>
                             <th scope="row"><span class="capability-code">02C</span><strong>Backend and distributed systems</strong></th>
                             <td data-label="Core work"><span>State machines, WebSockets, PostgreSQL, and deterministic settlement.</span></td>
-                            <td data-label="Tools / methods"><span>Bun, Hono, Supabase, Redis, Solana web3.js.</span></td>
+                            <td data-label="Tools / methods"><span>NestJS, Socket.IO, Bun, Hono, Supabase, Redis, Solana web3.js.</span></td>
                             <td data-label="Evidence">
-                                <div class="capability-links"><a href="#project-cora">CORA <span aria-hidden="true">&#8600;</span></a></div>
+                                <div class="capability-links"><a href="#project-yudha">YUDHA <span aria-hidden="true">&#8600;</span></a><a href="#project-cora">CORA <span aria-hidden="true">&#8600;</span></a></div>
                             </td>
                         </tr>
                         <tr>
@@ -302,22 +318,143 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <th scope="row"><span class="capability-code">02E</span><strong>MLOps and observability</strong></th>
+                            <td data-label="Core work"><span>Automated model delivery, artifact versioning, serving telemetry, and alerting.</span></td>
+                            <td data-label="Tools / methods"><span>MLflow, Docker, GitHub Actions, Prometheus, Grafana.</span></td>
+                            <td data-label="Evidence"><div class="capability-links"><a href="#project-mlops">MLOps pipeline <span aria-hidden="true">&#8600;</span></a></div></td>
+                        </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="skills-summary reveal" aria-labelledby="skills-title">
+                <div class="archive-heading">
+                    <p class="section-index">02F / TECHNICAL FOUNDATION</p>
+                    <h3 id="skills-title">Languages, frameworks, and infrastructure.</h3>
+                </div>
+                <dl class="dossier-facts">
+                    <div><dt>Programming languages</dt><dd>Python, TypeScript, JavaScript.</dd></div>
+                    <div><dt>AI / ML</dt><dd>PyTorch, TensorFlow, Hugging Face, Ollama.</dd></div>
+                    <div><dt>Backend and infrastructure</dt><dd>NestJS, Flask, Docker, MLflow, Redis, Supabase (pgvector), n8n, Git, Grafana, Prometheus.</dd></div>
+                    <div><dt>Databases</dt><dd>PostgreSQL, MySQL, MongoDB, MariaDB.</dd></div>
+                    <div><dt>Application frameworks and communication</dt><dd>Next.js, React, Flutter, gRPC, Socket.IO, WebSockets.</dd></div>
+                    <div><dt>Spoken languages</dt><dd>Indonesian (Native), English (Intermediate).</dd></div>
+                </dl>
             </div>
         </section>
 
         <section class="section work-section observed-section" id="work" data-section="03">
             <header class="section-heading reveal">
                 <p class="section-index">03 / SELECTED ENGINEERING DOSSIERS</p>
-                <h2>Five projects. Each one leaves evidence.</h2>
-                <p>Open a dossier to inspect the problem, my role, architecture, engineering decisions, and verified outcome.</p>
+                <h2>Nine projects. From models to running systems.</h2>
+                <p>Open a dossier to inspect the problem, my contribution, architecture, engineering decisions, and results.</p>
             </header>
 
             <div class="dossier-list">
-                <details class="project-dossier reveal" id="project-cora" data-project-id="cora" open>
+                <details class="project-dossier reveal" id="project-yudha" data-project-id="yudha" open>
                     <summary>
                         <span class="dossier-id">P-01</span>
+                        <span class="dossier-title"><small>BACKEND ENGINEERING / APR–AUG 2026</small>YUDHA: Gamified Exam Prep Platform</span>
+                        <span class="dossier-proof"><strong>30 sec</strong><small>disconnect recovery</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">SERVER-AUTHORITATIVE CARD BATTLES</p>
+                            <h3>Competitive exam practice with consistent match state.</h3>
+                            <p>Built the backend for a gamified exam-preparation platform, connecting real-time card battles, question sessions, ratings, and season progression.</p>
+                        </div>
+                        <dl class="dossier-facts">
+                            <div><dt>My role</dt><dd>Backend developer responsible for the NestJS and Socket.IO battle engine, matchmaking, transactional match resolution, and study-session APIs.</dd></div>
+                            <div><dt>Matchmaking and recovery</dt><dd>Upstash Redis Lua scripts implement target-aware FIFO matchmaking, private room codes, and a 30-second window to recover disconnected players.</dd></div>
+                            <div><dt>Transactional game state</dt><dd>Supabase PostgreSQL RPCs resolve matches idempotently, apply combo-scaled damage and healing, and update ratings and seasons without exposing direct table writes.</dd></div>
+                            <div><dt>Study continuity</dt><dd>REST endpoints lock question sessions and produce deterministic performance analytics. A NestJS background scheduler sends streak-rescue notifications through Firebase Cloud Messaging (FCM).</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="YUDHA technology stack"><li>NestJS</li><li>Socket.IO</li><li>Upstash Redis</li><li>Lua</li><li>Supabase PostgreSQL</li><li>Firebase FCM</li></ul>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="project-dossier reveal" id="project-legal-ai" data-project-id="legal-ai">
+                    <summary>
+                        <span class="dossier-id">P-02</span>
+                        <span class="dossier-title"><small>LLM FINE-TUNING + RAG / JUL 2026</small>Reasoning-Driven Legal AI Assistant</span>
+                        <span class="dossier-proof"><strong>1,900+</strong><small>document pages</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">INDONESIAN LABOR LAW RETRIEVAL</p>
+                            <h3>Fine-tuned reasoning paired with multi-stage document retrieval.</h3>
+                            <p>Developed a legal AI assistant using Qwen 2.5 7B, domain-specific training, and advanced RAG over more than 1,900 pages of Indonesian labor law documents.</p>
+                        </div>
+                        <dl class="dossier-facts">
+                            <div><dt>Model training</dt><dd>Fine-tuned Qwen 2.5 7B with QLoRA and Group Relative Policy Optimization (GRPO), using custom multi-objective rewards to train structured reasoning for labor law compliance queries.</dd></div>
+                            <div><dt>Retrieval architecture</dt><dd>Combined HyDE (Hypothetical Document Embeddings), parent-child hierarchical chunking, and a hybrid BM25 + ChromaDB ensemble with Reciprocal Rank Fusion (RRF).</dd></div>
+                            <div><dt>Retrieval confidence</dt><dd>Applied a FlashRank cross-encoder reranker, confidence-threshold gating, and DuckDuckGo fallback to the retrieval pipeline.</dd></div>
+                            <div><dt>Delivery</dt><dd>Published merged 16-bit model artifacts on Hugging Face Hub and served the assistant through an interactive Gradio interface.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="Legal AI technology stack"><li>Qwen 2.5 7B</li><li>QLoRA</li><li>GRPO</li><li>HyDE</li><li>BM25</li><li>ChromaDB</li><li>FlashRank</li><li>Hugging Face</li><li>Gradio</li></ul>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="project-dossier reveal" id="project-mlops" data-project-id="mlops">
+                    <summary>
+                        <span class="dossier-id">P-03</span>
+                        <span class="dossier-title"><small>MODEL DELIVERY + TELEMETRY / JUN 2026</small>MLOps &amp; Model Observability Pipeline</span>
+                        <span class="dossier-proof"><strong>CI/CD</strong><small>automated delivery</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">END-TO-END MLOPS</p>
+                            <h3>Automated model delivery with real-time serving visibility.</h3>
+                            <p>Built a pipeline spanning model artifact versioning, automated testing, container publishing, inference telemetry, and operational alerts.</p>
+                        </div>
+                        <dl class="dossier-facts">
+                            <div><dt>Continuous delivery</dt><dd>Connected MLflow, Docker, and GitHub Actions to run automated unit tests, version model artifacts, and publish images to Docker Hub without manual release steps.</dd></div>
+                            <div><dt>Serving telemetry</dt><dd>Built a custom Prometheus exporter to track real-time inference throughput, request error rates, and p95 latency.</dd></div>
+                            <div><dt>Observability</dt><dd>Provisioned automated Grafana dashboards to inspect model-serving behavior and service health.</dd></div>
+                            <div><dt>Incident detection</dt><dd>Configured multi-tier alerting rules to trigger incident notifications on latency spikes and service degradation.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="MLOps technology stack"><li>MLflow</li><li>Docker</li><li>GitHub Actions</li><li>Docker Hub</li><li>Prometheus</li><li>Grafana</li></ul>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="project-dossier reveal" id="project-diffusion" data-project-id="diffusion">
+                    <summary>
+                        <span class="dossier-id">P-04</span>
+                        <span class="dossier-title"><small>GENERATIVE AI / JUN 2026</small>Generative Diffusion Image Suite</span>
+                        <span class="dossier-proof"><strong>SD 1.5</strong><small>image synthesis</small></span>
+                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label">GENERATION, INPAINTING, AND OUTPAINTING</p>
+                            <h3>A complete diffusion workflow in an interactive image workspace.</h3>
+                            <p>Implemented an end-to-end Stable Diffusion 1.5 image suite for controlled generation, masked editing, and canvas expansion.</p>
+                        </div>
+                        <dl class="dossier-facts">
+                            <div><dt>Generation controls</dt><dd>Configured deterministic seed scheduling, negative-prompt conditioning, and sampling hyperparameter tuning.</dd></div>
+                            <div><dt>Inpainting</dt><dd>Engineered custom canvas-mask workflows to regenerate selected image regions with boundary blending.</dd></div>
+                            <div><dt>Outpainting</dt><dd>Extended images beyond the original canvas using masked generation and blended boundaries.</dd></div>
+                            <div><dt>Delivery</dt><dd>Packaged the pipeline into an interactive Streamlit web application for real-time latent generation and visual post-processing.</dd></div>
+                        </dl>
+                        <div class="dossier-footer">
+                            <ul class="stack-list" aria-label="Diffusion image suite technology stack"><li>Stable Diffusion 1.5</li><li>Streamlit</li><li>Inpainting</li><li>Outpainting</li></ul>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="project-dossier reveal" id="project-cora" data-project-id="cora">
+                    <summary>
+                        <span class="dossier-id">P-05</span>
                         <span class="dossier-title"><small>REAL-TIME SYSTEMS / APR–MAY 2026</small>CORA settlement oracle</span>
                         <span class="dossier-proof"><strong>WebSocket</strong><small>state machine</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
@@ -362,9 +499,11 @@
                             <div><dt>My role</dt><dd>Backend state-machine and settlement-oracle engineering.</dd></div>
                             <div><dt>Critical decision</dt><dd>Step-lock transaction parameters so racing match events could not produce divergent payouts.</dd></div>
                             <div><dt>Result</dt><dd>A deterministic verification and payout path connected to a real-time multiplayer loop.</dd></div>
+                            <div><dt>Solana Actions</dt><dd>Implemented Actions API endpoints, automated wSOL wrapping for native SOL wagers, and a sequential deposit state machine to prevent race conditions.</dd></div>
+                            <div><dt>On-chain verification</dt><dd>Integrated MagicBlock Ephemeral to mirror real-time gameplay on-chain and provide verifiable fairness proofs.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="CORA technology stack"><li>Bun</li><li>Hono</li><li>Supabase</li><li>Solana web3.js</li><li>WebSockets</li></ul>
+                            <ul class="stack-list" aria-label="CORA technology stack"><li>Bun</li><li>Hono</li><li>Supabase</li><li>Solana web3.js</li><li>WebSockets</li><li>Solana Actions</li><li>MagicBlock Ephemeral</li></ul>
                             <div class="project-links">
                                 <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer">Live production <span aria-hidden="true">↗</span></a>
                                 <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
@@ -375,7 +514,7 @@
 
                 <details class="project-dossier reveal" id="project-socratix" data-project-id="socratix">
                     <summary>
-                        <span class="dossier-id">P-02</span>
+                        <span class="dossier-id">P-06</span>
                         <span class="dossier-title"><small>INTELLIGENT PIPELINES / APR–MAY 2026</small>Socratix: Multi-Agent Socratic AI Math Tutor</span>
                         <span class="dossier-proof"><strong>3 agents</strong><small>validated pipeline</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
@@ -400,6 +539,10 @@
                         <dl class="dossier-facts">
                             <div><dt>Frontend</dt><dd>Next.js 15 and React 19 real-time chat consumes Server-Sent Event token chunks and renders dynamic SVG/Canvas teaching visuals.</dd></div>
                             <div><dt>Backend</dt><dd>NestJS orchestrates the agents, authentication guards, and persistent database state as a modular API pipeline.</dd></div>
+                            <div><dt>My AI engineering contribution</dt><dd>Designed the two-tier Router and Planner micro-agent pipeline with Groq and NestJS, structuring input classification and context extraction for Socratic tutoring.</dd></div>
+                            <div><dt>Routing validation</dt><dd>Combined regex fast-paths with LLM fallbacks through the Vercel AI SDK, reaching approximately 5 ms routing and 100% classification accuracy on a 20-sample validation matrix.</dd></div>
+                            <div><dt>Context extraction</dt><dd>Used Zod schema validation and JSON-only prompting to capture equations, problem subtypes, and multimodal parameters while applying prompt-injection mitigations.</dd></div>
+                            <div><dt>Resilience</dt><dd>Added defensive error recovery and graceful degradation to handle edge-case queries and prevent downstream validation failures.</dd></div>
                             <div><dt>Inference</dt><dd><code>gpt-oss-120b</code> on the Groq API provides low-latency streamed reasoning, with Redis serving as a cache-aside layer.</dd></div>
                             <div><dt>Persistence</dt><dd>Supabase PostgreSQL through Prisma ORM stores durable sessions while Redis holds ephemeral state.</dd></div>
                             <div><dt>Critical decision</dt><dd>Evaluate equations through Math.js Abstract Syntax Tree substitution before response generation, preventing LLM math hallucinations.</dd></div>
@@ -414,7 +557,7 @@
 
                 <details class="project-dossier reveal" id="project-gemastik" data-project-id="fish-freshness">
                     <summary>
-                        <span class="dossier-id">P-03</span>
+                        <span class="dossier-id">P-07</span>
                         <span class="dossier-title"><small>MULTIMODAL TRANSFORMERS / JUL&ndash;AUG 2025</small>Multimodal Fish-Freshness Classifier</span>
                         <span class="dossier-proof"><strong><span data-count-to="92.7" data-decimals="1">92.7</span>%</strong><small>peak F1</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
@@ -423,7 +566,7 @@
                         <div class="dossier-intro">
                             <p class="document-label">VISION + NUMERICAL FUSION</p>
                             <h3>A dedicated multimodal model for fish-freshness classification.</h3>
-                            <p>Built the main GEMASTIK XVIII research entry by fusing spatial image features with numerical tokens through parallel cross-attention, optimized with contrastive learning.</p>
+                            <p>Built the main GEMASTIK XVIII research entry by aligning fish imagery and e-nose gas sensor streams, then fusing both modalities through contrastive learning and bidirectional parallel cross-attention.</p>
                         </div>
 
                         <div class="evidence-viewer">
@@ -437,26 +580,28 @@
                             <div><dt>Context</dt><dd>The main GEMASTIK XVIII research entry: a fish-freshness classifier built from image and numerical inputs.</dd></div>
                             <div><dt>My role</dt><dd>Parallel fusion architecture, contrastive-learning pipeline, class-imbalance handling, and attention analysis.</dd></div>
                             <div><dt>Critical decision</dt><dd>Preserve both modalities through parallel cross-attention instead of flattening image and numerical features into one representation.</dd></div>
-                            <div><dt>Result</dt><dd><strong>85.4% overall accuracy</strong> and <strong>92.7% peak F1</strong> for the critical &ldquo;Marginal&rdquo; freshness class.</dd></div>
+                            <div><dt>Data preparation</dt><dd>Aligned DaFiF images and e-nose gas sensor streams with nearest-neighbor timestamp matching, Z-score anomaly filtering, and edge-detection augmentations.</dd></div>
+                            <div><dt>Model architecture</dt><dd>Combined a ViT with a DINOv2 backbone and an MLP sensor encoder, aligned with CLIP-style contrastive loss before bidirectional parallel cross-attention fusion.</dd></div>
+                            <div><dt>Result</dt><dd>Training with Focal Tversky Loss achieved <strong>85.4% accuracy</strong>, <strong>84.3% macro F1</strong>, and <strong>92.7% peak F1</strong> for the &ldquo;Marginal&rdquo; freshness class.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="Fish-freshness research stack"><li>PyTorch</li><li>Fusion Transformers</li><li>Contrastive Learning</li><li>Grad-CAM</li><li>Multimodal Learning</li></ul>
+                            <ul class="stack-list" aria-label="Fish-freshness research stack"><li>PyTorch</li><li>DINOv2 / ViT</li><li>MLP</li><li>Fusion Transformers</li><li>Contrastive Learning</li><li>Focal Tversky Loss</li><li>Grad-CAM</li></ul>
                         </div>
                     </div>
                 </details>
 
                 <details class="project-dossier reveal" id="project-aksara" data-project-id="aksara">
                     <summary>
-                        <span class="dossier-id">P-04</span>
+                        <span class="dossier-id">P-08</span>
                         <span class="dossier-title"><small>COMPUTER VISION / OCT 2025</small>Javanese Aksara CoaT Classifier</span>
-                        <span class="dossier-proof"><strong><span data-count-to="96">96</span>%</strong><small>F1-score</small></span>
+                        <span class="dossier-proof"><strong><span data-count-to="96.7" data-decimals="1">96.7</span>%</strong><small>test macro F1</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
                             <p class="document-label">20-CLASS HANDWRITING RECOGNITION</p>
                             <h3>A separate transformer challenge for handwritten Javanese Aksara.</h3>
-                            <p>Built an independent image-classification pipeline during the five-hour GEMASTIK XVIII final challenge, comparing transformer families under severe class imbalance.</p>
+                            <p>Built an independent image-classification pipeline during the five-hour GEMASTIK XVIII final challenge. CoaT (Co-Scale Conv-Attentional Transformers) captures multi-scale stroke representations across 20 handwritten Javanese script classes.</p>
                         </div>
 
                         <div class="evidence-viewer" data-evidence-viewer>
@@ -466,7 +611,7 @@
                             </div>
                             <div class="evidence-panel research-figure" id="aksara-matrix" role="tabpanel" aria-labelledby="aksara-matrix-tab" data-project-panel="matrix">
                                 <picture><source srcset="public/assets/portfolio/aksara-matrix.webp" type="image/webp"><img src="public/assets/portfolio/aksara-matrix.png" alt="Confusion matrix for 20-class Javanese Aksara classification" width="1000" height="1000" loading="lazy"></picture>
-                                <div class="figure-caption"><span>COAT-20</span><p>Class-level evidence for the audited 96% F1-score across 20 script categories.</p></div>
+                                <div class="figure-caption"><span>COAT-20</span><p>Confusion matrix showing predictions across 20 handwritten Javanese script categories.</p></div>
                             </div>
                             <div class="evidence-panel research-figure" id="aksara-interpret" role="tabpanel" aria-labelledby="aksara-interpret-tab" data-project-panel="interpret" hidden>
                                 <picture><source srcset="public/assets/portfolio/aksara-interpret.webp" type="image/webp"><img src="public/assets/portfolio/aksara-interpret.png" alt="Model interpretation visualization for Javanese Aksara classification" width="600" height="600" loading="lazy"></picture>
@@ -478,10 +623,12 @@
                             <div><dt>Context</dt><dd>A separate five-hour, closed-sandbox final challenge at the national GEMASTIK XVIII competition.</dd></div>
                             <div><dt>My role</dt><dd>Image preprocessing, class weighting, transformer evaluation, and model interpretation.</dd></div>
                             <div><dt>Critical decision</dt><dd>Correct class imbalance and compare CoaT, Swin, and EfficientNet rather than trusting raw accuracy.</dd></div>
-                            <div><dt>Result</dt><dd><strong>96% F1-score</strong> across 20 handwritten Javanese Aksara classes.</dd></div>
+                            <div><dt>Training strategy</dt><dd>Used frozen patch-embedding feature extraction followed by progressive fine-tuning with AdamW and Kornia Focal Loss (&gamma; = 2.0, &alpha; = 0.25) to address severe class imbalance.</dd></div>
+                            <div><dt>Explainability</dt><dd>Applied Captum Integrated Gradients to generate pixel-level attribution heatmaps and inspect stroke-level attention for shortcut learning.</dd></div>
+                            <div><dt>Result</dt><dd><strong>96.7% test macro F1-score</strong> across 20 handwritten Javanese Aksara classes, evaluated through validation and final competition sets.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="Javanese Aksara classification stack"><li>PyTorch</li><li>CoaT</li><li>Swin Transformer</li><li>EfficientNet</li><li>Computer Vision</li></ul>
+                            <ul class="stack-list" aria-label="Javanese Aksara classification stack"><li>PyTorch</li><li>CoaT</li><li>Swin Transformer</li><li>EfficientNet</li><li>AdamW</li><li>Kornia Focal Loss</li><li>Captum Integrated Gradients</li></ul>
                             <p class="verified-stamp">MOST INSPIRING TEAM / GEMASTIK XVIII</p>
                         </div>
                     </div>
@@ -489,7 +636,7 @@
 
                 <details class="project-dossier reveal" id="project-neurokit" data-project-id="neurokit">
                     <summary>
-                        <span class="dossier-id">P-05</span>
+                        <span class="dossier-id">P-09</span>
                         <span class="dossier-title"><small>HARDWARE + AI / JUL–NOV 2025</small>NEUROKIT therapeutic framework</span>
                         <span class="dossier-proof"><strong>+<span data-count-to="11.35" data-decimals="2">11.35</span>%</strong><small>validated</small></span>
                         <span class="dossier-toggle" aria-hidden="true"></span>
@@ -498,7 +645,7 @@
                         <div class="dossier-intro">
                             <p class="document-label terracotta">NATIONAL PIMNAS BRONZE MEDAL</p>
                             <h3>A physical neurotherapeutic prototype, carried through human validation.</h3>
-                            <p>Integrated an ESP32 lighting and audio device, Flutter control surface, and generative affirmation workflow into a testable intervention.</p>
+                            <p>Led a multimodal neurotherapeutic toolkit integrating an ESP32 lighting and audio device, a Bluetooth-connected Flutter app, and personalized audio affirmations using OpenRouter LLM and Prosa TTS APIs.</p>
                         </div>
 
                         <div class="evidence-viewer" data-evidence-viewer>
@@ -517,18 +664,20 @@
                             </div>
                             <div class="evidence-panel research-figure" id="neurokit-validation" role="tabpanel" aria-labelledby="neurokit-validation-tab" data-project-panel="validation" hidden>
                                 <picture><img src="public/assets/portfolio/neurokit-test.jpg" alt="NEUROKIT human validation session" width="840" height="601" loading="lazy"></picture>
-                                <div class="figure-caption"><span>WMS-11.35</span><p>Wechsler Memory Scale validation recorded an 11.35% increase in student attention intervals.</p></div>
+                                <div class="figure-caption"><span>WMS-11.35</span><p>Wechsler Memory Scale functional trials recorded an 11.35% improvement in student attention span and memory retention.</p></div>
                             </div>
                         </div>
 
                         <dl class="dossier-facts">
                             <div><dt>Context</dt><dd>Funded research prototype advanced to national PIMNAS 38 presentation and defense.</dd></div>
                             <div><dt>My role</dt><dd>Product lifecycle lead across enclosure, electronics, Flutter, AI integration, testing, and defense.</dd></div>
-                            <div><dt>Critical decision</dt><dd>Keep illumination within a stable 500–600 lux envelope using ESP32 PWM and MOSFET control.</dd></div>
-                            <div><dt>Result</dt><dd>Audited 11.35% improvement in attention intervals and a national bronze medal.</dd></div>
+                            <div><dt>Lighting control</dt><dd>Used an HC-SR04 ultrasonic sensor and PWM-regulated MOSFET circuitry to maintain 500–600 lux (536 lux average) across user distances of 30–70 cm.</dd></div>
+                            <div><dt>Mobile experience</dt><dd>Built Bluetooth controls for Learn/Chill audio therapy, gamified study sessions, and personalized spoken affirmations through OpenRouter and Prosa TTS.</dd></div>
+                            <div><dt>Validation</dt><dd>Wechsler Memory Scale (WMS) functional trials measured an 11.35% improvement in student attention span and memory retention.</dd></div>
+                            <div><dt>Recognition</dt><dd>3rd place (Bronze Medal), PKM-KC presentation category at PIMNAS 38.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="NEUROKIT technology stack"><li>ESP32</li><li>Flutter</li><li>PWM + MOSFET</li><li>OpenRouter</li><li>Gemini AI</li></ul>
+                            <ul class="stack-list" aria-label="NEUROKIT technology stack"><li>ESP32</li><li>HC-SR04</li><li>Flutter</li><li>Bluetooth</li><li>PWM + MOSFET</li><li>OpenRouter</li><li>Prosa TTS</li></ul>
                             <div class="project-links"><a href="https://github.com/Idoo0/neurokit" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
                         </div>
                     </div>
@@ -542,10 +691,10 @@
                 </div>
                 <div class="archive-table" role="list">
                     <article role="listitem">
-                        <span>2024–2025</span><h4>JTEHub allocation platform</h4><p>NestJS scheduling conflict prevention, RBAC guards, and Supabase PostgreSQL.</p><a href="https://github.com/Yindraa/backend-jtehub" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                        <span>2024–2025</span><h4>JTEHub allocation platform</h4><p>Built timezone-safe NestJS scheduling checks and date-range overlap formulas to prevent double bookings in Supabase PostgreSQL. Added Passport JWT guards and role-based access control to protect admin routes.</p><a href="https://github.com/Yindraa/backend-jtehub" target="_blank" rel="noopener noreferrer">Source ↗</a>
                     </article>
                     <article role="listitem">
-                        <span>2024</span><h4>Anthropometric analytics</h4><p>Apriori and Eclat analysis producing seven ergonomic rules for public-facility planning.</p><span class="archive-status">DATA MINING</span>
+                        <span>APR–JUN 2024</span><h4>Public Facility Recommendation System</h4><p>Applied association rule mining with Apriori and Eclat to Indonesian elderly anthropometric data, producing seven ergonomic rules for public-facility size recommendations at GEMASTIK XVII.</p><span class="archive-status">DATA MINING</span>
                     </article>
                     <article role="listitem">
                         <span>Academic archive</span><h4>Warong Warem full stack</h4><p>Early relational schema, PHP interface, and structural form-validation foundations.</p><span class="archive-status">LEGACY</span>
@@ -557,27 +706,47 @@
         <section class="section observed-section" id="experience" data-section="04">
             <header class="section-heading reveal">
                 <p class="section-index">04 / FIELD NOTES</p>
-                <h2>Engineering inside real constraints.</h2>
-                <p>Professional and community work where privacy, deployment, and team coordination mattered as much as the model.</p>
+                <h2>Experience, leadership, and education.</h2>
+                <p>Professional and community work in Manado, Indonesia, supported by a foundation in Informatics Engineering.</p>
             </header>
 
             <div class="field-notes reveal">
                 <article>
-                    <header><span>NOTE 04A / 2025</span><strong>PT. Bank SulutGo</strong></header>
+                    <header><span>NOTE 04A / JUN–AUG 2025</span><strong>PT. Bank SulutGo</strong></header>
                     <div>
                         <p class="field-role">AI Engineer &amp; RAG System Intern</p>
                         <h3>Private retrieval without data leaving the bank.</h3>
-                        <p>Deployed local RAG infrastructure using Ollama, n8n, and Supabase pgvector on internal servers, treating zero leakage as an architectural requirement.</p>
-                        <dl><div><dt>Constraint</dt><dd>Local-only inference and storage</dd></div><div><dt>Validation</dt><dd>95/100 discipline · 90/100 presentation</dd></div></dl>
+                        <p>Architected and deployed an on-premise RAG assistant using Ollama, n8n, and Supabase pgvector to address internal information silos. Kept inference and vector storage on bank servers to prevent data leaving for third-party cloud services.</p>
+                        <p>Authored use case, sequence, and entity relationship diagrams (ERD), documenting how the Next.js frontend interacts with the AI backend.</p>
+                        <dl><div><dt>Constraint</dt><dd>Local-only inference and storage</dd></div><div><dt>Supervisor evaluation</dt><dd>95/100 discipline and attitude · 90/100 presentation skills</dd></div></dl>
                     </div>
                 </article>
                 <article>
-                    <header><span>NOTE 04B / 2024</span><strong>UNSRAT IT Community</strong></header>
+                    <header><span>NOTE 04B / JUL–NOV 2024</span><strong>UNSRAT IT Community</strong></header>
                     <div>
-                        <p class="field-role">Chatbot Project Lead &amp; ML Committee</p>
+                        <p class="field-role">Development Lead / TECHOFEST 2024 Chatbot Project</p>
                         <h3>Technical direction across a multidisciplinary cohort.</h3>
-                        <p>Managed a 12-person engineering team building a Gemini-powered cross-platform client with gRPC and Flask, while guiding more than 20 members through an applied machine-learning syllabus.</p>
-                        <dl><div><dt>Delivery team</dt><dd>12 multidisciplinary contributors</dd></div><div><dt>Mentoring reach</dt><dd>20+ community members</dd></div></dl>
+                        <p>Directed a 12-person multidisciplinary engineering team to build and deploy a Gemini AI chatbot for the faculty’s student organization. Deployed the model through Flask and gRPC for efficient serialization and communication between services.</p>
+                        <p>Coordinated the complete web and mobile application development, and supervised the data engineering team’s collection workflows and analysis pipelines.</p>
+                        <dl><div><dt>Delivery team</dt><dd>12 multidisciplinary contributors</dd></div><div><dt>Delivery scope</dt><dd>AI backend, web and mobile applications, data pipelines</dd></div></dl>
+                    </div>
+                </article>
+                <article>
+                    <header><span>NOTE 04C / JAN–JUL 2024</span><strong>UNSRAT IT Community</strong></header>
+                    <div>
+                        <p class="field-role">Committee of Machine Learning Division</p>
+                        <h3>Teaching machine learning through applied projects.</h3>
+                        <p>Designed a six-month curriculum spanning fundamental to advanced machine learning, and led workshops for more than 20 members. Mentored a five-person junior team through the full lifecycle of a chatbot development project.</p>
+                        <dl><div><dt>Workshop cohort</dt><dd>20+ community members</dd></div><div><dt>Project mentoring</dt><dd>5-person junior team</dd></div></dl>
+                    </div>
+                </article>
+                <article id="education">
+                    <header><span>NOTE 04D / 2022–2026</span><strong>Universitas Sam Ratulangi</strong></header>
+                    <div>
+                        <p class="field-role">Education / Manado, Indonesia</p>
+                        <h3>Bachelor of Computer Science (S.Kom) in Informatics Engineering.</h3>
+                        <p>Relevant coursework: Artificial Intelligence, Data Structures &amp; Algorithms, Database, Probability and Statistics, and Software Engineering.</p>
+                        <dl><div><dt>Cumulative GPA</dt><dd>3.93 / 4.00</dd></div><div><dt>Study period</dt><dd>2022–2026</dd></div></dl>
                     </div>
                 </article>
             </div>
@@ -591,9 +760,10 @@
                 <a class="contact-email" href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com <span aria-hidden="true">↗</span></a>
             </div>
             <div class="contact-links reveal">
+                <a href="tel:+6285696402370"><span>Phone / Indonesia</span>+62 856 9640 2370 ↗</a>
                 <a href="https://linkedin.com/in/galnoel-rindengan/" target="_blank" rel="noopener noreferrer"><span>Professional profile</span>LinkedIn ↗</a>
                 <a href="https://github.com/galnoel" target="_blank" rel="noopener noreferrer"><span>Code and experiments</span>GitHub ↗</a>
-                <a class="resume-download" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF"><span>Résumé PDF</span>Download ↓</a>
+                <a class="resume-download" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF"><span>Résumé PDF · 2 pages</span>Download ↓</a>
             </div>
         </section>
     </main>
