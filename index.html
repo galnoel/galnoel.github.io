@@ -14,15 +14,15 @@
     <meta property="og:url" content="https://galnoel.github.io/">
     <meta property="og:title" content="Galnoel Peter Rindengan — AI &amp; Backend Engineer">
     <meta property="og:description" content="Explainable AI research and resilient backend systems, presented through engineering evidence.">
-    <meta property="og:image" content="https://galnoel.github.io/public/assets/portfolio/og-landing-page.png">
+    <meta property="og:image" content="https://galnoel.github.io/public/assets/portfolio/image.png">
     <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1600">
-    <meta property="og:image:height" content="1400">
+    <meta property="og:image:width" content="1653">
+    <meta property="og:image:height" content="759">
     <meta property="og:image:alt" content="Galnoel Peter Rindengan's portfolio landing page, featuring his portrait and the headline: I build explainable AI and resilient backend systems.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Galnoel Peter Rindengan — AI &amp; Backend Engineer">
     <meta name="twitter:description" content="Explainable AI research and resilient backend systems, presented through engineering evidence.">
-    <meta name="twitter:image" content="https://galnoel.github.io/public/assets/portfolio/og-landing-page.png">
+    <meta name="twitter:image" content="https://galnoel.github.io/public/assets/portfolio/image.png">
     <meta name="twitter:image:alt" content="Galnoel Peter Rindengan's portfolio landing page, featuring his portrait and the headline: I build explainable AI and resilient backend systems.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=11">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -143,10 +143,8 @@
                     <span class="portrait-mark portrait-mark-b" aria-hidden="true">B</span>
                 </div>
                 <figcaption>
-                    <span>SUBJECT / GPR-220211060076</span>
                     <span>MANADO, INDONESIA</span>
                 </figcaption>
-                <div class="identity-note"><span>FOCUS</span> From experimental evidence to dependable systems.</div>
             </figure>
 
             <dl class="profile-pillars reveal" aria-label="Professional profile summary">
@@ -350,43 +348,58 @@
 
         <section class="section work-section observed-section" id="work" data-section="03">
             <header class="section-heading reveal">
-                <p class="section-index">03 / SELECTED ENGINEERING DOSSIERS</p>
+                <p class="section-index">03 / SELECTED PROJECTS</p>
                 <h2>Nine projects. From models to running systems.</h2>
-                <p>Open a dossier to inspect the problem, my contribution, architecture, engineering decisions, and results.</p>
+                <p>Explore the work. Open a project for the problem, my contribution, engineering decisions, and results.</p>
             </header>
 
             <div class="dossier-list">
-                <details class="project-dossier reveal" id="project-yudha" data-project-id="yudha" open>
-                    <summary>
-                        <span class="dossier-id">P-01</span>
-                        <span class="dossier-title"><small>BACKEND ENGINEERING / APR–AUG 2026</small>YUDHA: Gamified Exam Prep Platform</span>
-                        <span class="dossier-proof"><strong>30 sec</strong><small>disconnect recovery</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                <details class="project-dossier reveal" id="project-yudha" data-project-id="yudha">
+                    <summary aria-labelledby="project-yudha-title" aria-describedby="project-yudha-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/YUDHA.jpg" alt="YUDHA recruitment-preparation app with learning, battle, and interview screens" width="1920" height="1080" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-01</span><span class="project-category">BACKEND ENGINEERING / APR–AUG 2026</span></span>
+                            <span class="project-card-title" id="project-yudha-title">YUDHA: Gamified Exam Prep Platform</span>
+                            <span class="project-card-description" id="project-yudha-description">CPNS and BUMN preparation, powered by real-time battles and a reliable study backend.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
                             <p class="document-label">SERVER-AUTHORITATIVE CARD BATTLES</p>
                             <h3>Competitive exam practice with consistent match state.</h3>
-                            <p>Built the backend for a gamified exam-preparation platform, connecting real-time card battles, question sessions, ratings, and season progression.</p>
+                            <p>YUDHA (Your Ultimate Digital Hiring Arena) is a recruitment-preparation platform for Indonesian CPNS and BUMN candidates. Its product scope connects Solo learning, real-time card battles, explainable analytics, and AI mock interviews with text and voice.</p>
                         </div>
+                        <figure class="project-overview-media">
+                            <img src="public/assets/portfolio/YUDHA.jpg" alt="YUDHA recruitment-preparation app with learning, battle, and interview screens" width="1920" height="1080" loading="lazy" decoding="async">
+                        </figure>
                         <dl class="dossier-facts">
                             <div><dt>My role</dt><dd>Backend developer responsible for the NestJS and Socket.IO battle engine, matchmaking, transactional match resolution, and study-session APIs.</dd></div>
                             <div><dt>Matchmaking and recovery</dt><dd>Upstash Redis Lua scripts implement target-aware FIFO matchmaking, private room codes, and a 30-second window to recover disconnected players.</dd></div>
-                            <div><dt>Transactional game state</dt><dd>Supabase PostgreSQL RPCs resolve matches idempotently, apply combo-scaled damage and healing, and update ratings and seasons without exposing direct table writes.</dd></div>
+                            <div><dt>Transactional game state</dt><dd>Supabase PostgreSQL RPCs resolve matches idempotently, apply combo-scaled damage and healing, and update persistent rank points without exposing direct table writes. Competitive rank progression is non-seasonal.</dd></div>
                             <div><dt>Study continuity</dt><dd>REST endpoints lock question sessions and produce deterministic performance analytics. A NestJS background scheduler sends streak-rescue notifications through Firebase Cloud Messaging (FCM).</dd></div>
+                            <div><dt>Product direction</dt><dd>The PRD defines Solo learning, evidence-based recommendations, and AI interview practice. These describe the broader product; my contribution here is the backend work outlined above.</dd></div>
+                            <div><dt>Planned capabilities</dt><dd>Learning System V2 remains gated, and web-based Assessment is a future validation lane. Neither is presented here as a completed delivery.</dd></div>
                         </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="YUDHA technology stack"><li>NestJS</li><li>Socket.IO</li><li>Upstash Redis</li><li>Lua</li><li>Supabase PostgreSQL</li><li>Firebase FCM</li></ul>
+                            <div class="project-links">
+                                <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer">Landing page <span aria-hidden="true">↗</span></a>
+                                <a href="https://github.com/ahmdtrdi/yudha-app" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
+                            </div>
                         </div>
                     </div>
                 </details>
 
                 <details class="project-dossier reveal" id="project-legal-ai" data-project-id="legal-ai">
-                    <summary>
-                        <span class="dossier-id">P-02</span>
-                        <span class="dossier-title"><small>LLM FINE-TUNING + RAG / JUL 2026</small>Reasoning-Driven Legal AI Assistant</span>
-                        <span class="dossier-proof"><strong>1,900+</strong><small>document pages</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-legal-ai-title" aria-describedby="project-legal-ai-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/legal-chatbot-ui.png" alt="Legal Chatbot RAG interface showing a question, cited answer, and retrieval controls" width="1819" height="928" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-02</span><span class="project-category">LLM FINE-TUNING + RAG / JUL 2026</span></span>
+                            <span class="project-card-title" id="project-legal-ai-title">Reasoning-Driven Legal AI Assistant</span>
+                            <span class="project-card-description" id="project-legal-ai-description">Fine-tuned legal reasoning and hybrid retrieval over Indonesian labor-law documents.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -394,6 +407,9 @@
                             <h3>Fine-tuned reasoning paired with multi-stage document retrieval.</h3>
                             <p>Developed a legal AI assistant using Qwen 2.5 7B, domain-specific training, and advanced RAG over more than 1,900 pages of Indonesian labor law documents.</p>
                         </div>
+                        <figure class="project-overview-media">
+                            <img src="public/assets/portfolio/legal-chatbot-ui.png" alt="Legal Chatbot RAG interface showing a question, cited answer, and retrieval controls" width="1819" height="928" loading="lazy" decoding="async">
+                        </figure>
                         <dl class="dossier-facts">
                             <div><dt>Model training</dt><dd>Fine-tuned Qwen 2.5 7B with QLoRA and Group Relative Policy Optimization (GRPO), using custom multi-objective rewards to train structured reasoning for labor law compliance queries.</dd></div>
                             <div><dt>Retrieval architecture</dt><dd>Combined HyDE (Hypothetical Document Embeddings), parent-child hierarchical chunking, and a hybrid BM25 + ChromaDB ensemble with Reciprocal Rank Fusion (RRF).</dd></div>
@@ -407,11 +423,14 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-mlops" data-project-id="mlops">
-                    <summary>
-                        <span class="dossier-id">P-03</span>
-                        <span class="dossier-title"><small>MODEL DELIVERY + TELEMETRY / JUN 2026</small>MLOps &amp; Model Observability Pipeline</span>
-                        <span class="dossier-proof"><strong>CI/CD</strong><small>automated delivery</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-mlops-title" aria-describedby="project-mlops-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/mlops-monitoring.png" alt="Grafana model-monitoring dashboard with request, latency, and inference metrics" width="1600" height="1000" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-03</span><span class="project-category">MODEL DELIVERY + TELEMETRY / JUN 2026</span></span>
+                            <span class="project-card-title" id="project-mlops-title">MLOps &amp; Model Observability Pipeline</span>
+                            <span class="project-card-description" id="project-mlops-description">From versioned model experiments to automated delivery and live serving telemetry.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -419,6 +438,9 @@
                             <h3>Automated model delivery with real-time serving visibility.</h3>
                             <p>Built a pipeline spanning model artifact versioning, automated testing, container publishing, inference telemetry, and operational alerts.</p>
                         </div>
+                        <figure class="project-overview-media">
+                            <img src="public/assets/portfolio/mlops-monitoring.png" alt="Grafana model-monitoring dashboard with request, latency, and inference metrics" width="1600" height="1000" loading="lazy" decoding="async">
+                        </figure>
                         <dl class="dossier-facts">
                             <div><dt>Continuous delivery</dt><dd>Connected MLflow, Docker, and GitHub Actions to run automated unit tests, version model artifacts, and publish images to Docker Hub without manual release steps.</dd></div>
                             <div><dt>Serving telemetry</dt><dd>Built a custom Prometheus exporter to track real-time inference throughput, request error rates, and p95 latency.</dd></div>
@@ -432,11 +454,14 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-diffusion" data-project-id="diffusion">
-                    <summary>
-                        <span class="dossier-id">P-04</span>
-                        <span class="dossier-title"><small>GENERATIVE AI / JUN 2026</small>Generative Diffusion Image Suite</span>
-                        <span class="dossier-proof"><strong>SD 1.5</strong><small>image synthesis</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-diffusion-title" aria-describedby="project-diffusion-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/diffusion-astronaut.png" alt="Astronaut on a planetary landscape generated with Stable Diffusion" width="512" height="512" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-04</span><span class="project-category">GENERATIVE AI / JUN 2026</span></span>
+                            <span class="project-card-title" id="project-diffusion-title">Generative Diffusion Image Suite</span>
+                            <span class="project-card-description" id="project-diffusion-description">A controllable image workspace for generation, inpainting, and outpainting.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -444,6 +469,9 @@
                             <h3>A complete diffusion workflow in an interactive image workspace.</h3>
                             <p>Implemented an end-to-end Stable Diffusion 1.5 image suite for controlled generation, masked editing, and canvas expansion.</p>
                         </div>
+                        <figure class="project-overview-media">
+                            <img src="public/assets/portfolio/diffusion-astronaut.png" alt="Astronaut on a planetary landscape generated with Stable Diffusion" width="512" height="512" loading="lazy" decoding="async">
+                        </figure>
                         <dl class="dossier-facts">
                             <div><dt>Generation controls</dt><dd>Configured deterministic seed scheduling, negative-prompt conditioning, and sampling hyperparameter tuning.</dd></div>
                             <div><dt>Inpainting</dt><dd>Engineered custom canvas-mask workflows to regenerate selected image regions with boundary blending.</dd></div>
@@ -457,11 +485,14 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-cora" data-project-id="cora">
-                    <summary>
-                        <span class="dossier-id">P-05</span>
-                        <span class="dossier-title"><small>REAL-TIME SYSTEMS / APR–MAY 2026</small>CORA settlement oracle</span>
-                        <span class="dossier-proof"><strong>WebSocket</strong><small>state machine</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-cora-title" aria-describedby="project-cora-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/cora-hero.webp" alt="CORA Solana game landing interface" width="1600" height="789" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-05</span><span class="project-category">REAL-TIME SYSTEMS / APR–MAY 2026</span></span>
+                            <span class="project-card-title" id="project-cora-title">CORA settlement oracle</span>
+                            <span class="project-card-description" id="project-cora-description">Authoritative multiplayer state and an auditable settlement path for on-chain games.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -517,11 +548,19 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-socratix" data-project-id="socratix">
-                    <summary>
-                        <span class="dossier-id">P-06</span>
-                        <span class="dossier-title"><small>INTELLIGENT PIPELINES / APR–MAY 2026</small>Socratix: Multi-Agent Socratic AI Math Tutor</span>
-                        <span class="dossier-proof"><strong>3 agents</strong><small>validated pipeline</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-socratix-title" aria-describedby="project-socratix-description">
+                        <span class="project-thumbnail socratix-cover" aria-hidden="true">
+                            <span class="socratix-cover-label">SOCRATIX / REASONING PIPELINE</span>
+                            <span class="socratix-equation">3x + 5 = 14</span>
+                            <span class="socratix-pipeline"><span>Route &amp; plan</span><span>Validate</span><span>Guide</span><span>Visualize</span></span>
+                            <span class="socratix-cover-note">Three agents. One verified learning path.</span>
+                        </span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-06</span><span class="project-category">INTELLIGENT PIPELINES / APR–MAY 2026</span></span>
+                            <span class="project-card-title" id="project-socratix-title">Socratix: Multi-Agent Socratic AI Math Tutor</span>
+                            <span class="project-card-description" id="project-socratix-description">A Socratic math tutor that routes, validates, guides, and visualizes each problem.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -560,11 +599,14 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-gemastik" data-project-id="fish-freshness">
-                    <summary>
-                        <span class="dossier-id">P-07</span>
-                        <span class="dossier-title"><small>MULTIMODAL TRANSFORMERS / JUL&ndash;AUG 2025</small>Multimodal Fish-Freshness Classifier</span>
-                        <span class="dossier-proof"><strong><span data-count-to="92.7" data-decimals="1">92.7</span>%</strong><small>peak F1</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-gemastik-title" aria-describedby="project-gemastik-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/fish-attention.webp" alt="Attention maps showing regions used by the fish-freshness classifier" width="572" height="366" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-07</span><span class="project-category">MULTIMODAL TRANSFORMERS / JUL&ndash;AUG 2025</span></span>
+                            <span class="project-card-title" id="project-gemastik-title">Multimodal Fish-Freshness Classifier</span>
+                            <span class="project-card-description" id="project-gemastik-description">Multimodal fish-freshness classification with visual evidence behind model decisions.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -595,11 +637,14 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-aksara" data-project-id="aksara">
-                    <summary>
-                        <span class="dossier-id">P-08</span>
-                        <span class="dossier-title"><small>COMPUTER VISION / OCT 2025</small>Javanese Aksara CoaT Classifier</span>
-                        <span class="dossier-proof"><strong><span data-count-to="96.7" data-decimals="1">96.7</span>%</strong><small>test macro F1</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-aksara-title" aria-describedby="project-aksara-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/aksara-interpret.webp" alt="Javanese Aksara character classification and model interpretation" width="600" height="600" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-08</span><span class="project-category">COMPUTER VISION / OCT 2025</span></span>
+                            <span class="project-card-title" id="project-aksara-title">Javanese Aksara CoaT Classifier</span>
+                            <span class="project-card-description" id="project-aksara-description">Recognizing Javanese script with CoaT and inspecting how the model reaches its predictions.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -639,11 +684,14 @@
                 </details>
 
                 <details class="project-dossier reveal" id="project-neurokit" data-project-id="neurokit">
-                    <summary>
-                        <span class="dossier-id">P-09</span>
-                        <span class="dossier-title"><small>HARDWARE + AI / JUL–NOV 2025</small>NEUROKIT therapeutic framework</span>
-                        <span class="dossier-proof"><strong>+<span data-count-to="11.35" data-decimals="2">11.35</span>%</strong><small>validated</small></span>
-                        <span class="dossier-toggle" aria-hidden="true"></span>
+                    <summary aria-labelledby="project-neurokit-title" aria-describedby="project-neurokit-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/a16z-speedrun.jpg" alt="NEUROKIT adaptive-light device, mobile controls, and AI study companion" width="1920" height="1080" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="dossier-id">P-09</span><span class="project-category">HARDWARE + AI / JUL–NOV 2025</span></span>
+                            <span class="project-card-title" id="project-neurokit-title">NEUROKIT therapeutic framework</span>
+                            <span class="project-card-description" id="project-neurokit-description">Adaptive light, therapeutic audio, and an AI study companion in one connected device.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
                     </summary>
                     <div class="dossier-body">
                         <div class="dossier-intro">
@@ -690,22 +738,60 @@
 
             <section class="archive reveal" aria-labelledby="archive-title">
                 <div class="archive-heading">
-                    <p class="section-index">03B / SUPPORTING ARCHIVE</p>
-                    <h3 id="archive-title">Earlier systems and foundations.</h3>
+                    <p class="section-index">03B / SUPPORTING PROJECTS</p>
+                    <h3 id="archive-title">More systems and foundations.</h3>
                 </div>
-                <div class="archive-table" role="list">
-                    <article role="listitem">
-                        <span>2024–2025</span><h4>JTEHub allocation platform</h4><p>Built timezone-safe NestJS scheduling checks and date-range overlap formulas to prevent double bookings in Supabase PostgreSQL. Added Passport JWT guards and role-based access control to protect admin routes.</p><a href="https://github.com/Yindraa/backend-jtehub" target="_blank" rel="noopener noreferrer">Source ↗</a>
+                <div class="supporting-gallery" role="list">
+                    <article class="supporting-card" role="listitem">
+                        <div class="project-thumbnail"><img src="public/assets/portfolio/employee-attrition-dashboard.png" alt="HR dashboard showing employee attrition patterns and workforce breakdowns" width="1098" height="825" loading="lazy" decoding="async"></div>
+                        <div class="supporting-card-copy">
+                            <span class="project-category">DATA SCIENCE</span>
+                            <h4>Employee Attrition Analysis</h4>
+                            <p>Explored employee attrition patterns and retention priorities through an HR dashboard, with model evaluation documented in the project notebook.</p>
+                            <span class="archive-status">HR ANALYTICS</span>
+                        </div>
                     </article>
-                    <article role="listitem">
-                        <span>APR–JUN 2024</span><h4>Public Facility Recommendation System</h4><p>Applied association rule mining with Apriori and Eclat to Indonesian elderly anthropometric data, producing seven ergonomic rules for public-facility size recommendations at GEMASTIK XVII.</p><span class="archive-status">DATA MINING</span>
+                    <article class="supporting-card" role="listitem">
+                        <div class="project-thumbnail"><img src="public/assets/portfolio/jtehub-hero.png" alt="JTEHub facility allocation website" width="1866" height="919" loading="lazy" decoding="async"></div>
+                        <div class="supporting-card-copy">
+                            <span class="project-category">2024–2025</span>
+                            <h4>JTEHub allocation platform</h4>
+                            <p>Built timezone-safe NestJS scheduling and overlap checks to prevent double bookings in Supabase PostgreSQL, with JWT guards and role-based admin access.</p>
+                            <a class="project-card-action" href="https://github.com/Yindraa/backend-jtehub" target="_blank" rel="noopener noreferrer" aria-label="JTEHub source code">Source code <span aria-hidden="true">↗</span></a>
+                        </div>
                     </article>
-                    <article role="listitem">
-                        <span>Academic archive</span><h4>Warong Warem full stack</h4><p>Early relational schema, PHP interface, and structural form-validation foundations.</p><span class="archive-status">LEGACY</span>
+                    <article class="supporting-card" role="listitem">
+                        <div class="project-thumbnail"><img src="public/assets/portfolio/anthropometric.webp" alt="Anthropometric research figure for public-facility recommendations" width="708" height="404" loading="lazy" decoding="async"></div>
+                        <div class="supporting-card-copy">
+                            <span class="project-category">APR–JUN 2024</span>
+                            <h4>Public Facility Recommendation System</h4>
+                            <p>Applied Apriori and Eclat to Indonesian elderly anthropometric data, producing seven ergonomic rules for public-facility recommendations at GEMASTIK XVII.</p>
+                            <span class="archive-status">DATA MINING</span>
+                        </div>
+                    </article>
+                    <article class="supporting-card" role="listitem">
+                        <div class="project-thumbnail"><img src="public/assets/portfolio/warong-web.webp" alt="Warong Warem restaurant website" width="1600" height="746" loading="lazy" decoding="async"></div>
+                        <div class="supporting-card-copy">
+                            <span class="project-category">ACADEMIC ARCHIVE</span>
+                            <h4>Warong Warem full stack</h4>
+                            <p>Early full-stack work combining a relational schema, a PHP interface, and structural form validation.</p>
+                            <span class="archive-status">LEGACY</span>
+                        </div>
                     </article>
                 </div>
             </section>
         </section>
+
+        <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+            <header class="project-dialog-header">
+                <div>
+                    <p class="section-index" data-dialog-category></p>
+                    <h2 id="project-dialog-title" tabindex="-1"></h2>
+                </div>
+                <button class="project-dialog-close" type="button" data-dialog-close aria-label="Close project details">Close <span aria-hidden="true">×</span></button>
+            </header>
+            <div data-dialog-content></div>
+        </dialog>
 
         <section class="section observed-section" id="experience" data-section="04">
             <header class="section-heading reveal">
@@ -778,6 +864,6 @@
         <a href="#profile">Return to index ↑</a>
     </footer>
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>
