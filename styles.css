@@ -821,7 +821,6 @@ html[data-theme="dark"] .button-primary {
     gap: 12px;
 }
 
-.dossier-id,
 .project-category {
     font-family: var(--font-mono);
     font-size: 0.59rem;
@@ -829,11 +828,6 @@ html[data-theme="dark"] .button-primary {
     line-height: 1.6;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-}
-
-.dossier-id {
-    flex: none;
-    color: var(--terracotta);
 }
 
 .project-category {
@@ -1537,6 +1531,47 @@ html.project-dialog-open,
     margin: 5px 0 0;
     color: var(--ink);
     font-size: 0.78rem;
+}
+
+.experience-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+    margin: 28px 0 0;
+}
+
+.experience-gallery img {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-soft);
+}
+
+.experience-gallery--techofest > img:first-child {
+    grid-row: span 2;
+    min-height: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.experience-gallery--single {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 680px) {
+    .experience-gallery {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .experience-gallery--techofest > img:first-child {
+        grid-row: auto;
+        height: auto;
+    }
 }
 
 .competition-section {
