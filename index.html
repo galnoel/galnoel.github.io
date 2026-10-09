@@ -27,19 +27,18 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;1,500&amp;display=swap" rel="stylesheet">
     <script>
         (function () {
             document.documentElement.classList.add("js");
             var stored = null;
             try { stored = localStorage.getItem("portfolio-theme"); } catch (error) { stored = null; }
-            var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            var theme = stored || preferred;
+            var theme = stored === "dark" ? "dark" : "light";
             document.documentElement.dataset.theme = theme;
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=16">
+    <link rel="stylesheet" href="styles.css?v=25">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -73,9 +72,12 @@
         "award": [
             "2nd Place — PIDI DIGDAYA x HACKATHON 2026, national competition by Bank Indonesia, YUDHA (September 2026)",
             "9th Place — 100xDevs Frontier Hackathon Track, Team CORA (2026)",
+            "11th Place, Education Track — ASEAN AI Hackathon, Socratix (March 2026)",
             "3rd Place (Bronze Medal), Presentation Category — PIMNAS 38 (2025)",
             "Most Inspiring Team — GEMASTIK XVIII (2025)",
+            "1st Place, UNSRAT, Digital Education Technology Innovation Division — LIDM, Socratix (September 2025)",
             "National Finalist, Data Mining — GEMASTIK XVII (2024)",
+            "1st Place, UNSRAT, Software Development Division — GEMASTIK XVII, SEMARA (2024)",
             "1st Place, UNSRAT Selection for Big Data Challenge — SATRIA DATA (2024)"
         ]
     }
@@ -87,7 +89,6 @@
     <header class="site-header" data-site-header>
         <a class="brand" href="#profile" aria-label="Galnoel Peter Rindengan, back to profile">
             <span class="brand-index">GPR</span>
-            <span class="brand-role">AI/ML + BACKEND</span>
         </a>
 
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
@@ -98,7 +99,6 @@
 
         <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation" data-primary-nav>
             <a href="#recognition">Competition</a>
-            <a href="#capabilities">Capabilities</a>
             <a href="#work">Selected work</a>
             <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
@@ -111,24 +111,19 @@
         <span class="page-progress" aria-hidden="true"></span>
     </header>
 
-    <aside class="evidence-rail" aria-label="Portfolio section index">
-        <span class="rail-label">EVIDENCE INDEX</span>
-        <nav>
-            <a href="#profile" data-rail-link><span>00</span>Profile</a>
-            <a href="#recognition" data-rail-link><span>01</span>Competition</a>
-            <a href="#capabilities" data-rail-link><span>02</span>Capabilities</a>
-            <a href="#work" data-rail-link><span>03</span>Selected work</a>
-            <a href="#experience" data-rail-link><span>04</span>Experience</a>
-            <a href="#contact" data-rail-link><span>05</span>Contact</a>
-        </nav>
-        <div class="rail-track" aria-hidden="true"><span data-rail-progress></span></div>
-    </aside>
-
     <main id="main-content">
         <section class="hero observed-section" id="profile" data-section="00">
+            <figure class="identity-plate reveal">
+                <div class="portrait-wrap">
+                    <img src="public/assets/portfolio/foto1.jpg" alt="Portrait of Galnoel Peter Rindengan" width="288" height="288" fetchpriority="high">
+                </div>
+                <figcaption>Manado, Indonesia</figcaption>
+            </figure>
+
             <div class="hero-copy reveal">
-                <p class="document-label">GALNOEL PETER RINDENGAN / AI/ML + BACKEND ENGINEER</p>
-                <h1>I build explainable AI and resilient backend systems.</h1>
+                <p class="document-label">AI/ML + Backend Engineer</p>
+                <h1 class="hero-name"><span>Galnoel Peter</span> <em>Rindengan</em></h1>
+                <p class="hero-headline">I build explainable AI and resilient backend systems.</p>
                 <p class="hero-lede">Informatics Engineering graduate building software and AI systems across the full engineering lifecycle: backend architecture, database design, LLM fine-tuning, private RAG, and MLOps. Grounded in Python, TypeScript, and end-to-end system design.</p>
                 <div class="hero-actions">
                     <a class="button button-primary" href="#recognition">View competition record <span aria-hidden="true">↓</span></a>
@@ -136,17 +131,6 @@
                     <a class="button button-secondary" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF">Download résumé <span aria-hidden="true">↓</span></a>
                 </div>
             </div>
-
-            <figure class="identity-plate reveal">
-                <div class="portrait-wrap">
-                    <img src="public/assets/portfolio/foto1.jpg" alt="Portrait of Galnoel Peter Rindengan" width="288" height="288" fetchpriority="high">
-                    <span class="portrait-mark portrait-mark-a" aria-hidden="true">A</span>
-                    <span class="portrait-mark portrait-mark-b" aria-hidden="true">B</span>
-                </div>
-                <figcaption>
-                    <span>MANADO, INDONESIA</span>
-                </figcaption>
-            </figure>
 
             <dl class="profile-pillars reveal" aria-label="Professional profile summary">
                 <div>
@@ -223,7 +207,19 @@
                 </article>
             </div>
 
-            <div class="competition-history reveal" aria-label="National competition record">
+            <div class="competition-history reveal" aria-label="Regional and national competition record">
+                <article>
+                    <figure class="competition-photo competition-photo-document">
+                        <picture>
+                            <img src="public/assets/portfolio/asean-ai-hackathon.webp" alt="ASEAN AI Hackathon 2026 event banner" width="561" height="326" loading="lazy" decoding="async">
+                        </picture>
+                        <figcaption><span>MAR 2026 / ASEAN</span></figcaption>
+                    </figure>
+                    <span class="competition-ordinal">11th Place</span>
+                    <h3>ASEAN AI Hackathon</h3>
+                    <p class="competition-description">Education Track · Socratix</p>
+                    <a href="#project-socratix">Socratix evidence <span aria-hidden="true">↘</span></a>
+                </article>
                 <article>
                     <figure class="competition-photo competition-photo-pimnas">
                         <picture>
@@ -266,6 +262,24 @@
             </div>
             <div class="field-notes reveal">
                 <article>
+                    <header><span>SEP 2025 / UNIVERSITY</span><strong>LIDM 2025 — UNSRAT</strong></header>
+                    <div>
+                        <p class="field-role">Digital Education Technology Innovation</p>
+                        <h3>1st place at UNSRAT.</h3>
+                        <p>Placed first at Universitas Sam Ratulangi in the LIDM 2025 Digital Education Technology Innovation division with Socratix.</p>
+                        <div class="competition-links"><a href="#project-socratix">Socratix evidence <span aria-hidden="true">↘</span></a></div>
+                    </div>
+                </article>
+                <article>
+                    <header><span>2024 / UNIVERSITY SELECTION</span><strong>GEMASTIK XVII — UNSRAT</strong></header>
+                    <div>
+                        <p class="field-role">Software Development</p>
+                        <h3>1st place in the UNSRAT selection.</h3>
+                        <p>Placed first in Universitas Sam Ratulangi’s selection for the GEMASTIK XVII Software Development division with SEMARA (Senja Emas Rahayu).</p>
+                        <div class="competition-links"><a href="#project-semara">SEMARA evidence <span aria-hidden="true">↘</span></a></div>
+                    </div>
+                </article>
+                <article>
                     <header><span>MAY 2024 / UNIVERSITY SELECTION</span><strong>SATRIA DATA 2024</strong></header>
                     <div>
                         <p class="field-role">Big Data Challenge</p>
@@ -276,103 +290,10 @@
             </div>
         </section>
 
-        <section class="section observed-section" id="capabilities" data-section="02">
+        <section class="section work-section observed-section" id="work" data-section="02">
             <header class="section-heading reveal">
-                <p class="section-index">02 / CAPABILITY MATRIX</p>
-                <h2>Capabilities, tools, and proof.</h2>
-                <p>A compact map of the work I do and where to inspect the evidence.</p>
-            </header>
-
-            <div class="capability-matrix reveal">
-                <table class="capability-table">
-                    <caption class="sr-only">Capability domains, core work, tools and methods, and supporting project evidence.</caption>
-                    <colgroup>
-                        <col class="capability-col-area">
-                        <col class="capability-col-work">
-                        <col class="capability-col-tools">
-                        <col class="capability-col-evidence">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">Area</th>
-                            <th scope="col">Core work</th>
-                            <th scope="col">Tools / methods</th>
-                            <th scope="col">Evidence</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><span class="capability-code">02A</span><strong>AI/ML research</strong></th>
-                            <td data-label="Core work"><span>Multimodal learning, transformer evaluation, imbalance correction, and explainability.</span></td>
-                            <td data-label="Tools / methods"><span>PyTorch, CoaT, DINOv2, contrastive learning, Captum, Grad-CAM.</span></td>
-                            <td data-label="Evidence">
-                                <div class="capability-links">
-                                    <a href="#project-gemastik">Fish freshness <span aria-hidden="true">&#8600;</span></a>
-                                    <a href="#project-aksara">Javanese Aksara <span aria-hidden="true">&#8600;</span></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="capability-code">02B</span><strong>AI systems and RAG</strong></th>
-                            <td data-label="Core work"><span>LLM fine-tuning, hybrid retrieval, agent routing, AST validation, and caching.</span></td>
-                            <td data-label="Tools / methods"><span>QLoRA, GRPO, NestJS, Ollama, n8n, pgvector, Math.js.</span></td>
-                            <td data-label="Evidence">
-                                <div class="capability-links">
-                                    <a href="#project-socratix">Socratix <span aria-hidden="true">&#8600;</span></a>
-                                    <a href="#project-legal-ai">Legal AI <span aria-hidden="true">&#8600;</span></a>
-                                    <a href="#experience">Bank SulutGo <span aria-hidden="true">&#8600;</span></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="capability-code">02C</span><strong>Backend and distributed systems</strong></th>
-                            <td data-label="Core work"><span>State machines, WebSockets, PostgreSQL, and deterministic settlement.</span></td>
-                            <td data-label="Tools / methods"><span>NestJS, Socket.IO, Bun, Hono, Supabase, Redis, Solana web3.js.</span></td>
-                            <td data-label="Evidence">
-                                <div class="capability-links"><a href="#project-yudha">YUDHA <span aria-hidden="true">&#8600;</span></a><a href="#project-cora">CORA <span aria-hidden="true">&#8600;</span></a></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="capability-code">02D</span><strong>Product delivery and leadership</strong></th>
-                            <td data-label="Core work"><span>Hardware/software integration, user validation, technical defense, and team delivery.</span></td>
-                            <td data-label="Tools / methods"><span>ESP32, Flutter, Supabase, Gemini, OpenRouter.</span></td>
-                            <td data-label="Evidence">
-                                <div class="capability-links">
-                                    <a href="#project-neurokit">NEUROKIT <span aria-hidden="true">&#8600;</span></a>
-                                    <a href="#experience">Field notes <span aria-hidden="true">&#8600;</span></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="capability-code">02E</span><strong>MLOps and observability</strong></th>
-                            <td data-label="Core work"><span>Automated model delivery, artifact versioning, serving telemetry, and alerting.</span></td>
-                            <td data-label="Tools / methods"><span>MLflow, Docker, GitHub Actions, Prometheus, Grafana.</span></td>
-                            <td data-label="Evidence"><div class="capability-links"><a href="#project-mlops">MLOps pipeline <span aria-hidden="true">&#8600;</span></a></div></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="skills-summary reveal" aria-labelledby="skills-title">
-                <div class="archive-heading">
-                    <p class="section-index">02F / TECHNICAL FOUNDATION</p>
-                    <h3 id="skills-title">Languages, frameworks, and infrastructure.</h3>
-                </div>
-                <dl class="dossier-facts">
-                    <div><dt>Programming languages</dt><dd>Python, TypeScript, JavaScript.</dd></div>
-                    <div><dt>AI / ML</dt><dd>PyTorch, TensorFlow, Hugging Face, Ollama.</dd></div>
-                    <div><dt>Backend and infrastructure</dt><dd>NestJS, Flask, Docker, MLflow, Redis, Supabase (pgvector), n8n, Git, Grafana, Prometheus.</dd></div>
-                    <div><dt>Databases</dt><dd>PostgreSQL, MySQL, MongoDB, MariaDB.</dd></div>
-                    <div><dt>Application frameworks and communication</dt><dd>Next.js, React, Flutter, gRPC, Socket.IO, WebSockets.</dd></div>
-                    <div><dt>Spoken languages</dt><dd>Indonesian (Native), English (Intermediate).</dd></div>
-                </dl>
-            </div>
-        </section>
-
-        <section class="section work-section observed-section" id="work" data-section="03">
-            <header class="section-heading reveal">
-                <p class="section-index">03 / SELECTED PROJECTS</p>
-                <h2>Nine projects. From models to running systems.</h2>
+                <p class="section-index">02 / SELECTED PROJECTS</p>
+                <h2>Ten projects. From models to running systems.</h2>
                 <p>Explore the work. Open a project for the problem, my contribution, engineering decisions, and results.</p>
             </header>
 
@@ -573,14 +494,9 @@
 
                 <details class="project-dossier reveal" id="project-socratix" data-project-id="socratix">
                     <summary aria-labelledby="project-socratix-title" aria-describedby="project-socratix-description">
-                        <span class="project-thumbnail socratix-cover" aria-hidden="true">
-                            <span class="socratix-cover-label">SOCRATIX / REASONING PIPELINE</span>
-                            <span class="socratix-equation">3x + 5 = 14</span>
-                            <span class="socratix-pipeline"><span>Route &amp; plan</span><span>Validate</span><span>Guide</span><span>Visualize</span></span>
-                            <span class="socratix-cover-note">Three agents. One verified learning path.</span>
-                        </span>
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/socratix.webp" alt="Socratix math-learning app overview with teacher and student portals and an AI math tutor" width="1280" height="720" loading="lazy" decoding="async"></span>
                         <span class="project-card-copy">
-                            <span class="project-card-meta"><span class="project-category">INTELLIGENT PIPELINES / APR–MAY 2026</span></span>
+                            <span class="project-card-meta"><span class="project-category">INTELLIGENT PIPELINES / 2025–2026</span></span>
                             <span class="project-card-title" id="project-socratix-title">Socratix: Multi-Agent Socratic AI Math Tutor</span>
                             <span class="project-card-description" id="project-socratix-description">A Socratic math tutor that routes, validates, guides, and visualizes each problem.</span>
                             <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
@@ -592,6 +508,10 @@
                             <h3>Three teaching agents, bounded by deterministic math validation.</h3>
                             <p>Built a Next.js 15 and React 19 tutoring interface backed by a modular NestJS pipeline that plans each problem, validates the math, asks guiding questions, and renders concept-specific visuals without leaking the final answer.</p>
                         </div>
+
+                        <figure class="project-overview-media">
+                            <img src="public/assets/portfolio/socratix.webp" alt="Socratix project presentation showing its AI math tutor, classroom dashboard, and teacher and student portals" width="1280" height="720" loading="lazy" decoding="async">
+                        </figure>
 
                         <div class="agent-trace" aria-label="Socratix request path">
                             <div class="trace-header"><span>REQUEST TRACE / 3x + 5 = 14</span><span>GROQ SSE STREAM ACTIVE</span></div>
@@ -614,6 +534,7 @@
                             <div><dt>Persistence</dt><dd>Supabase PostgreSQL through Prisma ORM stores durable sessions while Redis holds ephemeral state.</dd></div>
                             <div><dt>Critical decision</dt><dd>Evaluate equations through Math.js Abstract Syntax Tree substitution before response generation, preventing LLM math hallucinations.</dd></div>
                             <div><dt>Teaching result</dt><dd>A structured pipeline that separates routing, validation, Socratic questioning, and visual scene planning so students receive guidance rather than exposed final answers.</dd></div>
+                            <div><dt>Recognition</dt><dd>11th place in the Education Track at the ASEAN AI Hackathon (March 2026); 1st place at UNSRAT in the LIDM Digital Education Technology Innovation division (September 2025).</dd></div>
                         </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="Socratix technology stack"><li>Next.js 15</li><li>React 19</li><li>NestJS</li><li>Groq API</li><li>gpt-oss-120b</li><li>Math.js AST</li><li>Redis</li><li>Supabase PostgreSQL</li><li>Prisma ORM</li><li>SSE</li><li>SVG / Canvas</li></ul>
@@ -758,11 +679,38 @@
                         </div>
                     </div>
                 </details>
+
+                <details class="project-dossier reveal" id="project-semara" data-project-id="semara">
+                    <summary aria-labelledby="project-semara-title" aria-describedby="project-semara-description">
+                        <span class="project-thumbnail"><img src="public/assets/portfolio/semara-project.png" alt="SEMARA mobile app screens for older adults, from onboarding to medication reminders and weekly reports" width="1672" height="941" loading="lazy" decoding="async"></span>
+                        <span class="project-card-copy">
+                            <span class="project-card-meta"><span class="project-category">MOBILE APPLICATION / 2024</span></span>
+                            <span class="project-card-title" id="project-semara-title">SEMARA: Senja Emas Rahayu</span>
+                            <span class="project-card-description" id="project-semara-description">A mobile app for older adults, bringing daily routines, medication reminders, and nutrition tracking together.</span>
+                            <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
+                        </span>
+                    </summary>
+                    <div class="dossier-body">
+                        <div class="dossier-intro">
+                            <p class="document-label terracotta">1ST PLACE / GEMASTIK XVII SOFTWARE DEVELOPMENT AT UNSRAT</p>
+                            <h3>Daily care and routines in one mobile experience.</h3>
+                            <p>SEMARA (Senja Emas Rahayu) is a mobile application for older adults. The project brings together medication reminders, consultation schedules, activity planning, nutrition logs, and weekly reports.</p>
+                        </div>
+                        <figure class="project-overview-media">
+                            <img src="public/assets/portfolio/semara-project.png" alt="SEMARA project overview showing onboarding, registration, medication and consultation schedules, activities and nutrition, and weekly reports" width="1672" height="941" loading="lazy" decoding="async">
+                        </figure>
+                        <dl class="dossier-facts">
+                            <div><dt>Audience</dt><dd>Older adults managing daily routines and personal care.</dd></div>
+                            <div><dt>App experience</dt><dd>Onboarding and registration lead into a dashboard with medication reminders, consultation schedules, activity planning, food logs, and weekly nutrition reports.</dd></div>
+                            <div><dt>Recognition</dt><dd>1st place at Universitas Sam Ratulangi in the GEMASTIK XVII Software Development division (2024).</dd></div>
+                        </dl>
+                    </div>
+                </details>
             </div>
 
             <section class="archive reveal" aria-labelledby="archive-title">
                 <div class="archive-heading">
-                    <p class="section-index">03B / SUPPORTING PROJECTS</p>
+                    <p class="section-index">02B / SUPPORTING PROJECTS</p>
                     <h3 id="archive-title">More systems and foundations.</h3>
                 </div>
                 <div class="supporting-gallery" role="list">
@@ -817,9 +765,9 @@
             <div data-dialog-content></div>
         </dialog>
 
-        <section class="section observed-section" id="experience" data-section="04">
+        <section class="section observed-section" id="experience" data-section="03">
             <header class="section-heading reveal">
-                <p class="section-index">04 / FIELD NOTES</p>
+                <p class="section-index">03 / FIELD NOTES</p>
                 <h2>Experience, leadership, and education.</h2>
                 <p>Professional and community work in Manado, Indonesia, supported by a foundation in Informatics Engineering.</p>
             </header>
@@ -878,9 +826,9 @@
             </div>
         </section>
 
-        <section class="contact-section observed-section" id="contact" data-section="05">
+        <section class="contact-section observed-section" id="contact" data-section="04">
             <div class="contact-copy reveal">
-                <p class="section-index">05 / OPEN CHANNEL</p>
+                <p class="section-index">04 / OPEN CHANNEL</p>
                 <h2>Looking for an AI/backend engineer who can carry work from experiment to production?</h2>
                 <p>Let’s talk about the system you are trying to make reliable.</p>
                 <a class="contact-email" href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com <span aria-hidden="true">↗</span></a>
@@ -897,9 +845,9 @@
     <footer class="site-footer">
         <p>© 2026 Galnoel Peter Rindengan</p>
         <p>AI research / backend systems / Manado, Indonesia</p>
-        <a href="#profile">Return to index ↑</a>
+        <a href="#profile">Back to top ↑</a>
     </footer>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=8"></script>
 </body>
 </html>

@@ -5,11 +5,9 @@ const themeLabel = document.querySelector("[data-theme-label]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const primaryNav = document.querySelector("[data-primary-nav]");
 const navLinks = Array.from(document.querySelectorAll(".primary-nav a"));
-const railLinks = Array.from(document.querySelectorAll("[data-rail-link]"));
 const sections = Array.from(document.querySelectorAll(".observed-section[id]"));
 const projectDossiers = Array.from(document.querySelectorAll("details[data-project-id]"));
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const themePreference = window.matchMedia("(prefers-color-scheme: dark)");
 const mobileNavigation = window.matchMedia("(max-width: 980px)");
 const motionStyles = getComputedStyle(root);
 const motion = {
@@ -96,14 +94,6 @@ function setupTheme() {
         setTheme(currentTheme() === "dark" ? "light" : "dark");
     });
 
-    const handlePreferenceChange = (event) => {
-        let storedTheme = null;
-        try { storedTheme = localStorage.getItem("portfolio-theme"); } catch { storedTheme = null; }
-        if (storedTheme) return;
-        setTheme(event.matches ? "dark" : "light", false);
-    };
-
-    onMediaChange(themePreference, handlePreferenceChange);
 }
 
 function setMenuState(open) {
@@ -169,7 +159,6 @@ function updatePageProgress() {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const progress = scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0;
     root.style.setProperty("--page-progress", `${progress}%`);
-    root.style.setProperty("--rail-progress", `${progress}%`);
     scrollTicking = false;
 }
 
@@ -181,9 +170,6 @@ function requestProgressUpdate() {
 
 function setActiveSection(sectionId) {
     navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${sectionId}`);
-    });
-    railLinks.forEach((link) => {
         const active = link.getAttribute("href") === `#${sectionId}`;
         link.classList.toggle("active", active);
         if (active) link.setAttribute("aria-current", "location");
