@@ -1345,7 +1345,6 @@ html.project-dialog-open,
     gap: 8px;
     margin: 0;
     padding: 18px 0;
-    border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 0.875rem;
 }
