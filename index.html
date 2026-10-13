@@ -38,7 +38,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=25">
+    <link rel="stylesheet" href="styles.css?v=26">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -101,6 +101,7 @@
             <a href="#recognition">Competition</a>
             <a href="#work">Selected work</a>
             <a href="#experience">Experience</a>
+            <a href="#certificates">Certificates</a>
             <a href="#contact">Contact</a>
         </nav>
 
@@ -218,7 +219,10 @@
                     <span class="competition-ordinal">11th Place</span>
                     <h3>ASEAN AI Hackathon</h3>
                     <p class="competition-description">Education Track · Socratix</p>
-                    <a href="#project-socratix">Socratix evidence <span aria-hidden="true">↘</span></a>
+                    <div class="competition-links">
+                        <a href="#project-socratix">Socratix evidence <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/asean-ai-hackathon-2026-participation.pdf" target="_blank" rel="noopener noreferrer" aria-label="ASEAN AI Hackathon participation certificate (PDF, opens in a new tab)">Participation certificate <span aria-hidden="true">↗</span></a>
+                    </div>
                 </article>
                 <article>
                     <figure class="competition-photo competition-photo-pimnas">
@@ -231,7 +235,10 @@
                     <span class="competition-ordinal">3rd Place</span>
                     <h3>PIMNAS 38</h3>
                     <p class="competition-description">Bronze Medal · Presentation Category · PKM-KC1</p>
-                    <a href="#project-neurokit">NEUROKIT evidence <span aria-hidden="true">↘</span></a>
+                    <div class="competition-links">
+                        <a href="#project-neurokit">NEUROKIT evidence <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/pimnas-38-bronze-presentation.pdf" target="_blank" rel="noopener noreferrer" aria-label="PIMNAS 38 bronze award certificate (PDF, opens in a new tab)">Bronze award certificate <span aria-hidden="true">↗</span></a>
+                    </div>
                 </article>
                 <article>
                     <figure class="competition-photo competition-photo-gemastik-2025">
@@ -244,7 +251,15 @@
                     <span class="competition-ordinal">Most Inspiring</span>
                     <h3>GEMASTIK XVIII</h3>
                     <p class="competition-description">Selected across 13 divisions and 220 finalist teams</p>
-                    <a href="#project-gemastik">Fish-freshness research evidence <span aria-hidden="true">↘</span></a>
+                    <div class="competition-links">
+                        <a href="#project-gemastik">Fish-freshness research evidence <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/gemastik-xviii-2025-winner.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII winner certificate (PDF, opens in a new tab)">Winner certificate <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <details class="certificate-extras">
+                        <summary>More certificates</summary>
+                        <a href="public/assets/certificates/gemastik-xviii-2025-finalist.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII finalist certificate (image, opens in a new tab)">Finalist <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/gemastik-xviii-2025-participant.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII participation certificate (image, opens in a new tab)">Participation <span aria-hidden="true">↗</span></a>
+                    </details>
                 </article>
                 <article>
                     <figure class="competition-photo competition-photo-gemastik-2024">
@@ -252,12 +267,15 @@
                             <source srcset="public/assets/portfolio/gemastik-2024.webp" type="image/webp">
                             <img src="public/assets/portfolio/gemastik-2024.jpg" alt="GEMASTIK XVII Data Mining finalist team at the 2024 national event" width="4032" height="3024" loading="lazy" decoding="async">
                         </picture>
-                        <figcaption><span>OCT 2024 / NATIONAL</span></figcaption>
+                        <figcaption><span>SEP 2024 / NATIONAL</span></figcaption>
                     </figure>
                     <span class="competition-ordinal">National Finalist</span>
                     <h3>GEMASTIK XVII</h3>
                     <p class="competition-description">Data Mining division</p>
-                    <a href="#work">Archive evidence <span aria-hidden="true">↘</span></a>
+                    <div class="competition-links">
+                        <a href="#work">Archive evidence <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/gemastik-xvii-2024-finalist.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVII Data Mining finalist certificate (PDF, opens in a new tab)">Finalist certificate <span aria-hidden="true">↗</span></a>
+                    </div>
                 </article>
             </div>
             <div class="field-notes reveal">
@@ -826,9 +844,90 @@
             </div>
         </section>
 
-        <section class="contact-section observed-section" id="contact" data-section="04">
+        <section class="section certificates-section observed-section" id="certificates" data-section="04" aria-labelledby="certificates-title">
+            <header class="section-heading reveal">
+                <p class="section-index">04 / CONTINUOUS LEARNING</p>
+                <h2 id="certificates-title">Certificates &amp; Training</h2>
+                <p>Structured learning in applied AI, machine learning systems, data science, and product development.</p>
+            </header>
+
+            <div class="certificate-grid">
+                <article class="certificate-card reveal" aria-labelledby="cert-data-science">
+                    <div class="certificate-meta"><span>Dicoding · 110 hours</span><time datetime="2026-09-02">02 Sep 2026</time></div>
+                    <h3 id="cert-data-science" lang="id">Belajar Penerapan Data Science</h3>
+                    <p>Applied data science: business dashboards, customer segmentation, credit scoring, PySpark, and cloud workflows.</p>
+                    <div class="certificate-links">
+                        <a href="https://www.dicoding.com/certificates/6RPNODL25X2M" target="_blank" rel="noopener noreferrer" aria-label="Verify Belajar Penerapan Data Science on Dicoding (opens in a new tab)">Verify credential <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/dicoding-applied-data-science.pdf" target="_blank" rel="noopener noreferrer" aria-label="Belajar Penerapan Data Science certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-llm">
+                    <div class="certificate-meta"><span>Dicoding · 90 hours</span><time datetime="2026-07-23">23 Jul 2026</time></div>
+                    <h3 id="cert-llm" lang="id">Pengembangan Generative AI berbasis LLM</h3>
+                    <p>LLM engineering with RAG, fine-tuning, AI agents, and deployment. Final project: a RAG system using a fine-tuned LLM.</p>
+                    <div class="certificate-links">
+                        <a href="https://www.dicoding.com/certificates/L4PQ9NW44PO1" target="_blank" rel="noopener noreferrer" aria-label="Verify Pengembangan Generative AI berbasis LLM on Dicoding (opens in a new tab)">Verify credential <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/dicoding-generative-ai-llm.pdf" target="_blank" rel="noopener noreferrer" aria-label="Pengembangan Generative AI berbasis LLM certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-mlops">
+                    <div class="certificate-meta"><span>Dicoding · 90 hours</span><time datetime="2026-07-26">26 Jul 2026</time></div>
+                    <h3 id="cert-mlops" lang="id">Membangun Sistem Machine Learning</h3>
+                    <p>End-to-end MLOps: experiment tracking, automated retraining, model serving, and monitoring with MLflow, GitHub, and Docker.</p>
+                    <div class="certificate-links">
+                        <a href="https://www.dicoding.com/certificates/2VX30GQO4XYQ" target="_blank" rel="noopener noreferrer" aria-label="Verify Membangun Sistem Machine Learning on Dicoding (opens in a new tab)">Verify credential <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/dicoding-machine-learning-systems.pdf" target="_blank" rel="noopener noreferrer" aria-label="Membangun Sistem Machine Learning certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-generative-ai">
+                    <div class="certificate-meta"><span>Dicoding · 55 hours</span><time datetime="2026-07-31">31 Jul 2026</time></div>
+                    <h3 id="cert-generative-ai" lang="id">Belajar Fundamental Generative AI</h3>
+                    <p>Text, image, and audio generation with open-weight models, Stable Diffusion, and Bark.</p>
+                    <div class="certificate-links">
+                        <a href="https://www.dicoding.com/certificates/L4PQW1WN4PO1" target="_blank" rel="noopener noreferrer" aria-label="Verify Belajar Fundamental Generative AI on Dicoding (opens in a new tab)">Verify credential <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/dicoding-generative-ai-fundamentals.pdf" target="_blank" rel="noopener noreferrer" aria-label="Belajar Fundamental Generative AI certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-digdaya-practitioner">
+                    <div class="certificate-meta"><span>Bank Indonesia / LPPI · 20 sessions</span><time datetime="2026-08-11">11 Aug 2026</time></div>
+                    <h3 id="cert-digdaya-practitioner">DIGDAYA — Practitioner Training</h3>
+                    <p>RAG implementation for AI products, startup development, productivity, and financial product design.</p>
+                    <div class="certificate-links">
+                        <a href="public/assets/certificates/digdaya-2026-practitioner.pdf" target="_blank" rel="noopener noreferrer" aria-label="DIGDAYA Practitioner Training certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/digdaya-2026-practitioner-curriculum.pdf" target="_blank" rel="noopener noreferrer" aria-label="DIGDAYA Practitioner Training curriculum (PDF, opens in a new tab)">Curriculum <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-digdaya-essential">
+                    <div class="certificate-meta"><span>Bank Indonesia / LPPI · 16 sessions</span><time datetime="2026-06-23">23 Jun 2026</time></div>
+                    <h3 id="cert-digdaya-essential">DIGDAYA — Essential Training</h3>
+                    <p>Design thinking, project management, the startup journey, and practical AI implementation.</p>
+                    <div class="certificate-links">
+                        <a href="public/assets/certificates/digdaya-2026-essential.pdf" target="_blank" rel="noopener noreferrer" aria-label="DIGDAYA Essential Training certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/digdaya-2026-essential-curriculum.pdf" target="_blank" rel="noopener noreferrer" aria-label="DIGDAYA Essential Training curriculum (PDF, opens in a new tab)">Curriculum <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-sololearn">
+                    <div class="certificate-meta"><span>Sololearn</span><time datetime="2025-05-15">15 May 2025</time></div>
+                    <h3 id="cert-sololearn">Project Planning with AI</h3>
+                    <p>Course completion demonstrating theoretical and practical understanding of AI-assisted project planning.</p>
+                    <div class="certificate-links">
+                        <a href="public/assets/certificates/sololearn-project-planning-with-ai.pdf" target="_blank" rel="noopener noreferrer" aria-label="Sololearn Project Planning with AI certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="certificate-card reveal" aria-labelledby="cert-azure-preparation">
+                    <div class="certificate-meta"><span>elevAIte / Microsoft</span><time datetime="2025-04-29">29 Apr 2025</time></div>
+                    <h3 id="cert-azure-preparation">Preparation Course for Azure AI Fundamentals (AI-900)</h3>
+                    <p>Completed the elevAIte preparation course covering Azure AI fundamentals.</p>
+                    <div class="certificate-links">
+                        <a href="public/assets/certificates/elevaite-azure-ai-900-preparation.pdf" target="_blank" rel="noopener noreferrer" aria-label="elevAIte Azure AI Fundamentals preparation course certificate (PDF, opens in a new tab)">Certificate PDF <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-section observed-section" id="contact" data-section="05">
             <div class="contact-copy reveal">
-                <p class="section-index">04 / OPEN CHANNEL</p>
+                <p class="section-index">05 / OPEN CHANNEL</p>
                 <h2>Looking for an AI/backend engineer who can carry work from experiment to production?</h2>
                 <p>Let’s talk about the system you are trying to make reliable.</p>
                 <a class="contact-email" href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com <span aria-hidden="true">↗</span></a>
