@@ -6,7 +6,7 @@
     --surface-raised: #ffffff;
     --ink: #111111;
     --muted: #69675f;
-    --dim: #8c897f;
+    --dim: #716e65;
     --border: #dedbd1;
     --border-strong: #bcb7aa;
     --blue: #1e3a8a;
@@ -50,7 +50,7 @@ html[data-theme="dark"] {
     --surface-raised: #24251f;
     --ink: #f1ede4;
     --muted: #aaa69b;
-    --dim: #7c7a72;
+    --dim: #a19e93;
     --border: #34352f;
     --border-strong: #56574e;
     --blue: #95addd;
@@ -1100,6 +1100,12 @@ html.project-dialog-open,
 
 .archive-heading h3 {
     margin: 0;
+}
+
+.supporting-heading {
+    margin: 64px 0 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
 }
 
 .supporting-card {
