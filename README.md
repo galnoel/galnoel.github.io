@@ -21,6 +21,7 @@ This is a static site with no build step. Open `index.html` in a browser or serv
 - Use **View project**, **Source code**, **Live demo**, and **Certificate PDF** consistently. Use **Landing page** when the link leads to a product introduction.
 - Show project dates as `MON–MON YYYY` and order certificates by completion date, newest first.
 - Preserve project IDs so shared links continue to open the right project.
+- The introduction uses `public/assets/portfolio/me.png` as the full-width identity banner. Edit its about copy, expertise, and education cards in `#profile`; keep education details consistent with `#education`.
 
 ## Before publishing
 

@@ -159,6 +159,7 @@ function updatePageProgress() {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const progress = scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0;
     root.style.setProperty("--page-progress", `${progress}%`);
+    siteHeader?.classList.toggle("is-condensed", window.scrollY > 48);
     scrollTicking = false;
 }
 
@@ -197,6 +198,12 @@ function setupSectionObserver() {
 }
 
 function setupReveals() {
+    // Reveal the individual entries in long groups. A whole group can be taller
+    // than the viewport and never reach the observer's visibility threshold.
+    document.querySelectorAll(".competition-history.reveal, .field-notes.reveal, .archive.reveal").forEach((group) => {
+        group.classList.remove("reveal");
+        Array.from(group.children).forEach((item) => item.classList.add("reveal"));
+    });
     const reveals = Array.from(document.querySelectorAll(".reveal"));
     if (reduceMotion.matches || !("IntersectionObserver" in window)) {
         reveals.forEach((item) => item.classList.add("is-visible"));
@@ -619,10 +626,149 @@ function setupCounters() {
     counters.forEach((counter) => observer.observe(counter));
 }
 
+function splitHeroName() {
+    const heading = document.querySelector(".hero-name");
+    if (!heading || heading.dataset.motionSplit === "true") return;
+
+    const fullName = Array.from(heading.children)
+        .map((line) => line.textContent.trim())
+        .join(" ");
+    let characterIndex = 0;
+
+    Array.from(heading.children).forEach((line) => {
+        const text = line.textContent;
+        line.textContent = "";
+        line.classList.add("hero-line");
+        line.setAttribute("aria-hidden", "true");
+
+        Array.from(text).forEach((character) => {
+            const glyph = document.createElement("span");
+            glyph.className = "hero-char";
+            glyph.style.setProperty("--char-index", characterIndex);
+            glyph.textContent = character === " " ? "\u00a0" : character;
+            line.append(glyph);
+            characterIndex += 1;
+        });
+    });
+
+    heading.dataset.motionSplit = "true";
+    heading.setAttribute("aria-label", fullName);
+}
+
+function splitSectionHeadings() {
+    document.querySelectorAll(".section-heading h2").forEach((heading) => {
+        if (heading.dataset.motionSplit === "true") return;
+        const label = heading.textContent.trim();
+        const words = label.split(/\s+/);
+        heading.textContent = "";
+        heading.setAttribute("aria-label", label);
+
+        words.forEach((word, index) => {
+            const mask = document.createElement("span");
+            const inner = document.createElement("span");
+            mask.className = "kinetic-word";
+            mask.setAttribute("aria-hidden", "true");
+            mask.style.setProperty("--word-index", index);
+            inner.textContent = word;
+            mask.append(inner);
+            heading.append(mask);
+            if (index < words.length - 1) heading.append(" ");
+        });
+
+        heading.dataset.motionSplit = "true";
+    });
+}
+
+function setupRevealRhythm() {
+    const groups = document.querySelectorAll(
+        ".competition-highlights, .dossier-list, .competition-history, .certificate-grid, .supporting-gallery"
+    );
+
+    groups.forEach((group) => {
+        Array.from(group.children).forEach((item, index) => {
+            if (item.classList.contains("reveal")) {
+                item.style.setProperty("--reveal-delay", `${Math.min(index * 85, 255)}ms`);
+            }
+        });
+    });
+}
+
+function setupParallax() {
+    const images = Array.from(document.querySelectorAll(
+        ".portrait-wrap img, .project-thumbnail img, .competition-feature-photo img, .competition-photo img, .experience-gallery img"
+    ));
+    if (!images.length) return;
+
+    images.forEach((image) => image.classList.add("motion-parallax"));
+
+    let ticking = false;
+    function update() {
+        ticking = false;
+        if (reduceMotion.matches) {
+            images.forEach((image) => image.style.removeProperty("--parallax-y"));
+            return;
+        }
+
+        const viewportCenter = window.innerHeight / 2;
+        images.forEach((image) => {
+            const bounds = image.parentElement.getBoundingClientRect();
+            if (bounds.bottom < -120 || bounds.top > window.innerHeight + 120) return;
+            const elementCenter = bounds.top + bounds.height / 2;
+            const offset = Math.max(-18, Math.min(18, (viewportCenter - elementCenter) * 0.035));
+            image.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
+        });
+    }
+
+    function requestUpdate() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    onMediaChange(reduceMotion, requestUpdate);
+    requestUpdate();
+}
+
+function setupProjectTilt() {
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!finePointer.matches || reduceMotion.matches) return;
+
+    document.querySelectorAll(".project-dossier > summary").forEach((card) => {
+        card.addEventListener("pointermove", (event) => {
+            const bounds = card.getBoundingClientRect();
+            const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+            const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+            card.style.setProperty("--tilt-x", `${(-y * 2.4).toFixed(2)}deg`);
+            card.style.setProperty("--tilt-y", `${(x * 2.4).toFixed(2)}deg`);
+        });
+
+        card.addEventListener("pointerleave", () => {
+            card.style.setProperty("--tilt-x", "0deg");
+            card.style.setProperty("--tilt-y", "0deg");
+        });
+    });
+}
+
+function setupMotionLanguage() {
+    root.classList.add("motion-language");
+    splitHeroName();
+    splitSectionHeadings();
+    setupRevealRhythm();
+    setupParallax();
+    setupProjectTilt();
+
+    window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => root.classList.add("motion-loaded"));
+    });
+}
+
 window.addEventListener("scroll", requestProgressUpdate, { passive: true });
 window.addEventListener("resize", requestProgressUpdate);
 
 document.addEventListener("DOMContentLoaded", () => {
+    setupMotionLanguage();
     setupTheme();
     setupNavigation();
     setupSectionObserver();

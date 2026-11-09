@@ -38,7 +38,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=27">
+    <link rel="stylesheet" href="styles.css?v=29">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -113,44 +113,42 @@
     </header>
 
     <main id="main-content">
-        <section class="hero observed-section" id="profile" data-section="00">
-            <figure class="identity-plate reveal">
-                <div class="portrait-wrap">
-                    <img src="public/assets/portfolio/foto1.jpg" alt="Portrait of Galnoel Peter Rindengan" width="288" height="288" fetchpriority="high">
-                </div>
-                <figcaption>Manado, Indonesia</figcaption>
+        <section class="about-section observed-section" id="profile" data-section="00" aria-labelledby="about-title">
+            <figure class="about-banner reveal">
+                <img src="public/assets/portfolio/me.png" alt="Galnoel Rindengan, with a collage of his engineering projects and competition experiences" width="2751" height="782" fetchpriority="high">
             </figure>
 
-            <div class="hero-copy reveal">
+            <div class="about-copy reveal">
                 <p class="document-label">AI &amp; Backend Engineer</p>
-                <h1 class="hero-name"><span>Galnoel Peter</span> <em>Rindengan</em></h1>
-                <p class="hero-headline">I build explainable AI and resilient backend systems.</p>
-                <p class="hero-lede">I’m an Informatics Engineering graduate based in Manado, Indonesia. I use Python and TypeScript to build AI applications and the systems behind them—from document retrieval and model training to real-time APIs and deployment.</p>
-                <div class="hero-actions">
+                <h1 id="about-title">I build explainable AI and resilient backend systems.</h1>
+                <p>I’m an Informatics Engineering graduate based in Manado, Indonesia. I use Python and TypeScript to build AI applications and the systems behind them—from document retrieval and model training to real-time APIs and deployment.</p>
+                <p class="about-location"><span aria-hidden="true">↗</span> Based in Manado, Indonesia</p>
+                <div class="about-actions">
                     <a class="button button-primary" href="#recognition">View competition record <span aria-hidden="true">↓</span></a>
                     <a class="button button-secondary" href="mailto:rindengangalnoel@gmail.com">Email me <span aria-hidden="true">↗</span></a>
                     <a class="button button-secondary" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF">Download résumé <span aria-hidden="true">↓</span></a>
                 </div>
             </div>
 
-            <dl class="profile-pillars reveal" aria-label="Professional profile summary">
-                <div>
-                    <dt>AI/ML research</dt>
-                    <dd>Multimodal and explainable models</dd>
-                </div>
-                <div>
-                    <dt>Backend engineering</dt>
-                    <dd>Real-time and deterministic systems</dd>
-                </div>
-                <div>
-                    <dt>Model delivery</dt>
-                    <dd>Training, deployment, and monitoring</dd>
-                </div>
-                <div>
-                    <dt>Technical leadership</dt>
-                    <dd>Led a team of 12 and taught 20+ members</dd>
-                </div>
-            </dl>
+            <div class="about-expertise reveal" aria-labelledby="expertise-title">
+                <h2 class="about-column-title" id="expertise-title">Expertise</h2>
+                <dl class="about-facts expertise-list">
+                    <div><dt><span aria-hidden="true">01</span> AI/ML research</dt><dd>Multimodal and explainable models</dd></div>
+                    <div><dt><span aria-hidden="true">02</span> Backend engineering</dt><dd>Real-time and deterministic systems</dd></div>
+                    <div><dt><span aria-hidden="true">03</span> Model delivery</dt><dd>Training, deployment, and monitoring</dd></div>
+                    <div><dt><span aria-hidden="true">04</span> Technical leadership</dt><dd>Led a team of 12 and taught 20+ members</dd></div>
+                </dl>
+            </div>
+
+            <div class="about-education reveal" aria-labelledby="education-title">
+                <h2 class="about-column-title" id="education-title">Education</h2>
+                <dl class="about-facts education-list">
+                    <div><dt>University</dt><dd>Universitas Sam Ratulangi</dd></div>
+                    <div><dt>Major</dt><dd>Informatics Engineering <span>Bachelor of Computer Science (S.Kom)</span></dd></div>
+                    <div class="education-gpa"><dt>Cumulative GPA</dt><dd>3.93 <span>/ 4.00</span></dd></div>
+                </dl>
+                <a class="about-education-link" href="#education">Study period &amp; coursework <span aria-hidden="true">↗</span></a>
+            </div>
         </section>
 
         <section class="section competition-section observed-section" id="recognition" data-section="01">
@@ -947,6 +945,6 @@
         <a href="#profile">Back to top ↑</a>
     </footer>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=10"></script>
 </body>
 </html>
