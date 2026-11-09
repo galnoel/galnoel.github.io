@@ -38,7 +38,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=29">
+    <link rel="stylesheet" href="styles.css?v=30">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -98,8 +98,9 @@
         </button>
 
         <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation" data-primary-nav>
-            <a href="#recognition">Competitions</a>
-            <a href="#work">Projects</a>
+            <a href="#profile">About</a>
+            <a href="#work">Work</a>
+            <a href="#recognition">Recognition</a>
             <a href="#experience">Experience</a>
             <a href="#certificates">Certificates</a>
             <a href="#contact">Contact</a>
@@ -124,7 +125,7 @@
                 <p>I’m an Informatics Engineering graduate based in Manado, Indonesia. I use Python and TypeScript to build AI applications and the systems behind them—from document retrieval and model training to real-time APIs and deployment.</p>
                 <p class="about-location"><span aria-hidden="true">↗</span> Based in Manado, Indonesia</p>
                 <div class="about-actions">
-                    <a class="button button-primary" href="#recognition">View competition record <span aria-hidden="true">↓</span></a>
+                    <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
                     <a class="button button-secondary" href="mailto:rindengangalnoel@gmail.com">Email me <span aria-hidden="true">↗</span></a>
                     <a class="button button-secondary" href="public/assets/portfolio/Galnoel-Peter-Rindengan-Resume.pdf" download="Galnoel-Peter-Rindengan-Resume.pdf" aria-label="Download Galnoel Peter Rindengan résumé as a PDF">Download résumé <span aria-hidden="true">↓</span></a>
                 </div>
@@ -151,176 +152,23 @@
             </div>
         </section>
 
-        <section class="section competition-section observed-section" id="recognition" data-section="01">
+        <section class="section work-section observed-section" id="work" data-section="01">
             <header class="section-heading reveal">
-                <p class="section-index">01 / COMPETITIONS</p>
-                <h2>Competitions</h2>
-                <p>Team achievements in AI research and software engineering, from university selections to national and international competitions.</p>
+                <p class="section-index">01 / SELECTED WORK</p>
+                <h2>Selected work</h2>
+                <p>From real-time game backends to AI that works with evidence. A closer look at what I built, the decisions behind it, and the results.</p>
             </header>
 
-            <div class="competition-highlights">
-                <article class="competition-feature reveal" aria-labelledby="pidi-title">
-                    <div class="competition-visual">
-                        <div class="competition-rank" aria-label="Second place">
-                            <span>SEP 2026 / NATIONAL</span>
-                            <div class="rank-lockup">
-                                <strong>02</strong>
-                                <p>place</p>
-                            </div>
-                        </div>
-                        <figure class="competition-feature-photo">
-                            <img src="public/assets/portfolio/pidi%20hackathon.jpg" alt="YUDHA team posing with their trophy at PIDI DIGDAYA x HACKATHON 2026" width="2340" height="4160" loading="lazy" decoding="async">
-                        </figure>
-                    </div>
-                    <div class="competition-copy">
-                        <h3 id="pidi-title">2nd place — PIDI DIGDAYA x HACKATHON 2026</h3>
-                        <p>Our team won second place in Bank Indonesia’s national competition with YUDHA, a platform for Indonesian civil-service and state-owned-enterprise exam preparation.</p>
-                        <p class="competition-contribution"><span>MY CONTRIBUTION</span> I built the real-time battle backend, matchmaking, match resolution, and study-session APIs.</p>
-                        <div class="competition-links" aria-label="YUDHA project links">
-                            <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer">Landing page <span aria-hidden="true">↗</span></a>
-                            <a href="https://github.com/ahmdtrdi/yudha-app" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
-                            <a href="#project-yudha">View project <span aria-hidden="true">↘</span></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="competition-feature reveal" aria-labelledby="frontier-title">
-                    <div class="competition-rank" aria-label="Ninth place out of 482 submissions">
-                        <span>JUL 2026 / GLOBAL</span>
-                        <div class="rank-lockup">
-                            <strong>09</strong>
-                            <p><span>/ 482</span> submissions</p>
-                        </div>
-                    </div>
-                    <div class="competition-copy">
-                        <h3 id="frontier-title">9th place — 100xDevs Frontier Hackathon Track</h3>
-                        <p>Team CORA placed 9th among 482 submissions in the global 100xDevs Frontier Hackathon Track.</p>
-                        <p class="competition-contribution"><span>MY CONTRIBUTION</span> I built the backend match state machine and settlement system for CORA’s multiplayer Solana game.</p>
-                        <div class="competition-links" aria-label="CORA competition evidence and project links">
-                            <a href="https://superteam.fun/earn/listing/100xdevs-frontier-hackathon-track" target="_blank" rel="noopener noreferrer">Official results <span aria-hidden="true">↗</span></a>
-                            <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
-                            <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
-                            <a href="#project-cora">View project <span aria-hidden="true">↘</span></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="competition-history reveal" aria-label="Regional and national competition record">
-                <article>
-                    <figure class="competition-photo competition-photo-document">
-                        <picture>
-                            <img src="public/assets/portfolio/asean-ai-hackathon.webp" alt="ASEAN AI Hackathon 2026 event banner" width="561" height="326" loading="lazy" decoding="async">
-                        </picture>
-                        <figcaption><span>MAR 2026 / ASEAN</span></figcaption>
-                    </figure>
-                    <span class="competition-ordinal">11th place</span>
-                    <h3>ASEAN AI Hackathon</h3>
-                    <p class="competition-description">Education Track · Socratix</p>
-                    <div class="competition-links">
-                        <a href="#project-socratix">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/asean-ai-hackathon-2026-participation.pdf" target="_blank" rel="noopener noreferrer" aria-label="ASEAN AI Hackathon participation certificate (PDF, opens in a new tab)">Participation certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-                <article>
-                    <figure class="competition-photo competition-photo-pimnas">
-                        <picture>
-                            <source srcset="public/assets/portfolio/pimnas-award.webp" type="image/webp">
-                            <img src="public/assets/portfolio/pimnas-award.jpg" alt="NEUROKIT team celebrating 3rd place (Bronze Medal) in the PIMNAS 38 presentation category" width="3024" height="4032" loading="lazy" decoding="async">
-                        </picture>
-                        <figcaption><span>NOV 2025 / NATIONAL</span></figcaption>
-                    </figure>
-                    <span class="competition-ordinal">3rd place</span>
-                    <h3>PIMNAS 38</h3>
-                    <p class="competition-description">Bronze Medal · Presentation Category · PKM-KC1</p>
-                    <div class="competition-links">
-                        <a href="#project-neurokit">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/pimnas-38-bronze-presentation.pdf" target="_blank" rel="noopener noreferrer" aria-label="PIMNAS 38 bronze award certificate (PDF, opens in a new tab)">Bronze award certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-                <article>
-                    <figure class="competition-photo competition-photo-gemastik-2025">
-                        <picture>
-                            <source srcset="public/assets/portfolio/gemastik-2025.webp" type="image/webp">
-                            <img src="public/assets/portfolio/gemastik-2025.jpg" alt="GEMASTIK XVIII team holding the Most Inspiring Team award and Universitas Sam Ratulangi banner" width="3024" height="4032" loading="lazy" decoding="async">
-                        </picture>
-                        <figcaption><span>OCT 2025 / NATIONAL</span></figcaption>
-                    </figure>
-                    <span class="competition-ordinal">Most Inspiring Team</span>
-                    <h3>GEMASTIK XVIII</h3>
-                    <p class="competition-description">Selected across 13 divisions and 220 finalist teams</p>
-                    <div class="competition-links">
-                        <a href="#project-gemastik">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/gemastik-xviii-2025-winner.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII winner certificate (PDF, opens in a new tab)">Winner certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                    <details class="certificate-extras">
-                        <summary>More certificates</summary>
-                        <a href="public/assets/certificates/gemastik-xviii-2025-finalist.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII finalist certificate (image, opens in a new tab)">Finalist <span aria-hidden="true">↗</span></a>
-                        <a href="public/assets/certificates/gemastik-xviii-2025-participant.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII participation certificate (image, opens in a new tab)">Participation <span aria-hidden="true">↗</span></a>
-                    </details>
-                </article>
-                <article>
-                    <figure class="competition-photo competition-photo-gemastik-2024">
-                        <picture>
-                            <source srcset="public/assets/portfolio/gemastik-2024.webp" type="image/webp">
-                            <img src="public/assets/portfolio/gemastik-2024.jpg" alt="GEMASTIK XVII Data Mining finalist team at the 2024 national event" width="4032" height="3024" loading="lazy" decoding="async">
-                        </picture>
-                        <figcaption><span>SEP 2024 / NATIONAL</span></figcaption>
-                    </figure>
-                    <span class="competition-ordinal">National finalist</span>
-                    <h3>GEMASTIK XVII</h3>
-                    <p class="competition-description">Data Mining division</p>
-                    <div class="competition-links">
-                        <a href="#project-anthropometric">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/gemastik-xvii-2024-finalist.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVII Data Mining finalist certificate (PDF, opens in a new tab)">Finalist certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-            </div>
-            <div class="field-notes reveal">
-                <article>
-                    <header><span>SEP 2025 / UNIVERSITY</span><strong>LIDM 2025 — UNSRAT</strong></header>
-                    <div>
-                        <p class="field-role">Digital Education Technology Innovation</p>
-                        <h3>1st place at UNSRAT</h3>
-                        <p>Placed first at Universitas Sam Ratulangi in the LIDM 2025 Digital Education Technology Innovation division with Socratix.</p>
-                        <div class="competition-links"><a href="#project-socratix">View project <span aria-hidden="true">↘</span></a></div>
-                    </div>
-                </article>
-                <article>
-                    <header><span>2024 / UNIVERSITY SELECTION</span><strong>GEMASTIK XVII — UNSRAT</strong></header>
-                    <div>
-                        <p class="field-role">Software Development</p>
-                        <h3>1st place in the UNSRAT selection</h3>
-                        <p>Placed first in Universitas Sam Ratulangi’s selection for the GEMASTIK XVII Software Development division with SEMARA (Senja Emas Rahayu).</p>
-                        <div class="competition-links"><a href="#project-semara">View project <span aria-hidden="true">↘</span></a></div>
-                    </div>
-                </article>
-                <article>
-                    <header><span>MAY 2024 / UNIVERSITY SELECTION</span><strong>SATRIA DATA 2024</strong></header>
-                    <div>
-                        <p class="field-role">Big Data Challenge</p>
-                        <h3>1st place in the UNSRAT selection</h3>
-                        <p>Placed first in Universitas Sam Ratulangi’s selection for the SATRIA DATA 2024 Big Data Challenge.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="section work-section observed-section" id="work" data-section="02">
-            <header class="section-heading reveal">
-                <p class="section-index">02 / PROJECTS</p>
-                <h2>Projects</h2>
-                <p>Six selected projects across AI and backend engineering. Open a project to see the problem, my role, the approach, and the result.</p>
-            </header>
-
-            <div class="dossier-list">
-                <details class="project-dossier reveal" id="project-yudha" data-project-id="yudha">
+            <div class="featured-stack" aria-label="Featured case studies">
+                <details class="project-dossier featured-project reveal" id="project-yudha" style="--stack-order: 0" data-project-id="yudha">
                     <summary aria-labelledby="project-yudha-title" aria-describedby="project-yudha-description">
                         <span class="project-thumbnail"><img src="public/assets/portfolio/YUDHA.jpg" alt="YUDHA recruitment-preparation app with learning, battle, and interview screens" width="1920" height="1080" loading="lazy" decoding="async"></span>
-                        <span class="project-card-copy">
+                        <span class="project-card-copy" data-case-number="01 / CASE STUDY">
                             <span class="project-card-meta"><span class="project-category">BACKEND ENGINEERING / APR–SEP 2026</span></span>
-                            <span class="project-card-title" id="project-yudha-title">YUDHA: Exam preparation platform</span>
+                            <span class="project-card-title" id="project-yudha-title"><span class="project-title-name">YUDHA</span> <span class="project-title-subject">Exam preparation platform</span></span>
                             <span class="project-card-description" id="project-yudha-description">Real-time practice battles and study APIs for Indonesian recruitment exams.</span>
+                            <span class="project-preview-stack">NestJS · Socket.IO · Redis</span>
+                            <span class="project-outcome">2nd place · PIDI DIGDAYA 2026</span>
                             <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
                         </span>
                     </summary>
@@ -351,13 +199,15 @@
                     </div>
                 </details>
 
-                <details class="project-dossier reveal" id="project-legal-ai" data-project-id="legal-ai">
+                <details class="project-dossier featured-project reveal" id="project-legal-ai" style="--stack-order: 1" data-project-id="legal-ai">
                     <summary aria-labelledby="project-legal-ai-title" aria-describedby="project-legal-ai-description">
                         <span class="project-thumbnail"><img src="public/assets/portfolio/legal-chatbot-ui.png" alt="Legal Chatbot RAG interface showing a question, cited answer, and retrieval controls" width="1819" height="928" loading="lazy" decoding="async"></span>
-                        <span class="project-card-copy">
+                        <span class="project-card-copy" data-case-number="02 / CASE STUDY">
                             <span class="project-card-meta"><span class="project-category">LLM ENGINEERING / JUL 2026</span></span>
-                            <span class="project-card-title" id="project-legal-ai-title">Legal AI: Indonesian labor-law assistant</span>
+                            <span class="project-card-title" id="project-legal-ai-title"><span class="project-title-name">Legal AI</span> <span class="project-title-subject">Indonesian labor-law assistant</span></span>
                             <span class="project-card-description" id="project-legal-ai-description">Fine-tuned Qwen reasoning and hybrid retrieval over 1,900+ pages of labor-law documents.</span>
+                            <span class="project-preview-stack">Qwen 2.5 · QLoRA · Hybrid retrieval</span>
+                            <span class="project-outcome">1,900+ pages of source documents</span>
                             <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
                         </span>
                     </summary>
@@ -384,13 +234,15 @@
                     </div>
                 </details>
 
-                <details class="project-dossier reveal" id="project-cora" data-project-id="cora">
+                <details class="project-dossier featured-project reveal" id="project-cora" style="--stack-order: 2" data-project-id="cora">
                     <summary aria-labelledby="project-cora-title" aria-describedby="project-cora-description">
                         <span class="project-thumbnail"><img src="public/assets/portfolio/cora-hero.webp" alt="CORA Solana game landing interface" width="1600" height="789" loading="lazy" decoding="async"></span>
-                        <span class="project-card-copy">
+                        <span class="project-card-copy" data-case-number="03 / CASE STUDY">
                             <span class="project-card-meta"><span class="project-category">REAL-TIME SYSTEMS / APR–MAY 2026</span></span>
-                            <span class="project-card-title" id="project-cora-title">CORA: Multiplayer game backend</span>
+                            <span class="project-card-title" id="project-cora-title"><span class="project-title-name">CORA</span> <span class="project-title-subject">Multiplayer game backend</span></span>
                             <span class="project-card-description" id="project-cora-description">Real-time match state and deterministic settlement for a multiplayer Solana game.</span>
+                            <span class="project-preview-stack">Bun · Hono · Solana · WebSockets</span>
+                            <span class="project-outcome">9th of 482 · Frontier Hackathon</span>
                             <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
                         </span>
                     </summary>
@@ -447,6 +299,9 @@
                     </div>
                 </details>
 
+            </div>
+
+            <div class="dossier-list project-grid" aria-label="More selected work">
                 <details class="project-dossier reveal" id="project-socratix" data-project-id="socratix">
                     <summary aria-labelledby="project-socratix-title" aria-describedby="project-socratix-description">
                         <span class="project-thumbnail"><img src="public/assets/portfolio/socratix.webp" alt="Socratix math-learning app overview with teacher and student portals and an AI math tutor" width="1280" height="720" loading="lazy" decoding="async"></span>
@@ -770,6 +625,161 @@
             </section>
         </section>
 
+        <section class="section competition-section observed-section" id="recognition" data-section="02">
+            <header class="section-heading reveal">
+                <p class="section-index">02 / COMPETITIONS</p>
+                <h2>Competitions</h2>
+                <p>Team achievements in AI research and software engineering, from university selections to national and international competitions.</p>
+            </header>
+
+            <div class="competition-highlights">
+                <article class="competition-feature reveal" aria-labelledby="pidi-title">
+                    <div class="competition-visual">
+                        <div class="competition-rank" aria-label="Second place">
+                            <span>SEP 2026 / NATIONAL</span>
+                            <div class="rank-lockup">
+                                <strong>02</strong>
+                                <p>place</p>
+                            </div>
+                        </div>
+                        <figure class="competition-feature-photo">
+                            <img src="public/assets/portfolio/pidi%20hackathon.jpg" alt="YUDHA team posing with their trophy at PIDI DIGDAYA x HACKATHON 2026" width="2340" height="4160" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                    <div class="competition-copy">
+                        <h3 id="pidi-title">2nd place — PIDI DIGDAYA x HACKATHON 2026</h3>
+                        <p>Our team won second place in Bank Indonesia’s national competition with YUDHA, a platform for Indonesian civil-service and state-owned-enterprise exam preparation.</p>
+                        <p class="competition-contribution"><span>MY CONTRIBUTION</span> I built the real-time battle backend, matchmaking, match resolution, and study-session APIs.</p>
+                        <div class="competition-links" aria-label="YUDHA project links">
+                            <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer">Landing page <span aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/ahmdtrdi/yudha-app" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
+                            <a href="#project-yudha">View project <span aria-hidden="true">↘</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="competition-feature reveal" aria-labelledby="frontier-title">
+                    <div class="competition-rank" aria-label="Ninth place out of 482 submissions">
+                        <span>JUL 2026 / GLOBAL</span>
+                        <div class="rank-lockup">
+                            <strong>09</strong>
+                            <p><span>/ 482</span> submissions</p>
+                        </div>
+                    </div>
+                    <div class="competition-copy">
+                        <h3 id="frontier-title">9th place — 100xDevs Frontier Hackathon Track</h3>
+                        <p>Team CORA placed 9th among 482 submissions in the global 100xDevs Frontier Hackathon Track.</p>
+                        <p class="competition-contribution"><span>MY CONTRIBUTION</span> I built the backend match state machine and settlement system for CORA’s multiplayer Solana game.</p>
+                        <div class="competition-links" aria-label="CORA competition evidence and project links">
+                            <a href="https://superteam.fun/earn/listing/100xdevs-frontier-hackathon-track" target="_blank" rel="noopener noreferrer">Official results <span aria-hidden="true">↗</span></a>
+                            <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
+                            <a href="#project-cora">View project <span aria-hidden="true">↘</span></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="competition-history reveal" aria-label="Regional and national competition record">
+                <article>
+                    <figure class="competition-photo competition-photo-document">
+                        <picture>
+                            <img src="public/assets/portfolio/asean-ai-hackathon.webp" alt="ASEAN AI Hackathon 2026 event banner" width="561" height="326" loading="lazy" decoding="async">
+                        </picture>
+                        <figcaption><span>MAR 2026 / ASEAN</span></figcaption>
+                    </figure>
+                    <span class="competition-ordinal">11th place</span>
+                    <h3>ASEAN AI Hackathon</h3>
+                    <p class="competition-description">Education Track · Socratix</p>
+                    <div class="competition-links">
+                        <a href="#project-socratix">View project <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/asean-ai-hackathon-2026-participation.pdf" target="_blank" rel="noopener noreferrer" aria-label="ASEAN AI Hackathon participation certificate (PDF, opens in a new tab)">Participation certificate <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article>
+                    <figure class="competition-photo competition-photo-pimnas">
+                        <picture>
+                            <source srcset="public/assets/portfolio/pimnas-award.webp" type="image/webp">
+                            <img src="public/assets/portfolio/pimnas-award.jpg" alt="NEUROKIT team celebrating 3rd place (Bronze Medal) in the PIMNAS 38 presentation category" width="3024" height="4032" loading="lazy" decoding="async">
+                        </picture>
+                        <figcaption><span>NOV 2025 / NATIONAL</span></figcaption>
+                    </figure>
+                    <span class="competition-ordinal">3rd place</span>
+                    <h3>PIMNAS 38</h3>
+                    <p class="competition-description">Bronze Medal · Presentation Category · PKM-KC1</p>
+                    <div class="competition-links">
+                        <a href="#project-neurokit">View project <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/pimnas-38-bronze-presentation.pdf" target="_blank" rel="noopener noreferrer" aria-label="PIMNAS 38 bronze award certificate (PDF, opens in a new tab)">Bronze award certificate <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article>
+                    <figure class="competition-photo competition-photo-gemastik-2025">
+                        <picture>
+                            <source srcset="public/assets/portfolio/gemastik-2025.webp" type="image/webp">
+                            <img src="public/assets/portfolio/gemastik-2025.jpg" alt="GEMASTIK XVIII team holding the Most Inspiring Team award and Universitas Sam Ratulangi banner" width="3024" height="4032" loading="lazy" decoding="async">
+                        </picture>
+                        <figcaption><span>OCT 2025 / NATIONAL</span></figcaption>
+                    </figure>
+                    <span class="competition-ordinal">Most Inspiring Team</span>
+                    <h3>GEMASTIK XVIII</h3>
+                    <p class="competition-description">Selected across 13 divisions and 220 finalist teams</p>
+                    <div class="competition-links">
+                        <a href="#project-gemastik">View project <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/gemastik-xviii-2025-winner.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII winner certificate (PDF, opens in a new tab)">Winner certificate <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <details class="certificate-extras">
+                        <summary>More certificates</summary>
+                        <a href="public/assets/certificates/gemastik-xviii-2025-finalist.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII finalist certificate (image, opens in a new tab)">Finalist <span aria-hidden="true">↗</span></a>
+                        <a href="public/assets/certificates/gemastik-xviii-2025-participant.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII participation certificate (image, opens in a new tab)">Participation <span aria-hidden="true">↗</span></a>
+                    </details>
+                </article>
+                <article>
+                    <figure class="competition-photo competition-photo-gemastik-2024">
+                        <picture>
+                            <source srcset="public/assets/portfolio/gemastik-2024.webp" type="image/webp">
+                            <img src="public/assets/portfolio/gemastik-2024.jpg" alt="GEMASTIK XVII Data Mining finalist team at the 2024 national event" width="4032" height="3024" loading="lazy" decoding="async">
+                        </picture>
+                        <figcaption><span>SEP 2024 / NATIONAL</span></figcaption>
+                    </figure>
+                    <span class="competition-ordinal">National finalist</span>
+                    <h3>GEMASTIK XVII</h3>
+                    <p class="competition-description">Data Mining division</p>
+                    <div class="competition-links">
+                        <a href="#project-anthropometric">View project <span aria-hidden="true">↘</span></a>
+                        <a href="public/assets/certificates/gemastik-xvii-2024-finalist.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVII Data Mining finalist certificate (PDF, opens in a new tab)">Finalist certificate <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+            </div>
+            <div class="field-notes reveal">
+                <article>
+                    <header><span>SEP 2025 / UNIVERSITY</span><strong>LIDM 2025 — UNSRAT</strong></header>
+                    <div>
+                        <p class="field-role">Digital Education Technology Innovation</p>
+                        <h3>1st place at UNSRAT</h3>
+                        <p>Placed first at Universitas Sam Ratulangi in the LIDM 2025 Digital Education Technology Innovation division with Socratix.</p>
+                        <div class="competition-links"><a href="#project-socratix">View project <span aria-hidden="true">↘</span></a></div>
+                    </div>
+                </article>
+                <article>
+                    <header><span>2024 / UNIVERSITY SELECTION</span><strong>GEMASTIK XVII — UNSRAT</strong></header>
+                    <div>
+                        <p class="field-role">Software Development</p>
+                        <h3>1st place in the UNSRAT selection</h3>
+                        <p>Placed first in Universitas Sam Ratulangi’s selection for the GEMASTIK XVII Software Development division with SEMARA (Senja Emas Rahayu).</p>
+                        <div class="competition-links"><a href="#project-semara">View project <span aria-hidden="true">↘</span></a></div>
+                    </div>
+                </article>
+                <article>
+                    <header><span>MAY 2024 / UNIVERSITY SELECTION</span><strong>SATRIA DATA 2024</strong></header>
+                    <div>
+                        <p class="field-role">Big Data Challenge</p>
+                        <h3>1st place in the UNSRAT selection</h3>
+                        <p>Placed first in Universitas Sam Ratulangi’s selection for the SATRIA DATA 2024 Big Data Challenge.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
             <header class="project-dialog-header">
                 <div>
@@ -779,6 +789,11 @@
                 <button class="project-dialog-close" type="button" data-dialog-close aria-label="Close project details">Close <span aria-hidden="true">×</span></button>
             </header>
             <div data-dialog-content></div>
+            <nav class="project-dialog-nav" aria-label="Browse case studies">
+                <button type="button" data-project-prev><span aria-hidden="true">←</span> Previous project</button>
+                <span data-project-position></span>
+                <button type="button" data-project-next>Next project <span aria-hidden="true">→</span></button>
+            </nav>
         </dialog>
 
         <section class="section observed-section" id="experience" data-section="03">
@@ -928,7 +943,11 @@
                 <p class="section-index">05 / CONTACT</p>
                 <h2>Let’s build something useful.</h2>
                 <p>Have an AI or backend engineering role, research opportunity, or project in mind? Email me to start a conversation.</p>
-                <a class="contact-email" href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com <span aria-hidden="true">↗</span></a>
+                <div class="contact-email-actions">
+                    <a class="contact-email" href="mailto:rindengangalnoel@gmail.com">rindengangalnoel@gmail.com <span aria-hidden="true">↗</span></a>
+                    <button class="copy-email" type="button" data-copy-email>Copy email <span aria-hidden="true">⧉</span></button>
+                </div>
+                <p class="copy-status" role="status" data-copy-status></p>
             </div>
             <div class="contact-links reveal">
                 <a href="tel:+6285696402370"><span>Phone / Indonesia</span>+62 856 9640 2370 ↗</a>
@@ -945,6 +964,6 @@
         <a href="#profile">Back to top ↑</a>
     </footer>
 
-    <script src="script.js?v=10"></script>
+    <script src="script.js?v=11"></script>
 </body>
 </html>

@@ -306,6 +306,9 @@ function setupProjectDossiers() {
             target.open = false;
             target.querySelector("summary").setAttribute("aria-expanded", "true");
             dialog.scrollTop = 0;
+            const position = projectDossiers.indexOf(target) + 1;
+            const positionLabel = dialog.querySelector("[data-project-position]");
+            if (positionLabel) positionLabel.textContent = `${String(position).padStart(2, "0")} / ${String(projectDossiers.length).padStart(2, "0")}`;
         }
         root.classList.add("project-dialog-open");
         if (!wasOpen) {
@@ -340,7 +343,8 @@ function setupProjectDossiers() {
 
     function visitProject(target, opener) {
         if (window.location.hash !== `#${target.id}`) {
-            history.pushState({
+            const replaceOpenProject = dialog.open && history.state?.portfolioProject?.owner === historyOwner;
+            history[replaceOpenProject ? "replaceState" : "pushState"]({
                 ...history.state,
                 portfolioProject: { owner: historyOwner, id: target.id }
             }, "", `#${target.id}`);
@@ -403,6 +407,14 @@ function setupProjectDossiers() {
 
     if (supportsDialog) {
         dialog.querySelector("[data-dialog-close]").addEventListener("click", dismissProject);
+        function browseProject(direction) {
+            const index = projectDossiers.indexOf(activeProject);
+            if (index < 0) return;
+            const next = projectDossiers[(index + direction + projectDossiers.length) % projectDossiers.length];
+            visitProject(next, next.querySelector("summary"));
+        }
+        dialog.querySelector("[data-project-prev]")?.addEventListener("click", () => browseProject(-1));
+        dialog.querySelector("[data-project-next]")?.addEventListener("click", () => browseProject(1));
         dialog.addEventListener("keydown", (event) => {
             if (event.key !== "Tab") return;
             const focusable = Array.from(dialog.querySelectorAll(
@@ -687,9 +699,66 @@ function setupRevealRhythm() {
     groups.forEach((group) => {
         Array.from(group.children).forEach((item, index) => {
             if (item.classList.contains("reveal")) {
-                item.style.setProperty("--reveal-delay", `${Math.min(index * 85, 255)}ms`);
+                item.style.setProperty("--reveal-delay", `${Math.min(index * 100, 300)}ms`);
             }
         });
+    });
+}
+
+function setupFeaturedStack() {
+    const cards = Array.from(document.querySelectorAll(".featured-project"));
+    const stack = document.querySelector(".featured-stack");
+    if (!stack || !cards.length) return;
+    const desktopStack = window.matchMedia("(min-width: 981px)");
+    let ticking = false;
+
+    function update() {
+        ticking = false;
+        const active = desktopStack.matches && !reduceMotion.matches;
+        cards.forEach((card, index) => {
+            const next = cards[index + 1];
+            let progress = 0;
+            if (active && next) {
+                const distance = next.getBoundingClientRect().top - (88 + index * 18);
+                progress = Math.max(0, Math.min(1, 1 - distance / 420));
+            }
+            card.style.setProperty("--stack-scale", String(1 - progress * 0.035));
+        });
+    }
+
+    function requestUpdate() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    onMediaChange(reduceMotion, requestUpdate);
+    onMediaChange(desktopStack, requestUpdate);
+    requestUpdate();
+}
+
+function setupCopyEmail() {
+    const button = document.querySelector("[data-copy-email]");
+    const status = document.querySelector("[data-copy-status]");
+    const emailLink = document.querySelector(".contact-email");
+    if (!button || !status || !emailLink) return;
+    const email = emailLink.getAttribute("href").replace(/^mailto:/, "");
+
+    button.addEventListener("click", async () => {
+        try {
+            if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+            await navigator.clipboard.writeText(email);
+            status.textContent = "Email copied. Ready when you are.";
+        } catch {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(emailLink);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            status.textContent = "Email selected. Press Ctrl+C or use your device’s Copy action.";
+        }
     });
 }
 
@@ -758,6 +827,7 @@ function setupMotionLanguage() {
     setupRevealRhythm();
     setupParallax();
     setupProjectTilt();
+    setupFeaturedStack();
 
     window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => root.classList.add("motion-loaded"));
@@ -776,5 +846,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setupProjectDossiers();
     setupEvidenceViewers();
     setupCounters();
+    setupCopyEmail();
     updatePageProgress();
 });

@@ -2687,12 +2687,12 @@ summary:hover .motion-parallax,
 
 .js .reveal {
     opacity: 0;
-    filter: blur(5px);
-    transform: translateY(34px) scale(0.99);
+    filter: blur(8px);
+    transform: translateY(24px) scale(0.98);
     transition: var(--theme-transition),
-        opacity 600ms ease var(--reveal-delay, 0ms),
-        filter 760ms var(--motion-out-expo) var(--reveal-delay, 0ms),
-        transform 860ms var(--motion-out-expo) var(--reveal-delay, 0ms);
+        opacity 750ms var(--motion-out-expo) var(--reveal-delay, 0ms),
+        filter 750ms var(--motion-out-expo) var(--reveal-delay, 0ms),
+        transform 750ms var(--motion-out-expo) var(--reveal-delay, 0ms);
 }
 
 .js .reveal.is-visible {
@@ -3137,7 +3137,339 @@ summary:hover .motion-parallax,
     .about-facts > div { padding: 18px; }
 }
 
+/* Featured work: wide case studies with a restrained, scroll-driven stack. */
+body {
+    background: var(--background);
+}
+
+body::before {
+    opacity: 0.16;
+    background-image: radial-gradient(var(--border-strong) 0.7px, transparent 0.7px);
+    background-size: 24px 24px;
+    mask-image: linear-gradient(to bottom, black, transparent 70rem);
+}
+
+.about-banner {
+    position: relative;
+}
+
+.about-banner img {
+    transition: transform 1200ms var(--motion-out-expo);
+}
+
+.about-banner:hover img {
+    transform: scale(1.018);
+}
+
+.about-copy .document-label {
+    width: fit-content;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.625rem;
+}
+
+.work-section {
+    padding-top: 96px;
+    padding-bottom: 112px;
+}
+
+.featured-stack {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 32px;
+}
+
+.featured-project {
+    --case-accent: #bed4ef;
+    --case-ink: #f4f4f0;
+    --stack-scale: 1;
+    position: sticky;
+    top: calc(88px + var(--stack-order) * 18px);
+    z-index: calc(1 + var(--stack-order));
+    margin-bottom: 40px;
+}
+
+.featured-project:nth-child(2) { --case-accent: #d7c9ef; }
+.featured-project:nth-child(3) { --case-accent: #b8d9cb; }
+
+.featured-project > summary {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    gap: 48px;
+    min-height: 480px;
+    padding: 32px 32px 32px 44px;
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 32px;
+    color: var(--case-ink);
+    background: #161819;
+    box-shadow: 0 18px 60px rgb(0 0 0 / 14%);
+    transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(var(--stack-scale));
+    transform-origin: center top;
+}
+
+.featured-project > summary:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 7px;
+}
+
+.featured-project .project-card-copy {
+    grid-column: 1;
+    grid-row: 1;
+    gap: 16px;
+    align-self: center;
+    padding: 8px 0;
+}
+
+.featured-project .project-card-copy::before {
+    display: block;
+    margin-bottom: 14px;
+    content: attr(data-case-number);
+    color: rgb(255 255 255 / 58%);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+}
+
+.featured-project .project-category {
+    color: var(--case-accent);
+    font-size: 0.625rem;
+}
+
+.featured-project .project-card-title {
+    color: var(--case-ink);
+    transform: none;
+}
+
+.project-title-name {
+    display: block;
+    font-family: var(--font-body);
+    font-size: clamp(2.75rem, 4.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.065em;
+}
+
+.project-title-subject {
+    display: block;
+    margin-top: 8px;
+    color: var(--case-accent);
+    font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+    font-style: italic;
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+}
+
+.featured-project .project-card-description {
+    color: rgb(255 255 255 / 72%);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.project-preview-stack {
+    color: rgb(255 255 255 / 52%);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    line-height: 1.8;
+}
+
+.project-outcome {
+    width: fit-content;
+    max-width: 100%;
+    padding: 7px 11px;
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 6px;
+    color: var(--case-accent);
+    font-size: 0.6875rem;
+    line-height: 1.5;
+}
+
+.featured-project .project-thumbnail {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    height: 100%;
+    min-height: 380px;
+    aspect-ratio: auto;
+    padding: 36px 24px;
+    border: 0;
+    border-radius: 20px;
+    background: var(--case-accent);
+    box-shadow: none;
+}
+
+.featured-project .project-thumbnail img {
+    height: auto;
+    max-height: 340px;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 28px 42px -18px rgb(0 0 0 / 45%);
+    transform: translateY(var(--parallax-y, 0px)) rotate(-2deg) scale(0.96);
+    transition: transform 900ms var(--motion-out-expo);
+}
+
+.featured-project:nth-child(2) .project-thumbnail img {
+    transform: translateY(var(--parallax-y, 0px)) rotate(2deg) scale(0.96);
+}
+
+.featured-project summary:is(:hover, :focus-visible) .project-thumbnail img {
+    transform: translateY(-8px) rotate(0deg) scale(1);
+}
+
+.featured-project .project-card-action {
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 999px;
+    color: #161819;
+    background: var(--case-ink);
+    font-size: 0.75rem;
+}
+
+.project-grid {
+    margin-top: 56px;
+}
+
+.project-grid > .project-dossier,
+.project-grid > .project-dossier:nth-child(4n + 2),
+.project-grid > .project-dossier:nth-child(4n + 3) {
+    grid-column: span 4;
+    margin-top: 0;
+}
+
+.project-grid .project-thumbnail { aspect-ratio: 4 / 3; }
+.project-grid .project-card-title { font-size: 1.3rem; }
+.project-grid .project-card-description { font-size: 0.8125rem; }
+
+.project-dialog {
+    width: min(1200px, calc(100% - 48px));
+    border-radius: 24px;
+    box-shadow: 0 40px 120px rgb(0 0 0 / 40%);
+}
+
+.project-dialog-header {
+    padding: 24px 40px;
+    background: color-mix(in srgb, var(--surface) 95%, transparent);
+    backdrop-filter: blur(16px);
+}
+
+.project-dialog .dossier-body {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: 32px;
+    padding: 40px;
+}
+
+.project-dialog .dossier-body > :not(.dossier-intro):not(.project-overview-media) {
+    grid-column: 1 / -1;
+}
+
+.project-dialog .dossier-intro { margin: 0; }
+.project-dialog .dossier-intro h3 { font-size: clamp(1.75rem, 3vw, 2.7rem); line-height: 1.15; }
+.project-dialog .dossier-body:not(:has(> .project-overview-media)) > .dossier-intro { grid-column: 1 / -1; max-width: 820px; }
+.project-dialog .project-overview-media { margin: 0; overflow: hidden; border-radius: 16px; }
+.project-dialog .dossier-facts { gap: 16px; border-top: 0; }
+
+.project-dialog .dossier-facts > div {
+    min-height: auto;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-soft);
+}
+
+.project-dialog-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 40px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-soft);
+}
+
+.project-dialog-nav button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    color: var(--blue);
+    background: transparent;
+    font-size: 0.8125rem;
+    cursor: pointer;
+}
+
+[data-project-position] {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    white-space: nowrap;
+}
+
+.contact-section::before { display: none; }
+.contact-section { background: var(--panel-blue); }
+.contact-copy, .contact-links { min-width: 0; }
+.contact-email-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+
+.copy-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid rgb(255 255 255 / 32%);
+    border-radius: 999px;
+    color: white;
+    background: transparent;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 300ms ease, transform 600ms var(--motion-out-expo);
+}
+
+.copy-email:hover { background: rgb(255 255 255 / 12%); transform: translateY(-2px); }
+.contact-copy .copy-status { min-height: 24px; margin: 12px 0 0; font-size: 0.75rem; }
+
+@media (max-width: 1100px) {
+    .featured-project > summary { gap: 28px; padding: 28px; }
+    .project-grid > .project-dossier,
+    .project-grid > .project-dossier:nth-child(4n + 2),
+    .project-grid > .project-dossier:nth-child(4n + 3) { grid-column: span 6; }
+}
+
+@media (max-width: 980px) {
+    .featured-project { position: relative; top: auto; }
+    .featured-project > summary { min-height: 420px; }
+    .featured-project .project-thumbnail { min-height: 320px; padding: 20px; }
+    .project-dialog .dossier-body { grid-template-columns: 1fr; }
+    .project-dialog .dossier-body > * { grid-column: 1; }
+}
+
+@media (max-width: 700px) {
+    .work-section { padding-block: 72px; }
+    .featured-project > summary { grid-template-columns: 1fr; gap: 24px; padding: 20px; border-radius: 22px; }
+    .featured-project .project-thumbnail { grid-column: 1; grid-row: 1; min-height: 230px; aspect-ratio: 4 / 3; }
+    .featured-project .project-card-copy { grid-column: 1; grid-row: 2; padding: 4px; }
+    .featured-project .project-card-copy::before { margin-bottom: 0; }
+    .featured-project .project-category { font-size: 0.6rem; }
+    .project-title-name { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+    .project-grid { margin-top: 24px; }
+    .project-grid > .project-dossier,
+    .project-grid > .project-dossier:nth-child(4n + 2),
+    .project-grid > .project-dossier:nth-child(4n + 3) { grid-column: 1; }
+    .project-dialog { width: calc(100% - 16px); border-radius: 18px; }
+    .project-dialog-header, .project-dialog .dossier-body { padding: 20px; }
+    .project-dialog .dossier-facts { grid-template-columns: 1fr; }
+    .project-dialog .dossier-facts > div { padding: 20px; }
+    .project-dialog-nav { gap: 10px; padding: 16px 20px; }
+    .project-dialog-nav button { gap: 8px; font-size: 0.6875rem; }
+    [data-project-position] { font-size: 0.625rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+    .featured-project { position: relative; top: auto; }
     *,
     *::before,
     *::after {
