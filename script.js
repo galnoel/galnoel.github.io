@@ -225,7 +225,7 @@ function setupProjectDossiers() {
     const dialog = document.getElementById("project-dialog");
     const supportsDialog = dialog && typeof dialog.showModal === "function";
     const title = dialog?.querySelector("#project-dialog-title");
-    const category = dialog?.querySelector("[data-dialog-category]");
+    const date = dialog?.querySelector("[data-dialog-date]");
     const content = dialog?.querySelector("[data-dialog-content]");
     const historyOwner = String(performance.timeOrigin);
     let activeProject = null;
@@ -301,7 +301,7 @@ function setupProjectDossiers() {
 
             // Move the original body so evidence listeners and IDs remain intact.
             title.textContent = target.querySelector(".project-card-title").textContent;
-            category.textContent = target.querySelector(".project-category").textContent;
+            date.textContent = target.querySelector(".project-date").textContent;
             content.append(activeBody);
             target.open = false;
             target.querySelector("summary").setAttribute("aria-expanded", "true");
@@ -378,6 +378,7 @@ function setupProjectDossiers() {
             summary.setAttribute("aria-controls", "project-dialog");
             summary.setAttribute("aria-expanded", "false");
             summary.addEventListener("click", (event) => {
+                if (event.target.closest(".project-live-preview")) return;
                 event.preventDefault();
                 visitProject(project, summary);
             });
@@ -389,6 +390,10 @@ function setupProjectDossiers() {
                 });
             });
         }
+    });
+
+    document.querySelectorAll(".project-live-preview").forEach((link) => {
+        link.addEventListener("click", (event) => event.stopPropagation());
     });
 
     document.addEventListener("click", (event) => {
