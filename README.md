@@ -20,6 +20,7 @@ This is a static site with no build step. Open `index.html` in a browser or serv
 - More Projects uses equal-size cards in three desktop columns, two tablet columns, and one mobile column, with matching thumbnail proportions.
 - Lead project cards with the title and adjacent date. Group project topics with technologies below the description; omit section-number captions and case-study labels.
 - In Experience, use the role as the main heading. Keep achievement divisions with the competition name in the left column.
+- Achievement cards show the title, small date, issuer logo and name, then the explanation. University-selection entries remain logo-free; ministry logos fill their square frames without padding.
 - Certificate cards lead with the course name as the largest text and show the provider and locally stored logos below. Experience and Education use the supplied organization logos beside institution names.
 - Give each detailed project a concise summary followed by **Problem**, **My role**, **Approach**, and **Result**. Add technical decisions or recognition where useful.
 - State evaluation scope alongside metrics. Keep completed work, prototypes, and planned capabilities distinct.
