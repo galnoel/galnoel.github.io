@@ -38,7 +38,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=39">
+    <link rel="stylesheet" href="styles.css?v=51">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -792,173 +792,172 @@
         <section class="section competition-section observed-section" id="recognition" data-section="02">
             <header class="section-heading reveal">
                 <h2>Competitions</h2>
-                <p>Team achievements in AI research and software engineering, from university selections to national and international competitions.</p>
+                <p>Nine team achievements, grouped by competition level.</p>
             </header>
 
-            <div class="competition-highlights">
-                <article class="competition-feature reveal" aria-labelledby="pidi-title">
-                    <div class="competition-visual">
-                        <div class="competition-rank" aria-label="Second place">
-                            <div class="rank-lockup">
-                                <strong>02</strong>
-                                <p>place</p>
+            <div class="achievement-rows" aria-label="Achievements by competition level">
+                <section class="achievement-row achievement-row--international reveal" id="international-achievements" aria-labelledby="international-heading">
+                    <header class="achievement-row-heading">
+                        <h3 id="international-heading">International</h3>
+                        <span class="achievement-row-count">02 achievements</span>
+                    </header>
+                    <div class="achievement-row-cards">
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo"><img src="public/assets/portfolio/cora-hero.webp" alt="CORA multiplayer game interface" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>9th place</strong><time datetime="2026-07">Jul 2026</time></div>
+                            <h4>Frontier Hackathon</h4>
+                            <p class="achievement-card-track">100xDevs Track</p>
+                            <div class="achievement-card-issuer" data-full-name="Colosseum"><img src="public/assets/portfolio/achievement-colosseum.png" alt="" loading="lazy" decoding="async"><span>Colosseum</span></div>
+                            <p class="achievement-detail-copy" hidden>Team CORA placed 9th among 482 submissions in the global 100xDevs Frontier Hackathon Track.</p>
+                            <p class="achievement-detail-copy" hidden>My contribution: I built the backend match state machine and settlement system for CORA’s multiplayer Solana game.</p>
+                            <div class="achievement-source-links" hidden>
+                                <a href="https://superteam.fun/earn/listing/100xdevs-frontier-hackathon-track" target="_blank" rel="noopener noreferrer" aria-label="CORA official results">Results ↗</a>
+                                <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="CORA live demo">Demo ↗</a>
+                                <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer" aria-label="CORA source code">Source ↗</a>
+                                <a href="#project-cora">Project ↘</a>
                             </div>
-                        </div>
-                        <figure class="competition-feature-photo">
-                            <img src="public/assets/portfolio/pidi%20hackathon.jpg" alt="YUDHA team posing with their trophy at PIDI DIGDAYA x HACKATHON 2026" width="2340" height="4160" loading="lazy" decoding="async">
-                        </figure>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo"><img src="public/assets/portfolio/asean-ai-hackathon.webp" alt="ASEAN AI Hackathon 2026 event banner" width="561" height="326" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>11th place</strong><time datetime="2026-03">Mar 2026</time></div>
+                            <h4>ASEAN AI Hackathon</h4>
+                            <p class="achievement-card-track">AI for Education Track</p>
+                            <div class="achievement-card-issuer" data-full-name="P2A — Passage to ASEAN"><img src="public/assets/portfolio/achievement-p2a.jpg" alt="" loading="lazy" decoding="async"><span>P2A — Passage to ASEAN</span></div>
+                            <p class="achievement-detail-copy" hidden>Our Socratix team placed 11th in the Education Track of the ASEAN AI Hackathon 2026.</p>
+                            <div class="achievement-source-links" hidden>
+                                <a href="public/assets/certificates/asean-ai-hackathon-2026-participation.pdf" target="_blank" rel="noopener noreferrer" aria-label="ASEAN AI Hackathon participation certificate (PDF)">Certificate ↗</a>
+                                <a href="#project-socratix">Project ↘</a>
+                            </div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
                     </div>
-                    <div class="competition-copy">
-                        <h3 id="pidi-title">2nd place — PIDI DIGDAYA x HACKATHON 2026</h3>
-                        <p class="achievement-date"><time datetime="2026-09">Sep 2026</time> · National</p>
-                        <div class="achievement-issuer">
-                            <img class="achievement-issuer-logo" src="public/assets/portfolio/achievement-bank-indonesia.png" alt="" width="56" height="44" loading="lazy" decoding="async">
-                            <span>Bank Indonesia</span>
-                        </div>
-                        <p>Our team won second place in Bank Indonesia’s national competition with YUDHA, a platform for Indonesian civil-service and state-owned-enterprise exam preparation.</p>
-                        <p class="competition-contribution"><span>MY CONTRIBUTION</span> I built the real-time battle backend, matchmaking, match resolution, and study-session APIs.</p>
-                        <div class="competition-links" aria-label="YUDHA project links">
-                            <a href="https://prototype.yudha.fun/" target="_blank" rel="noopener noreferrer">Web prototype <span aria-hidden="true">↗</span></a>
-                            <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer">Landing page <span aria-hidden="true">↗</span></a>
-                            <a href="https://github.com/ahmdtrdi/yudha-app" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
-                            <a href="#project-yudha">View project <span aria-hidden="true">↘</span></a>
-                        </div>
-                    </div>
-                </article>
+                </section>
 
-                <article class="competition-feature reveal" aria-labelledby="frontier-title">
-                    <div class="competition-rank" aria-label="Ninth place out of 482 submissions">
-                        <div class="rank-lockup">
-                            <strong>09</strong>
-                            <p><span>/ 482</span> submissions</p>
-                        </div>
+                <section class="achievement-row achievement-row--national reveal" id="national-achievements" aria-labelledby="national-heading">
+                    <header class="achievement-row-heading">
+                        <h3 id="national-heading">National</h3>
+                        <span class="achievement-row-count">04 achievements</span>
+                    </header>
+                    <div class="achievement-row-cards">
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo achievement-card-photo--team"><img src="public/assets/portfolio/pidi%20hackathon.jpg" alt="YUDHA team with their trophy at PIDI DIGDAYA x HACKATHON 2026" width="2340" height="4160" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>2nd place</strong><time datetime="2026-09">Sep 2026</time></div>
+                            <h4>PIDI DIGDAYA x HACKATHON 2026</h4>
+                            <p class="achievement-card-track">National hackathon</p>
+                            <div class="achievement-card-issuer" data-full-name="Bank Indonesia"><img src="public/assets/portfolio/achievement-bank-indonesia.png" alt="" loading="lazy" decoding="async"><span>Bank Indonesia</span></div>
+                            <p class="achievement-detail-copy" hidden>Our team won second place in Bank Indonesia’s national competition with YUDHA, a platform for Indonesian civil-service and state-owned-enterprise exam preparation.</p>
+                            <p class="achievement-detail-copy" hidden>My contribution: I built the real-time battle backend, matchmaking, match resolution, and study-session APIs.</p>
+                            <div class="achievement-source-links" hidden>
+                                <a href="https://prototype.yudha.fun/" target="_blank" rel="noopener noreferrer" aria-label="YUDHA web prototype">Prototype ↗</a>
+                                <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer" aria-label="YUDHA landing page">Site ↗</a>
+                                <a href="https://github.com/ahmdtrdi/yudha-app" target="_blank" rel="noopener noreferrer" aria-label="YUDHA source code">Source ↗</a>
+                                <a href="#project-yudha">Project ↘</a>
+                            </div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo achievement-card-photo--team"><img src="public/assets/portfolio/pimnas-award.webp" alt="NEUROKIT team celebrating the PIMNAS 38 bronze award" width="3024" height="4032" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>3rd place · Bronze Medal</strong><time datetime="2025-11">Nov 2025</time></div>
+                            <h4>PIMNAS 38</h4>
+                            <p class="achievement-card-track">PKM-KC1 · Presentation Category</p>
+                            <div class="achievement-card-issuer" data-full-name="Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)"><img src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" loading="lazy" decoding="async"><span>Ministry of Higher Education, Science and Technology of Indonesia</span></div>
+                            <p class="achievement-detail-copy" hidden>NEUROKIT earned the Bronze Medal for third place in the PIMNAS 38 PKM-KC1 presentation category.</p>
+                            <div class="achievement-source-links" hidden>
+                                <a href="public/assets/certificates/pimnas-38-bronze-presentation.pdf" target="_blank" rel="noopener noreferrer" aria-label="PIMNAS 38 bronze award certificate (PDF)">Certificate ↗</a>
+                                <a href="#project-neurokit">Project ↘</a>
+                            </div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo achievement-card-photo--team"><img src="public/assets/portfolio/gemastik-2025.webp" alt="GEMASTIK XVIII team holding the Most Inspiring Team award" width="3024" height="4032" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>Most Inspiring Team</strong><time datetime="2025-10">Oct 2025</time></div>
+                            <h4>GEMASTIK XVIII</h4>
+                            <p class="achievement-card-track">Data Mining Division</p>
+                            <div class="achievement-card-issuer" data-full-name="Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)"><img src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" loading="lazy" decoding="async"><span>Ministry of Higher Education, Science and Technology of Indonesia</span></div>
+                            <p class="achievement-detail-copy" hidden>Our team received the Most Inspiring Team award at GEMASTIK XVIII, selected across 13 divisions and 220 finalist teams.</p>
+                            <div class="achievement-source-links" hidden>
+                                <a href="public/assets/certificates/gemastik-xviii-2025-winner.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII winner certificate (PDF)">Winner ↗</a>
+                                <a href="public/assets/certificates/gemastik-xviii-2025-finalist.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII finalist certificate (image)">Finalist ↗</a>
+                                <a href="public/assets/certificates/gemastik-xviii-2025-participant.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII participation certificate (image)">Participation ↗</a>
+                                <a href="#project-gemastik">Project ↘</a>
+                            </div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo"><img src="public/assets/portfolio/gemastik-2024.webp" alt="GEMASTIK XVII Data Mining finalist team at the national event" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>National finalist</strong><time datetime="2024-09">Sep 2024</time></div>
+                            <h4>GEMASTIK XVII</h4>
+                            <p class="achievement-card-track">Data Mining Division</p>
+                            <div class="achievement-card-issuer" data-full-name="Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)"><img src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" loading="lazy" decoding="async"><span>Ministry of Higher Education, Science and Technology of Indonesia</span></div>
+                            <p class="achievement-detail-copy" hidden>Our team reached the national final in the GEMASTIK XVII Data Mining division.</p>
+                            <div class="achievement-source-links" hidden>
+                                <a href="public/assets/certificates/gemastik-xvii-2024-finalist.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVII Data Mining finalist certificate (PDF)">Certificate ↗</a>
+                                <a href="#project-anthropometric">Project ↘</a>
+                            </div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
                     </div>
-                    <div class="competition-copy">
-                        <h3 id="frontier-title">9th place — 100xDevs Frontier Hackathon Track</h3>
-                        <p class="achievement-date"><time datetime="2026-07">Jul 2026</time> · Global</p>
-                        <div class="achievement-issuer">
-                            <img class="achievement-issuer-logo achievement-issuer-logo--colosseum" src="public/assets/portfolio/achievement-colosseum.png" alt="" width="140" height="44" loading="lazy" decoding="async">
-                            <span>Colosseum</span>
-                        </div>
-                        <p>Team CORA placed 9th among 482 submissions in the global 100xDevs Frontier Hackathon Track.</p>
-                        <p class="competition-contribution"><span>MY CONTRIBUTION</span> I built the backend match state machine and settlement system for CORA’s multiplayer Solana game.</p>
-                        <div class="competition-links" aria-label="CORA competition evidence and project links">
-                            <a href="https://superteam.fun/earn/listing/100xdevs-frontier-hackathon-track" target="_blank" rel="noopener noreferrer">Official results <span aria-hidden="true">↗</span></a>
-                            <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
-                            <a href="https://github.com/ahmdtrdi/Cora" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>
-                            <a href="#project-cora">View project <span aria-hidden="true">↘</span></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
+                </section>
 
-            <div class="competition-history reveal" aria-label="Regional and national competition record">
-                <article>
-                    <figure class="competition-photo competition-photo-document">
-                        <picture>
-                            <img src="public/assets/portfolio/asean-ai-hackathon.webp" alt="ASEAN AI Hackathon 2026 event banner" width="561" height="326" loading="lazy" decoding="async">
-                        </picture>
-                    </figure>
-                    <h3>11th place — ASEAN AI Hackathon</h3>
-                    <p class="achievement-date"><time datetime="2026-03">Mar 2026</time> · ASEAN</p>
-                    <div class="achievement-issuer">
-                        <img class="achievement-issuer-logo" src="public/assets/portfolio/achievement-p2a.jpg" alt="" width="56" height="44" loading="lazy" decoding="async">
-                        <span>P2A — Passage to ASEAN</span>
+                <section class="achievement-row achievement-row--university reveal" id="university-achievements" aria-labelledby="university-heading">
+                    <header class="achievement-row-heading">
+                        <h3 id="university-heading">University</h3>
+                        <span class="achievement-row-count">03 achievements</span>
+                    </header>
+                    <div class="achievement-row-cards">
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo"><img src="public/assets/portfolio/lidm.webp" alt="LIDM 2025 first-place certificate at Universitas Sam Ratulangi" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>1st place at UNSRAT</strong><time datetime="2025-09">Sep 2025</time></div>
+                            <h4>Lomba Digital Mahasiswa (LIDM)</h4>
+                            <p class="achievement-card-track">Digital Education Technology Innovation</p>
+                            <div class="achievement-card-issuer" data-full-name="Universitas Sam Ratulangi"><img src="public/assets/portfolio/organization-unsrat.png" alt="" loading="lazy" decoding="async"><span>Universitas Sam Ratulangi</span></div>
+                            <p class="achievement-detail-copy" hidden>Our Socratix team placed first at UNSRAT in LIDM’s Digital Education Technology Innovation division with guided mathematics learning and dynamic visualizations.</p>
+                            <div class="achievement-source-links" hidden><a href="#project-socratix">Project ↘</a></div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo"><img src="public/assets/portfolio/semara-project.png" alt="SEMARA mobile app screens for older adults" width="1672" height="941" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>1st place at UNSRAT</strong><time datetime="2024-06">Jun 2024</time></div>
+                            <h4>GEMASTIK XVII</h4>
+                            <p class="achievement-card-track">Software Development Division · UNSRAT selection</p>
+                            <div class="achievement-card-issuer" data-full-name="Universitas Sam Ratulangi"><img src="public/assets/portfolio/organization-unsrat.png" alt="" loading="lazy" decoding="async"><span>Universitas Sam Ratulangi</span></div>
+                            <p class="achievement-detail-copy" hidden>Our SEMARA team placed first in the UNSRAT selection for GEMASTIK XVII Software Development. SEMARA provides medication reminders and daily-care tools for older adults.</p>
+                            <div class="achievement-source-links" hidden><a href="#project-semara">Project ↘</a></div>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
+                        <article class="achievement-card">
+                            <figure class="achievement-card-photo achievement-card-photo--emblem"><img src="public/assets/portfolio/organization-unsrat.png" alt="Universitas Sam Ratulangi emblem" loading="lazy" decoding="async"></figure>
+                            <div class="achievement-card-meta"><strong>1st place at UNSRAT</strong><time datetime="2024-05">May 2024</time></div>
+                            <h4>SATRIA DATA</h4>
+                            <p class="achievement-card-track">Big Data Challenge · UNSRAT selection</p>
+                            <div class="achievement-card-issuer" data-full-name="Universitas Sam Ratulangi"><img src="public/assets/portfolio/organization-unsrat.png" alt="" loading="lazy" decoding="async"><span>Universitas Sam Ratulangi</span></div>
+                            <p class="achievement-detail-copy" hidden>I placed first in the UNSRAT selection for the SATRIA DATA Big Data Challenge.</p>
+                            <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
+                        </article>
                     </div>
-                    <p class="competition-description">Education Track · Socratix</p>
-                    <div class="competition-links">
-                        <a href="#project-socratix">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/asean-ai-hackathon-2026-participation.pdf" target="_blank" rel="noopener noreferrer" aria-label="ASEAN AI Hackathon participation certificate (PDF, opens in a new tab)">Participation certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-                <article>
-                    <figure class="competition-photo competition-photo-pimnas">
-                        <picture>
-                            <source srcset="public/assets/portfolio/pimnas-award.webp" type="image/webp">
-                            <img src="public/assets/portfolio/pimnas-award.jpg" alt="NEUROKIT team celebrating 3rd place (Bronze Medal) in the PIMNAS 38 presentation category" width="3024" height="4032" loading="lazy" decoding="async">
-                        </picture>
-                    </figure>
-                    <h3>3rd place — PIMNAS 38</h3>
-                    <p class="achievement-date"><time datetime="2025-11">Nov 2025</time> · National</p>
-                    <div class="achievement-issuer">
-                        <img class="achievement-issuer-logo achievement-issuer-logo--ministry" src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" width="44" height="44" loading="lazy" decoding="async">
-                        <span>Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)</span>
-                    </div>
-                    <p class="competition-description">Bronze Medal · Presentation Category · PKM-KC1</p>
-                    <div class="competition-links">
-                        <a href="#project-neurokit">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/pimnas-38-bronze-presentation.pdf" target="_blank" rel="noopener noreferrer" aria-label="PIMNAS 38 bronze award certificate (PDF, opens in a new tab)">Bronze award certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-                <article>
-                    <figure class="competition-photo competition-photo-gemastik-2025">
-                        <picture>
-                            <source srcset="public/assets/portfolio/gemastik-2025.webp" type="image/webp">
-                            <img src="public/assets/portfolio/gemastik-2025.jpg" alt="GEMASTIK XVIII team holding the Most Inspiring Team award and Universitas Sam Ratulangi banner" width="3024" height="4032" loading="lazy" decoding="async">
-                        </picture>
-                    </figure>
-                    <h3>Most Inspiring Team — GEMASTIK XVIII</h3>
-                    <p class="achievement-date"><time datetime="2025-10">Oct 2025</time> · National</p>
-                    <div class="achievement-issuer">
-                        <img class="achievement-issuer-logo achievement-issuer-logo--ministry" src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" width="44" height="44" loading="lazy" decoding="async">
-                        <span>Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)</span>
-                    </div>
-                    <p class="competition-description">Selected across 13 divisions and 220 finalist teams</p>
-                    <div class="competition-links">
-                        <a href="#project-gemastik">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/gemastik-xviii-2025-winner.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII winner certificate (PDF, opens in a new tab)">Winner certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                    <details class="certificate-extras">
-                        <summary>More certificates</summary>
-                        <a href="public/assets/certificates/gemastik-xviii-2025-finalist.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII finalist certificate (image, opens in a new tab)">Finalist <span aria-hidden="true">↗</span></a>
-                        <a href="public/assets/certificates/gemastik-xviii-2025-participant.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII participation certificate (image, opens in a new tab)">Participation <span aria-hidden="true">↗</span></a>
-                    </details>
-                </article>
-                <article>
-                    <figure class="competition-photo competition-photo-gemastik-2024">
-                        <picture>
-                            <source srcset="public/assets/portfolio/gemastik-2024.webp" type="image/webp">
-                            <img src="public/assets/portfolio/gemastik-2024.jpg" alt="GEMASTIK XVII Data Mining finalist team at the 2024 national event" width="4032" height="3024" loading="lazy" decoding="async">
-                        </picture>
-                    </figure>
-                    <h3>National finalist — GEMASTIK XVII</h3>
-                    <p class="achievement-date"><time datetime="2024-09">Sep 2024</time> · National</p>
-                    <div class="achievement-issuer">
-                        <img class="achievement-issuer-logo achievement-issuer-logo--ministry" src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" width="44" height="44" loading="lazy" decoding="async">
-                        <span>Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)</span>
-                    </div>
-                    <p class="competition-description">Data Mining division</p>
-                    <div class="competition-links">
-                        <a href="#project-anthropometric">View project <span aria-hidden="true">↘</span></a>
-                        <a href="public/assets/certificates/gemastik-xvii-2024-finalist.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVII Data Mining finalist certificate (PDF, opens in a new tab)">Finalist certificate <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-            </div>
-            <div class="field-notes reveal">
-                <article>
-                    <header><span>SEP 2025 / UNIVERSITY</span><strong>Lomba Digital Mahasiswa (LIDM)</strong><span class="competition-division">Digital Education Technology Innovation</span></header>
-                    <div>
-                        <h3>1st place at UNSRAT</h3>
-                        <p>Socratix — guided mathematics learning with dynamic visualizations.</p>
-                        <div class="competition-links"><a href="#project-socratix">View project <span aria-hidden="true">↘</span></a></div>
-                    </div>
-                </article>
-                <article>
-                    <header><span>2024 / UNIVERSITY SELECTION</span><strong>Pagelaran Mahasiswa Bidang TIK (GEMASTIK) XVII</strong><span class="competition-division">Software Development</span></header>
-                    <div>
-                        <h3>1st place in the UNSRAT selection</h3>
-                        <p>SEMARA — medication reminders and daily-care tools for older adults.</p>
-                        <div class="competition-links"><a href="#project-semara">View project <span aria-hidden="true">↘</span></a></div>
-                    </div>
-                </article>
-                <article>
-                    <header><span>MAY 2024 / UNIVERSITY SELECTION</span><strong>SATRIA DATA</strong><span class="competition-division">Big Data Challenge</span></header>
-                    <div>
-                        <h3>1st place in the UNSRAT selection</h3>
-                    </div>
-                </article>
+                </section>
             </div>
         </section>
+
+        <dialog class="achievement-dialog" id="achievement-dialog" aria-labelledby="achievement-dialog-title">
+            <div class="achievement-dialog-shell">
+                <header class="achievement-dialog-header">
+                    <div>
+                        <span data-achievement-date></span>
+                        <h2 id="achievement-dialog-title" tabindex="-1"></h2>
+                    </div>
+                    <button type="button" class="achievement-dialog-close" data-achievement-close aria-label="Close achievement details">Close <span aria-hidden="true">×</span></button>
+                </header>
+                <div class="achievement-dialog-body">
+                    <strong data-achievement-result></strong>
+                    <p class="achievement-dialog-track" data-achievement-track></p>
+                    <div data-achievement-issuer></div>
+                    <div class="achievement-dialog-copy" data-achievement-copy></div>
+                    <div class="achievement-dialog-links" data-achievement-links></div>
+                </div>
+            </div>
+        </dialog>
 
         <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
             <header class="project-dialog-header">
@@ -1166,6 +1165,6 @@
         <a href="#profile">Back to top ↑</a>
     </footer>
 
-    <script src="script.js?v=14"></script>
+    <script src="script.js?v=16"></script>
 </body>
 </html>

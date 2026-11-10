@@ -465,6 +465,63 @@ function setupProjectDossiers() {
     window.addEventListener("popstate", syncProjectFromLocation);
 }
 
+function setupAchievementDialog() {
+    const dialog = document.getElementById("achievement-dialog");
+    if (!dialog || typeof dialog.showModal !== "function") return;
+
+    const title = dialog.querySelector("#achievement-dialog-title");
+    const date = dialog.querySelector("[data-achievement-date]");
+    const result = dialog.querySelector("[data-achievement-result]");
+    const track = dialog.querySelector("[data-achievement-track]");
+    const issuer = dialog.querySelector("[data-achievement-issuer]");
+    const copy = dialog.querySelector("[data-achievement-copy]");
+    const links = dialog.querySelector("[data-achievement-links]");
+    let opener = null;
+    let restoreFocus = true;
+
+    document.querySelectorAll("[data-achievement-open]").forEach((button) => {
+        button.addEventListener("click", () => {
+            const card = button.closest(".achievement-card");
+            const sourceIssuer = card?.querySelector(".achievement-card-issuer");
+            if (!card || !sourceIssuer) return;
+
+            opener = button;
+            restoreFocus = true;
+            title.textContent = card.querySelector("h4").textContent;
+            date.textContent = card.querySelector("time").textContent;
+            result.textContent = card.querySelector(".achievement-card-meta strong").textContent;
+            track.textContent = card.querySelector(".achievement-card-track").textContent;
+
+            const issuerCopy = sourceIssuer.cloneNode(true);
+            issuerCopy.querySelector("span").textContent = sourceIssuer.dataset.fullName || sourceIssuer.textContent.trim();
+            issuer.replaceChildren(issuerCopy);
+            copy.replaceChildren(...Array.from(card.querySelectorAll(".achievement-detail-copy"), (item) => {
+                const paragraph = document.createElement("p");
+                paragraph.textContent = item.textContent;
+                return paragraph;
+            }));
+            links.replaceChildren(...Array.from(card.querySelectorAll(".achievement-source-links a"), (link) => link.cloneNode(true)));
+
+            dialog.scrollTop = 0;
+            dialog.showModal();
+            title.focus({ preventScroll: true });
+        });
+    });
+
+    dialog.querySelector("[data-achievement-close]").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+        if (event.target.closest('a[href^="#project-"]')) {
+            restoreFocus = false;
+            dialog.close();
+        } else if (event.target === dialog) {
+            dialog.close();
+        }
+    });
+    dialog.addEventListener("close", () => {
+        if (restoreFocus) opener?.focus({ preventScroll: true });
+    });
+}
+
 function setupEvidenceViewers() {
     document.querySelectorAll("[data-evidence-viewer]").forEach((viewer) => {
         const tabs = Array.from(viewer.querySelectorAll('[role="tab"]'));
@@ -849,6 +906,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupSectionObserver();
     setupReveals();
     setupProjectDossiers();
+    setupAchievementDialog();
     setupEvidenceViewers();
     setupCounters();
     setupCopyEmail();
