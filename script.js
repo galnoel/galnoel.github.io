@@ -200,30 +200,6 @@ function setupSectionObserver() {
     sections.forEach((section) => observer.observe(section));
 }
 
-function setupReveals() {
-    // Reveal the individual entries in long groups. A whole group can be taller
-    // than the viewport and never reach the observer's visibility threshold.
-    document.querySelectorAll(".competition-history.reveal, .field-notes.reveal, .archive.reveal").forEach((group) => {
-        group.classList.remove("reveal");
-        Array.from(group.children).forEach((item) => item.classList.add("reveal"));
-    });
-    const reveals = Array.from(document.querySelectorAll(".reveal"));
-    if (reduceMotion.matches || !("IntersectionObserver" in window)) {
-        reveals.forEach((item) => item.classList.add("is-visible"));
-        return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-        });
-    }, { rootMargin: "0px 0px -8%", threshold: 0.06 });
-
-    reveals.forEach((item) => observer.observe(item));
-}
-
 function linkDetailImages(container) {
     container.querySelectorAll(".project-overview-media img, .evidence-panel img, .achievement-dialog-photos img").forEach((image) => {
         const media = image.closest("picture") || image;
@@ -240,6 +216,7 @@ function linkDetailImages(container) {
 
 function setupProjectDossiers() {
     const dialog = document.getElementById("project-dialog");
+    const archive = document.getElementById("all-projects");
     const supportsDialog = dialog && typeof dialog.showModal === "function";
     const title = dialog?.querySelector("#project-dialog-title");
     const date = dialog?.querySelector("[data-dialog-date]");
@@ -253,11 +230,65 @@ function setupProjectDossiers() {
     let dialogPhase = "closed";
     let cancelDialogMotion = () => {};
     let dismissalPending = false;
+    let visualTransition = null;
+    let visualVersion = 0;
+    let clearVisualNames = () => {};
 
-    function projectAtHash() {
-        if (!window.location.hash.startsWith("#project-")) return null;
-        const target = document.getElementById(window.location.hash.slice(1));
-        return projectDossiers.includes(target) ? target : null;
+    function cancelVisualTransition() {
+        visualVersion += 1;
+        visualTransition?.skipTransition();
+        visualTransition = null;
+        clearVisualNames();
+    }
+
+    function connectProjectViews(sourceImage, sourceTitle, update) {
+        cancelVisualTransition();
+        const bounds = sourceImage?.getBoundingClientRect();
+        const canConnect = !reduceMotion.matches && typeof document.startViewTransition === "function" &&
+            bounds?.width > 0 && bounds.bottom > 72 && bounds.top < window.innerHeight;
+        if (!canConnect) {
+            update(false);
+            return;
+        }
+
+        const version = visualVersion;
+        const namedElements = new Set();
+        function name(element, value) {
+            if (!element) return;
+            element.style.viewTransitionName = value;
+            namedElements.add(element);
+        }
+        clearVisualNames = () => {
+            namedElements.forEach((element) => element.style.removeProperty("view-transition-name"));
+            namedElements.clear();
+        };
+        name(sourceImage, "project-image");
+        name(sourceTitle, "project-title");
+        visualTransition = document.startViewTransition(() => {
+            // A fast Back/Forward or second click can supersede a pending capture.
+            if (version !== visualVersion) return;
+            clearVisualNames();
+            const destination = update(true);
+            if (destination) {
+                name(destination.image, "project-image");
+                name(destination.title, "project-title");
+            }
+        });
+        visualTransition.ready.catch(() => {});
+        const cleanup = () => {
+            if (version !== visualVersion) return;
+            clearVisualNames();
+            visualTransition = null;
+        };
+        visualTransition.finished.then(cleanup, cleanup);
+    }
+
+    onMediaChange(reduceMotion, () => {
+        if (reduceMotion.matches) visualTransition?.skipTransition();
+    });
+
+    function revealArchivedProject(target) {
+        if (archive?.contains(target)) archive.open = true;
     }
 
     function restoreBody() {
@@ -270,13 +301,18 @@ function setupProjectDossiers() {
     }
 
     function hideProject() {
-        if (!activeProject || dialogPhase === "closing") return;
+        if (!activeProject) {
+            cancelVisualTransition();
+            return;
+        }
+        if (dialogPhase === "closing") return;
         const style = getComputedStyle(dialog);
         const from = { opacity: style.opacity, transform: style.transform };
         cancelDialogMotion();
         dialogPhase = "closing";
         dialog.dataset.motion = "closing";
-        cancelDialogMotion = playMotion(dialog, [from, dialogExitFrame], motion.exit, () => {
+        const project = activeProject;
+        const finishClose = () => {
             pendingFocus = returnFocus;
             dialog.close();
             restoreBody();
@@ -286,6 +322,14 @@ function setupProjectDossiers() {
             dialog.dataset.motion = "closed";
             restoreProjectFocus();
             requestProgressUpdate();
+            return {
+                image: project.querySelector(".project-thumbnail img"),
+                title: project.querySelector(".project-card-title")
+            };
+        };
+        connectProjectViews(content.querySelector(".project-overview-media img"), title, (shared) => {
+            if (shared) return finishClose();
+            cancelDialogMotion = playMotion(dialog, [from, dialogExitFrame], motion.exit, finishClose);
         });
     }
 
@@ -303,6 +347,17 @@ function setupProjectDossiers() {
 
     function showProject(target, opener) {
         if (target === activeProject && dialogPhase !== "closing") return;
+        const sourceImage = dialog.open
+            ? content.querySelector(".project-overview-media img")
+            : target.querySelector(".project-thumbnail img");
+        const sourceTitle = dialog.open ? title : target.querySelector(".project-card-title");
+        connectProjectViews(sourceImage, sourceTitle, (shared) => {
+            renderProject(target, opener, shared);
+            return { image: content.querySelector(".project-overview-media img"), title };
+        });
+    }
+
+    function renderProject(target, opener, shared = false) {
         const wasOpen = dialog.open;
         const style = wasOpen ? getComputedStyle(dialog) : null;
         const from = style
@@ -336,16 +391,20 @@ function setupProjectDossiers() {
         }
         dialogPhase = "opening";
         dialog.dataset.motion = "opening";
-        cancelDialogMotion = playMotion(dialog, [from, dialogOpenFrame], motion.enter, () => {
+        const finishOpen = () => {
             dialogPhase = "open";
             dialog.dataset.motion = "open";
-        });
+        };
+        if (shared) finishOpen();
+        else cancelDialogMotion = playMotion(dialog, [from, dialogOpenFrame], motion.enter, finishOpen);
         title.focus({ preventScroll: true });
     }
 
     function syncProjectFromLocation() {
         dismissalPending = false;
-        const target = projectAtHash();
+        const destination = document.getElementById(window.location.hash.slice(1));
+        revealArchivedProject(destination);
+        const target = projectDossiers.includes(destination) ? destination : null;
         if (supportsDialog) {
             if (target) showProject(target);
             else {
@@ -359,6 +418,7 @@ function setupProjectDossiers() {
     }
 
     function visitProject(target, opener) {
+        revealArchivedProject(target);
         if (window.location.hash !== `#${target.id}`) {
             const replaceOpenProject = dialog.open && history.state?.portfolioProject?.owner === historyOwner;
             history[replaceOpenProject ? "replaceState" : "pushState"]({
@@ -396,7 +456,6 @@ function setupProjectDossiers() {
             summary.setAttribute("aria-controls", "project-dialog");
             summary.setAttribute("aria-expanded", "false");
             summary.addEventListener("click", (event) => {
-                if (event.target.closest(".project-live-preview")) return;
                 event.preventDefault();
                 visitProject(project, summary);
             });
@@ -410,10 +469,6 @@ function setupProjectDossiers() {
         }
     });
 
-    document.querySelectorAll(".project-live-preview").forEach((link) => {
-        link.addEventListener("click", (event) => event.stopPropagation());
-    });
-
     document.addEventListener("click", (event) => {
         const link = event.target.closest('a[href^="#project-"]');
         if (!link || event.defaultPrevented || event.button !== 0 ||
@@ -424,6 +479,7 @@ function setupProjectDossiers() {
             event.preventDefault();
             visitProject(target, link);
         } else {
+            revealArchivedProject(target);
             projectDossiers.forEach((project) => { project.open = project === target; });
         }
     });
@@ -434,7 +490,7 @@ function setupProjectDossiers() {
             const index = projectDossiers.indexOf(activeProject);
             if (index < 0) return;
             const next = projectDossiers[(index + direction + projectDossiers.length) % projectDossiers.length];
-            visitProject(next, next.querySelector("summary"));
+            visitProject(next, returnFocus);
         }
         dialog.querySelector("[data-project-prev]")?.addEventListener("click", () => browseProject(-1));
         dialog.querySelector("[data-project-next]")?.addEventListener("click", () => browseProject(1));
@@ -479,6 +535,7 @@ function setupProjectDossiers() {
     }
 
     syncProjectFromLocation();
+    archive?.addEventListener("toggle", requestProgressUpdate);
     window.addEventListener("hashchange", syncProjectFromLocation);
     window.addEventListener("popstate", syncProjectFromLocation);
 }
@@ -696,9 +753,35 @@ function setupEvidenceViewers() {
     });
 }
 
+function setupReveals() {
+    // Reveal the individual entries in long groups. A whole group can be taller
+    // than the viewport and never reach the observer's visibility threshold.
+    document.querySelectorAll(".competition-history.reveal, .field-notes.reveal").forEach((group) => {
+        group.classList.remove("reveal");
+        Array.from(group.children).forEach((item) => item.classList.add("reveal"));
+    });
+    const reveals = Array.from(document.querySelectorAll(".reveal"));
+    if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+        reveals.forEach((item) => item.classList.add("is-visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, { rootMargin: "0px 0px -8%", threshold: 0.06 });
+
+    reveals.forEach((item) => observer.observe(item));
+}
+
+
 function formatCount(value, decimals) {
     return Number(value).toFixed(decimals);
 }
+
 
 function animateCount(element) {
     if (element.dataset.counted === "true") return;
@@ -728,6 +811,7 @@ function animateCount(element) {
     window.requestAnimationFrame(step);
 }
 
+
 function setupCounters() {
     const counters = Array.from(document.querySelectorAll("[data-count-to]"));
     if (reduceMotion.matches || !("IntersectionObserver" in window)) {
@@ -745,6 +829,7 @@ function setupCounters() {
 
     counters.forEach((counter) => observer.observe(counter));
 }
+
 
 function splitHeroName() {
     const heading = document.querySelector(".hero-name");
@@ -775,6 +860,7 @@ function splitHeroName() {
     heading.setAttribute("aria-label", fullName);
 }
 
+
 function splitSectionHeadings() {
     document.querySelectorAll(".section-heading h2").forEach((heading) => {
         if (heading.dataset.motionSplit === "true") return;
@@ -799,6 +885,7 @@ function splitSectionHeadings() {
     });
 }
 
+
 function setupRevealRhythm() {
     const groups = document.querySelectorAll(
         ".competition-highlights, .dossier-list, .competition-history, .certificate-grid, .supporting-gallery"
@@ -812,6 +899,67 @@ function setupRevealRhythm() {
         });
     });
 }
+
+
+function setupParallax() {
+    const images = Array.from(document.querySelectorAll(
+        ".portrait-wrap img, .project-thumbnail img, .competition-feature-photo img, .competition-photo img, .experience-gallery img, .experience-feature img"
+    ));
+    if (!images.length) return;
+
+    images.forEach((image) => image.classList.add("motion-parallax"));
+
+    let ticking = false;
+    function update() {
+        ticking = false;
+        if (reduceMotion.matches) {
+            images.forEach((image) => image.style.removeProperty("--parallax-y"));
+            return;
+        }
+
+        const viewportCenter = window.innerHeight / 2;
+        images.forEach((image) => {
+            const bounds = image.parentElement.getBoundingClientRect();
+            if (bounds.bottom < -120 || bounds.top > window.innerHeight + 120) return;
+            const elementCenter = bounds.top + bounds.height / 2;
+            const offset = Math.max(-18, Math.min(18, (viewportCenter - elementCenter) * 0.035));
+            image.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
+        });
+    }
+
+    function requestUpdate() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    onMediaChange(reduceMotion, requestUpdate);
+    requestUpdate();
+}
+
+
+function setupProjectTilt() {
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!finePointer.matches || reduceMotion.matches) return;
+
+    document.querySelectorAll(".featured-project-panel, .archive-grid .project-dossier > summary").forEach((card) => {
+        card.addEventListener("pointermove", (event) => {
+            const bounds = card.getBoundingClientRect();
+            const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+            const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+            card.style.setProperty("--tilt-x", `${(-y * 2.4).toFixed(2)}deg`);
+            card.style.setProperty("--tilt-y", `${(x * 2.4).toFixed(2)}deg`);
+        });
+
+        card.addEventListener("pointerleave", () => {
+            card.style.setProperty("--tilt-x", "0deg");
+            card.style.setProperty("--tilt-y", "0deg");
+        });
+    });
+}
+
 
 function setupFeaturedStack() {
     const cards = Array.from(document.querySelectorAll(".featured-project"));
@@ -870,64 +1018,6 @@ function setupCopyEmail() {
     });
 }
 
-function setupParallax() {
-    const images = Array.from(document.querySelectorAll(
-        ".portrait-wrap img, .project-thumbnail img, .competition-feature-photo img, .competition-photo img, .experience-gallery img"
-    ));
-    if (!images.length) return;
-
-    images.forEach((image) => image.classList.add("motion-parallax"));
-
-    let ticking = false;
-    function update() {
-        ticking = false;
-        if (reduceMotion.matches) {
-            images.forEach((image) => image.style.removeProperty("--parallax-y"));
-            return;
-        }
-
-        const viewportCenter = window.innerHeight / 2;
-        images.forEach((image) => {
-            const bounds = image.parentElement.getBoundingClientRect();
-            if (bounds.bottom < -120 || bounds.top > window.innerHeight + 120) return;
-            const elementCenter = bounds.top + bounds.height / 2;
-            const offset = Math.max(-18, Math.min(18, (viewportCenter - elementCenter) * 0.035));
-            image.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
-        });
-    }
-
-    function requestUpdate() {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(update);
-    }
-
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-    onMediaChange(reduceMotion, requestUpdate);
-    requestUpdate();
-}
-
-function setupProjectTilt() {
-    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-    if (!finePointer.matches || reduceMotion.matches) return;
-
-    document.querySelectorAll(".project-dossier > summary").forEach((card) => {
-        card.addEventListener("pointermove", (event) => {
-            const bounds = card.getBoundingClientRect();
-            const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-            const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-            card.style.setProperty("--tilt-x", `${(-y * 2.4).toFixed(2)}deg`);
-            card.style.setProperty("--tilt-y", `${(x * 2.4).toFixed(2)}deg`);
-        });
-
-        card.addEventListener("pointerleave", () => {
-            card.style.setProperty("--tilt-x", "0deg");
-            card.style.setProperty("--tilt-y", "0deg");
-        });
-    });
-}
-
 function setupMotionLanguage() {
     root.classList.add("motion-language");
     splitHeroName();
@@ -935,11 +1025,90 @@ function setupMotionLanguage() {
     setupRevealRhythm();
     setupParallax();
     setupProjectTilt();
-    setupFeaturedStack();
-
     window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => root.classList.add("motion-loaded"));
     });
+    // A single entrance on the actual introduction. Its resting state is visible.
+    const intro = document.querySelector(".about-copy");
+    if (intro) {
+        Array.from(intro.children).forEach((element, index) => {
+            playMotion(element, [
+                { opacity: 0, transform: "translateY(14px)" },
+                { opacity: 1, transform: "none" }
+            ], 560 + index * 60);
+        });
+    }
+    setupFeaturedStack();
+}
+
+function setupSystemWalkthroughs() {
+    document.querySelectorAll("[data-system-walkthrough]").forEach((walkthrough) => {
+        const tabs = Array.from(walkthrough.querySelectorAll("[data-system-step]"));
+        const panels = Array.from(walkthrough.querySelectorAll("[data-system-panel]"));
+        const tablist = walkthrough.querySelector(".system-steps");
+        let cancelPanelMotion = () => {};
+        function activate(index, animate = true) {
+            cancelPanelMotion();
+            tabs.forEach((tab, i) => {
+                tab.setAttribute("aria-selected", String(i === index));
+                tab.tabIndex = i === index ? 0 : -1;
+                panels[i].hidden = i !== index;
+            });
+            walkthrough.querySelectorAll("[data-system-node]").forEach((node) => {
+                node.classList.toggle("is-active", node.dataset.systemNode === panels[index].dataset.node);
+            });
+            if (animate) cancelPanelMotion = playMotion(panels[index], [
+                { opacity: 0, transform: "translateY(4px)" },
+                { opacity: 1, transform: "none" }
+            ], 180);
+        }
+        tabs.forEach((tab, index) => {
+            tab.setAttribute("role", "tab");
+            tab.setAttribute("aria-controls", panels[index].id);
+            panels[index].setAttribute("role", "tabpanel");
+            panels[index].setAttribute("aria-labelledby", tab.id);
+            panels[index].tabIndex = 0;
+            tab.addEventListener("click", () => activate(index));
+            tab.addEventListener("keydown", (event) => {
+                let next;
+                if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+                if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+                if (event.key === "Home") next = 0;
+                if (event.key === "End") next = tabs.length - 1;
+                if (next === undefined) return;
+                event.preventDefault();
+                activate(next);
+                tabs[next].focus();
+            });
+        });
+        tablist.setAttribute("role", "tablist");
+        activate(0, false);
+        tablist.hidden = false;
+        walkthrough.classList.add("is-interactive");
+    });
+}
+
+// Opening a deep link must also reveal any native disclosures around its target.
+function setupSupportingDetails() {
+    function revealLocation() {
+        const target = document.getElementById(window.location.hash.slice(1));
+        if (!target) return;
+        let parent = target.parentElement;
+        let revealed = false;
+        while (parent) {
+            if (parent.matches("details.supporting-details") && !parent.open) {
+                parent.open = true;
+                revealed = true;
+            }
+            parent = parent.parentElement;
+        }
+        if (revealed) target.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+    document.querySelectorAll("details.supporting-details").forEach((details) => {
+        details.addEventListener("toggle", requestProgressUpdate);
+    });
+    window.addEventListener("hashchange", revealLocation);
+    revealLocation();
 }
 
 window.addEventListener("scroll", requestProgressUpdate, { passive: true });
@@ -951,6 +1120,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setupNavigation();
     setupSectionObserver();
     setupReveals();
+    setupSystemWalkthroughs();
+    setupSupportingDetails();
     setupProjectDossiers();
     setupAchievementDialog();
     setupEvidenceViewers();

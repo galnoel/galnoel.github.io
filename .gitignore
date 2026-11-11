@@ -1,2 +1,5 @@
 docs/
 .replica/
+node_modules/
+.taste-skill/
+reports/portfolio-refinement/
