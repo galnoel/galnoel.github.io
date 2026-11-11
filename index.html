@@ -38,7 +38,7 @@
             document.querySelector("[data-theme-color]").content = theme === "dark" ? "#121311" : "#FDFBF7";
         }());
     </script>
-    <link rel="stylesheet" href="styles.css?v=51">
+    <link rel="stylesheet" href="styles.css?v=55">
     <noscript><style>.evidence-panel[hidden] { display: grid; } .evidence-tabs { display: none; }</style></noscript>
 
     <script type="application/ld+json">
@@ -72,8 +72,8 @@
         "award": [
             "2nd Place — PIDI DIGDAYA x HACKATHON 2026, national competition by Bank Indonesia, YUDHA (September 2026)",
             "9th Place — 100xDevs Frontier Hackathon Track, Team CORA (2026)",
-            "11th Place, Education Track — ASEAN AI Hackathon, Socratix (March 2026)",
-            "3rd Place (Bronze Medal), Presentation Category — PIMNAS 38 (2025)",
+            "11th Place, AI for Education Track — ASEAN AI Hackathon, Socratix (May 2026)",
+            "Bronze Award, PKM-KC1 Presentation — PIMNAS 38 (2025)",
             "Most Inspiring Team — GEMASTIK XVIII (2025)",
             "1st Place, UNSRAT, Digital Education Technology Innovation Division — LIDM, Socratix (September 2025)",
             "National Finalist, Data Mining — GEMASTIK XVII (2024)",
@@ -178,21 +178,21 @@
                     <div class="dossier-body">
                         <div class="dossier-intro">
                             <h3>Keeping competitive exam practice in sync</h3>
-                            <p>YUDHA (Your Ultimate Digital Hiring Arena) is a Flutter learning arena for Indonesian civil-service (CPNS) and state-owned-enterprise (BUMN) applicants, combining aptitude-test practice, real-time quiz duels, progress tracking, and AI interview preparation. My contribution focused on the backend for real-time battles and study sessions.</p>
+                            <p>YUDHA (Your Ultimate Digital Hiring Arena) is a Flutter learning arena for Indonesian civil-service (CPNS) and state-owned-enterprise (BUMN) applicants, combining aptitude-test practice, real-time quiz duels, progress tracking, and AI interview preparation. As tech lead and backend engineer, I led the architecture and built the app and real-time game backends.</p>
                         </div>
                         <figure class="project-overview-media">
                             <img src="public/assets/portfolio/YUDHA.jpg" alt="YUDHA recruitment-preparation app with learning, battle, and interview screens" width="1920" height="1080" loading="lazy" decoding="async">
                         </figure>
                         <dl class="dossier-facts">
                             <div><dt>Problem</dt><dd>Keep matchmaking, battle state, and study progress consistent across concurrent requests and player disconnects.</dd></div>
-                            <div><dt>My role</dt><dd>Backend developer responsible for the NestJS and Socket.IO battle engine, matchmaking, match resolution, and study-session APIs.</dd></div>
-                            <div><dt>Approach</dt><dd>Used Upstash Redis and Lua for first-in, first-out matchmaking, private room codes, and a 30-second reconnection window. Supabase PostgreSQL functions resolve matches and update rank points.</dd></div>
-                            <div><dt>Key decision</dt><dd>Made match resolution idempotent so retries cannot apply the same result twice. Session locks and deterministic analytics keep study progress consistent.</dd></div>
-                            <div><dt>Result</dt><dd>Delivered battle and study APIs, plus Firebase Cloud Messaging notifications for study streaks. The team placed 2nd at PIDI DIGDAYA x HACKATHON 2026.</dd></div>
+                            <div><dt>My role</dt><dd>Tech Lead &amp; Backend Engineer. I owned the system architecture, both NestJS services, the Supabase database, authentication, and deployment on Railway.</dd></div>
+                            <div><dt>Approach</dt><dd>The app backend serves REST APIs for practice and progress tracking. The game backend uses Socket.IO for real-time battles, Redis for matchmaking and game state, and Supabase PostgreSQL for persistent data.</dd></div>
+                            <div><dt>Key decision</dt><dd>The server validates game actions before accepting them and determines the battle outcome.</dd></div>
+                            <div><dt>Result</dt><dd>I delivered the app and game backends and published the Android release on Google Play. The team placed 2nd at PIDI DIGDAYA x HACKATHON 2026.</dd></div>
                             <div><dt>Project scope</dt><dd>The Open Beta product includes a Learning Center, Standard, Focus, and Speed practice modes, progress tracking, and company- and role-specific AI interviews with text or voice answers. AI and voice availability depends on backend provider configuration.</dd></div>
                         </dl>
                         <div class="dossier-footer">
-                            <ul class="stack-list" aria-label="YUDHA technology stack"><li class="project-topic">Backend engineering</li><li>NestJS</li><li>Socket.IO</li><li>Upstash Redis</li><li>Lua</li><li>Supabase PostgreSQL</li><li>Firebase FCM</li></ul>
+                            <ul class="stack-list" aria-label="YUDHA technology stack"><li class="project-topic">Backend engineering</li><li>NestJS</li><li>Socket.IO</li><li>Upstash Redis</li><li>Supabase PostgreSQL</li><li>Railway</li></ul>
                             <div class="project-links">
                                 <a href="https://prototype.yudha.fun/" target="_blank" rel="noopener noreferrer">Web prototype <span aria-hidden="true">↗</span></a>
                                 <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer">Landing page <span aria-hidden="true">↗</span></a>
@@ -268,6 +268,15 @@
                             <p>I built CORA’s server-side match loop and settlement verification, keeping game state, deposits, and payouts aligned across concurrent events.</p>
                         </div>
 
+                        <dl class="dossier-facts">
+                            <div><dt>Problem</dt><dd>Keep concurrent multiplayer matches and native SOL wagers consistent from deposit through payout.</dd></div>
+                            <div><dt>My role</dt><dd>Backend developer for the match state machine, settlement oracle, and Solana Actions endpoints.</dd></div>
+                            <div><dt>Approach</dt><dd>Connected Bun and Hono WebSockets to a verification, signature, and payout flow. Added wSOL wrapping and a sequential deposit state machine.</dd></div>
+                            <div><dt>Key decision</dt><dd>Locked transaction parameters at each step so racing match events could not produce different payouts.</dd></div>
+                            <div><dt>On-chain integration</dt><dd>Integrated MagicBlock Ephemeral to mirror gameplay on-chain for verification.</dd></div>
+                            <div><dt>Result</dt><dd>Delivered a real-time match loop with deterministic settlement. Team CORA placed 9th among 482 submissions in the 100xDevs Frontier Hackathon Track.</dd></div>
+                        </dl>
+
                         <div class="evidence-viewer" data-evidence-viewer>
                             <div class="evidence-tabs" role="tablist" aria-label="CORA evidence views">
                                 <button role="tab" aria-selected="true" aria-controls="cora-landing" id="cora-landing-tab" data-project-view="landing">Overview</button>
@@ -295,15 +304,6 @@
                                 </ol>
                             </div>
                         </div>
-
-                        <dl class="dossier-facts">
-                            <div><dt>Problem</dt><dd>Keep concurrent multiplayer matches and native SOL wagers consistent from deposit through payout.</dd></div>
-                            <div><dt>My role</dt><dd>Backend developer for the match state machine, settlement oracle, and Solana Actions endpoints.</dd></div>
-                            <div><dt>Approach</dt><dd>Connected Bun and Hono WebSockets to a verification, signature, and payout flow. Added wSOL wrapping and a sequential deposit state machine.</dd></div>
-                            <div><dt>Key decision</dt><dd>Locked transaction parameters at each step so racing match events could not produce different payouts.</dd></div>
-                            <div><dt>On-chain integration</dt><dd>Integrated MagicBlock Ephemeral to mirror gameplay on-chain for verification.</dd></div>
-                            <div><dt>Result</dt><dd>Delivered a real-time match loop with deterministic settlement. Team CORA placed 9th among 482 submissions in the 100xDevs Frontier Hackathon Track.</dd></div>
-                        </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="CORA technology stack"><li class="project-topic">Real-time systems</li><li>Bun</li><li>Hono</li><li>Supabase</li><li>Solana web3.js</li><li>WebSockets</li><li>Solana Actions</li><li>MagicBlock Ephemeral</li></ul>
                             <div class="project-links">
@@ -323,11 +323,11 @@
                         <span class="project-card-copy">
                             <span class="project-card-heading">
                                 <span class="project-card-title" id="project-neurokit-title"><span class="project-title-name">NEUROKIT</span> <span class="project-title-subject">Connected study toolkit</span></span>
-                                <span class="project-date">2025</span>
+                                <span class="project-date">JUL–OCT 2025</span>
                             </span>
                             <span class="project-card-description" id="project-neurokit-description">A funded learning toolkit combining adaptive light, music therapy, gamification, and an AI-connected mobile app.</span>
                             <span class="project-preview-stack"><span class="project-topic">Hardware &amp; AI</span><span>ESP32 · Flutter · Bluetooth · AI</span></span>
-                            <span class="project-outcome">Bronze medal · PIMNAS 38</span>
+                            <span class="project-outcome">Bronze award · PIMNAS 38</span>
                             <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
                         </span>
                     </summary>
@@ -336,6 +336,15 @@
                             <h3>Taking a connected study device from prototype to evaluation</h3>
                             <p>I led NEUROKIT, a funded PKM research prototype combining adaptive lighting, music therapy, gamification, and a Bluetooth-connected Flutter app. The team integrated generative AI motivation and text-to-speech; OpenRouter and Prosa TTS generate personalized spoken affirmations.</p>
                         </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Problem</dt><dd>Coordinate adaptive lighting, audio, and mobile controls in a single study-support prototype.</dd></div>
+                            <div><dt>My role</dt><dd>I led the PKM-KC team.</dd></div>
+                            <div><dt>Approach</dt><dd>Connected an ESP32 device to a Flutter app over Bluetooth, with study sessions, audio controls, and generated spoken affirmations.</dd></div>
+                            <div><dt>Key decision</dt><dd>Used an HC-SR04 distance sensor and PWM-controlled MOSFET circuitry to adjust lighting across user distances of 30–70 cm.</dd></div>
+                            <div><dt>Result</dt><dd>The prototype measured 516–553 lux across five test distances from 30 to 70 cm.</dd></div>
+                            <div><dt>Recognition</dt><dd>Bronze-equivalent award in the PIMNAS 38 PKM-KC1 presentation category.</dd></div>
+                        </dl>
 
                         <div class="evidence-viewer" data-evidence-viewer>
                             <div class="evidence-tabs" role="tablist" aria-label="NEUROKIT evidence views">
@@ -353,18 +362,9 @@
                             </div>
                             <div class="evidence-panel research-figure" id="neurokit-validation" role="tabpanel" aria-labelledby="neurokit-validation-tab" data-project-panel="validation" hidden>
                                 <picture><img src="public/assets/portfolio/neurokit-test.jpg" alt="NEUROKIT human validation session" width="840" height="601" loading="lazy"></picture>
-                                <div class="figure-caption"><span>WMS-11.35</span><p>The project’s Wechsler Memory Scale pilot reported an 11.35% memory improvement.</p></div>
+                                <div class="figure-caption"><span>WMS-11.35</span><p>The team reported an 11.35% improvement in a supplementary Wechsler Memory Scale evaluation. The available records give limited detail about the study design.</p></div>
                             </div>
                         </div>
-
-                        <dl class="dossier-facts">
-                            <div><dt>Problem</dt><dd>Coordinate adaptive lighting, audio, and mobile controls in a single study-support prototype.</dd></div>
-                            <div><dt>My role</dt><dd>Led development across enclosure design, electronics, Flutter, AI integration, prototype testing, and the competition presentation.</dd></div>
-                            <div><dt>Approach</dt><dd>Connected an ESP32 device to a Flutter app over Bluetooth, with study sessions, audio controls, and generated spoken affirmations.</dd></div>
-                            <div><dt>Key decision</dt><dd>Used an HC-SR04 distance sensor and PWM-controlled MOSFET circuitry to adjust lighting across user distances of 30–70 cm.</dd></div>
-                            <div><dt>Result</dt><dd>Prototype tests maintained 500–600 lux, averaging 536 lux. The project’s Wechsler Memory Scale pilot reported an 11.35% memory improvement.</dd></div>
-                            <div><dt>Recognition</dt><dd>3rd place (Bronze Medal) in the PIMNAS 38 PKM-KC presentation category.</dd></div>
-                        </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="NEUROKIT technology stack"><li class="project-topic">Hardware &amp; AI</li><li>ESP32</li><li>HC-SR04</li><li>Flutter</li><li>Bluetooth</li><li>PWM + MOSFET</li><li>OpenRouter</li><li>Prosa TTS</li></ul>
                             <div class="project-links">
@@ -417,8 +417,8 @@
                             <div><dt>My role</dt><dd>AI and backend engineering: designed the router and planner pipeline with Groq and NestJS, including input classification and context extraction.</dd></div>
                             <div><dt>Approach</dt><dd>Combined regex routing with an LLM fallback through the Vercel AI SDK. Zod schemas validate extracted equations, problem types, and parameters.</dd></div>
                             <div><dt>Key decision</dt><dd>The pipeline checks equations through Math.js before generating guidance. Defensive error handling and prompt-injection mitigations help manage unexpected inputs.</dd></div>
-                            <div><dt>Result</dt><dd>Routing reached approximately 5 ms and correctly classified all 20 examples in the project’s validation matrix. This is a small project evaluation, not a general accuracy benchmark.</dd></div>
-                            <div><dt>Recognition</dt><dd>11th place in the ASEAN AI Hackathon Education Track (March 2026); 1st place at UNSRAT in the LIDM Digital Education Technology Innovation division (September 2025).</dd></div>
+                            <div><dt>Result</dt><dd>The router correctly classified all 20 examples in a small project evaluation using the live Groq API.</dd></div>
+                            <div><dt>Recognition</dt><dd>11th place in the AI for Education track at the ASEAN AI Hackathon (May 2026) and 1st place at UNSRAT in the LIDM Digital Education Technology Innovation division (September 2025).</dd></div>
                         </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="Socratix technology stack"><li class="project-topic">AI engineering</li><li>Next.js 15</li><li>React 19</li><li>NestJS</li><li>Groq API</li><li>gpt-oss-120b</li><li>Math.js AST</li><li>Redis</li><li>Supabase PostgreSQL</li><li>Prisma ORM</li><li>SSE</li><li>SVG / Canvas</li></ul>
@@ -439,7 +439,7 @@
                                 <span class="project-card-title" id="project-gemastik-title">Fish freshness: Multimodal classifier</span>
                                 <span class="project-date">JUL&ndash;AUG 2025</span>
                             </span>
-                            <span class="project-card-description" id="project-gemastik-description">Image and gas-sensor fusion for fish-freshness classification, with 84.3% macro F1.</span>
+                            <span class="project-card-description" id="project-gemastik-description">Image and gas-sensor fusion for tuna freshness classification, with 84.3% validation macro F1.</span>
                             <span class="project-preview-stack"><span class="project-topic">Multimodal transformers</span><span>PyTorch · DINOv2 · Fusion Transformers</span></span>
                             <span class="project-card-footer"><span class="project-card-action">View project <span aria-hidden="true">↗</span></span></span>
                         </span>
@@ -447,8 +447,17 @@
                     <div class="dossier-body">
                         <div class="dossier-intro">
                             <h3>Combining images and sensor readings to classify freshness</h3>
-                            <p>For our GEMASTIK XVIII research entry, I built a model that combines fish images with electronic-nose sensor readings and uses attention analysis to inspect its predictions.</p>
+                            <p>For the GEMASTIK XVIII qualifying round, our team built a tuna freshness classifier that combines images with electronic-nose sensor readings. I handled image preprocessing.</p>
                         </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Problem</dt><dd>Combine visual and gas-sensor signals while preserving useful information from each modality.</dd></div>
+                            <div><dt>My role</dt><dd>I prepared the image inputs for the model by extracting capture timestamps, checking image integrity, augmenting the dataset, and standardizing image sizes.</dd></div>
+                            <div><dt>Approach</dt><dd>Aligned DaFiF images and sensor streams by timestamp, filtered anomalies, and combined a DINOv2 vision transformer with an MLP sensor encoder.</dd></div>
+                            <div><dt>Key decision</dt><dd>Aligned the modalities with a CLIP-style contrastive loss, then used bidirectional cross-attention to fuse them. Focal Tversky Loss addressed class imbalance.</dd></div>
+                            <div><dt>Result</dt><dd>On the tuna validation split, the team’s model achieved <strong>85.4% accuracy</strong>, <strong>84.3% macro F1</strong>, and <strong>92.7% F1</strong> for the “Marginal” freshness class.</dd></div>
+                            <div><dt>Model interpretation</dt><dd>Used Grad-CAM visualizations to inspect the image regions influencing predictions.</dd></div>
+                        </dl>
 
                         <div class="evidence-viewer">
                             <div class="evidence-panel research-figure">
@@ -456,15 +465,6 @@
                                 <div class="figure-caption"><span>FUSION-01</span><p>Grad-CAM evidence over vision tokens used to inspect the model’s spatial focus.</p></div>
                             </div>
                         </div>
-
-                        <dl class="dossier-facts">
-                            <div><dt>Problem</dt><dd>Combine visual and gas-sensor signals while preserving useful information from each modality.</dd></div>
-                            <div><dt>My role</dt><dd>Designed the fusion architecture and contrastive-learning pipeline, handled class imbalance, and analyzed model attention.</dd></div>
-                            <div><dt>Approach</dt><dd>Aligned DaFiF images and sensor streams by timestamp, filtered anomalies, and combined a DINOv2 vision transformer with an MLP sensor encoder.</dd></div>
-                            <div><dt>Key decision</dt><dd>Aligned the modalities with a CLIP-style contrastive loss, then used bidirectional cross-attention to fuse them. Focal Tversky Loss addressed class imbalance.</dd></div>
-                            <div><dt>Result</dt><dd>The project evaluation recorded <strong>85.4% accuracy</strong>, <strong>84.3% macro F1</strong>, and <strong>92.7% peak F1</strong> for the “Marginal” freshness class.</dd></div>
-                            <div><dt>Model interpretation</dt><dd>Used Grad-CAM visualizations to inspect the image regions influencing predictions.</dd></div>
-                        </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="Fish-freshness research stack"><li class="project-topic">Multimodal transformers</li><li>PyTorch</li><li>DINOv2 / ViT</li><li>MLP</li><li>Fusion Transformers</li><li>Contrastive Learning</li><li>Focal Tversky Loss</li><li>Grad-CAM</li></ul>
                         </div>
@@ -599,8 +599,16 @@
                     <div class="dossier-body">
                         <div class="dossier-intro">
                             <h3>Recognizing handwritten Javanese script under time constraints</h3>
-                            <p>During the five-hour GEMASTIK XVIII final challenge, I built a classification pipeline for 20 handwritten Javanese script classes using Co-Scale Conv-Attentional Transformers (CoaT).</p>
+                            <p>During the five-hour GEMASTIK XVIII final challenge, I worked as the modeler on a pipeline for 20 handwritten Javanese script classes using Co-Scale Conv-Attentional Transformers (CoaT).</p>
                         </div>
+
+                        <dl class="dossier-facts">
+                            <div><dt>Problem</dt><dd>Classify 20 handwritten script categories in a time-limited challenge with imbalanced training data.</dd></div>
+                            <div><dt>My role</dt><dd>I benchmarked model architectures, implemented two-stage fine-tuning with Focal Loss, and inspected predictions with Captum Integrated Gradients.</dd></div>
+                            <div><dt>Approach</dt><dd>Compared CoaT, Swin, and EfficientNet. Trained with frozen patch embeddings followed by progressive fine-tuning using AdamW and Kornia Focal Loss.</dd></div>
+                            <div><dt>Key decision</dt><dd>Used macro F1 to evaluate performance across classes, and Captum Integrated Gradients to inspect stroke-level attribution and possible shortcut learning.</dd></div>
+                            <div><dt>Result</dt><dd>The final CoaT model achieved <strong>96.7% validation macro F1</strong> across 20 classes.</dd></div>
+                        </dl>
 
                         <div class="evidence-viewer" data-evidence-viewer>
                             <div class="evidence-tabs" role="tablist" aria-label="Javanese Aksara classification evidence">
@@ -616,14 +624,6 @@
                                 <div class="figure-caption"><span>XAI-02</span><p>Interpretation output used to inspect structural feature extraction after preprocessing.</p></div>
                             </div>
                         </div>
-
-                        <dl class="dossier-facts">
-                            <div><dt>Problem</dt><dd>Classify 20 handwritten script categories in a time-limited challenge with imbalanced training data.</dd></div>
-                            <div><dt>My role</dt><dd>Handled image preprocessing, class weighting, transformer evaluation, and model interpretation.</dd></div>
-                            <div><dt>Approach</dt><dd>Compared CoaT, Swin, and EfficientNet. Trained with frozen patch embeddings followed by progressive fine-tuning using AdamW and Kornia Focal Loss.</dd></div>
-                            <div><dt>Key decision</dt><dd>Used macro F1 to evaluate performance across classes, and Captum Integrated Gradients to inspect stroke-level attribution and possible shortcut learning.</dd></div>
-                            <div><dt>Result</dt><dd>Achieved a <strong>96.7% test macro F1</strong> across the 20 classes in the final competition evaluation.</dd></div>
-                        </dl>
                         <div class="dossier-footer">
                             <ul class="stack-list" aria-label="Javanese Aksara classification stack"><li class="project-topic">Computer vision</li><li>PyTorch</li><li>CoaT</li><li>Swin Transformer</li><li>EfficientNet</li><li>AdamW</li><li>Kornia Focal Loss</li><li>Captum Integrated Gradients</li></ul>
                             <p class="verified-stamp">MOST INSPIRING TEAM / GEMASTIK XVIII</p>
@@ -762,7 +762,7 @@
                                 <h4>Public facility recommendation system</h4>
                                 <span class="project-date">APR–JUN 2024</span>
                             </div>
-                            <p>I applied Apriori and Eclat to anthropometric data on older adults in Indonesia, producing seven ergonomic rules for facility recommendations at GEMASTIK XVII.</p>
+                            <p>Our team applied Apriori and Eclat to anthropometric data on older adults in Indonesia, producing seven ergonomic rules for facility recommendations at GEMASTIK XVII.</p>
                             <span class="project-preview-stack"><span class="project-topic">Data mining</span><span>Apriori · Eclat</span></span>
                             <span class="archive-status">GEMASTIK XVII national finalist</span>
                         </div>
@@ -808,8 +808,21 @@
                             <h4>Frontier Hackathon</h4>
                             <p class="achievement-card-track">100xDevs Track</p>
                             <div class="achievement-card-issuer" data-full-name="Colosseum"><img src="public/assets/portfolio/achievement-colosseum.png" alt="" loading="lazy" decoding="async"><span>Colosseum</span></div>
-                            <p class="achievement-detail-copy" hidden>Team CORA placed 9th among 482 submissions in the global 100xDevs Frontier Hackathon Track.</p>
-                            <p class="achievement-detail-copy" hidden>My contribution: I built the backend match state machine and settlement system for CORA’s multiplayer Solana game.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>The 100xDevs side track at Colosseum Frontier was open to builders on Solana. Judges considered technical execution, originality, real-world usefulness, user experience, and how complete the product was.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>CORA needed to keep fast multiplayer matches in sync with Solana deposits and payouts. I built the match state machine and settlement verification so concurrent game events could resolve to one consistent result.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>Build and submit.</strong> Our team built the multiplayer game and entered it in the 100xDevs track.</li>
+                                                <li><strong>Track judging.</strong> CORA placed ninth among 482 submissions.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </template>
                             <div class="achievement-source-links" hidden>
                                 <a href="https://superteam.fun/earn/listing/100xdevs-frontier-hackathon-track" target="_blank" rel="noopener noreferrer" aria-label="CORA official results">Results ↗</a>
                                 <a href="https://cora-gamefi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="CORA live demo">Demo ↗</a>
@@ -820,11 +833,25 @@
                         </article>
                         <article class="achievement-card">
                             <figure class="achievement-card-photo"><img src="public/assets/portfolio/asean-ai-hackathon.webp" alt="ASEAN AI Hackathon 2026 event banner" width="561" height="326" loading="lazy" decoding="async"></figure>
-                            <div class="achievement-card-meta"><strong>11th place</strong><time datetime="2026-03">Mar 2026</time></div>
+                            <div class="achievement-card-meta"><strong>11th place</strong><time datetime="2026-05">May 2026</time></div>
                             <h4>ASEAN AI Hackathon</h4>
                             <p class="achievement-card-track">AI for Education Track</p>
                             <div class="achievement-card-issuer" data-full-name="P2A — Passage to ASEAN"><img src="public/assets/portfolio/achievement-p2a.jpg" alt="" loading="lazy" decoding="async"><span>P2A — Passage to ASEAN</span></div>
-                            <p class="achievement-detail-copy" hidden>Our Socratix team placed 11th in the Education Track of the ASEAN AI Hackathon 2026.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>The AI for Education track invited teams from across ASEAN to apply AI to education problems. Our team, UNSRAT–TouLearn, focused on math learning for students aged 11–15.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>Students can get stuck when math turns abstract, and chatbots can skip the reasoning or give incorrect answers. Socratix asks guiding questions, checks the math with a deterministic validator, and shows interactive visuals. I built the intent router and problem planner.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>Technical roadmap.</strong> We submitted the learning problem, tutoring architecture, data and ethics plan, and development milestones.</li>
+                                                <li><strong>Track evaluation.</strong> Socratix placed 11th in the AI for Education track in May 2026.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </template>
                             <div class="achievement-source-links" hidden>
                                 <a href="public/assets/certificates/asean-ai-hackathon-2026-participation.pdf" target="_blank" rel="noopener noreferrer" aria-label="ASEAN AI Hackathon participation certificate (PDF)">Certificate ↗</a>
                                 <a href="#project-socratix">Project ↘</a>
@@ -846,8 +873,29 @@
                             <h4>PIDI DIGDAYA x HACKATHON 2026</h4>
                             <p class="achievement-card-track">National hackathon</p>
                             <div class="achievement-card-issuer" data-full-name="Bank Indonesia"><img src="public/assets/portfolio/achievement-bank-indonesia.png" alt="" loading="lazy" decoding="async"><span>Bank Indonesia</span></div>
-                            <p class="achievement-detail-copy" hidden>Our team won second place in Bank Indonesia’s national competition with YUDHA, a platform for Indonesian civil-service and state-owned-enterprise exam preparation.</p>
-                            <p class="achievement-detail-copy" hidden>My contribution: I built the real-time battle backend, matchmaking, match resolution, and study-session APIs.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>Bank Indonesia and OJK ran this national hackathon around practical digital innovations. We entered the job-creation challenge, where judges assessed the problem, the prototype, and the plan for bringing it to users.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>Civil-service and state-owned-enterprise applicants need ways to practice under exam pressure and identify what to study next. YUDHA combines timed head-to-head quizzes, performance feedback, and AI mock interviews. I led the architecture and built the app and game backends.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>Proposals and training.</strong> We developed the concept through the proposal rounds, completed Essential training, and advanced through the semifinal to Practitioner training.</li>
+                                                <li><strong>Top 80 capstone.</strong> We advanced to the capstone, which included workshops, mentoring, and business matching.</li>
+                                                <li><strong>Top 10 pitch.</strong> After the online final presentation, we advanced to the in-person pitch in Jakarta on September 21–22.</li>
+                                                <li><strong>Award.</strong> YUDHA placed second, announced at FEKDI × IFSE in September 2026.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                                <div class="achievement-dialog-photos">
+                                    <figure>
+                                        <img src="public/assets/portfolio/bi-hackathon-top80.webp" alt="Participants gathered beneath the PIDI Digitalent Expo 2026 stage banner" width="1440" height="960" loading="lazy" decoding="async">
+                                        <figcaption>Top 80 capstone cohort at the PIDI Digitalent Expo.</figcaption>
+                                    </figure>
+                                </div>
+                            </template>
                             <div class="achievement-source-links" hidden>
                                 <a href="https://prototype.yudha.fun/" target="_blank" rel="noopener noreferrer" aria-label="YUDHA web prototype">Prototype ↗</a>
                                 <a href="https://yudha.fun/" target="_blank" rel="noopener noreferrer" aria-label="YUDHA landing page">Site ↗</a>
@@ -858,11 +906,36 @@
                         </article>
                         <article class="achievement-card">
                             <figure class="achievement-card-photo achievement-card-photo--team"><img src="public/assets/portfolio/pimnas-award.webp" alt="NEUROKIT team celebrating the PIMNAS 38 bronze award" width="3024" height="4032" loading="lazy" decoding="async"></figure>
-                            <div class="achievement-card-meta"><strong>3rd place · Bronze Medal</strong><time datetime="2025-11">Nov 2025</time></div>
+                            <div class="achievement-card-meta"><strong>Bronze award</strong><time datetime="2025-11">Nov 2025</time></div>
                             <h4>PIMNAS 38</h4>
                             <p class="achievement-card-track">PKM-KC1 · Presentation Category</p>
                             <div class="achievement-card-issuer" data-full-name="Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)"><img src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" loading="lazy" decoding="async"><span>Ministry of Higher Education, Science and Technology of Indonesia</span></div>
-                            <p class="achievement-detail-copy" hidden>NEUROKIT earned the Bronze Medal for third place in the PIMNAS 38 PKM-KC1 presentation category.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>PIMNAS is Indonesia’s national student scientific week. NEUROKIT entered the PKM-KC1 presentation category for student-built prototypes.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>We wanted to help students stay focused during study sessions. NEUROKIT brings adaptive desk lighting, music, cognitive warm-ups, and personalized AI affirmations into one device and app. I led the PKM-KC team.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>Funded PKM-KC project.</strong> We built and tested the prototype at UNSRAT, including lighting measurements and app functionality checks.</li>
+                                                <li><strong>Progress evaluation.</strong> We documented the working prototype for PKP2, the PKM progress evaluation.</li>
+                                                <li><strong>National presentation.</strong> We presented NEUROKIT in the PKM-KC1 room at PIMNAS 38 and received a bronze-equivalent presentation award.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                                <div class="achievement-dialog-photos">
+                                    <figure>
+                                        <img src="public/assets/portfolio/pimnas-during-presentation.webp" alt="The NEUROKIT team presenting at the front of the PIMNAS room" width="1440" height="960" loading="lazy" decoding="async">
+                                        <figcaption>NEUROKIT presenting at PIMNAS 38.</figcaption>
+                                    </figure>
+                                    <figure>
+                                        <img src="public/assets/portfolio/pimnas-pkmkc1-room.webp" alt="Participants gathered in the PKM-KC1 presentation room" width="1440" height="810" loading="lazy" decoding="async">
+                                        <figcaption>Participants in the PKM-KC1 presentation room.</figcaption>
+                                    </figure>
+                                </div>
+                            </template>
                             <div class="achievement-source-links" hidden>
                                 <a href="public/assets/certificates/pimnas-38-bronze-presentation.pdf" target="_blank" rel="noopener noreferrer" aria-label="PIMNAS 38 bronze award certificate (PDF)">Certificate ↗</a>
                                 <a href="#project-neurokit">Project ↘</a>
@@ -875,7 +948,27 @@
                             <h4>GEMASTIK XVIII</h4>
                             <p class="achievement-card-track">Data Mining Division</p>
                             <div class="achievement-card-issuer" data-full-name="Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)"><img src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" loading="lazy" decoding="async"><span>Ministry of Higher Education, Science and Technology of Indonesia</span></div>
-                            <p class="achievement-detail-copy" hidden>Our team received the Most Inspiring Team award at GEMASTIK XVIII, selected across 13 divisions and 220 finalist teams.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>GEMASTIK is Indonesia’s national student ICT competition. The 2025 edition had 11 divisions. Data Mining combined an original research submission with a timed case and a jury presentation.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>Online qualifying round.</strong> Assessing tuna freshness by sight or smell is subjective. We combined fish images and gas-sensor readings to classify freshness, reaching 84.3% validation macro F1. I prepared the image data.</li>
+                                                <li><strong>Onsite final.</strong> At Telkom University in Bandung, we had five hours to classify 20 handwritten Javanese characters. I worked as the modeler, and our final CoaT model reached 96.7% validation macro F1.</li>
+                                                <li><strong>Jury presentation and recognition.</strong> We presented our final-round approach and received the Most Inspiring Team award.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                                <div class="achievement-dialog-photos">
+                                    <figure>
+                                        <img src="public/assets/portfolio/gemastik2025-during-presentation.webp" alt="PEKZPEKZ presenting model comparisons to the GEMASTIK judges" width="1440" height="810" loading="lazy" decoding="async">
+                                        <figcaption>PEKZPEKZ presenting its final-round model to the judges.</figcaption>
+                                    </figure>
+                                </div>
+                            </template>
                             <div class="achievement-source-links" hidden>
                                 <a href="public/assets/certificates/gemastik-xviii-2025-winner.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII winner certificate (PDF)">Winner ↗</a>
                                 <a href="public/assets/certificates/gemastik-xviii-2025-finalist.png" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVIII finalist certificate (image)">Finalist ↗</a>
@@ -890,7 +983,21 @@
                             <h4>GEMASTIK XVII</h4>
                             <p class="achievement-card-track">Data Mining Division</p>
                             <div class="achievement-card-issuer" data-full-name="Ministry of Higher Education, Science and Technology of Indonesia (Kemendiktisaintek)"><img src="public/assets/portfolio/achievement-kemdiktisaintek.jpg" alt="" loading="lazy" decoding="async"><span>Ministry of Higher Education, Science and Technology of Indonesia</span></div>
-                            <p class="achievement-detail-copy" hidden>Our team reached the national final in the GEMASTIK XVII Data Mining division.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>The 2024 Data Mining division used an online qualifying submission followed by a timed onsite case and jury presentation at Universitas Negeri Semarang.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>Chairs, stair handrails, and service counters can be poorly sized for older adults. Our team applied Apriori and Eclat to body measurements from 182 older adults in Indonesia and derived seven rules to inform facility dimensions.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>Online qualifying round.</strong> We submitted a technical report and presentation on designing more accessible public facilities.</li>
+                                                <li><strong>National final.</strong> We advanced as one of 20 Data Mining finalist teams and competed onsite in Semarang.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </template>
                             <div class="achievement-source-links" hidden>
                                 <a href="public/assets/certificates/gemastik-xvii-2024-finalist.pdf" target="_blank" rel="noopener noreferrer" aria-label="GEMASTIK XVII Data Mining finalist certificate (PDF)">Certificate ↗</a>
                                 <a href="#project-anthropometric">Project ↘</a>
@@ -909,10 +1016,23 @@
                         <article class="achievement-card">
                             <figure class="achievement-card-photo"><img src="public/assets/portfolio/lidm.webp" alt="LIDM 2025 first-place certificate at Universitas Sam Ratulangi" loading="lazy" decoding="async"></figure>
                             <div class="achievement-card-meta"><strong>1st place at UNSRAT</strong><time datetime="2025-09">Sep 2025</time></div>
-                            <h4>Lomba Digital Mahasiswa (LIDM)</h4>
+                            <h4>Lomba Inovasi Digital Mahasiswa (LIDM)</h4>
                             <p class="achievement-card-track">Digital Education Technology Innovation</p>
                             <div class="achievement-card-issuer" data-full-name="Universitas Sam Ratulangi"><img src="public/assets/portfolio/organization-unsrat.png" alt="" loading="lazy" decoding="async"><span>Universitas Sam Ratulangi</span></div>
-                            <p class="achievement-detail-copy" hidden>Our Socratix team placed first at UNSRAT in LIDM’s Digital Education Technology Innovation division with guided mathematics learning and dynamic visualizations.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>We entered UNSRAT’s university selection for the Digital Education Technology Innovation division of LIDM.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>Abstract math can be difficult to follow through static explanations alone. Our early Socratix project paired guided practice with dynamic visuals so students could see each step.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>University selection.</strong> We entered the early Socratix project and placed first in the division at UNSRAT in September 2025.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </template>
                             <div class="achievement-source-links" hidden><a href="#project-socratix">Project ↘</a></div>
                             <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
                         </article>
@@ -922,7 +1042,20 @@
                             <h4>GEMASTIK XVII</h4>
                             <p class="achievement-card-track">Software Development Division · UNSRAT selection</p>
                             <div class="achievement-card-issuer" data-full-name="Universitas Sam Ratulangi"><img src="public/assets/portfolio/organization-unsrat.png" alt="" loading="lazy" decoding="async"><span>Universitas Sam Ratulangi</span></div>
-                            <p class="achievement-detail-copy" hidden>Our SEMARA team placed first in the UNSRAT selection for GEMASTIK XVII Software Development. SEMARA provides medication reminders and daily-care tools for older adults.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>UNSRAT held a university selection for GEMASTIK XVII’s Software Development division.</dd></div>
+                                    <div><dt>The problem we tackled</dt><dd>Medication reminders, appointments, activities, and nutrition logs can be difficult to keep track of separately. SEMARA brings these routines together in one mobile app for older adults. I worked on the backend.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>University selection.</strong> SEMARA placed first in the Software Development division at UNSRAT in June 2024.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </template>
                             <div class="achievement-source-links" hidden><a href="#project-semara">Project ↘</a></div>
                             <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
                         </article>
@@ -932,7 +1065,22 @@
                             <h4>SATRIA DATA</h4>
                             <p class="achievement-card-track">Big Data Challenge · UNSRAT selection</p>
                             <div class="achievement-card-issuer" data-full-name="Universitas Sam Ratulangi"><img src="public/assets/portfolio/organization-unsrat.png" alt="" loading="lazy" decoding="async"><span>Universitas Sam Ratulangi</span></div>
-                            <p class="achievement-detail-copy" hidden>I placed first in the UNSRAT selection for the SATRIA DATA Big Data Challenge.</p>
+                            <template class="achievement-detail-content">
+                                <dl class="dossier-facts">
+                                    <div><dt>About the competition</dt><dd>SATRIA DATA is Indonesia’s national student statistics and data science festival. Big Data Challenge was one of its 2024 competition divisions.</dd></div>
+                                    <div class="achievement-stages">
+                                        <dt>Competition stages</dt>
+                                        <dd>
+                                            <ol>
+                                                <li><strong>University selection.</strong> I placed first at UNSRAT in the Big Data Challenge selection in May 2024.</li>
+                                            </ol>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </template>
+                            <div class="achievement-source-links" hidden>
+                                <a href="https://pusatprestasinasional.kemdikbud.go.id/uploads/lampiran/84.SK%20PENETAPAN%20PEMENANG%20SATRIA%20DATA.pdf" target="_blank" rel="noopener noreferrer">Competition record ↗</a>
+                            </div>
                             <button class="achievement-card-action" type="button" data-achievement-open aria-haspopup="dialog" aria-controls="achievement-dialog">View details <span aria-hidden="true">↗</span></button>
                         </article>
                     </div>
@@ -940,34 +1088,34 @@
             </div>
         </section>
 
-        <dialog class="achievement-dialog" id="achievement-dialog" aria-labelledby="achievement-dialog-title">
-            <div class="achievement-dialog-shell">
-                <header class="achievement-dialog-header">
-                    <div>
-                        <span data-achievement-date></span>
-                        <h2 id="achievement-dialog-title" tabindex="-1"></h2>
-                    </div>
-                    <button type="button" class="achievement-dialog-close" data-achievement-close aria-label="Close achievement details">Close <span aria-hidden="true">×</span></button>
-                </header>
-                <div class="achievement-dialog-body">
-                    <strong data-achievement-result></strong>
-                    <p class="achievement-dialog-track" data-achievement-track></p>
-                    <div data-achievement-issuer></div>
-                    <div class="achievement-dialog-copy" data-achievement-copy></div>
-                    <div class="achievement-dialog-links" data-achievement-links></div>
+        <dialog class="achievement-dialog detail-dialog" id="achievement-dialog" aria-labelledby="achievement-dialog-title">
+            <header class="detail-dialog-header">
+                <div class="detail-dialog-title-row">
+                    <h2 id="achievement-dialog-title" tabindex="-1"></h2>
+                    <span class="project-date" data-achievement-date></span>
                 </div>
+                <button type="button" class="detail-dialog-close" data-achievement-close aria-label="Close achievement details">Close <span aria-hidden="true">×</span></button>
+            </header>
+            <div class="dossier-body" data-achievement-copy>
+                <div class="dossier-intro">
+                    <h3 data-achievement-result></h3>
+                    <div data-achievement-issuer></div>
+                    <p data-achievement-track></p>
+                </div>
+                <figure class="project-overview-media achievement-cover" data-achievement-cover></figure>
+                <div class="project-links" data-achievement-links></div>
             </div>
         </dialog>
 
-        <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
-            <header class="project-dialog-header">
+        <dialog class="project-dialog detail-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+            <header class="project-dialog-header detail-dialog-header">
                 <div>
-                    <div class="project-dialog-title-row">
+                    <div class="project-dialog-title-row detail-dialog-title-row">
                         <h2 id="project-dialog-title" tabindex="-1"></h2>
                         <span class="project-date" data-dialog-date></span>
                     </div>
                 </div>
-                <button class="project-dialog-close" type="button" data-dialog-close aria-label="Close project details">Close <span aria-hidden="true">×</span></button>
+                <button class="project-dialog-close detail-dialog-close" type="button" data-dialog-close aria-label="Close project details">Close <span aria-hidden="true">×</span></button>
             </header>
             <div data-dialog-content></div>
             <nav class="project-dialog-nav" aria-label="Browse projects">
@@ -1165,6 +1313,6 @@
         <a href="#profile">Back to top ↑</a>
     </footer>
 
-    <script src="script.js?v=16"></script>
+    <script src="script.js?v=19"></script>
 </body>
 </html>

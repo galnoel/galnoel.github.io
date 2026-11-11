@@ -17,6 +17,9 @@ const motion = {
     easing: motionStyles.getPropertyValue("--motion-ease").trim() || "cubic-bezier(0.22, 1, 0.36, 1)"
 };
 const runningMotions = new Set();
+const dialogEnterFrame = { opacity: 0, transform: "translateY(12px) scale(0.985)" };
+const dialogOpenFrame = { opacity: 1, transform: "none" };
+const dialogExitFrame = { opacity: 0, transform: "translateY(10px) scale(0.985)" };
 
 // Each owner cancels its previous animation before starting a new one. Finishing
 // reduced motion uses the same cleanup as a normal completion, without delays.
@@ -221,6 +224,20 @@ function setupReveals() {
     reveals.forEach((item) => observer.observe(item));
 }
 
+function linkDetailImages(container) {
+    container.querySelectorAll(".project-overview-media img, .evidence-panel img, .achievement-dialog-photos img").forEach((image) => {
+        const media = image.closest("picture") || image;
+        const link = document.createElement("a");
+        link.className = "detail-image-link";
+        link.href = image.src;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", `Open full-size image in a new tab: ${image.alt}`);
+        media.before(link);
+        link.append(media);
+    });
+}
+
 function setupProjectDossiers() {
     const dialog = document.getElementById("project-dialog");
     const supportsDialog = dialog && typeof dialog.showModal === "function";
@@ -259,7 +276,7 @@ function setupProjectDossiers() {
         cancelDialogMotion();
         dialogPhase = "closing";
         dialog.dataset.motion = "closing";
-        cancelDialogMotion = playMotion(dialog, [from, { opacity: 0, transform: "translateY(10px) scale(0.985)" }], motion.exit, () => {
+        cancelDialogMotion = playMotion(dialog, [from, dialogExitFrame], motion.exit, () => {
             pendingFocus = returnFocus;
             dialog.close();
             restoreBody();
@@ -290,7 +307,7 @@ function setupProjectDossiers() {
         const style = wasOpen ? getComputedStyle(dialog) : null;
         const from = style
             ? { opacity: style.opacity, transform: style.transform }
-            : { opacity: 0, transform: "translateY(12px) scale(0.985)" };
+            : dialogEnterFrame;
         cancelDialogMotion();
         pendingFocus = null;
         if (target !== activeProject) {
@@ -319,7 +336,7 @@ function setupProjectDossiers() {
         }
         dialogPhase = "opening";
         dialog.dataset.motion = "opening";
-        cancelDialogMotion = playMotion(dialog, [from, { opacity: 1, transform: "none" }], motion.enter, () => {
+        cancelDialogMotion = playMotion(dialog, [from, dialogOpenFrame], motion.enter, () => {
             dialogPhase = "open";
             dialog.dataset.motion = "open";
         });
@@ -372,6 +389,7 @@ function setupProjectDossiers() {
     }
 
     projectDossiers.forEach((project) => {
+        linkDetailImages(project.querySelector(".dossier-body"));
         const summary = project.querySelector("summary");
         if (supportsDialog) {
             summary.setAttribute("aria-haspopup", "dialog");
@@ -474,16 +492,29 @@ function setupAchievementDialog() {
     const result = dialog.querySelector("[data-achievement-result]");
     const track = dialog.querySelector("[data-achievement-track]");
     const issuer = dialog.querySelector("[data-achievement-issuer]");
-    const copy = dialog.querySelector("[data-achievement-copy]");
+    const body = dialog.querySelector("[data-achievement-copy]");
+    const intro = body.querySelector(".dossier-intro");
+    const cover = body.querySelector("[data-achievement-cover]");
     const links = dialog.querySelector("[data-achievement-links]");
     let opener = null;
     let restoreFocus = true;
+    let cancelDialogMotion = () => {};
+
+    function dismissAchievement() {
+        if (dialog.dataset.motion === "closing") return;
+        const style = getComputedStyle(dialog);
+        const from = { opacity: style.opacity, transform: style.transform };
+        cancelDialogMotion();
+        dialog.dataset.motion = "closing";
+        cancelDialogMotion = playMotion(dialog, [from, dialogExitFrame], motion.exit, () => dialog.close());
+    }
 
     document.querySelectorAll("[data-achievement-open]").forEach((button) => {
         button.addEventListener("click", () => {
             const card = button.closest(".achievement-card");
             const sourceIssuer = card?.querySelector(".achievement-card-issuer");
-            if (!card || !sourceIssuer) return;
+            const detail = card?.querySelector(".achievement-detail-content");
+            if (!card || !sourceIssuer || !detail) return;
 
             opener = button;
             restoreFocus = true;
@@ -495,29 +526,44 @@ function setupAchievementDialog() {
             const issuerCopy = sourceIssuer.cloneNode(true);
             issuerCopy.querySelector("span").textContent = sourceIssuer.dataset.fullName || sourceIssuer.textContent.trim();
             issuer.replaceChildren(issuerCopy);
-            copy.replaceChildren(...Array.from(card.querySelectorAll(".achievement-detail-copy"), (item) => {
-                const paragraph = document.createElement("p");
-                paragraph.textContent = item.textContent;
-                return paragraph;
-            }));
+            const photo = card.querySelector(".achievement-card-photo:not(.achievement-card-photo--emblem) img");
+            body.replaceChildren(intro);
+            if (photo) {
+                cover.replaceChildren(photo.cloneNode(true));
+                body.append(cover);
+            }
+            body.append(detail.content.cloneNode(true), links);
+            linkDetailImages(body);
             links.replaceChildren(...Array.from(card.querySelectorAll(".achievement-source-links a"), (link) => link.cloneNode(true)));
 
-            dialog.scrollTop = 0;
+            dialog.dataset.motion = "closed";
             dialog.showModal();
+            getComputedStyle(dialog, "::backdrop").opacity;
+            dialog.scrollTop = 0;
+            dialog.dataset.motion = "opening";
+            cancelDialogMotion = playMotion(dialog, [dialogEnterFrame, dialogOpenFrame], motion.enter, () => {
+                dialog.dataset.motion = "open";
+            });
             title.focus({ preventScroll: true });
         });
     });
 
-    dialog.querySelector("[data-achievement-close]").addEventListener("click", () => dialog.close());
+    dialog.querySelector("[data-achievement-close]").addEventListener("click", dismissAchievement);
+    dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        dismissAchievement();
+    });
     dialog.addEventListener("click", (event) => {
         if (event.target.closest('a[href^="#project-"]')) {
             restoreFocus = false;
+            cancelDialogMotion();
             dialog.close();
         } else if (event.target === dialog) {
-            dialog.close();
+            dismissAchievement();
         }
     });
     dialog.addEventListener("close", () => {
+        dialog.dataset.motion = "closed";
         if (restoreFocus) opener?.focus({ preventScroll: true });
     });
 }

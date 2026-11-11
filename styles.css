@@ -637,7 +637,7 @@ summary:hover .project-thumbnail img {
 }
 
 .project-card-heading,
-.project-dialog-title-row {
+.detail-dialog-title-row {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -710,11 +710,13 @@ html {
 }
 
 html.project-dialog-open,
-.project-dialog-open body {
+.project-dialog-open body,
+html:has(#achievement-dialog[open]),
+html:has(#achievement-dialog[open]) body {
     overflow: hidden;
 }
 
-.project-dialog {
+.detail-dialog {
     width: min(1040px, calc(100% - 48px));
     max-width: none;
     max-height: calc(100vh - 48px);
@@ -728,26 +730,26 @@ html.project-dialog-open,
     overscroll-behavior: contain;
 }
 
-.project-dialog:not([open]) {
+.detail-dialog:not([open]) {
     display: none;
 }
 
-.project-dialog::backdrop {
+.detail-dialog::backdrop {
     background: rgb(10 12 15 / 72%);
     opacity: 0;
     transition: opacity var(--motion-enter) var(--motion-ease);
 }
 
-.project-dialog[data-motion="opening"]::backdrop,
-.project-dialog[data-motion="open"]::backdrop {
+.detail-dialog[data-motion="opening"]::backdrop,
+.detail-dialog[data-motion="open"]::backdrop {
     opacity: 1;
 }
 
-.project-dialog[data-motion="closing"]::backdrop {
+.detail-dialog[data-motion="closing"]::backdrop {
     transition-duration: var(--motion-exit);
 }
 
-.project-dialog-header {
+.detail-dialog-header {
     position: sticky;
     top: 0;
     z-index: 2;
@@ -760,17 +762,17 @@ html.project-dialog-open,
     background: var(--surface);
 }
 
-.project-dialog-header .section-index {
+.detail-dialog-header .section-index {
     margin: 0 0 8px;
 }
 
-.project-dialog-header h2 {
+.detail-dialog-header h2 {
     margin: 0;
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     line-height: 1.2;
 }
 
-.project-dialog-close {
+.detail-dialog-close {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -785,17 +787,17 @@ html.project-dialog-open,
     cursor: pointer;
 }
 
-.project-dialog-close:hover {
+.detail-dialog-close:hover {
     color: var(--blue);
     border-color: var(--blue);
 }
 
-.project-dialog-close span {
+.detail-dialog-close span {
     font-size: 1.3rem;
     line-height: 1;
 }
 
-.project-dialog .dossier-body {
+.detail-dialog .dossier-body {
     margin: 0;
     padding: 36px 32px;
 }
@@ -890,16 +892,18 @@ html.project-dialog-open,
     pointer-events: none;
 }
 
-.evidence-panel:has(> picture) {
+.evidence-panel:has(> picture, > .detail-image-link > picture) {
     min-height: 0;
 }
 
-.evidence-panel > picture {
+.evidence-panel > picture,
+.detail-image-link > picture {
     display: block;
     width: 100%;
 }
 
-.evidence-panel > picture img {
+.evidence-panel > picture img,
+.evidence-panel > .detail-image-link > picture img {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -1877,7 +1881,7 @@ html.project-dialog-open,
 
 .menu-toggle,
 .theme-toggle,
-.project-dialog-close,
+.detail-dialog-close,
 .evidence-tabs button,
 .project-card-action {
     transition: var(--theme-transition), scale var(--motion-press) var(--motion-ease);
@@ -1886,7 +1890,7 @@ html.project-dialog-open,
 .button:active,
 .theme-toggle:active,
 .menu-toggle:active,
-.project-dialog-close:active,
+.detail-dialog-close:active,
 .evidence-tabs button:active {
     scale: 0.97;
 }
@@ -2176,28 +2180,28 @@ html.project-dialog-open,
         padding-block: 24px;
     }
 
-    .project-dialog {
+    .detail-dialog {
         width: calc(100% - 16px);
         max-height: calc(100vh - 16px);
         max-height: calc(100dvh - 16px);
     }
 
-    .project-dialog-header {
+    .detail-dialog-header {
         gap: 12px;
         padding: 18px;
     }
 
-    .project-dialog-header .section-index {
+    .detail-dialog-header .section-index {
         overflow-wrap: anywhere;
     }
 
-    .project-dialog-close {
+    .detail-dialog-close {
         gap: 8px;
         padding-inline: 10px;
     }
 
     .dossier-body,
-    .project-dialog .dossier-body {
+    .detail-dialog .dossier-body {
         margin: 0;
         padding: 28px 18px;
     }
@@ -3496,139 +3500,47 @@ summary:hover .motion-parallax,
     transform: translate(2px, -2px);
 }
 
-.achievement-dialog {
-    width: min(680px, calc(100% - 32px));
-    max-width: none;
-    max-height: calc(100dvh - 32px);
-    padding: 0;
-    border: 1px solid rgb(255 255 255 / 18%);
-    border-radius: 24px;
-    color: #f4f4f0;
-    background: #161819;
-    box-shadow: 0 28px 80px rgb(0 0 0 / 35%);
-    overscroll-behavior: contain;
-}
-
-.achievement-dialog:not([open]) {
-    display: none;
-}
-
-.achievement-dialog::backdrop {
-    background: rgb(10 12 15 / 72%);
-}
-
-.achievement-dialog-header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 22px 24px;
-    border-bottom: 1px solid rgb(255 255 255 / 16%);
-    background: #161819;
-}
-
-.achievement-dialog-header h2 {
-    margin: 4px 0 0;
-    color: #f4f4f0;
-    font-family: var(--font-body);
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    line-height: 1.25;
-}
-
-.achievement-dialog-header [data-achievement-date] {
-    color: rgb(255 255 255 / 64%);
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-}
-
-.achievement-dialog-close {
-    min-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 12px;
-    border: 1px solid rgb(255 255 255 / 26%);
-    border-radius: 999px;
-    color: #f4f4f0;
-    background: transparent;
-    font-size: 0.75rem;
-    cursor: pointer;
-}
-
-.achievement-dialog-close:hover {
-    background: rgb(255 255 255 / 8%);
-}
-
-.achievement-dialog-close span {
-    font-size: 1.25rem;
-    line-height: 1;
-}
-
-.achievement-dialog-body {
-    padding: 24px;
-}
-
-.achievement-dialog-body > strong {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 1.25rem;
-    line-height: 1.3;
-}
-
-.achievement-dialog-track {
-    margin: 0 0 18px;
-    color: rgb(255 255 255 / 72%);
-    font-size: 0.875rem;
-    line-height: 1.5;
-}
-
-.achievement-dialog-body .achievement-card-issuer {
-    margin: 0 0 22px;
-    color: rgb(255 255 255 / 72%);
+.achievement-dialog .achievement-card-issuer {
+    margin: 0;
     font-size: 0.875rem;
 }
 
-.achievement-dialog-copy p {
-    margin: 0 0 14px;
-    color: rgb(255 255 255 / 78%);
-    line-height: 1.65;
+.achievement-stages {
+    grid-column: 1 / -1;
 }
 
-.achievement-dialog-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid rgb(255 255 255 / 16%);
+.achievement-stages ol {
+    margin: 0;
+    padding-inline-start: 1.4em;
 }
 
-.achievement-dialog-links:empty {
+.achievement-stages li + li {
+    margin-top: 8px;
+}
+
+.achievement-dialog-photos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+}
+
+.achievement-dialog-photos:has(> :nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.achievement-dialog-photos figure {
+    min-width: 0;
+    margin: 0;
+}
+
+.achievement-dialog-photos figcaption {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.achievement-dialog .project-links:empty {
     display: none;
-}
-
-.achievement-dialog-links a {
-    min-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 15px;
-    border: 1px solid rgb(255 255 255 / 26%);
-    border-radius: 999px;
-    color: #f4f4f0;
-    font-size: 0.8125rem;
-}
-
-.achievement-dialog-links a:hover {
-    background: rgb(255 255 255 / 8%);
-}
-
-.achievement-dialog-links a[href^="#project"] {
-    border-color: #f4f4f0;
-    color: #161819;
-    background: #f4f4f0;
 }
 
 @media (max-width: 980px) {
@@ -4039,42 +3951,132 @@ body::before {
     grid-auto-rows: 1fr;
 }
 
-.project-dialog {
+.detail-dialog {
+    --detail-preview-height: clamp(160px, 27dvh, 220px);
+    --detail-photo-height: clamp(128px, 22dvh, 176px);
     width: min(1200px, calc(100% - 48px));
     border-radius: 24px;
     box-shadow: 0 40px 120px rgb(0 0 0 / 40%);
 }
 
-.project-dialog-header {
-    padding: 24px 40px;
+.detail-dialog-header {
+    padding: 16px 32px;
     background: color-mix(in srgb, var(--surface) 95%, transparent);
     backdrop-filter: blur(16px);
 }
 
-.project-dialog .dossier-body {
+.detail-dialog .dossier-body {
     display: grid;
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
     align-items: start;
-    gap: 32px;
-    padding: 40px;
+    gap: 22px;
+    padding: 28px 32px;
 }
 
-.project-dialog .dossier-body > :not(.dossier-intro):not(.project-overview-media) {
+.detail-dialog .dossier-body > :not(.dossier-intro):not(.project-overview-media) {
     grid-column: 1 / -1;
 }
 
-.project-dialog .dossier-intro { margin: 0; }
-.project-dialog .dossier-intro h3 { font-size: clamp(1.75rem, 3vw, 2.7rem); line-height: 1.15; }
-.project-dialog .dossier-body:not(:has(> .project-overview-media)) > .dossier-intro { grid-column: 1 / -1; max-width: 820px; }
-.project-dialog .project-overview-media { margin: 0; overflow: hidden; border-radius: 16px; }
-.project-dialog .dossier-facts { gap: 16px; border-top: 0; }
+.detail-dialog .dossier-intro { margin: 0; }
+.detail-dialog .dossier-intro h3 { font-size: clamp(1.75rem, 3vw, 2.7rem); line-height: 1.15; }
+.detail-dialog .dossier-body:not(:has(> .project-overview-media)) > .dossier-intro { grid-column: 1 / -1; max-width: 820px; }
+.detail-dialog .project-overview-media {
+    margin: 0;
+    border: 0;
+    background: transparent;
+}
+.detail-dialog .dossier-facts { gap: 12px; border-top: 0; }
 
-.project-dialog .dossier-facts > div {
+.detail-dialog .dossier-facts > div {
     min-height: auto;
-    padding: 24px;
+    padding: 18px;
     border: 1px solid var(--border);
     border-radius: 14px;
     background: var(--surface-soft);
+}
+
+.detail-dialog .evidence-viewer,
+.detail-dialog .agent-trace {
+    margin: 0;
+}
+
+.detail-dialog .evidence-panel {
+    min-height: 0;
+}
+
+.detail-dialog .evidence-viewer,
+.detail-dialog .research-figure,
+.detail-dialog .mobile-evidence {
+    border: 0;
+    background: transparent;
+}
+
+.detail-dialog .research-figure {
+    align-items: center;
+    gap: 12px;
+}
+
+.detail-dialog .mobile-evidence {
+    grid-template-columns: repeat(2, minmax(0, 120px));
+    gap: 12px;
+    padding: 12px;
+}
+
+.detail-dialog .figure-caption {
+    min-height: 0;
+    padding: 12px 16px;
+    gap: 4px;
+    border: 0;
+    border-radius: 12px;
+}
+
+.detail-dialog :is(.project-overview-media, .evidence-panel, .achievement-dialog-photos) img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: var(--detail-preview-height);
+    margin-inline: auto;
+}
+
+.detail-dialog .achievement-dialog-photos img {
+    max-height: var(--detail-photo-height);
+}
+
+.detail-image-link {
+    position: relative;
+    display: block;
+    min-width: 0;
+}
+
+.detail-dialog .detail-image-link {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+.detail-image-link::after {
+    content: "↗";
+    position: absolute;
+    inset-block-start: 6px;
+    inset-inline-end: 6px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgb(10 12 15 / 85%);
+    color: #fff;
+    font-size: 0.875rem;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.detail-image-link:is(:hover, :focus-visible)::after {
+    opacity: 1;
+}
+
+.detail-image-link:focus-visible {
+    outline-offset: -3px;
 }
 
 .project-dialog-nav {
@@ -4142,8 +4144,8 @@ body::before {
     .featured-project { position: relative; top: auto; }
     .featured-project > summary { min-height: 420px; }
     .featured-project .project-thumbnail { min-height: 320px; padding: 20px; }
-    .project-dialog .dossier-body { grid-template-columns: 1fr; }
-    .project-dialog .dossier-body > * { grid-column: 1; }
+    .detail-dialog .dossier-body { grid-template-columns: 1fr; }
+    .detail-dialog .dossier-body > * { grid-column: 1; }
 }
 
 @media (max-width: 700px) {
@@ -4158,10 +4160,16 @@ body::before {
     .project-grid > .project-dossier,
     .project-grid > .project-dossier:nth-child(4n + 2),
     .project-grid > .project-dossier:nth-child(4n + 3) { grid-column: 1; }
-    .project-dialog { width: calc(100% - 16px); border-radius: 18px; }
-    .project-dialog-header, .project-dialog .dossier-body { padding: 20px; }
-    .project-dialog .dossier-facts { grid-template-columns: 1fr; }
-    .project-dialog .dossier-facts > div { padding: 20px; }
+    .detail-dialog {
+        --detail-preview-height: clamp(96px, 20dvh, 140px);
+        --detail-photo-height: clamp(80px, 15dvh, 112px);
+        width: calc(100% - 16px);
+        border-radius: 18px;
+    }
+    .detail-dialog-header, .detail-dialog .dossier-body { padding: 14px 16px; }
+    .detail-dialog .dossier-body { gap: 16px; }
+    .detail-dialog .dossier-facts { grid-template-columns: 1fr; gap: 10px; }
+    .detail-dialog .dossier-facts > div { padding: 14px; }
     .project-dialog-nav { gap: 10px; padding: 16px 20px; }
     .project-dialog-nav button { gap: 8px; font-size: 0.6875rem; }
     [data-project-position] { font-size: 0.625rem; }
