@@ -19,6 +19,8 @@ const glyphs = {
     sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>',
     moon: '<path d="M20.9 13.35A9 9 0 0 1 10.65 3.1 9 9 0 1 0 20.9 13.35Z"/>',
     menu: '<path d="M4 8h16M4 16h16"/>', mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
+    book: '<path d="M3 19V5h7l2 2 2-2h7v14h-7l-2 2-2-2Zm9-12v14"/>',
+    screen: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M12 17v4m-4 0h8"/>',
     copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
     pin: '<path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/>'
 };
@@ -243,20 +245,66 @@ function recognition(lang) {
 
 function background(lang) {
     const t = language[lang];
-    const paths = ['lexara', 'fish-freshness', 'yudha', 'neurokit'];
-    return `<section class="surface-band" id="background" aria-labelledby="background-title"><div class="wrap major about-grid">
-    <div><h2 id="background-title">${t.about}</h2><p class="about-intro">${t.bio}</p>
-        <article class="education" id="education">
-            <h3>${t.education}</h3><p class="school">${person.school}</p><p>${t.degree}</p>
-            <p>${person.years} · ${lang === 'id' ? 'IPK' : 'GPA'} ${lang === 'id' ? person.gpa.replaceAll('.', ',') : person.gpa}</p>
-        </article>
+    const id = lang === 'id';
+    const facts = [
+        ['education', 'book', `UNSRAT · ${id ? 'IPK' : 'GPA'} ${id ? person.gpa.replaceAll('.', ',') : person.gpa}`, t.degree + ' · ' + person.years],
+        ['', 'screen', id ? 'AI, data, dan rekayasa backend' : 'AI, data & backend engineering'],
+        ['', 'pin', person.location],
+        ['', 'mail', id ? 'Terbuka untuk peluang kerja di bidang teknik' : 'Open to engineering opportunities']
+    ];
+    const tools = [
+        ['Hugging Face', 'huggingface', 88, 40, -12, 1], ['Keras', 'keras', 86, 58, -4, 1.02],
+        ['Python', 'python', 82, 74.5, -6, .88], ['Docker', 'docker', 71, 84.5, 8, .9],
+        ['Next.js', 'nextdotjs', 55, 89, -3, .94], ['NestJS', 'nestjs', 39, 85.5, 11, 1],
+        ['Redis', 'redis', 25, 76.5, 2, 1], ['PostgreSQL', 'postgresql', 12, 66.5, 5, .88],
+        ['PyTorch', 'pytorch', 10, 50, -6, 1], ['Unsloth', asset('unsloth sticker.png'), 12, 34.5, 3, .94],
+        ['Weights & Biases', 'weightsandbiases', 23, 22, -5, .88], ['Grafana', 'grafana', 37, 14.5, 4, 1],
+        ['Git', 'git', 52, 12.5, -6, 1.02], ['Supabase', 'supabase', 66, 18, -9, .88]
+    ];
+    const track = 'Katakan Saja';
+    const artist = 'Adikara';
+    const trackId = 'ewT2dAvWZiU';
+    const trackURL = `https://www.youtube.com/watch?v=${trackId}`;
+    return `<section class="about-section" id="background" aria-labelledby="background-title">
+    <div class="about-grid">
+        <div class="about-copy">
+            <p class="about-label">${id ? 'Tentang saya' : 'About me'}</p>
+            <h2 id="background-title"><span>${id ? 'Riset terapan.' : 'Applied research.'}</span> <span>${id ? 'Perangkat lunak nyata.' : 'Working software.'}</span></h2>
+            <p class="about-intro">${id
+                ? 'Halo, saya Galnoel. Saya lulusan Teknik Informatika dari Universitas Sam Ratulangi. Saya mengerjakan riset model, analisis data, dan aplikasi yang menghubungkan keduanya. Proyek saya meliputi layanan backend real-time, asisten riset hukum Indonesia, serta perangkat belajar yang terhubung dengan aplikasi seluler.'
+                : 'Hi, I’m Galnoel, an Informatics Engineering graduate from Universitas Sam Ratulangi. I work across model research, data analysis, and the software that connects them. My projects range from real-time backend services and an Indonesian legal research assistant to a connected study device with a mobile app.'}</p>
+            <ul class="about-facts">${facts.map(([anchor, symbol, fact, title]) => `<li${anchor ? ` id="${anchor}"` : ''}${title ? ` title="${escape(title)}"` : ''}>${icon(symbol)}${escape(fact)}</li>`).join('')}</ul>
+            <a class="button about-cta" href="#contact">${id ? 'Mulai percakapan' : 'Start a conversation'}</a>
+        </div>
+        <div class="about-stage">
+            <div class="about-record">
+                <span class="about-vinyl" aria-hidden="true"></span>
+                <a class="about-photo" href="${trackURL}" aria-label="${id ? 'Putar piringan' : 'Play the record'} · ${track} · ${artist}">
+                    ${photo(supplementalImages.portrait, '')}
+                    <span class="about-player-label"><span class="about-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="about-player-text"><span>${id ? 'Putar piringan' : 'Play the record'}</span><span aria-hidden="true">${id ? 'Turunkan jarum' : 'Drop the needle'}</span></span></span>
+                </a>
+                <span class="about-tonearm" aria-hidden="true"></span>
+            </div>
+            <ul class="about-tools" id="expertise-title" aria-label="${id ? 'Teknologi yang saya gunakan' : 'Technologies I use'}">
+                ${tools.map(([name, logo, x, y, tilt, size], index) => `<li style="--x:${x}%;--y:${y}%;--tilt:${tilt}deg;--tile-scale:${size};--tile-delay:${350 + index * 45}ms" title="${escape(name)}">${photo(logo.startsWith('/') ? logo : siteAssets + 'about-icons/' + logo + '.svg', name)}</li>`).join('')}
+            </ul>
+        </div>
     </div>
-    <div class="capabilities" id="expertise-title">${t.disciplines.map((discipline, i) => {
-        const project = projects.find(p => p.slug === paths[i]);
-        return `<a class="capability" href="${route(project, lang)}" data-case-link>
-            <span><strong>${discipline}</strong><span>${t.capabilities[i]}</span></span>${icon('arrow')}</a>`;
-    }).join('')}</div>
-</div></section>`;
+    <aside class="about-music" id="about-music" aria-label="${id ? 'Pemutar musik' : 'Music player'}" hidden>
+        <div class="about-player" data-src="https://www.youtube-nocookie.com/embed/${trackId}" data-title="${track} · ${artist}"></div>
+        <div class="about-music-row">
+            <div>
+                <span class="about-music-label"><span class="about-eq" aria-hidden="true"><i></i><i></i><i></i></span>${id ? 'Piringan hitam' : 'On the record'}</span>
+                <h3 id="about-track-title">${track}</h3>
+                <p>${artist}</p>
+            </div>
+            <button type="button" class="about-music-stop" data-music-stop aria-label="${id ? 'Hentikan musik' : 'Stop the record'}">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor"/></svg>
+            </button>
+        </div>
+        <progress class="about-music-progress" max="1" value="0" aria-label="${id ? 'Progres pemutaran' : 'Playback progress'}"></progress>
+    </aside>
+</section>`;
 }
 
 function certificates(lang) {

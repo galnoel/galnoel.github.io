@@ -186,7 +186,7 @@
         const stack = featuredCards[0].parentElement;
         observeMotion(document,
             '.section-heading, .featured-panel, .disclosure > summary, .archive-project, .award-item, ' +
-            '.about-grid > div:first-child, .capability, .certificate-card, .contact-grid, .footer-inner'
+            '.about-grid, .about-stage, .certificate-card, .contact-grid, .footer-inner'
         );
         let frame = 0;
         let enabled = false;
@@ -255,6 +255,102 @@
         document.fonts?.ready.then(configureMotion);
         timeline.addEventListener('toggle', requestPaint, true);
         configureMotion();
+    }
+
+    const record = document.querySelector('.about-record');
+    const music = document.querySelector('.about-music');
+    if (record && music) {
+        const trigger = record.querySelector('.about-photo');
+        const playerSlot = music.querySelector('.about-player');
+        const stop = music.querySelector('[data-music-stop]');
+        const progress = music.querySelector('.about-music-progress');
+        let apiPromise;
+        let player;
+        let progressTimer;
+
+        function loadYouTube() {
+            apiPromise ??= new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                window.onYouTubeIframeAPIReady = () => {
+                    delete window.onYouTubeIframeAPIReady;
+                    resolve(window.YT);
+                };
+                script.src = 'https://www.youtube.com/iframe_api';
+                script.addEventListener('error', () => {
+                    delete window.onYouTubeIframeAPIReady;
+                    script.remove();
+                    apiPromise = undefined;
+                    reject(new Error('YouTube controls could not load'));
+                }, { once: true });
+                document.head.append(script);
+            });
+            return apiPromise;
+        }
+
+        function stopMusic(restoreFocus) {
+            clearInterval(progressTimer);
+            player?.destroy();
+            player = undefined;
+            playerSlot.replaceChildren();
+            progress.value = 0;
+            music.hidden = true;
+            music.removeAttribute('data-playing');
+            record.removeAttribute('data-record-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            if (restoreFocus) trigger.focus({ preventScroll: true });
+        }
+
+        trigger.setAttribute('aria-controls', music.id);
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.addEventListener('click', event => {
+            if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            if (!music.hidden) {
+                stopMusic(false);
+                return;
+            }
+            music.hidden = false;
+            trigger.setAttribute('aria-expanded', 'true');
+            if (event.detail === 0) stop.focus({ preventScroll: true });
+            const frame = document.createElement('iframe');
+            const src = new URL(playerSlot.dataset.src);
+            src.search = new URLSearchParams({
+                autoplay: '1', controls: '0', playsinline: '1', enablejsapi: '1', rel: '0', origin: location.origin
+            });
+            frame.src = src;
+            frame.title = playerSlot.dataset.title;
+            frame.referrerPolicy = 'strict-origin-when-cross-origin';
+            frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+            frame.allowFullscreen = true;
+            playerSlot.replaceChildren(frame);
+            loadYouTube().then(api => {
+                if (!frame.isConnected) return;
+                player = new api.Player(frame, {
+                    events: {
+                        onStateChange({ target, data }) {
+                            if (!frame.isConnected) return;
+                            const playing = data === api.PlayerState.PLAYING;
+                            const updateProgress = () => {
+                                const duration = target.getDuration();
+                                progress.value = duration > 0 ? target.getCurrentTime() / duration : 0;
+                            };
+                            music.toggleAttribute('data-playing', playing);
+                            record.toggleAttribute('data-record-open', playing);
+                            clearInterval(progressTimer);
+                            updateProgress();
+                            if (playing) progressTimer = setInterval(updateProgress, 250);
+                        }
+                    }
+                });
+            }).catch(() => {
+                // Native player controls remain usable if the API script fails.
+            });
+        });
+        stop.addEventListener('click', () => {
+            const bounds = trigger.getBoundingClientRect();
+            const recordVisible = bounds.bottom > 0 && bounds.top < innerHeight;
+            stopMusic(recordVisible);
+        });
     }
 
     const dialog = document.getElementById('project-dialog');

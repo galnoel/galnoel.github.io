@@ -263,6 +263,25 @@ try {
         }), []);
     }
     await open('/');
+    assert.equal(await page.$$('.about-tools img').then(icons => icons.length), 14);
+    assert.equal(await page.$('.about-player iframe'), null);
+    await page.$eval('#background', section => section.scrollIntoView({ block: 'center' }));
+    await page.click('.about-photo');
+    await page.waitForSelector('.about-music:not([hidden])');
+    assert.equal(await page.$eval('.about-music h3', title => title.textContent), 'Katakan Saja');
+    const musicSource = new URL(await page.$eval('.about-player iframe', frame => frame.src));
+    assert.equal(musicSource.pathname, '/embed/ewT2dAvWZiU');
+    assert.equal(musicSource.searchParams.get('controls'), '0');
+    assert.equal(await page.$('.about-music a'), null);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    assert.ok(await page.$eval('.about-music', dock => {
+        const bounds = dock.getBoundingClientRect();
+        return scrollY === 0 && getComputedStyle(dock).position === 'fixed' && !dock.hidden &&
+            Math.abs(bounds.left - 16) < 1 && Math.abs(innerHeight - bounds.bottom - 16) < 1 && bounds.width === 232;
+    }));
+    await page.click('[data-music-stop]');
+    await page.waitForFunction(() => document.querySelector('.about-music').hidden && !document.querySelector('.about-player iframe'));
+    pass('About record opens the Katakan Saja player, keeps it at the bottom left on scroll, and stops on demand');
     await page.setViewport({ width: 1440, height: 900 });
     await page.$eval(action, el => el.scrollIntoView({ block: 'center' }));
     const scroll = await page.evaluate(() => scrollY);
@@ -273,7 +292,7 @@ try {
     await shot('dialog-en-desktop');
     for (let i = 0; i < 16; i++) {
         await page.keyboard.press('Tab');
-        assert.ok(await page.evaluate(() => document.querySelector('dialog').contains(document.activeElement) || document.activeElement === document.body));
+        assert.ok(await page.evaluate(() => document.querySelector('#project-dialog').contains(document.activeElement) || document.activeElement === document.body));
     }
     await page.keyboard.press('Escape');
     await page.waitForSelector('dialog[open]', { hidden: true });
