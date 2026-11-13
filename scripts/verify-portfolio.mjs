@@ -1,197 +1,429 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { createReadStream, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import http from 'node:http';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
+import { projects, language, origin } from '../site/content.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const out = path.resolve(process.argv[2] || 'reports/portfolio-refinement');
-fs.mkdirSync(out, { recursive: true });
-const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.pdf': 'application/pdf', '.ico': 'image/x-icon' };
+const root = fileURLToPath(new URL('../', import.meta.url));
+const output = path.resolve(process.argv[2] || 'reports/portfolio-refinement');
+mkdirSync(output, { recursive: true });
+const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg', '.png': 'image/png',
+    '.webp': 'image/webp', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.pdf': 'application/pdf', '.xml': 'application/xml' };
 const server = http.createServer((request, response) => {
-    const relative = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-    const file = path.resolve(root, '.' + (relative === '/' ? '/index.html' : relative));
-    if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
-        response.writeHead(404).end();
-        return;
-    }
-    response.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' });
-    fs.createReadStream(file).pipe(response);
+    const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    let file = path.resolve(root, '.' + pathname);
+    if (pathname === '/') file = path.join(root, 'index.html');
+    else if (file.startsWith(root) && existsSync(file) && statSync(file).isDirectory()) file = path.join(file, 'index.html');
+    const found = file.startsWith(root) && existsSync(file) && statSync(file).isFile();
+    if (!found) file = path.join(root, '404.html');
+    response.writeHead(found ? 200 : 404, { 'Content-Type': mime[path.extname(file).toLowerCase()] || 'application/octet-stream' });
+    createReadStream(file).pipe(response);
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-const url = `http://127.0.0.1:${server.address().port}/`;
-const executablePath = [process.env.CHROME_PATH, 'C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(p => p && fs.existsSync(p));
+const url = 'http://127.0.0.1:' + server.address().port;
+const baselineFile = path.join(root, 'docs', 'portfolio-compatibility-baseline.json');
+const baseline = existsSync(baselineFile) && JSON.parse(readFileSync(baselineFile, 'utf8'));
+const chrome = [process.env.CHROME_PATH, 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', '/usr/bin/google-chrome', '/usr/bin/chromium']
+    .find(file => file && existsSync(file));
+const report = { checks: [], layouts: [], contrast: {}, accessibility: [], metrics: [], errors: [] };
+const axeSource = readFileSync(new URL('axe.min.js', import.meta.resolve('axe-core')), 'utf8');
+const pass = name => { report.checks.push(name); console.log('PASS ' + name); };
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 let browser;
-const results = { checks: [], layouts: [], accessibility: [], errors: [] };
-const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-function pass(name) { results.checks.push(name); console.log('PASS ' + name); }
 try {
-    browser = await puppeteer.launch({ executablePath, headless: true, args: ['--no-first-run', '--disable-gpu'] });
-    const page = await browser.newPage();
-    page.on('pageerror', error => results.errors.push(error.message));
-    await page.setViewport({ width: 1440, height: 900 });
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-    await page.evaluate(() => document.fonts.ready);
-    await wait(800);
-    const integrity = await page.evaluate(() => {
-        const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
-        return {
-            duplicates: ids.filter((id, i) => ids.indexOf(id) !== i),
-            brokenAnchors: [...document.querySelectorAll('a[href^="#"]')].map(a => a.getAttribute('href').slice(1)).filter(id => id && !document.getElementById(id)),
-            order: [...document.querySelectorAll('main > section')].map(el => el.id),
-            photos: document.querySelectorAll('.experience-feature img').length,
-            certificates: document.querySelectorAll('.certificate-card').length,
-            hero: document.querySelector('.about-banner img').getAttribute('src')
-        };
-    });
-    assert.deepEqual(integrity.duplicates, []);
-    assert.deepEqual(integrity.brokenAnchors, []);
-    assert.deepEqual(integrity.order, ['profile', 'work', 'experience', 'recognition', 'background', 'certificates', 'contact']);
-    assert.equal(integrity.photos, 3);
-    assert.equal(integrity.certificates, 8);
-    assert.equal(integrity.hero, 'public/assets/portfolio/me.png');
-    pass('Page order, preserved hero, all certificates, unique IDs, and internal anchors');
+    const pages = ['/', '/id/', ...projects.flatMap(project => ['/projects/' + project.slug + '/', '/id/projects/' + project.slug + '/'])];
+    const referencedFiles = new Set();
+    const socialImages = new Set();
+    const sitemap = await fetch(url + '/sitemap.xml').then(response => response.text());
+    const listed = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+    assert.deepEqual(listed.sort(), pages.map(route => origin + route).sort());
+    for (const route of pages) {
+        const response = await fetch(url + route);
+        assert.equal(response.status, 200, route);
+        const html = await response.text();
+        const id = route.startsWith('/id/');
+        const equivalent = id ? route.slice(3) : '/id' + route;
+        assert.ok(html.includes('<html lang="' + (id ? 'id' : 'en') + '"'));
+        assert.ok(html.includes('<link rel="canonical" href="' + origin + route + '">'), route);
+        assert.ok(html.includes('hreflang="' + (id ? 'en' : 'id') + '" href="' + origin + equivalent + '">'), route);
+        assert.ok(html.includes('hreflang="x-default" href="' + origin + (id ? equivalent : route) + '">'), route);
+        assert.equal((html.match(/<h1\b/g) || []).length, 1);
+        assert.ok(html.match(/<meta name="description" content="[^"]+"/));
+        assert.ok(html.match(/<meta property="og:image:alt" content="[^"]+"/));
+        const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1])['@graph'];
+        assert.ok(graph.some(node => node['@type'] === (route.includes('/projects/') ? 'WebPage' : 'ProfilePage')));
+        const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
+        assert.equal(ids.length, new Set(ids).size, route + ' duplicate IDs');
+        for (const match of html.matchAll(/(?:href|src)="(\/(?:public|images)\/[^"]+)"/g)) referencedFiles.add(match[1]);
+        socialImages.add(new URL(html.match(/property="og:image" content="([^"]+)"/)[1]).pathname);
+        if (route.includes('/projects/')) assert.match(html, /class="case-lead">[^<]{35,}/);
+        else {
+            assert.equal((html.match(/class="featured-project"/g) || []).length, 5);
+            assert.equal((html.match(/class="archive-project"/g) || []).length, 12);
+            assert.equal((html.match(/class="experience-item"/g) || []).length, 3);
+            assert.equal((html.match(/class="certificate-card"/g) || []).length, 8);
+            assert.equal((html.match(/class="award-item"/g) || []).length, 9);
+            if (baseline) assert.deepEqual(baseline.all_dom_ids.filter(id => !ids.includes(id)), []);
+        }
+    }
+    assert.equal((await fetch(url + '/projects/unknown-project/')).status, 404);
+    assert.equal(socialImages.size, 12);
+    for (const href of [...referencedFiles, ...socialImages]) {
+        const response = await fetch(url + href, { method: 'HEAD' });
+        assert.equal(response.status, 200, href);
+        if (socialImages.has(href)) assert.equal(response.headers.get('content-type'), 'image/jpeg');
+    }
+    pass('36 static routes, bilingual metadata, structured data, sitemap, all section counts, 404, and local links');
 
-    for (const [width, height] of [[1440, 900], [1024, 768], [768, 1024], [390, 844], [320, 740]]) {
+    if (baseline) {
+        for (const record of baseline.public_assets) {
+            const response = await fetch(url + record.url);
+            assert.equal(response.status, 200, record.url);
+            assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'), record.sha256, record.url);
+        }
+        pass(baseline.public_assets.length + ' legacy assets served byte-for-byte at their original URLs');
+    }
+
+    browser = await puppeteer.launch({ executablePath: chrome, headless: true, args: ['--no-first-run', '--disable-gpu'] });
+    const page = await browser.newPage();
+    page.on('pageerror', error => report.errors.push(error.message));
+    const shot = name => page.screenshot({ path: path.join(output, name + '.png') });
+    const open = async route => {
+        await page.goto(url + route, { waitUntil: 'networkidle0' });
+        await page.evaluate(() => document.fonts.ready);
+    };
+    const noOverflow = async () => assert.ok(await page.evaluate(() =>
+        document.documentElement.scrollWidth <= innerWidth &&
+        (!document.querySelector('dialog[open]') || document.querySelector('.dialog-scroll').scrollWidth <= document.querySelector('.dialog-scroll').clientWidth + 1)));
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+    for (const [width, height] of [[1440, 900], [1024, 768], [768, 1024], [390, 844], [320, 568]]) {
         await page.setViewport({ width, height });
-        await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-        await wait(220);
-        const layout = await page.evaluate(() => ({ width: innerWidth, contentWidth: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight }));
-        results.layouts.push(layout);
-        assert.ok(layout.contentWidth <= width, `Page overflows at ${width}: ${layout.contentWidth}`);
-        await page.screenshot({ path: path.join(out, `hero-${width}.png`) });
-        if ([1440, 390].includes(width)) {
-            for (const section of ['work', 'experience', 'recognition', 'background']) {
-                await page.$eval('#' + section, el => el.scrollIntoView({ block: 'start', behavior: 'instant' }));
-                await wait(1200);
-                await page.screenshot({ path: path.join(out, `${section}-${width}.png`) });
+        for (const locale of ['en', 'id']) {
+            await open(locale === 'id' ? '/id/' : '/');
+            await noOverflow();
+            const text = await page.$$eval('.disciplines li', elements => elements.map(el => el.textContent));
+            assert.deepEqual(text, language[locale].disciplines);
+            report.layouts.push({ width, height, locale });
+            if ([1440, 390].includes(width)) {
+                await shot(locale + '-light-' + width);
+                await page.click('[data-theme-toggle]');
+                await shot(locale + '-dark-' + width);
+                await page.click('[data-theme-toggle]');
+                if ((locale === 'en' && width === 1440) || (locale === 'id' && width === 390)) {
+                    for (const id of ['work', 'experience', 'recognition', 'certificates', 'contact']) {
+                        await page.$eval('#' + id, element => element.scrollIntoView());
+                        await sleep(80);
+                        await shot(locale + '-' + id + '-' + width);
+                    }
+                }
             }
         }
     }
-    pass('No page overflow at 1440, 1024, 768, 390, and 320px');
+    pass('Both languages fit at 1440, 1024, 768, 390, and 320 px');
+    await open('/');
+    const visuals = await page.evaluate(() => ({
+        mark: document.querySelector('.wordmark-icon').getAttribute('src'),
+        favicon: document.querySelector('link[rel="icon"]').getAttribute('href'),
+        projects: document.querySelectorAll('#work article .project-media img').length,
+        selected: [...document.querySelectorAll('.featured-project')].map(card => card.id),
+        sparkCover: document.querySelector('#project-spark .project-media img').getAttribute('src'),
+        employers: document.querySelectorAll('.experience-item .identity-logo img').length,
+        awards: [...document.querySelectorAll('.award-item')].map(row => [
+            row.querySelector('.award-image img')?.getAttribute('src'), Boolean(row.querySelector('.identity-logo img'))
+        ]),
+        providers: document.querySelectorAll('.certificate-card:has(.provider-logo img)').length,
+        pimnas: document.querySelector('#recognition-2 .award-result').textContent,
+        titleFirst: [...document.querySelectorAll('#work .project-copy, #experience .experience-copy, #recognition .award-copy, .certificate-card')]
+            .every(row => row.firstElementChild.matches('h3') || row.firstElementChild.firstElementChild?.matches('h3, h4'))
+    }));
+    assert.equal(visuals.mark, visuals.favicon);
+    assert.equal(visuals.projects, 17);
+    assert.deepEqual(visuals.selected, ['project-yudha', 'project-legal-ai', 'project-cora', 'project-neurokit', 'project-gemastik']);
+    assert.match(visuals.sparkCover, /\/spark-landing-page\.jpg$/);
+    assert.equal(visuals.employers, 3);
+    assert.equal(visuals.providers, 8);
+    assert.equal(new Set(visuals.awards.map(([image]) => image)).size, 9);
+    assert.ok(visuals.awards.every(([image, issuer]) => image && issuer));
+    assert.match(visuals.pimnas, /3rd place.*Bronze-equivalent/);
+    assert.ok(visuals.titleFirst);
+    pass('Matching brand icons, title-first hierarchy, project images, experience and provider logos, and individual award images');
+    const unfilled = await page.$$eval('.featured-project .project-media, .award-image', frames =>
+        frames.filter(frame => {
+            const image = frame.querySelector('img');
+            const outer = frame.getBoundingClientRect();
+            const inner = image.getBoundingClientRect();
+            return outer.width > 0 && (getComputedStyle(image).objectFit !== 'cover' ||
+                Math.abs(inner.width - outer.width) > 1 || Math.abs(inner.height - outer.height) > 1);
+        }).map(frame => frame.closest('article').id)
+    );
+    assert.deepEqual(unfilled, []);
+    pass('Newest-first selected projects and edge-to-edge project and award images');
 
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
     await page.setViewport({ width: 1440, height: 900 });
-    await page.$eval('#project-yudha', el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
-    await wait(1200);
-    const panel = await page.$('.featured-project-panel');
-    const bounds = await panel.boundingBox();
-    await page.mouse.move(bounds.x + bounds.width * 0.75, bounds.y + bounds.height * 0.3);
-    assert.notEqual(await panel.evaluate(el => el.style.getPropertyValue('--tilt-x')), '0deg');
-    assert.equal(await page.$eval('#project-yudha .project-thumbnail img', el => el.classList.contains('motion-parallax')), true);
-    assert.equal(await page.$eval('#work .section-heading', el => el.classList.contains('is-visible')), true);
-    assert.ok(await page.$('#work .kinetic-word'));
-    pass('Original pointer tilt, image parallax, heading reveal, and scroll effects remain active');
-    const scrollBefore = await page.evaluate(() => scrollY);
-    await page.click('#project-yudha .project-card-action');
-    await page.waitForFunction(() => document.querySelector('#project-dialog').dataset.motion === 'open');
-    await wait(450);
-    assert.ok(await page.$eval('#project-dialog', el => el.open));
-    assert.equal(await page.evaluate(() => location.hash), '#project-yudha');
-    assert.equal(await page.$eval('[data-system-step="0"]', el => el.getAttribute('aria-selected')), 'true');
-    await page.$eval('[data-system-walkthrough]', el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
-    await page.focus('[data-system-step="0"]');
-    await page.keyboard.press('ArrowRight');
-    assert.equal(await page.$eval('[data-system-step="1"]', el => el.getAttribute('aria-selected')), 'true');
-    await page.keyboard.press('End');
-    assert.equal(await page.$eval('[data-system-step="3"]', el => el.getAttribute('aria-selected')), 'true');
-    assert.equal(await page.$$eval('[data-system-panel]:not([hidden])', els => els.length), 1);
-    await page.screenshot({ path: path.join(out, 'yudha-walkthrough.png') });
-    pass('Project opens with its shared anchor; walkthrough supports arrows and End');
-
-    await page.addScriptTag({ path: path.join(root, 'node_modules/axe-core/axe.min.js') });
-    let accessibility = await page.evaluate(() => axe.run(document.querySelector('#project-dialog'), { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } }));
-    results.accessibility.push({ view: 'project dialog', violations: accessibility.violations });
-    await page.keyboard.press('Escape');
-    await page.waitForFunction(() => !document.querySelector('#project-dialog').open);
-    await wait(450);
-    assert.ok(Math.abs(await page.evaluate(() => scrollY) - scrollBefore) < 3, 'Closing should preserve scroll position');
-    assert.equal(await page.evaluate(() => document.activeElement === document.querySelector('#project-yudha > summary')), true);
-    pass('Escape closes project and restores the card focus and scroll position');
-
-    await page.goForward({ waitUntil: 'domcontentloaded' });
-    await page.waitForFunction(() => document.querySelector('#project-dialog').open);
-    await wait(400);
-    await page.click('[data-project-next]');
-    await page.waitForFunction(() => document.querySelector('#project-dialog-title').textContent.includes('Lexara'));
-    await wait(400);
-    await page.keyboard.press('Escape');
-    await page.waitForFunction(() => !document.querySelector('#project-dialog').open);
-    pass('Forward reopens the case study; next-project navigation and close work');
-
-    await wait(500);
-    async function openDisclosure(selector) {
-        await page.$eval(selector, el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
-        await wait(1200);
-        await page.click(selector);
-        await wait(100);
-    }
-    await openDisclosure('.certificate-extras > summary');
-    assert.equal(await page.$eval('.certificate-extras', el => el.open), true);
-    await openDisclosure('.recognition-more > summary');
-    assert.equal(await page.$eval('.recognition-more', el => el.open), true);
-    await openDisclosure('.experience-more > summary');
-    assert.equal(await page.$eval('.experience-more', el => el.open), true);
-    pass('Certificate, recognition, and photo disclosures open');
-
-    for (const theme of ['light', 'dark']) {
-        await page.evaluate(theme => setTheme(theme), theme);
-        await wait(250);
-        accessibility = await page.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } }));
-        results.accessibility.push({ view: theme, violations: accessibility.violations });
-        await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
-        await page.screenshot({ path: path.join(out, `theme-${theme}.png`) });
-    }
-
-    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+    await open('/');
+    await page.waitForSelector('.featured-list[data-stacking]');
+    await page.evaluate(() => {
+        const stack = document.querySelector('.featured-list');
+        window.scrollBy(0, stack.getBoundingClientRect().top + 320);
+    });
+    await page.waitForFunction(() => {
+        const card = document.querySelector('.featured-project');
+        return Math.abs(card.getBoundingClientRect().top - parseFloat(getComputedStyle(card).top)) < 2 &&
+            parseFloat(getComputedStyle(card.querySelector('.featured-panel')).scale) < .99;
+    });
+    const firstRole = '.experience-item:first-child';
+    const firstLogo = firstRole + ' .experience-logo img';
+    const positionRole = viewportFraction => page.$eval(firstRole, (row, fraction) => {
+        const { top, height } = row.getBoundingClientRect();
+        window.scrollBy(0, top + height / 2 - innerHeight * fraction);
+    }, viewportFraction);
+    await positionRole(.76);
+    await page.waitForFunction(selector => getComputedStyle(document.querySelector(selector)).filter === 'grayscale(1)', {}, firstLogo);
+    await positionRole(.55);
+    await page.waitForFunction(selector => getComputedStyle(document.querySelector(selector)).filter === 'none', {}, firstLogo);
+    assert.equal(await page.$eval('.experience-item:nth-child(2) .experience-logo img', logo => getComputedStyle(logo).filter), 'grayscale(1)');
+    await page.waitForSelector('.experience-timeline[data-in-progress] .timeline-marker', { visible: true });
+    await positionRole(.76);
+    await page.waitForFunction(selector => getComputedStyle(document.querySelector(selector)).filter === 'grayscale(1)', {}, firstLogo);
+    await page.$eval('#recognition', el => el.scrollIntoView());
+    await page.waitForSelector('.award-item[data-entered]');
+    await page.hover('#recognition-1 .award-image');
+    await page.waitForFunction(() => parseFloat(getComputedStyle(document.querySelector('#recognition-1 .award-image img')).scale) > 1.02);
+    await page.$eval('#work', el => el.scrollIntoView());
+    await page.waitForSelector('#work .section-heading[data-entered]');
+    assert.equal(await page.$eval('.award-item', card => card.hasAttribute('data-entered')), true);
+    assert.equal(await page.$('main :is(h1, h2, h3, h4, p)[data-scroll-reveal]'), null);
+    await page.click('#all-projects > summary');
+    await page.$eval('.archive-project', el => el.scrollIntoView({ block: 'center' }));
+    await page.waitForSelector('.archive-project[data-entered]');
+    await page.$eval('#certificates', el => el.scrollIntoView());
+    await page.waitForSelector('.certificate-card[data-entered]');
+    await page.hover('.certificate-card');
+    await page.waitForFunction(() => getComputedStyle(document.querySelector('.certificate-card')).translate !== 'none');
+    await page.$eval('#contact', el => el.scrollIntoView());
+    await page.waitForSelector('.contact-grid[data-entered]');
+    await page.goto(url + '/projects/yudha/', { waitUntil: 'networkidle0' });
+    await page.$eval('.case-body > section', el => el.scrollIntoView({ block: 'center' }));
+    await page.waitForSelector('.case-body > section[data-entered]');
+    await open('/');
     await page.setViewport({ width: 390, height: 844 });
-    await page.goto(url + '#project-yudha', { waitUntil: 'networkidle2' });
-    await page.waitForFunction(() => document.querySelector('#project-dialog').open);
-    await page.$eval('[data-system-walkthrough]', el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
-    await page.click('[data-system-step="2"]');
-    await wait(100);
-    assert.equal(await page.$eval('[data-system-step="2"]', el => el.getAttribute('aria-selected')), 'true');
-    assert.equal(await page.$eval('.featured-project', el => getComputedStyle(el).position), 'relative');
-    // Existing reduced-motion CSS uses 0.001ms to settle transitions. Check that
-    // no perceptible motion remains, rather than counting those instant finishes.
-    results.reducedMotion = await page.evaluate(() => document.getAnimations()
-        .filter(a => a.playState === 'running')
-        .map(a => ({ duration: a.effect.getComputedTiming().activeDuration, target: a.effect.target?.className })));
-    assert.equal(results.reducedMotion.filter(a => a.duration > 1).length, 0);
-    await page.screenshot({ path: path.join(out, 'walkthrough-mobile-reduced.png') });
+    await page.waitForSelector('.featured-list[data-stacking]');
+    await page.setViewport({ width: 390, height: 600 });
+    await page.waitForSelector('.featured-list[data-stacking]', { hidden: true });
+    await page.setViewport({ width: 1440, height: 900 });
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+    await page.waitForSelector('.featured-list[data-stacking]', { hidden: true });
+    await page.waitForFunction(selector => getComputedStyle(document.querySelector(selector)).filter === 'none', {}, firstLogo);
+    pass('Grouped one-time reveals, card hover, responsive stacking, and reduced motion');
+
+    await page.setViewport({ width: 720, height: 450, deviceScaleFactor: 2 });
+    await open('/id/');
+    await noOverflow();
+    await page.click('#project-neurokit-action');
+    await page.waitForSelector('dialog[open] [data-slug="neurokit"]');
+    await noOverflow();
+    await page.click('dialog [data-close]');
+    await page.waitForSelector('dialog[open]', { hidden: true });
+    await page.setViewport({ width: 320, height: 568 });
+    pass('Indonesian homepage and overlay reflow in a 720 × 450 CSS viewport at 2× scale');
+    await page.click('.menu-control');
+    assert.equal(await page.$eval('.menu-control', el => el.getAttribute('aria-expanded')), 'true');
+    assert.equal(await page.evaluate(() => document.activeElement.getAttribute('href')), '#work');
     await page.keyboard.press('Escape');
-    await page.waitForFunction(() => !document.querySelector('#project-dialog').open);
-    assert.equal(await page.evaluate(() => location.hash), '#work');
-    await page.click('[data-menu-toggle]');
-    assert.equal(await page.$eval('[data-menu-toggle]', el => el.getAttribute('aria-expanded')), 'true');
-    await page.click('#primary-nav a[href="#background"]');
-    assert.equal(await page.$eval('[data-menu-toggle]', el => el.getAttribute('aria-expanded')), 'false');
-    pass('Mobile menu, reduced motion, direct project link, and direct-link close');
+    assert.equal(await page.evaluate(() => document.activeElement.className.includes('menu-control')), true);
+    await page.click('[data-theme-toggle]');
+    await page.reload({ waitUntil: 'networkidle0' });
+    assert.equal(await page.$eval('html', el => el.dataset.theme), 'dark');
+    await page.click('[data-theme-toggle]');
+    pass('Mobile menu and Escape focus return, light default, theme persistence');
 
-    await page.goto(url + '#cert-llm', { waitUntil: 'networkidle2' });
-    assert.equal(await page.$eval('.certificate-extras', el => el.open), true);
-    pass('Deep links reveal supporting credentials');
+    for (const href of socialImages) {
+        const dimensions = await page.evaluate(async source => {
+            const image = new Image();
+            image.src = source;
+            await image.decode();
+            return [image.naturalWidth, image.naturalHeight];
+        }, href);
+        assert.deepEqual(dimensions, [1200, 630], href);
+    }
+    pass('All 12 localized share images decode at 1200 × 630');
 
-    const staticPage = await browser.newPage();
-    await staticPage.setJavaScriptEnabled(false);
-    await staticPage.setViewport({ width: 390, height: 844 });
-    await staticPage.goto(url, { waitUntil: 'networkidle2' });
-    await staticPage.click('#project-yudha > summary');
-    assert.equal(await staticPage.$eval('#project-yudha', el => el.open), true);
-    assert.equal(await staticPage.$$eval('[data-system-panel]', els => els.every(el => !el.hidden)), true);
-    assert.equal(await staticPage.$eval('.system-steps', el => el.hidden), true);
-    pass('Without JavaScript, project details and all walkthrough explanations are readable');
-    assert.deepEqual(results.errors, []);
-    pass('No browser JavaScript errors');
-    const violationCount = results.accessibility.reduce((n, scan) => n + scan.violations.length, 0);
-    console.log(`Accessibility: ${violationCount} rule violations across ${results.accessibility.length} scans`);
-    fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(results, null, 2));
-    assert.equal(violationCount, 0, 'Review accessibility findings in results.json');
-} catch (error) {
-    results.failure = error.stack;
-    fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(results, null, 2));
-    throw error;
+    const action = '#project-yudha-action';
+    async function assertDialog(slug) {
+        await page.waitForSelector('dialog[open] [data-slug="' + slug + '"]');
+        await noOverflow();
+        assert.deepEqual(await page.$$eval('[id]', nodes => {
+            const ids = nodes.map(node => node.id);
+            return ids.filter((id, index) => ids.indexOf(id) !== index);
+        }), []);
+    }
+    await open('/');
+    await page.setViewport({ width: 1440, height: 900 });
+    await page.$eval(action, el => el.scrollIntoView({ block: 'center' }));
+    const scroll = await page.evaluate(() => scrollY);
+    await page.click(action);
+    await assertDialog('yudha');
+    assert.equal(new URL(page.url()).pathname, '/projects/yudha/');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'project-dialog-title');
+    await shot('dialog-en-desktop');
+    for (let i = 0; i < 16; i++) {
+        await page.keyboard.press('Tab');
+        assert.ok(await page.evaluate(() => document.querySelector('dialog').contains(document.activeElement) || document.activeElement === document.body));
+    }
+    await page.keyboard.press('Escape');
+    await page.waitForSelector('dialog[open]', { hidden: true });
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'project-yudha-action');
+    assert.ok(Math.abs(await page.evaluate(() => scrollY) - scroll) < 2);
+    await page.goForward({ waitUntil: 'domcontentloaded' });
+    await assertDialog('yudha');
+    await page.goBack({ waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('dialog[open]', { hidden: true });
+    pass('Overlay route, keyboard focus, Escape, restored scroll, Back, and Forward');
+
+    await open('/#yudha-panel-state');
+    await assertDialog('yudha');
+    await page.waitForSelector('dialog #yudha-panel-state:not([hidden])');
+    await page.focus('dialog #yudha-step-state');
+    await page.keyboard.press('End');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'yudha-step-resolve');
+    await page.keyboard.press('ArrowRight');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'yudha-step-connect');
+    await page.click('dialog [data-close]');
+    await page.waitForSelector('dialog[open]', { hidden: true });
+    assert.equal(new URL(page.url()).pathname, '/');
+    await open('/?lang=id&project=legal-ai');
+    await assertDialog('lexara');
+    assert.equal(new URL(page.url()).pathname, '/id/projects/lexara/');
+    await page.setViewport({ width: 320, height: 568 });
+    await noOverflow();
+    await page.setViewport({ width: 390, height: 720 });
+    await shot('dialog-id-mobile');
+    await page.click('dialog [hreflang="en"]');
+    await page.waitForSelector('main [data-slug="lexara"]');
+    assert.equal(new URL(page.url()).pathname, '/projects/lexara/');
+    await page.click('.case-back');
+    await page.waitForSelector('body[data-page="home"]');
+    assert.equal(await page.$('dialog[open]'), null);
+    await open('/projects/cora/#cora-flow');
+    assert.equal(await page.$eval('#cora-flow-tab', tab => tab.getAttribute('aria-selected')), 'true');
+    await page.reload({ waitUntil: 'networkidle0' });
+    assert.equal(await page.$eval('#cora-flow-tab', tab => tab.getAttribute('aria-selected')), 'true');
+    await page.click('header [hreflang="id"]');
+    await page.waitForFunction(() => document.documentElement.lang === 'id');
+    assert.equal(new URL(page.url()).hash, '#cora-flow');
+    assert.equal(await page.$eval('#cora-flow-tab', tab => tab.getAttribute('aria-selected')), 'true');
+    await open('/?project=unknown');
+    assert.equal(await page.$('dialog[open]'), null);
+    for (const target of ['all-projects', 'university-achievements', 'cert-azure-preparation']) {
+        await open('/#' + target);
+        assert.equal(await page.$eval('#' + target, el => el.closest('details').open), true);
+    }
+    pass('Legacy queries, fragments, nested evidence, direct routes and refresh, language switching, and disclosures');
+
+    const noJs = await browser.newPage();
+    await noJs.setJavaScriptEnabled(false);
+    await noJs.goto(url + '/id/#project-socratix');
+    assert.equal(await noJs.$eval('#all-projects', el => el.open), true);
+    await noJs.click('#project-socratix-action');
+    await noJs.waitForSelector('main [data-slug="socratix"]');
+    assert.equal(await noJs.$$eval('[data-evidence-panel]', panels => panels.filter(el => !el.hidden).length), 4);
+    assert.ok(await noJs.$('a[href*="socratix-v2-roadmap.pdf"]'));
+    await noJs.close();
+    pass('Archive navigation and full evidence remain available without JavaScript');
+
+    async function audit(name) {
+        await page.evaluate(axeSource);
+        const results = await page.evaluate(() => window.axe.run({ runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] } }));
+        report.accessibility.push({ name, violations: results.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) })) });
+        assert.deepEqual(report.accessibility.at(-1).violations, [], name);
+    }
+    await page.setViewport({ width: 1440, height: 900 });
+    await open('/');
+    await audit('English light homepage');
+    await page.click('[data-theme-toggle]');
+    await open('/id/');
+    await audit('Indonesian dark homepage');
+    await page.click('#project-cora-action');
+    await assertDialog('cora');
+    await audit('Indonesian dark CORA overlay');
+    pass('Automated WCAG A/AA checks for both home themes and an open dialog');
+
+    await page.click('dialog [data-close]');
+    await page.waitForSelector('dialog[open]', { hidden: true });
+    await page.bringToFront();
+    await browser.defaultBrowserContext().overridePermissions(url, ['clipboard-read', 'clipboard-sanitized-write']);
+    await page.click('[data-copy-email]');
+    await page.waitForFunction(() => document.querySelector('[role="status"]').textContent.length > 0);
+    assert.equal(await page.$eval('[role="status"]', el => el.textContent), language.id.copied);
+    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'rindengangalnoel@gmail.com');
+    pass('Localized copy-email feedback and clipboard content');
+    await browser.defaultBrowserContext().overridePermissions(url, []);
+    await page.click('[data-copy-email]');
+    await page.waitForFunction(text => document.querySelector('[role="status"]').textContent === text, {}, language.id.copyFailed);
+    assert.equal(await page.evaluate(() => getSelection().toString()), 'rindengangalnoel@gmail.com');
+    pass('Copy-email fallback keeps the address selected when clipboard permission is denied');
+
+    const luminance = color => color.slice(1).match(/../g).map(hex => parseInt(hex, 16) / 255)
+        .map((c, i) => (c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4) * [.2126, .7152, .0722][i])
+        .reduce((sum, component) => sum + component, 0);
+    const palettes = await page.evaluate(() => {
+        const root = document.documentElement;
+        const original = root.dataset.theme;
+        const roles = ['ink', 'muted', 'purple', 'orange-text', 'blue', 'green-text'];
+        const palettes = ['light', 'dark'].map(name => {
+            root.dataset.theme = name;
+            const style = getComputedStyle(root);
+            const read = token => style.getPropertyValue('--' + token).trim().replace(/^#([a-f0-9])([a-f0-9])([a-f0-9])$/i, '#$1$1$2$2$3$3');
+            return [name, Object.fromEntries(roles.map(role => [role, read(role)])), ['page', 'surface', 'soft'].map(read)];
+        });
+        root.dataset.theme = original;
+        return palettes;
+    });
+    for (const [name, tokens, grounds] of palettes) {
+        for (const [role, fg] of Object.entries(tokens)) {
+            for (const bg of grounds) {
+                const [a, b] = [luminance(fg), luminance(bg)].sort((x, y) => y - x);
+                const ratio = (a + .05) / (b + .05);
+                report.contrast[[name, role, bg].join(' ')] = Number(ratio.toFixed(2));
+                assert.ok(ratio >= 4.5, name + ' ' + role + ' on ' + bg + ': ' + ratio);
+            }
+        }
+    }
+    pass('Computed palette text contrast across all reading surfaces');
+
+    const cdp = await page.createCDPSession();
+    await cdp.send('Network.enable');
+    await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
+    await page.evaluateOnNewDocument(() => {
+        window.vitals = { lcp: 0, cls: 0 };
+        new PerformanceObserver(list => {
+            for (const entry of list.getEntries()) window.vitals.lcp = entry.startTime;
+        }).observe({ type: 'largest-contentful-paint', buffered: true });
+        new PerformanceObserver(list => {
+            for (const entry of list.getEntries()) if (!entry.hadRecentInput) window.vitals.cls += entry.value;
+        }).observe({ type: 'layout-shift', buffered: true });
+    });
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
+    await page.setViewport({ width: 390, height: 844 });
+    await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6 * 1024 * 1024 / 8, uploadThroughput: 750 * 1024 / 8 });
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    await open('/id/');
+    await sleep(500);
+    const lab = await page.evaluate(() => ({ ...window.vitals,
+        lcp: Math.round(window.vitals.lcp), transfer: performance.getEntriesByType('resource').reduce((sum, entry) => sum + entry.transferSize, 0)
+    }));
+    report.metrics.push({ ...lab, conditions: 'Local Chromium, cold cache, 390 × 844, 150 ms RTT, 1.6 Mbps, 4× CPU slowdown' });
+    assert.ok(lab.lcp > 0 && lab.lcp <= 2500 && lab.cls <= .1, JSON.stringify(lab));
+    assert.deepEqual(report.errors, []);
+    pass('Cold-load mobile performance sample: ' + JSON.stringify(lab));
 } finally {
+    writeFileSync(path.join(output, 'results.json'), JSON.stringify(report, null, 2));
     await browser?.close();
-    await new Promise(resolve => server.close(resolve));
+    server.closeAllConnections();
+    server.close();
 }

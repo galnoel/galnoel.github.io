@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://galnoel.github.io/sitemap.xml

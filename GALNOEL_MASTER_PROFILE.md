@@ -46,7 +46,7 @@ This file consolidates the portfolio’s local source, my direct clarifications,
 
 - [Portrait at an awards event surrounded by photos of engineering projects and competitions](https://galnoel.github.io/public/assets/portfolio/me.png)
 
-**Portrait referenced in portfolio metadata:** [Profile portrait](https://galnoel.github.io/public/assets/portfolio/foto1.jpg)
+**Portrait referenced in portfolio metadata:** [Profile portrait](https://galnoel.github.io/public/assets/portfolio/me-at-fekdi.jpeg)
 
 ## Education
 
@@ -350,7 +350,7 @@ I built CORA’s server-side match loop and settlement verification, keeping gam
 
 **Card summary:** I led the team building a study device with adaptive lighting and a Bluetooth-connected app.
 
-**Headline outcome:** Team won bronze · PIMNAS 38
+**Headline outcome:** Team placed third (bronze-equivalent) · PIMNAS 38
 
 #### Taking a connected study device from prototype to evaluation
 
@@ -366,7 +366,7 @@ I led NEUROKIT, a funded PKM research prototype combining adaptive lighting, mus
 
 **Result:** The prototype measured 516–553 lux across five test distances from 30 to 70 cm.
 
-**Recognition:** Bronze-equivalent award in the PIMNAS 38 PKM-KC1 presentation category.
+**Recognition:** The team placed third and received a bronze-equivalent award in the PKM-KC1 presentation category at PIMNAS 38.
 
 **Technology stack and methods:** ESP32; HC-SR04; Flutter; Bluetooth; PWM + MOSFET; OpenRouter; Prosa TTS
 
@@ -484,11 +484,11 @@ For the GEMASTIK XVIII qualifying round, our team built a tuna freshness classif
 
 **Focus:** Development lead
 
-**Card summary:** Led 12 contributors to deliver a conversational assistant with real-time chat, saved conversations, and speech services.
+**Card summary:** Led 12 contributors to build an AI assistant with real-time chat, conversation history, and Indonesian voice interaction on Android.
 
 #### Leading a multidisciplinary team from chat interface to speech integration
 
-I served as SPARK’s development lead, coordinating 12 contributors across web, mobile, backend, machine learning, and data work. The team built a personal AI conversational assistant for UNSRAT IT Community and presented it at TECHOFEST 2024.
+SPARK is a personal AI assistant for web and Android. On the web, users can start with a suggested prompt, type their own question, or return to a saved conversation. I led 12 contributors across web, mobile, backend, machine learning, and data for UNSRAT IT Community (UNITY).
 
 **Problem:** Bring text conversations, saved chat sessions, and voice interaction together across web and Android clients.
 
@@ -496,9 +496,11 @@ I served as SPARK’s development lead, coordinating 12 contributors across web,
 
 **Approach:** The team connected Next.js and Flutter clients to a NestJS backend with JWT authentication, Socket.IO messaging, and Prisma-backed PostgreSQL chat history.
 
+**Voice workflow:** On Android, users tap the microphone to start a voice conversation. SPARK transcribes their speech and responds in real time, with speech synthesis for Indonesian replies.
+
 **Service integration:** Separate gRPC contracts connect the chat backend to AI responses and speech synthesis. Python services use Flask, SpeechRecognition, and Edge TTS for Indonesian speech workflows.
 
-**Result:** Delivered a team-built chatbot and its web, mobile, backend, and speech-service repositories, with a public demonstration at TECHOFEST 2024.
+**Result:** UNITY launched SPARK on 11 November 2024. Our team delivered the web and Android apps, chat backend, and speech service, and demonstrated the assistant at TECHOFEST 2024.
 
 **Technology stack and methods:** Next.js 14; Flutter; NestJS; Socket.IO; Prisma; PostgreSQL; gRPC; Python; Flask; Edge TTS
 
@@ -509,6 +511,8 @@ I served as SPARK’s development lead, coordinating 12 contributors across web,
 
 **Visual evidence**
 
+- [SPARK project landing page](https://galnoel.github.io/public/assets/portfolio/spark-landing-page.jpg)
+- [SPARK chat interface with six suggested prompts, a message composer, and a history button](https://galnoel.github.io/public/assets/portfolio/spark-chat-page.jpg) — The web chat offers sample questions in Indonesian on topics such as study skills, blockchain, and recycling.
 - [SPARK chatbot demonstrated on stage at TECHOFEST 2024](https://galnoel.github.io/public/assets/portfolio/techofest-2024-02.jpg) Additional description: Demonstrating SPARK’s conversational interface during the TECHOFEST 2024 presentation
 
 <a id="project-mlops"></a>
@@ -823,7 +827,7 @@ Nine records are listed below. National and international results are kept disti
 | Date | Level | Competition / division | Result |
 | --- | --- | --- | --- |
 | Sep 2026 | National | [PIDI DIGDAYA x HACKATHON 2026 — National hackathon](#recognition-1) | 2nd place |
-| Nov 2025 | National | [PIMNAS 38 — PKM-KC1 · Presentation Category](#recognition-2) | Bronze award |
+| Nov 2025 | National | [PIMNAS 38 — PKM-KC1 · Presentation Category](#recognition-2) | 3rd place · Bronze-equivalent award |
 | Oct 2025 | National | [GEMASTIK XVIII — Data Mining Division](#recognition-3) | Most Inspiring Team |
 | Sep 2024 | National | [GEMASTIK XVII — Data Mining Division](#recognition-4) | National finalist |
 | Jul 2026 | International | [Frontier Hackathon — 100xDevs Track](#recognition-5) | 9th place |
@@ -869,7 +873,7 @@ Nine records are listed below. National and international results are kept disti
 
 <a id="recognition-2"></a>
 
-### 2. PIMNAS 38 — Bronze award
+### 2. PIMNAS 38 — 3rd place · Bronze-equivalent award
 
 **Date:** Nov 2025
 
@@ -887,7 +891,7 @@ Nine records are listed below. National and international results are kept disti
 
 1. Funded PKM-KC project. We built and tested the prototype at UNSRAT, including lighting measurements and app functionality checks.
 2. Progress evaluation. We documented the working prototype for PKP2, the PKM progress evaluation.
-3. National presentation. We presented NEUROKIT in the PKM-KC1 room at PIMNAS 38 and received a bronze-equivalent presentation award.
+3. National presentation. We presented NEUROKIT in the PKM-KC1 room at PIMNAS 38, placed third, and received a bronze-equivalent presentation award.
 
 **Links and records**
 
@@ -992,7 +996,7 @@ Nine records are listed below. National and international results are kept disti
 
 **Visual evidence**
 
-- [CORA multiplayer game interface](https://galnoel.github.io/public/assets/portfolio/cora-hero.webp)
+- [CORA team’s 9th-place Frontier Hackathon result](https://galnoel.github.io/public/assets/portfolio/cora-win-banner.jpg)
 
 <a id="recognition-6"></a>
 
@@ -1524,6 +1528,7 @@ Credential scope: completion of the preparation course. The portfolio does not s
 
 ### Owner confirmations — 13 November 2026
 
+- **PIMNAS 38 placement:** I clarified that NEUROKIT placed third in the PKM-KC1 presentation category. The certificate records the award as bronze-equivalent.
 - **DIGDAYA date conflict resolved:** the initially supplied JUL–SEP 2026 program range conflicted with the Essential completion date already in the file and with the certificate stage ranges. After being shown the conflict, I confirmed MAY–SEP 2026 overall, Essential on 2 May–23 Jun, and Practitioner on 24 Jun–11 Aug. The earlier JUL–SEP range is superseded for the overall program record.
 - **Course projects:** I identified employee attrition as the Belajar Penerapan Data Science project and Lexara as the Pengembangan Generative AI berbasis LLM project, and stated that I completed my course projects alone. I additionally confirmed Diffusion as the Belajar Fundamental Generative AI project and MLOps as the Membangun Sistem Machine Learning project, both solo.
 - **Warong Warem:** I supplied DEC 2023 and backend developer as previously missing personal details. The original project category is retained separately from my role.
