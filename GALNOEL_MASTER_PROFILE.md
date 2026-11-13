@@ -848,7 +848,7 @@ Nine records are listed below. National and international results are kept disti
 
 **Issuer / organization listed:** Bank Indonesia
 
-**About the competition:** Bank Indonesia and OJK ran this national hackathon around practical digital innovations. We entered the job-creation challenge, where judges assessed the problem, the prototype, and the plan for bringing it to users.
+**About the competition:** Bank Indonesia and OJK ran this national hackathon around practical digital innovations. YUDHA placed second.
 
 **The problem we tackled:** Civil-service and state-owned-enterprise applicants need ways to practice under exam pressure and identify what to study next. YUDHA combines timed head-to-head quizzes, performance feedback, and AI mock interviews. I led the architecture and built the app and game backends.
 

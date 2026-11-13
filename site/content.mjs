@@ -101,7 +101,7 @@ export const experience = records(section('Experience and leadership')).map(({ i
 });
 
 const awardSummaries = [
-    'YUDHA advanced to the Top 80 capstone and the Top 10 in-person pitch in Jakarta. The team placed second in the job-creation challenge.',
+    'YUDHA advanced to the Top 80 capstone and the Top 10 in-person pitch in Jakarta. The team placed second.',
     'The NEUROKIT team tested the funded PKM prototype and earned a bronze-equivalent award for its national presentation.',
     'Our team classified tuna freshness in qualifying. At the final, we classified 20 handwritten Javanese characters in five hours and presented our approach to the jury.',
     'Our team analyzed body measurements from 182 older adults and developed seven rules to inform the dimensions of chairs, handrails, and service counters.',

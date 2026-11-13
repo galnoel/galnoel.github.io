@@ -239,7 +239,7 @@ export const experience = [
 ];
 
 export const awards = [
-    ['Juara kedua', 'Hackathon nasional', 'YUDHA mencapai 80 besar capstone dan 10 besar presentasi di Jakarta. Tim meraih juara kedua dalam tantangan penciptaan lapangan kerja.', 'Tim YUDHA bersama trofi PIDI DIGDAYA x HACKATHON 2026'],
+    ['Juara kedua', 'Hackathon nasional', 'YUDHA mencapai 80 besar capstone dan 10 besar presentasi di Jakarta. Tim meraih juara kedua.', 'Tim YUDHA bersama trofi PIDI DIGDAYA x HACKATHON 2026'],
     ['Juara ketiga · Penghargaan setara perunggu', 'PKM-KC1 · Kategori Presentasi', 'Tim NEUROKIT menguji prototipe dalam program PKM yang didanai, lalu menerima penghargaan setara perunggu pada kategori presentasi.', 'Tim NEUROKIT merayakan penghargaan perunggu PIMNAS 38'],
     ['Most Inspiring Team', 'Divisi Data Mining', 'Tim mengerjakan klasifikasi kesegaran tuna pada penyisihan. Di final, kami mengklasifikasikan 20 aksara Jawa dalam lima jam dan mempresentasikan pendekatan kami kepada juri.', 'Tim GEMASTIK XVIII memegang penghargaan Most Inspiring Team'],
     ['Finalis nasional', 'Divisi Data Mining', 'Tim menganalisis pengukuran tubuh 182 lansia dan menyusun tujuh aturan untuk dimensi kursi, pegangan tangga, dan meja layanan.', 'Tim finalis GEMASTIK XVII di acara nasional'],
